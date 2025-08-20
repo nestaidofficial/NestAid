@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html {
+    font-display: swap;
+  }
+
+  /* Ensure consistent box-sizing */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Reset margins and padding for consistent spacing */
+  body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    /* New High-Contrast Color Palette */
+    --background: 45 25% 95%; /* #F5F3ED */
+    --foreground: 105 30% 23%; /* #2C4F26 */
+
+    --card: 0 0% 100%; /* White for cards to pop against the off-white background */
+    --card-foreground: 105 30% 23%; /* #2C4F26 */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 105 30% 23%;
+
+    --primary: 105 30% 23%; /* #2C4F26 */
+    --primary-foreground: 45 25% 95%; /* #F5F3ED */
+
+    --secondary: 45 25% 92%; /* Slightly darker off-white */
+    --secondary-foreground: 105 30% 23%; /* #2C4F26 */
+
+    --muted: 45 25% 92%;
+    --muted-foreground: 105 30% 40%; /* Lighter version of #2C4F26 */
+
+    --accent: 68 81% 67%; /* #DEEC6A */
+    --accent-foreground: 105 30% 15%; /* Dark green for high contrast on accent */
+
+    --destructive: 0 72% 51%; /* A standard red */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 45 25% 88%;
+    --input: 45 25% 90%;
+    --ring: 68 81% 67%; /* #DEEC6A */
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark Mode Palette */
+    --background: 105 30% 10%; /* Very dark green, derived from #2C4F26 */
+    --foreground: 45 25% 95%; /* #F5F3ED */
+
+    --card: 105 30% 13%; /* Darker green card */
+    --card-foreground: 45 25% 95%; /* #F5F3ED */
+
+    --popover: 105 30% 10%;
+    --popover-foreground: 45 25% 95%;
+
+    --primary: 68 81% 67%; /* #DEEC6A */
+    --primary-foreground: 105 30% 15%; /* Dark green for text on primary */
+
+    --secondary: 105 30% 15%;
+    --secondary-foreground: 45 25% 95%;
+
+    --muted: 105 30% 15%;
+    --muted-foreground: 45 25% 80%; /* Lighter version of #F5F3ED */
+
+    --accent: 68 81% 67%; /* #DEEC6A */
+    --accent-foreground: 105 30% 15%;
+
+    --destructive: 0 63% 42%; /* Darker red */
+    --destructive-foreground: 45 25% 95%;
+
+    --border: 105 30% 20%;
+    --input: 105 30% 20%;
+    --ring: 68 81% 67%; /* #DEEC6A */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground;
+    background-color: #e8e8e8;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Smooth scroll behavior for the entire page */
+html {
+  scroll-behavior: smooth;
+  background-color: #e8e8e8;
+}
+
+/* Enhanced smooth scrolling with custom easing */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Add smooth transitions only for scroll-triggered animations */
+  .fade-in, .slide-in-left, .slide-in-right {
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Intersection observer animation classes */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Mobile hero scroll-triggered animation */
+  @media (max-width: 768px) {
+    .hero-scroll-up {
+      animation: heroScrollUp 0.7s ease-out forwards;
+    }
+    
+    /* Initial state for mobile hero content */
+    .hero-content-mobile {
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+    }
+    
+    .hero-content-mobile.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes heroScrollUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile viewport fixes for chat window */
+  @supports (height: 100dvh) {
+    .mobile-chat-window {
+      height: calc(100dvh - env(safe-area-inset-bottom));
+    }
+  }
+
+  @supports not (height: 100dvh) {
+    .mobile-chat-window {
+      height: calc(100vh - env(safe-area-inset-bottom));
+    }
+  }
+
+  /* Handle mobile keyboard appearance */
+  @media (max-width: 768px) {
+    .mobile-chat-window {
+      max-height: calc(100vh - env(safe-area-inset-bottom));
+      max-height: calc(100dvh - env(safe-area-inset-bottom));
+    }
+  }
+
+  /* Ensure safe area padding works on all iOS devices */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .mobile-chat-input {
+      padding-bottom: max(24px, env(safe-area-inset-bottom));
+    }
+  }
+
+  @supports not (padding-bottom: env(safe-area-inset-bottom)) {
+    .mobile-chat-input {
+      padding-bottom: 24px;
+    }
+  }
+}
