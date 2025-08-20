@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 
 
 import { Bath, Heart, Users, MessageCircle, Car, Utensils, Clock, Accessibility, Phone, UserCheck, AlertCircle, Stethoscope, FileText, Calendar, UserPlus, Target, Activity, Flower, Brain, Dumbbell, Apple, Smile } from "lucide-react"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { useState, useEffect } from "react"
 
 const AppStoreIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -24,19 +23,6 @@ const GooglePlayIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 
 export default function FindCarePage() {
-  const animationRef = useScrollAnimation();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
   
   // Service details data with icons
   const serviceDetails = {
@@ -88,55 +74,98 @@ export default function FindCarePage() {
 
 
   return (
-    <div ref={animationRef} className="bg-background text-foreground">
-      {/* Hero */}
-      <section className="relative w-full h-[80vh] md:h-screen">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image 
-            src="/images/bg-image/find-care-bg.jpg" 
-            alt="Find Care Background" 
-            fill 
-            className="object-cover"
-            priority
-          />
-          {/* Optional overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/10"></div>
+    <div className="bg-background text-foreground">
+      {/* Hero Section */}
+      <section className="relative overflow-x-hidden">
+        {/* Desktop Layout - Full height with overlay */}
+        <div className="hidden lg:block relative h-[100vh] flex items-center">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <Image 
+              src="/images/bg-image/find-care-bg.jpg" 
+              alt="Find Care Background" 
+              fill 
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/10"></div>
+          </div>
+
+          {/* Background Box with Content */}
+          <div 
+            className="absolute bg-white/40 backdrop-blur-sm w-[650px] h-[550px] right-8"
+            style={{
+              borderRadius: '33% 67% 79% 21% / 44% 34% 66% 56%',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 5
+            }}
+          >
+            <div className="flex flex-col justify-center items-center text-center px-8 py-8 max-w-full h-full">
+              <h1 className="text-4xl lg:text-5xl font-bold text-[#1A5463] mb-6 leading-tight">
+                Find the Care You Deserve, Right at Home
+              </h1>
+              <p className="text-base lg:text-lg text-[#1A5463] mb-6 leading-relaxed">
+                At <span className="font-bold" style={{ color: '#1A5463' }}>NestAid</span>, we believe care should be personal. Our trusted caregivers are here to bring comfort, dignity, and peace of mind—right to your doorstep.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <Link href="/find-care">
+                  <button className="group bg-[#16803C] hover:bg-[#1f4a37] text-white font-bold text-base px-6 py-3 rounded-full flex items-center gap-3 transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    JOIN NOW
+                    <span className="bg-[#E4F2D4] text-[#275F48] rounded-full p-2 group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-4 h-4 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </button>
+                </Link>
+                <Link href="/help-center" className="text-base underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
+                  Learn More
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        {/* Background Box with All Content */}
-        <div 
-          className="absolute bg-white/40 backdrop-blur-sm flex items-center justify-center
-                     w-[350px] h-[350px] left-1/2 -translate-x-1/2 -translate-y-1/2
-                     md:w-[650px] md:h-[550px] md:left-auto md:right-8 md:translate-x-0
-                     transition-all duration-700 ease-in-out"
-          style={{
-            borderRadius: isMobile ? '25%' : '33% 67% 79% 21% / 44% 34% 66% 56%',
-            top: '50%',
-            zIndex: 5
-          }}
-        >
-          <div className="flex flex-col justify-center items-center text-center px-4 py-4 md:px-8 md:py-8 max-w-full transition-all duration-600 ease-in-out">
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#1A5463] mb-4 md:mb-6 leading-tight transition-all duration-500 ease-in-out">
-              Find the Care You Deserve, Right at Home
-            </h1>
-            <p className="text-md md:text-base lg:text-lg text-[#1A5463] mb-4 md:mb-6 leading-relaxed transition-all duration-500 ease-in-out">
-              At <span className="font-bold" style={{ color: '#1A5463' }}>NestAid</span>, we believe care should be personal. Our trusted caregivers are here to bring comfort, dignity, and peace of mind—right to your doorstep.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 transition-all duration-500 ease-in-out">
-              <Link href="/find-care">
-                <button className="group bg-[#16803C] hover:bg-[#1f4a37] text-white font-bold text-xs md:text-base px-4 md:px-6 py-2 md:py-3 rounded-full flex items-center gap-2 md:gap-3 transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105">
-                  JOIN NOW
-                  <span className="bg-[#E4F2D4] text-[#275F48] rounded-full p-1.5 md:p-2 group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-3 h-3 md:w-4 md:h-4 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
-                </button>
-              </Link>
-              <Link href="/help-center" className="text-xs md:text-base underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
-                Learn More
-              </Link>
+
+        {/* Mobile & Tablet Layout - Stacked: Image first, then content */}
+        <div className="lg:hidden">
+          {/* Background Image Section */}
+          <div className="relative h-[50vh] md:h-[60vh]">
+            <Image 
+              src="/images/bg-image/find-care-bg.jpg" 
+              alt="Find Care Background" 
+              fill 
+              className="object-cover"
+              priority
+            />
+          </div>
+
+          {/* Content Section */}
+          <div className="bg-[#E4F2D4] px-4 py-8 md:px-6 md:py-12">
+            <div className="flex flex-col justify-center items-center text-center max-w-5xl mx-auto">
+              <h1 className="text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 md:mb-6 leading-tight">
+                Find the Care You Deserve, Right at Home
+              </h1>
+              <p className="text-sm md:text-lg text-[#1A5463] mb-6 md:mb-8 leading-relaxed">
+                At <span className="font-bold" style={{ color: '#1A5463' }}>NestAid</span>, we believe care should be personal. Our trusted caregivers are here to bring comfort, dignity, and peace of mind—right to your doorstep.
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col gap-4 items-center w-full max-w-2xl">
+                <Link href="/find-care" className="w-full">
+                  <button className="group bg-[#16803C] hover:bg-[#1f4a37] text-white font-bold text-sm md:text-base px-6 py-3 md:py-4 rounded-full flex items-center justify-center gap-3 transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105 w-full">
+                    JOIN NOW
+                    <span className="bg-[#E4F2D4] text-[#275F48] rounded-full p-1.5 md:p-2 group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-3 h-3 md:w-4 md:h-4 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </button>
+                </Link>
+                <Link href="/help-center" className="text-sm md:text-base underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
+                  Learn More
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -153,11 +182,11 @@ export default function FindCarePage() {
             {/* Service 1: In‑Home Care Services - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center slide-in-left" style={{ backgroundColor: '#DBD9FE' }}>
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#DBD9FE' }}>
                   <Image src="/images/adult-care.jpg" alt="In‑Home Care Services" width={120} height={120} className="rounded-full object-cover" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2 slide-in-right">
+              <div className="w-full md:w-1/2 ">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#DBD9FE' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">In‑Home Care Services</h3>
                   <ul className="space-y-4">
@@ -180,11 +209,11 @@ export default function FindCarePage() {
             {/* Service 2: Companion & Household Support - Left aligned */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center slide-in-right" style={{ backgroundColor: '#E4F2D4' }}>
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#E4F2D4' }}>
                   <Image src="/images/group.png" alt="Companion & Household Support" width={120} height={120} className="rounded-full object-cover" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2 slide-in-left">
+              <div className="w-full md:w-1/2 ">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#E4F2D4' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">Companion & Household Support</h3>
                   <ul className="space-y-4">
@@ -207,11 +236,11 @@ export default function FindCarePage() {
             {/* Service 3: Special Needs & Disability Support - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center slide-in-left" style={{ backgroundColor: '#F0F0F0' }}>
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#F0F0F0' }}>
                   <Image src="/images/adult-care.jpg" alt="Special Needs & Disability Support" width={120} height={120} className="rounded-full object-cover" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2 slide-in-right">
+              <div className="w-full md:w-1/2 ">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#F0F0F0' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">Special Needs & Disability Support</h3>
                   <ul className="space-y-4">
@@ -234,11 +263,11 @@ export default function FindCarePage() {
             {/* Service 4: 24/7 Live‑In Care - Left aligned */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center slide-in-right" style={{ backgroundColor: '#DBD9FE' }}>
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#DBD9FE' }}>
                   <Image src="/images/pet-care.jpg" alt="24/7 Live‑In Care" width={120} height={120} className="rounded-full object-cover" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2 slide-in-left">
+              <div className="w-full md:w-1/2 ">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#DBD9FE' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">24/7 Live‑In Care</h3>
                   <ul className="space-y-4">
@@ -261,11 +290,11 @@ export default function FindCarePage() {
             {/* Service 5: Personalized Care Plans - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center slide-in-left" style={{ backgroundColor: '#E4F2D4' }}>
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#E4F2D4' }}>
                   <Image src="/images/group.png" alt="Personalized Care Plans" width={120} height={120} className="rounded-full object-cover" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2 slide-in-right">
+              <div className="w-full md:w-1/2 ">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#E4F2D4' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">Personalized Care Plans</h3>
                   <ul className="space-y-4">
@@ -288,11 +317,11 @@ export default function FindCarePage() {
             {/* Service 6: Wellness & Yoga - Left aligned */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center slide-in-right" style={{ backgroundColor: '#F0F0F0' }}>
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#F0F0F0' }}>
                   <Image src="/images/senior-care.jpg" alt="Wellness & Yoga" width={120} height={120} className="rounded-full object-cover" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2 slide-in-left">
+              <div className="w-full md:w-1/2 ">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#F0F0F0' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">Wellness & Yoga</h3>
                   <ul className="space-y-4">
