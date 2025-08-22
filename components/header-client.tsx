@@ -84,11 +84,7 @@ export function HeaderClient() {
                                 <Link href="/about-us" className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 text-sm font-medium">About us</Link>
                               </NavigationMenuLink>
                             </li>
-                            <li>
-                              <NavigationMenuLink asChild>
-                                <Link href="/cost-of-care" className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 text-sm font-medium">Cost of care calculator</Link>
-                              </NavigationMenuLink>
-                            </li>
+
                             <li>
                               <NavigationMenuLink asChild>
                                 <Link href="/help-center" className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 text-sm font-medium">Help center</Link>
@@ -142,7 +138,7 @@ export function HeaderClient() {
                       {mobileResourcesOpen && (
                         <div className="pl-3 space-y-1">
                           <Link href="/about-us" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-sm hover:bg-[#D9FB74]">About us</Link>
-                          <Link href="/cost-of-care" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-sm hover:bg-[#D9FB74]">Cost of care calculator</Link>
+
                           <Link href="/help-center" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-sm hover:bg-[#D9FB74]">Help center</Link>
                         </div>
                       )}

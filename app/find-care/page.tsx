@@ -380,11 +380,7 @@ export default function FindCarePage() {
                     Help Center
                   </Link>
                 </li>
-                <li>
-                  <Link href="/cost-of-care" className="hover:text-white">
-                    Cost of Care
-                  </Link>
-                </li>
+
               </ul>
             </div>
             <div>

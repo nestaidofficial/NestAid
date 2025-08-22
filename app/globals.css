@@ -113,44 +113,7 @@ html {
     scroll-behavior: smooth;
   }
   
-  /* Add smooth transitions only for scroll-triggered animations */
-  .fade-in, .slide-in-left, .slide-in-right {
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-  
-  /* Intersection observer animation classes */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .slide-in-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  
-  .slide-in-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  
-  .slide-in-right {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  
-  .slide-in-right.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  /* AOS animations are now handled by the AOS library */
 
   /* Mobile hero scroll-triggered animation */
   @media (max-width: 768px) {

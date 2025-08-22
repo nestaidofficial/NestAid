@@ -92,11 +92,7 @@ export function Footer() {
                   Help center
                 </Link>
               </li>
-              <li>
-                <Link href="/cost-of-care" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  Cost of care
-                </Link>
-              </li>
+
               <li>
                 <Link href="/corporate-benefits" className="text-primary-foreground/80 hover:text-primary-foreground">
                   Corporate benefits
