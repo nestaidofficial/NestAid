@@ -19,7 +19,7 @@ export default function FamilyCaregiversPage() {
 
   useEffect(() => {
     AOS.init({
-      duration: 600,
+      duration: 400,
       easing: 'ease-in-out',
       once: true,
       offset: 100
@@ -232,7 +232,7 @@ export default function FamilyCaregiversPage() {
       </section>
 
       {/* About the Program Section */}
-      <section className="py-16 md:py-24 bg-white overflow-x-hidden">
+      <section className="py-16 md:py-24 bg-white overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12" data-aos="fade-up">
@@ -243,7 +243,7 @@ export default function FamilyCaregiversPage() {
             
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
               {/* Content */}
-              <div className="space-y-6" data-aos="fade-right">
+              <div className="space-y-6" data-aos="fade-up">
                 <p className="text-lg text-[#1A5463] leading-relaxed">
                   The Family Caregiver Program is designed to support those who care for aging parents, disabled adults, or loved ones with chronic conditions. Instead of hiring an outside caregiver, Medicaid allows eligible family members to provide care at home and receive monthly pay.
                 </p>
@@ -254,7 +254,7 @@ export default function FamilyCaregiversPage() {
               </div>
 
               {/* Image */}
-              <div className="relative" data-aos="fade-left">
+              <div className="relative" data-aos="fade-up">
                 <div className="rounded-3xl overflow-hidden shadow-xl">
                   <Image
                     src="/images/adult-care.jpg"
@@ -273,7 +273,7 @@ export default function FamilyCaregiversPage() {
           </section>
 
       {/* Video Testimonial Section */}
-      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden">
+      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-8" data-aos="fade-up">
@@ -284,7 +284,7 @@ export default function FamilyCaregiversPage() {
             </p>
             
             {/* Video Placeholder */}
-            <div className="relative bg-gradient-to-br from-[#275F49] to-[#1A5463] rounded-3xl overflow-hidden shadow-2xl" data-aos="zoom-in">
+            <div className="relative bg-gradient-to-br from-[#275F49] to-[#1A5463] rounded-3xl overflow-hidden shadow-2xl" data-aos="fade-up">
               <div className="aspect-video flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:bg-white/30 transition-colors">
@@ -312,10 +312,10 @@ export default function FamilyCaregiversPage() {
 
 
       {/* How It Works Section */}
-      <section className="py-16 md:py-24 overflow-x-hidden bg-[#E8F5E8]">
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
+      <section className="py-16 md:py-24 bg-[#E8F5E8] overflow-hidden" data-aos="fade-up">
+        <div className="container mx-auto px-4 md:px-6 lg:px-12 max-w-full">
           <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#275F49] mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#275F49] mb-6 break-words">
               Get Paid to Care for Your Loved One with Nestaid
             </h2>
             <div className="max-w-4xl mx-auto space-y-4">
@@ -328,16 +328,16 @@ export default function FamilyCaregiversPage() {
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto w-full">
             <div className="space-y-8">
               {processSteps.map((step, index) => (
-                <div key={step.number} className="relative" data-aos="fade-up">
+                <div key={step.number} className="relative w-full" data-aos="fade-up">
                   {/* Connecting line - only show if not last item */}
                   {index < processSteps.length - 1 && (
                     <div className="absolute left-8 top-20 w-0.5 h-16 bg-[#275F49]/30 hidden md:block"></div>
                   )}
                   
-                  <div className="flex items-start gap-6 md:gap-8">
+                  <div className="flex items-start gap-4 md:gap-6 lg:gap-8">
                     {/* Step Number */}
                     <div className="flex-shrink-0">
                       <div className="w-16 h-16 rounded-full bg-[#275F49] flex items-center justify-center">
@@ -346,7 +346,7 @@ export default function FamilyCaregiversPage() {
                     </div>
                     
                     {/* Content */}
-                    <div className="flex-1 pt-2">
+                    <div className="flex-1 pt-2 min-w-0">
                       <h3 className="text-xl md:text-2xl font-semibold text-[#275F49] mb-3">
                         {step.title}
                       </h3>
@@ -379,9 +379,9 @@ export default function FamilyCaregiversPage() {
       </section>
 
       {/* Eligibility Section */}
-      <section className="py-16 md:py-24 bg-white overflow-x-hidden">
+      <section className="py-16 md:py-24 bg-white overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="text-center mb-12 md:mb-16" data-aos="fade-up">
+          <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-4">
               Eligibility Requirements Explained
             </h2>
@@ -390,7 +390,7 @@ export default function FamilyCaregiversPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Caregiver Requirements */}
-              <div className="bg-[#FCFDFB] rounded-3xl p-8 md:p-10 border-2 border-[#E4F2D4] shadow-sm" data-aos="fade-right">
+              <div className="bg-[#FCFDFB] rounded-3xl p-8 md:p-10 border-2 border-[#E4F2D4] shadow-sm">
                 <div className="text-center mb-8">
                   <div className="relative w-24 h-24 mx-auto mb-4">
                     <Image
@@ -418,7 +418,7 @@ export default function FamilyCaregiversPage() {
               </div>
 
               {/* Care Recipient Requirements */}
-              <div className="bg-[#FCFDFB] rounded-3xl p-8 md:p-10 border-2 border-[#E4F2D4] shadow-sm" data-aos="fade-left">
+              <div className="bg-[#FCFDFB] rounded-3xl p-8 md:p-10 border-2 border-[#E4F2D4] shadow-sm">
                 <div className="text-center mb-8">
                   <div className="relative w-24 h-24 mx-auto mb-4">
                     <Image
@@ -448,7 +448,7 @@ export default function FamilyCaregiversPage() {
 
             {/* ADL Activities Section */}
             <div className="mt-16">
-              <div className="bg-[#FCFDFB] rounded-3xl p-8 md:p-12 border-2 border-[#E4F2D4] shadow-sm" data-aos="fade-up">
+              <div className="bg-[#FCFDFB] rounded-3xl p-8 md:p-12 border-2 border-[#E4F2D4] shadow-sm">
                 <h3 className="text-2xl md:text-3xl font-bold text-[#1A5463] mb-8 text-center">
                   Activities of Daily Living (ADLs)
                 </h3>
@@ -473,7 +473,7 @@ export default function FamilyCaregiversPage() {
       </section>
 
       {/* Success Stories Section */}
-      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden">
+      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="text-center mb-12 md:mb-16" data-aos="fade-up">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-4">
@@ -521,7 +521,7 @@ export default function FamilyCaregiversPage() {
 
 
       {/* Final CTA Section */}
-      <section className="py-16 md:py-24 overflow-x-hidden" style={{ backgroundColor: '#275F49' }}>
+      <section className="py-16 md:py-24 overflow-x-hidden" style={{ backgroundColor: '#275F49' }} data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6" data-aos="fade-up">

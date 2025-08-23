@@ -31,7 +31,7 @@ export default function Component() {
   // Initialize AOS
   useEffect(() => {
     AOS.init({
-      duration: 600,
+      duration: 400,
       easing: 'ease-in-out',
       once: true,
       offset: 100
@@ -132,7 +132,7 @@ export default function Component() {
               {/* Clean rounded rectangle container */}
               <div 
                 className="bg-[#E4F2D4] rounded-[3rem] p-6 md:p-8 lg:p-10"
-                data-aos="fade-left"
+                data-aos="fade-up"
               >
                 <h1 className="text-2xl md:text-5xl font-bold text-[#1A5463] mb-4">
                 Compassionate Home Care for Your Loved Ones
@@ -164,7 +164,7 @@ export default function Component() {
       </main>
 
       {/* Care We Provide Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }}>
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }} >
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <h2 className="text-3xl md:text-5xl font-serif py-10 font-bold tracking-tight text-center text-white mb-16" data-aos="fade-up">Why We Stand Out</h2>
           
@@ -174,11 +174,11 @@ export default function Component() {
             {/* Service 1: Compassionate Care - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center" style={{ backgroundColor: '#DBD9FE' }} data-aos="fade-right">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center" style={{ backgroundColor: '#DBD9FE' }} data-aos="fade-up">
                   <Image src="/images/adult-care.jpg" alt="Compassionate Care" width={120} height={120} className="rounded-full object-cover" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2" data-aos="fade-left">
+              <div className="w-full md:w-1/2" data-aos="fade-up">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#DBD9FE' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#4A7C59] mb-4">Compassionate Care</h3>
                   <p className="text-[#4A7C59] mb-6 leading-relaxed">
@@ -214,11 +214,11 @@ export default function Component() {
             {/* Service 2: Professional Team - Left aligned */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center" style={{ backgroundColor: '#E4F2D4' }} data-aos="fade-left">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center" style={{ backgroundColor: '#E4F2D4' }} data-aos="fade-up">
                   <Image src="/images/group.png" alt="Professional Team" width={120} height={120} className="rounded-full object-cover" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2" data-aos="fade-right">
+              <div className="w-full md:w-1/2" data-aos="fade-up">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#E4F2D4' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#4A7C59] mb-4">Professional Team</h3>
                   <p className="text-[#4A7C59] mb-6 leading-relaxed">
@@ -254,11 +254,11 @@ export default function Component() {
             {/* Service 3: Quality Service - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F0F0F0' }} data-aos="fade-right">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F0F0F0' }} data-aos="fade-up">
                   <Image src="/images/senior-care.jpg" alt="Quality Service" width={120} height={120} className="rounded-full object-cover" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2" data-aos="fade-left">
+              <div className="w-full md:w-1/2" data-aos="fade-up">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#F0F0F0' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#4A7C59] mb-4">Quality Service</h3>
                   <p className="text-[#4A7C59] mb-6 leading-relaxed">
@@ -299,11 +299,11 @@ export default function Component() {
 
 
       {/* Get Paid Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-white" data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-12 lg:gap-16 items-center">
             {/* Left: Circular percentage graphic (35% width) */}
-            <div className="flex justify-center lg:justify-start" data-aos="fade-right">
+            <div className="flex justify-center lg:justify-start" data-aos="fade-up">
               <div className="relative">
                 {/* Circular background with gradient */}
                 <div className="w-64 h-64 lg:w-80 lg:h-80 relative">
@@ -324,7 +324,7 @@ export default function Component() {
             </div>
 
             {/* Right: Content with background shape (65% width) */}
-            <div className="relative text-center lg:text-left overflow-hidden" data-aos="fade-left">
+            <div className="relative text-center lg:text-left overflow-hidden" data-aos="fade-up">
               {/* Background shape with #E4F2D8 */}
               <div className="absolute inset-0 -m-4 lg:-m-8">
                 <div className="w-full h-full bg-[#E4F2D8] rounded-l-[25%] rounded-r-[3rem]
@@ -365,7 +365,7 @@ export default function Component() {
       </section>
 
       {/* First Time Considering Professional Home Care Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#EFF5F4' }}>
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#EFF5F4' }} data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Centered heading and description */}
           <div className="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">

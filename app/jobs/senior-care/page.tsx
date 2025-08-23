@@ -1,12 +1,14 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { 
   MapPin, 
   Users, 
@@ -29,6 +31,16 @@ import {
 export default function FindJobsPage() {
   const [locationQuery, setLocationQuery] = useState("")
 
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 400,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+  }, []);
+
   const handleUseCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -44,7 +56,7 @@ export default function FindJobsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative overflow-x-hidden">
         {/* Desktop Layout - Full height with overlay */}
@@ -173,7 +185,7 @@ export default function FindJobsPage() {
       </section>
 
       {/* Impact Highlight - Stats Section */}
-      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden">
+      <section className="py-16 md:py-24 bg-[#FCFDFB]" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto">
             <div className="text-center">
@@ -210,7 +222,7 @@ export default function FindJobsPage() {
       </section>
 
       {/* Why Work With Us - Benefits Section */}
-      <section className="py-16 md:py-24 overflow-x-hidden" style={{ backgroundColor: '#275F49' }}>
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }} data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4">
@@ -263,7 +275,7 @@ export default function FindJobsPage() {
       </section>
 
       {/* Caregiver Roles - Cards Section */}
-      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden">
+      <section className="py-16 md:py-24 bg-[#FCFDFB]" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-4">
@@ -316,7 +328,7 @@ export default function FindJobsPage() {
       </section>
 
       {/* Day-to-Day Responsibilities */}
-      <section className="py-16 md:py-24 overflow-x-hidden" style={{ backgroundColor: '#275F49' }}>
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }} data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4">
@@ -371,7 +383,7 @@ export default function FindJobsPage() {
       </section>
 
       {/* Who We're Looking For */}
-      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden">
+      <section className="py-16 md:py-24 bg-[#FCFDFB]" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-4">
@@ -403,7 +415,7 @@ export default function FindJobsPage() {
       </section>
 
       {/* Testimonial */}
-      <section className="py-16 md:py-24 overflow-x-hidden" style={{ backgroundColor: '#275F49' }}>
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }} data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <Quote className="w-12 h-12 text-white/60 mx-auto mb-6" />
@@ -421,7 +433,7 @@ export default function FindJobsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden">
+      <section className="py-16 md:py-24 bg-[#FCFDFB]" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1A5463] mb-6">

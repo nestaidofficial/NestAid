@@ -3,7 +3,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 import { Bath, Heart, Users, MessageCircle, Car, Utensils, Clock, Accessibility, Phone, UserCheck, AlertCircle, Stethoscope, FileText, Calendar, UserPlus, Target, Activity, Flower, Brain, Dumbbell, Apple, Smile } from "lucide-react"
 import { useState, useEffect } from "react"
@@ -23,6 +24,16 @@ const GooglePlayIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 
 export default function FindCarePage() {
+  
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 400,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+  }, []);
   
   // Service details data with icons
   const serviceDetails = {
@@ -100,6 +111,7 @@ export default function FindCarePage() {
               transform: 'translateY(-50%)',
               zIndex: 5
             }}
+            data-aos="fade-up"
           >
             <div className="flex flex-col justify-center items-center text-center px-8 py-8 max-w-full h-full">
               <h1 className="text-4xl lg:text-5xl font-bold text-[#1A5463] mb-6 leading-tight">
@@ -141,7 +153,7 @@ export default function FindCarePage() {
           </div>
 
           {/* Content Section */}
-          <div className="bg-[#E4F2D4] px-4 py-8 md:px-6 md:py-12">
+          <div className="bg-[#E4F2D4] px-4 py-8 md:px-6 md:py-12" data-aos="fade-up">
             <div className="flex flex-col justify-center items-center text-center max-w-5xl mx-auto">
               <h1 className="text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 md:mb-6 leading-tight">
                 Find the Care You Deserve, Right at Home
@@ -172,15 +184,15 @@ export default function FindCarePage() {
       </section>
 
       {/* Care We Provide Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }}>
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }} data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
-          <h2 className="text-3xl md:text-5xl font-serif py-10 font-bold tracking-tight text-center text-white mb-16">Care We Provide</h2>
+          <h2 className="text-3xl md:text-5xl font-serif py-10 font-bold tracking-tight text-center text-white mb-16" data-aos="fade-up">Care We Provide</h2>
           
 
           {/* Service Cards - New Layout */}
           <div className="space-y-16 md:space-y-24">
             {/* Service 1: In‑Home Care Services - Right aligned */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#DBD9FE' }}>
                   <Image src="/images/adult-care.jpg" alt="In‑Home Care Services" width={120} height={120} className="rounded-full object-cover" />
@@ -207,7 +219,7 @@ export default function FindCarePage() {
             </div>
 
             {/* Service 2: Companion & Household Support - Left aligned */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
+            <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#E4F2D4' }}>
                   <Image src="/images/group.png" alt="Companion & Household Support" width={120} height={120} className="rounded-full object-cover" />
@@ -234,7 +246,7 @@ export default function FindCarePage() {
             </div>
 
             {/* Service 3: Special Needs & Disability Support - Right aligned */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#F0F0F0' }}>
                   <Image src="/images/adult-care.jpg" alt="Special Needs & Disability Support" width={120} height={120} className="rounded-full object-cover" />
@@ -261,7 +273,7 @@ export default function FindCarePage() {
             </div>
 
             {/* Service 4: 24/7 Live‑In Care - Left aligned */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
+            <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#DBD9FE' }}>
                   <Image src="/images/pet-care.jpg" alt="24/7 Live‑In Care" width={120} height={120} className="rounded-full object-cover" />
@@ -288,7 +300,7 @@ export default function FindCarePage() {
             </div>
 
             {/* Service 5: Personalized Care Plans - Right aligned */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#E4F2D4' }}>
                   <Image src="/images/group.png" alt="Personalized Care Plans" width={120} height={120} className="rounded-full object-cover" />
@@ -315,7 +327,7 @@ export default function FindCarePage() {
             </div>
 
             {/* Service 6: Wellness & Yoga - Left aligned */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
+            <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#F0F0F0' }}>
                   <Image src="/images/senior-care.jpg" alt="Wellness & Yoga" width={120} height={120} className="rounded-full object-cover" />
