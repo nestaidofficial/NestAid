@@ -249,7 +249,7 @@ export function DisabilitySupportForm({ onClose }: DisabilitySupportFormProps) {
 
       <div className="max-w-md mx-auto space-y-6">
         <h1 className="text-2xl md:text-3xl font-semibold text-gray-800 text-center">
-          {formData.whoNeedsCare === "parent_loved_one" ? "Find Support for a Loved One" : "Find Support for Me"}
+          Talk to a Care Specialist
         </h1>
         
         <div className="space-y-4">

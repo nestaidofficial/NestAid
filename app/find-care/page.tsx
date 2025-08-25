@@ -184,7 +184,7 @@ export default function FindCarePage() {
       </section>
 
       {/* Care We Provide Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }} data-aos="fade-up">
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }} >
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <h2 className="text-3xl md:text-5xl font-serif py-10 font-bold tracking-tight text-center text-white mb-16" data-aos="fade-up">Care We Provide</h2>
           

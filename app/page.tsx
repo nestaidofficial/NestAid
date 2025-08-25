@@ -179,7 +179,7 @@ export default function Component() {
                 </div>
               </div>
               <div className="w-full md:w-1/2" data-aos="fade-up">
-                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#DBD9FE' }}>
+                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#e1e1fa' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#4A7C59] mb-4">Compassionate Care</h3>
                   <p className="text-[#4A7C59] mb-6 leading-relaxed">
                     Our dedicated caregivers provide compassionate support and assistance, ensuring you receive the care and attention you deserve. We focus on building strong relationships with our clients to promote trust and well-being.
@@ -219,7 +219,7 @@ export default function Component() {
                 </div>
               </div>
               <div className="w-full md:w-1/2" data-aos="fade-up">
-                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#E4F2D4' }}>
+                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#eefae1' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#4A7C59] mb-4">Professional Team</h3>
                   <p className="text-[#4A7C59] mb-6 leading-relaxed">
                     Our experienced team of skilled nurses and therapists deliver high-quality care services to meet your health and wellness goals. We are dedicated to ensuring the best possible outcomes for our clients through expertise and commitment.
