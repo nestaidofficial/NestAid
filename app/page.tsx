@@ -6,8 +6,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { GetStartedModal } from "@/components/get-started-modal"
 
-import { Bath, Brain, Home, ShoppingBasket, Heart, Users, MessageCircle, Car, Utensils, Clock, Accessibility, Phone, UserCheck, AlertCircle, Stethoscope, FileText, Calendar, UserPlus, Target, Activity, Flower, Dumbbell, Apple, Smile, CalendarCheck, ClipboardList } from "lucide-react"
+import { Bath, Brain, Home, ShoppingBasket, Heart, Users, MessageCircle, Car, Utensils, Clock, Accessibility, Phone, UserCheck, AlertCircle, Stethoscope, FileText, Calendar, UserPlus, Target, Activity, Flower, Dumbbell, Apple, Smile, CalendarCheck, ClipboardList, HeartHandshake, MessageCircleHeart, GraduationCap, ShieldCheck, Award, RefreshCcw } from "lucide-react"
 import { useRef, useState, useEffect } from "react"
 
 const AppStoreIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -27,6 +28,9 @@ export default function Component() {
   
   // State to track which service details are shown
   const [showDetails, setShowDetails] = useState<Record<string, boolean>>({});
+  
+  // State for get started modal
+  const [getStartedModalOpen, setGetStartedModalOpen] = useState(false);
   
   // Initialize AOS
   useEffect(() => {
@@ -141,16 +145,17 @@ export default function Component() {
                   Providing personalized non-medical support to help individuals live comfortably and independently at home in Somerville, MA.
                 </p>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                  <Link href="/find-care">
-                    <button className="group bg-[#2C4F26] hover:bg-[#234018] text-white font-bold text-sm md:text-base px-5 md:px-6 py-2 md:py-3 rounded-full flex items-center gap-2 transition-all duration-300">
-                      JOIN US
-                      <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
-                        <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </span>
-                    </button>
-                  </Link>
+                  <button 
+                    onClick={() => setGetStartedModalOpen(true)}
+                    className="group bg-[#2C4F26] hover:bg-[#234018] text-white font-bold text-sm md:text-base px-5 md:px-6 py-2 md:py-3 rounded-full flex items-center gap-2 transition-all duration-300"
+                  >
+                    JOIN US
+                    <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
+                      <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </button>
                   <Link href="/find-care" className="text-sm md:text-base underline underline-offset-4 text-[#1A5463]">
                     Learn More
                   </Link>
@@ -173,120 +178,129 @@ export default function Component() {
           <div className="space-y-16 md:space-y-24">
             {/* Service 1: Compassionate Care - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center" style={{ backgroundColor: '#DBD9FE' }} data-aos="fade-up">
-                  <Image src="/images/adult-care.jpg" alt="Compassionate Care" width={120} height={120} className="rounded-full object-cover" />
+                              <div className="w-full md:w-1/2 flex justify-center md:justify-start">
+                  <div className="w-[28rem] h-80 md:w-[32rem] md:h-96 flex items-center justify-center" data-aos="fade-up">
+                    <Image src="/images/adult-care.jpg" alt="Compassionate Care" width={512} height={384} className="object-cover w-full h-full rounded-[25px]" style={{ boxShadow: '0 20px 40px -10px rgba(217, 251, 116, 0.3), 0 10px 20px -5px rgba(217, 251, 116, 0.2)' }} />
+                  </div>
                 </div>
-              </div>
               <div className="w-full md:w-1/2" data-aos="fade-up">
-                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#e1e1fa' }}>
+                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#EFF5F4' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#4A7C59] mb-4">Compassionate Care</h3>
                   <p className="text-[#4A7C59] mb-6 leading-relaxed">
-                    Our dedicated caregivers provide compassionate support and assistance, ensuring you receive the care and attention you deserve. We focus on building strong relationships with our clients to promote trust and well-being.
+                    Personalized support delivered with kindness and trust.
                   </p>
-                  <button 
-                    onClick={() => toggleDetails('compassionate')}
-                    className="bg-[#4A7C59] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#3a6147] transition-colors"
-                  >
-                    {showDetails['compassionate'] ? 'Show Less' : 'Learn More'}
-                  </button>
-                  {showDetails['compassionate'] && (
-                    <div className="mt-6">
-                      <ul className="space-y-3">,
-                        {serviceDetails['in-home'].map((item, index) => {
-                          const IconComponent = item.icon;
-                          return (
-                            <li key={index} className="flex items-start space-x-3">
-                              <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: '#4A7C59' }}>
-                                <IconComponent className="w-3 h-3 text-white" />
-                              </div>
-                              <span className="text-sm text-[#4A7C59]">{item.text}</span>
-                            </li>
-                          );
-                        })}
-                      </ul>
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <HeartHandshake className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Trust & Compassion</span>
                     </div>
-                  )}
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <MessageCircleHeart className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Emotional Support</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <Home className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Comfort at Home</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <Smile className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Joy & Positivity</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Service 2: Professional Team - Left aligned */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
-              <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center" style={{ backgroundColor: '#E4F2D4' }} data-aos="fade-up">
-                  <Image src="/images/group.png" alt="Professional Team" width={120} height={120} className="rounded-full object-cover" />
+                              <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+                  <div className="w-[28rem] h-80 md:w-[32rem] md:h-96 flex items-center justify-center" data-aos="fade-up">
+                    <Image src="/images/group.png" alt="Professional Team" width={512} height={384} className="object-cover w-full h-full rounded-[25px]" style={{ boxShadow: '0 20px 40px -10px rgba(217, 251, 116, 0.3), 0 10px 20px -5px rgba(217, 251, 116, 0.2)' }} />
+                  </div>
                 </div>
-              </div>
               <div className="w-full md:w-1/2" data-aos="fade-up">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#eefae1' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#4A7C59] mb-4">Professional Team</h3>
                   <p className="text-[#4A7C59] mb-6 leading-relaxed">
-                    Our experienced team of skilled nurses and therapists deliver high-quality care services to meet your health and wellness goals. We are dedicated to ensuring the best possible outcomes for our clients through expertise and commitment.
+                    Experienced caregivers dedicated to your well-being.
                   </p>
-                  <button 
-                    onClick={() => toggleDetails('professional')}
-                    className="bg-[#4A7C59] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#3a6147] transition-colors"
-                  >
-                    {showDetails['professional'] ? 'Show Less' : 'Learn More'}
-                  </button>
-                  {showDetails['professional'] && (
-                    <div className="mt-6">
-                      <ul className="space-y-3">
-                        {serviceDetails['companion'].map((item, index) => {
-                          const IconComponent = item.icon;
-                          return (
-                            <li key={index} className="flex items-start space-x-3">
-                              <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: '#4A7C59' }}>
-                                <IconComponent className="w-3 h-3 text-white" />
-                              </div>
-                              <span className="text-sm text-[#4A7C59]">{item.text}</span>
-                            </li>
-                          );
-                        })}
-                      </ul>
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <Users className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Skilled Staff</span>
                     </div>
-                  )}
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <UserCheck className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Certified Experts</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <GraduationCap className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Continuous Training</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <ClipboardList className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Organized Care</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Service 3: Quality Service - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F0F0F0' }} data-aos="fade-up">
-                  <Image src="/images/senior-care.jpg" alt="Quality Service" width={120} height={120} className="rounded-full object-cover" />
+                              <div className="w-full md:w-1/2 flex justify-center md:justify-start">
+                  <div className="w-[28rem] h-80 md:w-[32rem] md:h-96 flex items-center justify-center" data-aos="fade-up">
+                    <Image src="/images/senior-care.jpg" alt="Quality Service" width={512} height={384} className="object-cover w-full h-full rounded-[25px]" style={{ boxShadow: '0 20px 40px -10px rgba(217, 251, 116, 0.3), 0 10px 20px -5px rgba(217, 251, 116, 0.2)' }} />
+                  </div>
                 </div>
-              </div>
               <div className="w-full md:w-1/2" data-aos="fade-up">
                 <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#F0F0F0' }}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#4A7C59] mb-4">Quality Service</h3>
                   <p className="text-[#4A7C59] mb-6 leading-relaxed">
-                    We maintain the highest standards of care through continuous training, regular assessments, and personalized service plans. Our commitment to excellence ensures that every client receives exceptional care tailored to their unique needs.
+                    High standards with personalized care plans for every client.
                   </p>
-                  <button 
-                    onClick={() => toggleDetails('quality')}
-                    className="bg-[#4A7C59] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#3a6147] transition-colors"
-                  >
-                    {showDetails['quality'] ? 'Show Less' : 'Learn More'}
-                  </button>
-                  {showDetails['quality'] && (
-                    <div className="mt-6">
-                      <ul className="space-y-3">
-                        {serviceDetails['special-needs'].map((item, index) => {
-                          const IconComponent = item.icon;
-                          return (
-                            <li key={index} className="flex items-start space-x-3">
-                              <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: '#4A7C59' }}>
-                                <IconComponent className="w-3 h-3 text-white" />
-                              </div>
-                              <span className="text-sm text-[#4A7C59]">{item.text}</span>
-                            </li>
-                          );
-                        })}
-                      </ul>
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <ShieldCheck className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Safe & Reliable</span>
                     </div>
-                  )}
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <Target className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Tailored Plans</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <Award className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Excellence in Care</span>
+                    </div>
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#4A7C59' }}>
+                        <RefreshCcw className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-sm text-[#4A7C59] font-medium">Ongoing Improvement</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -325,19 +339,19 @@ export default function Component() {
 
             {/* Right: Content with background shape (65% width) */}
             <div className="relative text-center lg:text-left overflow-hidden" data-aos="fade-up">
-              {/* Background shape with #E4F2D8 */}
+              {/* Background shape with #EDFAE1 */}
               <div className="absolute inset-0 -m-4 lg:-m-8">
-                <div className="w-full h-full bg-[#E4F2D8] rounded-l-[25%] rounded-r-[3rem]
+                <div className="w-full h-full bg-[#EDFAE1] rounded-l-[25%] rounded-r-[3rem]
                               before:content-[''] before:absolute before:-top-4 before:-right-4 before:w-16 before:h-16 before:bg-white before:rotate-45 before:rounded-xl
                               after:content-[''] after:absolute after:-bottom-4 after:-left-4 after:w-12 after:h-12 after:bg-white after:rounded-full"></div>
               </div>
               
               {/* Content */}
-              <div className="relative z-10 p-6 lg:p-10">
+              <div className="relative z-10 p-6 lg:p-10 ">
                 <h2 className="text-3xl md:text-5xl font-serif font-bold tracking-tight mb-6 text-[#1A5463]">
                   Get paid taking care of a family member
                 </h2>
-                <div className="space-y-4 mb-8 text-muted-foreground max-w-2xl">
+                <div className="space-y-4 mb-8 text-muted-foreground max-w-2xl ">
                   <p>
                     You give so much of yourself—your time, your energy, your heart—because you care.
                   </p>
@@ -383,13 +397,9 @@ export default function Component() {
               
               {/* Step 1 */}
               <div className="rounded-3xl p-8 md:p-10 shadow-lg" style={{ backgroundColor: '#E4F2D8' }} data-aos="fade-up">
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-[#2C4F26] mb-4 block">01</span>
-                  <div className="w-12 h-1 bg-[#2C4F26] mb-6"></div>
-                </div>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-[#2C4F26] flex items-center justify-center flex-shrink-0">
-                    <CalendarCheck className="w-6 h-6 text-[#D9FB74]" />
+                  <div className="w-16 h-16 rounded-full bg-[#2C4F26] flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl font-bold text-white">01</span>
                   </div>
                   <h3 className="text-xl lg:text-2xl font-serif font-bold text-[#1A5463]">
                     Book Your Free Home Care Consultation
@@ -402,13 +412,9 @@ export default function Component() {
 
               {/* Step 2 */}
               <div className="rounded-3xl p-8 md:p-10 shadow-lg" style={{ backgroundColor: '#E4F2D8' }} data-aos="fade-up">
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-[#2C4F26] mb-4 block">02</span>
-                  <div className="w-12 h-1 bg-[#2C4F26] mb-6"></div>
-                </div>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-[#2C4F26] flex items-center justify-center flex-shrink-0">
-                    <ClipboardList className="w-6 h-6 text-[#D9FB74]" />
+                  <div className="w-16 h-16 rounded-full bg-[#2C4F26] flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl font-bold text-white">02</span>
                   </div>
                   <h3 className="text-xl lg:text-2xl font-serif font-bold text-[#1A5463]">
                     Build Your Personalized Care Plan
@@ -421,13 +427,9 @@ export default function Component() {
 
               {/* Step 3 */}
               <div className="rounded-3xl p-8 md:p-10 shadow-lg" style={{ backgroundColor: '#E4F2D8' }} data-aos="fade-up">
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-[#2C4F26] mb-4 block">03</span>
-                  <div className="w-12 h-1 bg-[#2C4F26] mb-6"></div>
-                </div>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-[#2C4F26] flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-6 h-6 text-[#D9FB74]" />
+                  <div className="w-16 h-16 rounded-full bg-[#2C4F26] flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl font-bold text-white">03</span>
                   </div>
                   <h3 className="text-xl lg:text-2xl font-serif font-bold text-[#1A5463]">
                     Meet Your Perfect Caregiver
@@ -442,7 +444,7 @@ export default function Component() {
         </div>
       </section>
 
-      <footer className="bg-foreground text-background">
+      <footer className=" text-background bg-[#275F49]">
         <div className="container mx-auto px-4 pt-16 pb-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
@@ -528,6 +530,12 @@ export default function Component() {
           </div>
         </div>
       </footer>
+      
+      {/* Get Started Modal */}
+      <GetStartedModal
+        isOpen={getStartedModalOpen}
+        onClose={() => setGetStartedModalOpen(false)}
+      />
     </div>
   )
 }

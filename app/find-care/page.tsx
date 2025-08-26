@@ -111,7 +111,6 @@ export default function FindCarePage() {
               transform: 'translateY(-50%)',
               zIndex: 5
             }}
-            data-aos="fade-up"
           >
             <div className="flex flex-col justify-center items-center text-center px-8 py-8 max-w-full h-full">
               <h1 className="text-4xl lg:text-5xl font-bold text-[#1A5463] mb-6 leading-tight">
@@ -153,7 +152,7 @@ export default function FindCarePage() {
           </div>
 
           {/* Content Section */}
-          <div className="bg-[#E4F2D4] px-4 py-8 md:px-6 md:py-12" data-aos="fade-up">
+          <div className="bg-[#E4F2D4] px-4 py-8 md:px-6 md:py-12">
             <div className="flex flex-col justify-center items-center text-center max-w-5xl mx-auto">
               <h1 className="text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 md:mb-6 leading-tight">
                 Find the Care You Deserve, Right at Home

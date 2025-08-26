@@ -12,7 +12,7 @@ import {
   Heart, Shield, Utensils, Bath, 
   Car, Clock, UserCheck, Play, Star
 } from "lucide-react"
-import { FamilyCaregiverModal } from "@/components/family-caregiver-modal"
+import { FamilyCaregiverEligibilityModal } from "@/components/family-caregiver-eligibility-modal"
 
 export default function FamilyCaregiversPage() {
   const [showEligibilityModal, setShowEligibilityModal] = useState(false)
@@ -135,7 +135,7 @@ export default function FamilyCaregiversPage() {
   return (
     <div className="min-h-screen bg-background">
             {/* Hero Section */}
-      <section className="relative overflow-x-hidden bg-white">
+      <section className="relative overflow-x-hidden bg-[#EFF5F4]">
         {/* Desktop Layout - Image left, title and content box right */}
         <div className="hidden lg:block">
           <div className="container mx-auto px-16 py-32">
@@ -157,14 +157,14 @@ export default function FamilyCaregiversPage() {
               <div className="flex-[1] space-y-8">
                 {/* Title outside and above the content box */}
                 <div className="text-left" data-aos="fade-down">
-                  <h1 className="text-6xl lg:text-7xl font-bold text-black leading-[0.8] tracking-tight">
+                  <h1 className="text-5xl lg:text-6xl font-bold text-[#1A5463] leading-[0.8] tracking-tight" style={{ fontFamily: 'font-serif' }}>
                     Turn Your Care<br />
                     into Support
                   </h1>
                 </div>
                 
                 {/* Content Box (pill-shaped) */}
-                <div className="bg-[#4a7c59] rounded-[3.5rem] p-10 h-[350px] w-full flex flex-col justify-center" data-aos="fade-left">
+                <div className="bg-[#275F48] rounded-[3.5rem] p-10 h-[350px] w-full flex flex-col justify-center" data-aos="fade-left">
                   <h2 className="text-2xl font-semibold text-white mb-6 leading-tight">
                     Get Paid to Care for Family
                   </h2>
@@ -190,14 +190,14 @@ export default function FamilyCaregiversPage() {
           <div className="container mx-auto px-6 py-20">
             {/* Heading outside - hidden on phone sizes */}
             <div className="text-center mb-12 hidden sm:block">
-              <h1 className="text-4xl md:text-5xl font-bold text-black leading-[0.8] tracking-tight">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#1A5463] leading-[0.8] tracking-tight">
                 Turn Your Care<br />
                 into Support
               </h1>
             </div>
             
             {/* Image Box */}
-            <div className="mb-6 mt-10" data-aos="fade-up">
+            <div className="mb-6 mt-10">
               <div className="bg-white rounded-[3.5rem] overflow-hidden h-[300px] w-full relative">
                 <Image 
                   src="/images/adult-care.jpg" 
@@ -210,7 +210,7 @@ export default function FamilyCaregiversPage() {
             </div>
 
             {/* Content Box */}
-            <div className="bg-[#4a7c59] rounded-[3.5rem] p-8 h-[300px] w-full flex flex-col justify-center" data-aos="fade-up">
+            <div className="bg-[#275F48] rounded-[3.5rem] p-8 h-[300px] w-full flex flex-col justify-center">
               <h2 className="text-2xl sm:text-xl font-semibold text-white mb-4 text-center">
                 Get Paid to Care for Family
               </h2>
@@ -232,7 +232,7 @@ export default function FamilyCaregiversPage() {
       </section>
 
       {/* About the Program Section */}
-      <section className="py-16 md:py-24 bg-white overflow-x-hidden" data-aos="fade-up">
+      <section className="py-16 md:py-24 bg-[#EFF5F4] overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12" data-aos="fade-up">
@@ -273,7 +273,7 @@ export default function FamilyCaregiversPage() {
           </section>
 
       {/* Video Testimonial Section */}
-      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden" data-aos="fade-up">
+      <section className="py-16 md:py-24 bg-[#EFF5F4] overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-8" data-aos="fade-up">
@@ -379,7 +379,7 @@ export default function FamilyCaregiversPage() {
       </section>
 
       {/* Eligibility Section */}
-      <section className="py-16 md:py-24 bg-white overflow-x-hidden" data-aos="fade-up">
+      <section className="py-16 md:py-24 bg-[#EFF5F4] overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-4">
@@ -543,7 +543,7 @@ export default function FamilyCaregiversPage() {
           </section>
       
       {/* Family Caregiver Eligibility Modal */}
-      <FamilyCaregiverModal 
+      <FamilyCaregiverEligibilityModal 
         isOpen={showEligibilityModal} 
         onClose={() => setShowEligibilityModal(false)} 
       />
