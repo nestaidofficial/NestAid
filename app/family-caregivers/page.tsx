@@ -164,20 +164,25 @@ export default function FamilyCaregiversPage() {
                 </div>
                 
                 {/* Content Box (pill-shaped) */}
-                <div className="bg-[#275F48] rounded-[3.5rem] p-10 h-[350px] w-full flex flex-col justify-center" data-aos="fade-left">
-                  <h2 className="text-2xl font-semibold text-white mb-6 leading-tight">
+                <div className="bg-[#E4F2D4] rounded-[3.5rem] p-10 h-[350px] w-full flex flex-col justify-center" data-aos="fade-left">
+                  <h2 className="text-2xl font-semibold font-serif  text-[#1A5463] mb-6 leading-tight">
                     Get Paid to Care for Family
                   </h2>
-                  <p className="text-base text-white/90 mb-8 leading-relaxed">
+                  <p className="text-base text-[#1A5463] mb-8 leading-relaxed">
                     Caring for a loved one is rewarding, but it can also bring financial and emotional challenges. Nestaid helps family caregivers receive compensation through Medicaid-funded programs, so you can focus on providing quality care without financial strain.
                   </p>
                   <div>
-                    <Button 
-                      className="bg-white text-[#4a7c59] hover:bg-gray-100 font-medium text-base px-8 py-3 rounded-full transition-all duration-300"
+                    <button 
+                      className="group bg-[#275F48] hover:bg-[#234018] text-white font-bold text-base px-8 py-3 rounded-full flex items-center gap-2 transition-all duration-300"
                       onClick={() => setShowEligibilityModal(true)}
                     >
                       Check Your Eligibility
-                    </Button>
+                      <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                                            </span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -190,7 +195,7 @@ export default function FamilyCaregiversPage() {
           <div className="container mx-auto px-6 py-20">
             {/* Heading outside - hidden on phone sizes */}
             <div className="text-center mb-12 hidden sm:block">
-              <h1 className="text-4xl md:text-5xl font-bold text-[#1A5463] leading-[0.8] tracking-tight">
+              <h1 className="text-4xl md:text-5xl  font-bold text-[#1A5463] leading-[0.8] tracking-tight">
                 Turn Your Care<br />
                 into Support
               </h1>
@@ -210,21 +215,26 @@ export default function FamilyCaregiversPage() {
             </div>
 
             {/* Content Box */}
-            <div className="bg-[#275F48] rounded-[3.5rem] p-8 h-[300px] w-full flex flex-col justify-center">
-              <h2 className="text-2xl sm:text-xl font-semibold text-white mb-4 text-center">
+            <div className="bg-[#E4F2D4] rounded-[3.5rem] p-8 h-[300px] w-full flex flex-col justify-center">
+              <h2 className="text-2xl sm:text-xl font-semibold font-serif text-[#1A5463] mb-4 text-center">
                 Get Paid to Care for Family
               </h2>
-              <p className="text-sm text-white/90 mb-6 leading-relaxed text-center">
+              <p className="text-sm text-[#1A5463] mb-6 leading-relaxed text-center">
                 Caring for a loved one is rewarding, but it can also bring financial and emotional challenges. Nestaid helps family caregivers receive compensation through Medicaid-funded programs.
               </p>
               
               <div className="text-center">
-                <Button 
-                  className="bg-white text-[#4a7c59] hover:bg-gray-100 font-medium text-sm px-6 py-2.5 rounded-full transition-all duration-300"
+                <button 
+                  className="group bg-[#275F48] hover:bg-[#234018] text-white font-bold text-sm px-6 py-2.5 rounded-full flex items-center gap-2 transition-all duration-300 mx-auto"
                   onClick={() => setShowEligibilityModal(true)}
                 >
                   Check Your Eligibility
-                </Button>
+                  <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-1.5 group-hover:scale-110 transition-transform duration-200">
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                </button>
               </div>
             </div>
           </div>

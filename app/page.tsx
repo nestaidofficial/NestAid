@@ -160,7 +160,7 @@ export default function Component() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   <button 
                     onClick={() => setGetStartedModalOpen(true)}
-                    className="group bg-[#2C4F26] hover:bg-[#234018] text-white font-bold text-sm md:text-base px-5 md:px-6 py-2 md:py-3 rounded-full flex items-center gap-2 transition-all duration-300"
+                    className="group bg-[#275F48] hover:bg-[#234018] text-white font-bold text-sm md:text-base px-5 md:px-6 py-2 md:py-3 rounded-full flex items-center gap-2 transition-all duration-300"
                   >
                     JOIN US
                     <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
@@ -331,12 +331,12 @@ export default function Component() {
           <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-12 lg:gap-16 items-center">
             {/* Left: Image with organic border radius (35% width) */}
             <div className="flex justify-center lg:justify-start" data-aos="fade-up">
-              <div className="w-[500px] h-[500px] flex items-center justify-center">
+              <div className="w-[400px] h-[400px] flex items-center justify-center">
                 <Image 
                   src="/images/group.jpg" 
                   alt="Family Caregiver Support" 
-                  width={500} 
-                  height={500} 
+                  width={400} 
+                  height={400} 
                   className="object-cover w-full h-full" 
                   style={{ 
                     borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%',
@@ -372,7 +372,7 @@ export default function Component() {
                   </p>
                 </div>
                 <Link href="/family-caregivers">
-                  <button className="group bg-[#2C4F26] hover:bg-[#234018] text-white font-bold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-4 rounded-full flex items-center gap-3 transition-all duration-300">
+                  <button className="group bg-[#275F48] hover:bg-[#234018] text-white font-bold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-4 rounded-full flex items-center gap-3 transition-all duration-300">
                     Check your eligibility
                     <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
                       <svg className="w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

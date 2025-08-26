@@ -135,16 +135,17 @@ export default function FindCarePage() {
                 At <span className="font-bold" style={{ color: '#1A5463' }}>NestAid</span>, we believe care should be personal. Our trusted caregivers are here to bring comfort, dignity, and peace of mind—right to your doorstep.
               </p>
               <div className="flex flex-col sm:flex-row items-center gap-4">
-                <Link href="/find-care">
-                  <button className="group bg-[#16803C] hover:bg-[#1f4a37] text-white font-bold text-base px-6 py-3 rounded-full flex items-center gap-3 transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105">
-                    JOIN NOW
-                    <span className="bg-[#E4F2D4] text-[#275F48] rounded-full p-2 group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-4 h-4 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </span>
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => setGetStartedModalOpen(true)}
+                  className="group bg-[#275F48] hover:bg-[#234018] text-white font-bold text-base px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300"
+                >
+                  JOIN US
+                  <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                </button>
                 <Link href="/help-center" className="text-base underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
                   Learn More
                 </Link>
@@ -178,16 +179,17 @@ export default function FindCarePage() {
               
               {/* CTA Buttons */}
               <div className="flex flex-col gap-4 items-center w-full max-w-2xl">
-                <Link href="/find-care" className="w-full">
-                  <button className="group bg-[#16803C] hover:bg-[#1f4a37] text-white font-bold text-sm md:text-base px-6 py-3 md:py-4 rounded-full flex items-center justify-center gap-3 transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105 w-full">
-                    JOIN NOW
-                    <span className="bg-[#E4F2D4] text-[#275F48] rounded-full p-1.5 md:p-2 group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-3 h-3 md:w-4 md:h-4 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </span>
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => setGetStartedModalOpen(true)}
+                  className="group bg-[#275F48] text-white font-bold text-sm md:text-base px-6 py-3 md:py-4 rounded-full flex items-center justify-center gap-2 transition-all duration-300 w-full"
+                >
+                  JOIN US
+                  <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-1.5 md:p-2 transition-transform duration-200">
+                    <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                </button>
                 <Link href="/help-center" className="text-sm md:text-base underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
                   Learn More
                 </Link>
@@ -208,8 +210,8 @@ export default function FindCarePage() {
             {/* Service 1: In‑Home Care Services - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#DBD9FE' }}>
-                  <Image src="/images/adult-care.jpg" alt="In‑Home Care Services" width={120} height={120} className="rounded-full object-cover" />
+                <div className="w-[400px] h-[400px] flex items-center justify-center">
+                  <Image src="/images/adult-care.jpg" alt="In‑Home Care Services" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
                 </div>
               </div>
               <div className="w-full md:w-1/2 ">
@@ -235,8 +237,8 @@ export default function FindCarePage() {
             {/* Service 2: Companion & Household Support - Left aligned */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#E4F2D4' }}>
-                  <Image src="/images/group.png" alt="Companion & Household Support" width={120} height={120} className="rounded-full object-cover" />
+                <div className="w-[400px] h-[400px] flex items-center justify-center">
+                  <Image src="/images/group.png" alt="Companion & Household Support" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
                 </div>
               </div>
               <div className="w-full md:w-1/2 ">
@@ -262,8 +264,8 @@ export default function FindCarePage() {
             {/* Service 3: Special Needs & Disability Support - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#F0F0F0' }}>
-                  <Image src="/images/adult-care.jpg" alt="Special Needs & Disability Support" width={120} height={120} className="rounded-full object-cover" />
+                <div className="w-[400px] h-[400px] flex items-center justify-center">
+                  <Image src="/images/adult-care.jpg" alt="Special Needs & Disability Support" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
                 </div>
               </div>
               <div className="w-full md:w-1/2 ">
@@ -289,8 +291,8 @@ export default function FindCarePage() {
             {/* Service 4: 24/7 Live‑In Care - Left aligned */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#DBD9FE' }}>
-                  <Image src="/images/pet-care.jpg" alt="24/7 Live‑In Care" width={120} height={120} className="rounded-full object-cover" />
+                <div className="w-[400px] h-[400px] flex items-center justify-center">
+                  <Image src="/images/pet-care.jpg" alt="24/7 Live‑In Care" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
                 </div>
               </div>
               <div className="w-full md:w-1/2 ">
@@ -316,8 +318,8 @@ export default function FindCarePage() {
             {/* Service 5: Personalized Care Plans - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#E4F2D4' }}>
-                  <Image src="/images/group.png" alt="Personalized Care Plans" width={120} height={120} className="rounded-full object-cover" />
+                <div className="w-[400px] h-[400px] flex items-center justify-center">
+                  <Image src="/images/group.png" alt="Personalized Care Plans" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
                 </div>
               </div>
               <div className="w-full md:w-1/2 ">
@@ -343,8 +345,8 @@ export default function FindCarePage() {
             {/* Service 6: Wellness & Yoga - Left aligned */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center " style={{ backgroundColor: '#F0F0F0' }}>
-                  <Image src="/images/senior-care.jpg" alt="Wellness & Yoga" width={120} height={120} className="rounded-full object-cover" />
+                <div className="w-[400px] h-[400px] flex items-center justify-center">
+                  <Image src="/images/senior-care.jpg" alt="Wellness & Yoga" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
                 </div>
               </div>
               <div className="w-full md:w-1/2 ">
@@ -385,14 +387,14 @@ export default function FindCarePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4" data-aos="fade-up">
               <button 
                 onClick={() => setGetStartedModalOpen(true)}
-                className="group bg-[#16803C] hover:bg-[#1f4a37] text-white font-bold text-base md:text-lg px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="group bg-[#275F49] hover:bg-[#1f4a37] text-white font-bold text-base md:text-lg px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 JOIN US
-                <span className="bg-[#E4F2D4] text-[#275F48] rounded-full p-2 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-5 h-5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </span>
+                <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
               </button>
               <Link href="/help-center" className="text-base md:text-lg underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
                 Learn More
@@ -402,7 +404,7 @@ export default function FindCarePage() {
         </div>
       </section>
 
-      <footer className="bg-foreground text-background">
+      <footer className="bg-[#275F49] text-background">
         <div className="container mx-auto px-4 pt-16 pb-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
