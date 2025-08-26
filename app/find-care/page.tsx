@@ -8,6 +8,7 @@ import 'aos/dist/aos.css'
 
 import { Bath, Heart, Users, MessageCircle, Car, Utensils, Clock, Accessibility, Phone, UserCheck, AlertCircle, Stethoscope, FileText, Calendar, UserPlus, Target, Activity, Flower, Brain, Dumbbell, Apple, Smile } from "lucide-react"
 import { useState, useEffect } from "react"
+import { GetStartedModal } from "@/components/get-started-modal"
 
 const AppStoreIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 29 29" fill="currentColor" {...props}>
@@ -24,6 +25,7 @@ const GooglePlayIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 
 export default function FindCarePage() {
+  const [getStartedModalOpen, setGetStartedModalOpen] = useState(false)
   
   // Initialize AOS
   useEffect(() => {
@@ -34,6 +36,19 @@ export default function FindCarePage() {
       offset: 100
     });
   }, []);
+
+  // Listen for custom event from mobile FAB to open modal
+  useEffect(() => {
+    const handleOpenModal = () => {
+      setGetStartedModalOpen(true)
+    }
+
+    window.addEventListener('openGetStartedModal', handleOpenModal)
+    
+    return () => {
+      window.removeEventListener('openGetStartedModal', handleOpenModal)
+    }
+  }, [])
   
   // Service details data with icons
   const serviceDetails = {
@@ -355,6 +370,38 @@ export default function FindCarePage() {
         </div>
       </section>
 
+      {/* Final CTA Section */}
+      <section className="py-16 md:py-24 bg-[#E4F2D4] overflow-x-hidden" data-aos="fade-up">
+        <div className="container mx-auto px-4 md:px-6 lg:px-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1A5463] mb-6" data-aos="fade-up">
+              Ready to Find the Care You Deserve?
+            </h2>
+            <p className="text-lg md:text-xl text-[#1A5463] mb-8 leading-relaxed" data-aos="fade-up">
+              Just like we mentioned at the top—care should be personal. Our trusted caregivers are here to bring comfort, dignity, and peace of mind right to your doorstep. 
+              <span className="font-bold"> It's time to take the next step.</span>
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4" data-aos="fade-up">
+              <button 
+                onClick={() => setGetStartedModalOpen(true)}
+                className="group bg-[#16803C] hover:bg-[#1f4a37] text-white font-bold text-base md:text-lg px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                JOIN US
+                <span className="bg-[#E4F2D4] text-[#275F48] rounded-full p-2 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-5 h-5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </button>
+              <Link href="/help-center" className="text-base md:text-lg underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
+                Learn More
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-foreground text-background">
         <div className="container mx-auto px-4 pt-16 pb-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -441,6 +488,12 @@ export default function FindCarePage() {
           </div>
         </div>
       </footer>
+
+      {/* Get Started Modal */}
+      <GetStartedModal
+        isOpen={getStartedModalOpen}
+        onClose={() => setGetStartedModalOpen(false)}
+      />
     </div>
   )
 }

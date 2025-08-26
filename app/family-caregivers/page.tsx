@@ -231,46 +231,7 @@ export default function FamilyCaregiversPage() {
         </div>
       </section>
 
-      {/* About the Program Section */}
-      <section className="py-16 md:py-24 bg-[#EFF5F4] overflow-x-hidden" data-aos="fade-up">
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12" data-aos="fade-up">
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-8">
-                What is the Family Caregiver Program?
-              </h2>
-            </div>
-            
-            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-              {/* Content */}
-              <div className="space-y-6" data-aos="fade-up">
-                <p className="text-lg text-[#1A5463] leading-relaxed">
-                  The Family Caregiver Program is designed to support those who care for aging parents, disabled adults, or loved ones with chronic conditions. Instead of hiring an outside caregiver, Medicaid allows eligible family members to provide care at home and receive monthly pay.
-                </p>
-                
-                <p className="text-lg text-[#1A5463] leading-relaxed font-medium">
-                  Nestaid acts as the bridge—we handle applications, paperwork, and compliance so you don't have to.
-                </p>
-              </div>
 
-              {/* Image */}
-              <div className="relative" data-aos="fade-up">
-                <div className="rounded-3xl overflow-hidden shadow-xl">
-                  <Image
-                    src="/images/adult-care.jpg"
-                    alt="Family caregiver helping elderly parent"
-                    width={600}
-                    height={400}
-                    className="w-full h-[400px] object-cover"
-                  />
-                      </div>
-              </div>
-            </div>
-
-
-              </div>
-            </div>
-          </section>
 
       {/* Video Testimonial Section */}
       <section className="py-16 md:py-24 bg-[#EFF5F4] overflow-x-hidden" data-aos="fade-up">

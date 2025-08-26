@@ -4,13 +4,13 @@ import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { MessageCircle, X } from "lucide-react"
-import { GetStartedModal } from "./get-started-modal"
+
 
 export function MobileGetStartedFab() {
-  const [getStartedModalOpen, setGetStartedModalOpen] = useState(false)
   const [chatBotOpen, setChatBotOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [anyModalOpen, setAnyModalOpen] = useState(false)
   const pathname = usePathname()
   const isAdminPage = pathname.startsWith("/admin")
   const isHomePage = pathname === "/"
@@ -56,13 +56,31 @@ export function MobileGetStartedFab() {
     }
   }, [chatBotOpen])
 
+  // Check for any modal being open
+  useEffect(() => {
+    const checkForModals = () => {
+      const modals = document.querySelectorAll('[role="dialog"], [data-radix-dialog-content]')
+      const hasModal = modals.length > 0
+      setAnyModalOpen(hasModal)
+    }
+
+    // Check immediately
+    checkForModals()
+
+    // Set up observer to watch for modal changes
+    const observer = new MutationObserver(checkForModals)
+    observer.observe(document.body, { childList: true, subtree: true })
+
+    return () => observer.disconnect()
+  }, [])
+
   // Only show on homepage and not on admin pages
   if (isAdminPage || !isHomePage) return null
 
   return (
     <>
       {/* Desktop Chat Button - Bottom Right */}
-      {!getStartedModalOpen && (
+      {!anyModalOpen && (
         <div className="hidden md:block fixed bottom-6 right-6 z-[60]">
           <Button
             onClick={() => setChatBotOpen(true)}
@@ -77,13 +95,16 @@ export function MobileGetStartedFab() {
       {/* Mobile Bottom Buttons Container - Transparent */}
       <div 
         className={`md:hidden fixed bottom-0 left-0 right-0 z-[60] p-4 transition-transform duration-300 ease-in-out ${
-          isVisible && !getStartedModalOpen ? 'translate-y-0' : 'translate-y-full'
+          isVisible && !anyModalOpen ? 'translate-y-0' : 'translate-y-full'
         }`}
       >
         <div className="flex justify-between items-center gap-4">
           {/* Get Started Button */}
           <Button
-            onClick={() => setGetStartedModalOpen(true)}
+            onClick={() => {
+              // Dispatch a custom event that the landing page can listen to
+              window.dispatchEvent(new CustomEvent('openGetStartedModal'))
+            }}
             className="rounded-full font-semibold px-6 py-5 text-lg transition-colors shadow-lg text-gray-800 hover:opacity-90"
             style={{ backgroundColor: '#D9FB74', minWidth: '240px' }}
           >
@@ -189,11 +210,7 @@ export function MobileGetStartedFab() {
         </div>
       )}
 
-      {/* Get Started Modal */}
-      <GetStartedModal 
-        isOpen={getStartedModalOpen} 
-        onClose={() => setGetStartedModalOpen(false)} 
-      />
+
     </>
   )
 } 

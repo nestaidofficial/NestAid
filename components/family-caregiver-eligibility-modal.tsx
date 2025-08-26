@@ -309,7 +309,7 @@ export function FamilyCaregiverEligibilityModal({ isOpen, onClose }: FamilyCareg
           <div className="w-10 h-10" />
         </div>
         <div className="text-center px-8">
-          <h1 className="text-xl md:text-2xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
+          <h1 className="text-2xl md:text-3xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
             Does your caregiver provide daily help with tasks like bathing, dressing, eating, walking, toileting, or monitoring your safety?
           </h1>
         </div>

@@ -41,6 +41,19 @@ export default function Component() {
       offset: 100
     });
   }, []);
+
+  // Listen for custom event from mobile FAB to open modal
+  useEffect(() => {
+    const handleOpenModal = () => {
+      setGetStartedModalOpen(true)
+    }
+
+    window.addEventListener('openGetStartedModal', handleOpenModal)
+    
+    return () => {
+      window.removeEventListener('openGetStartedModal', handleOpenModal)
+    }
+  }, [])
   
   // Service details data with icons
   const serviceDetails = {
@@ -179,8 +192,8 @@ export default function Component() {
             {/* Service 1: Compassionate Care - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                  <div className="w-[28rem] h-80 md:w-[32rem] md:h-96 flex items-center justify-center" data-aos="fade-up">
-                    <Image src="/images/adult-care.jpg" alt="Compassionate Care" width={512} height={384} className="object-cover w-full h-full rounded-[25px]" style={{ boxShadow: '0 20px 40px -10px rgba(217, 251, 116, 0.3), 0 10px 20px -5px rgba(217, 251, 116, 0.2)' }} />
+                  <div className="w-[400px] h-[400px] flex items-center justify-center" data-aos="fade-up">
+                    <Image src="/images/adult-care.jpg" alt="Compassionate Care" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
                   </div>
                 </div>
               <div className="w-full md:w-1/2" data-aos="fade-up">
@@ -222,8 +235,8 @@ export default function Component() {
             {/* Service 2: Professional Team - Left aligned */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
                               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                  <div className="w-[28rem] h-80 md:w-[32rem] md:h-96 flex items-center justify-center" data-aos="fade-up">
-                    <Image src="/images/group.png" alt="Professional Team" width={512} height={384} className="object-cover w-full h-full rounded-[25px]" style={{ boxShadow: '0 20px 40px -10px rgba(217, 251, 116, 0.3), 0 10px 20px -5px rgba(217, 251, 116, 0.2)' }} />
+                  <div className="w-[400px] h-[400px] flex items-center justify-center" data-aos="fade-up">
+                    <Image src="/images/group.png" alt="Professional Team" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
                   </div>
                 </div>
               <div className="w-full md:w-1/2" data-aos="fade-up">
@@ -265,8 +278,8 @@ export default function Component() {
             {/* Service 3: Quality Service - Right aligned */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                  <div className="w-[28rem] h-80 md:w-[32rem] md:h-96 flex items-center justify-center" data-aos="fade-up">
-                    <Image src="/images/senior-care.jpg" alt="Quality Service" width={512} height={384} className="object-cover w-full h-full rounded-[25px]" style={{ boxShadow: '0 20px 40px -10px rgba(217, 251, 116, 0.3), 0 10px 20px -5px rgba(217, 251, 116, 0.2)' }} />
+                  <div className="w-[400px] h-[400px] flex items-center justify-center" data-aos="fade-up">
+                    <Image src="/images/senior-care.jpg" alt="Quality Service" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
                   </div>
                 </div>
               <div className="w-full md:w-1/2" data-aos="fade-up">
@@ -316,24 +329,20 @@ export default function Component() {
       <section className="py-16 md:py-24 bg-white" data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-12 lg:gap-16 items-center">
-            {/* Left: Circular percentage graphic (35% width) */}
+            {/* Left: Image with organic border radius (35% width) */}
             <div className="flex justify-center lg:justify-start" data-aos="fade-up">
-              <div className="relative">
-                {/* Circular background with gradient */}
-                <div className="w-64 h-64 lg:w-80 lg:h-80 relative">
-                  {/* Background circles */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-200 via-green-200 to-purple-200 opacity-30"></div>
-                  <div className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-100 via-green-100 to-purple-100 opacity-50"></div>
-                  
-                  {/* Main content */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="text-6xl lg:text-8xl font-bold text-gray-900 mb-2">25%</div>
-                    <div className="text-base lg:text-lg text-gray-600">utilization</div>
-                  </div>
-                  
-                  {/* Decorative arc */}
-                  <div className="absolute -top-4 -left-4 w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-r from-blue-400 to-green-400 opacity-40"></div>
-                </div>
+              <div className="w-[500px] h-[500px] flex items-center justify-center">
+                <Image 
+                  src="/images/group.jpg" 
+                  alt="Family Caregiver Support" 
+                  width={500} 
+                  height={500} 
+                  className="object-cover w-full h-full" 
+                  style={{ 
+                    borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%',
+                    boxShadow: '0 20px 40px -10px rgba(217, 251, 116, 0.3), 0 10px 20px -5px rgba(217, 251, 116, 0.2)'
+                  }} 
+                />
               </div>
             </div>
 
