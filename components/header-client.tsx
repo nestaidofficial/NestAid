@@ -123,23 +123,23 @@ export function HeaderClient() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80" style={{ backgroundColor: '#E4F2D8' }}>
+              <SheetContent side="right" className="w-80" style={{ backgroundColor: '#F5F5F0' }}>
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <nav className="flex flex-col space-y-2 mt-6">
                   {!isAdminPage && (
                     <>
-                      <Link href="/find-care" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-[#D9FB74]">Find care</Link>
-                      <Link href="/jobs/senior-care" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-[#D9FB74]">Find jobs</Link>
-                      <Link href="/family-caregivers" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-[#D9FB74]">Family Caregivers</Link>
-                      <button onClick={() => setMobileResourcesOpen(prev => !prev)} className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-[#D9FB74]">
+                      <Link href="/find-care" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Find care</Link>
+                      <Link href="/jobs/senior-care" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Find jobs</Link>
+                      <Link href="/family-caregivers" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Family Caregivers</Link>
+                      <button onClick={() => setMobileResourcesOpen(prev => !prev)} className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">
                         Resources
                         <ChevronDown className={`h-4 w-4 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {mobileResourcesOpen && (
                         <div className="pl-3 space-y-1">
-                          <Link href="/about-us" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-sm hover:bg-[#D9FB74]">About us</Link>
+                          <Link href="/about-us" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-sm hover:bg-white/50">About us</Link>
 
-                          <Link href="/help-center" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-sm hover:bg-[#D9FB74]">Help center</Link>
+                          <Link href="/help-center" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-sm hover:bg-white/50">Help center</Link>
                         </div>
                       )}
                     </>

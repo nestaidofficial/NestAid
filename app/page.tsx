@@ -453,6 +453,51 @@ export default function Component() {
         </div>
       </section>
 
+      {/* Join Us CTA Section */}
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#EDFAE1' }} data-aos="fade-up">
+        <div className="container mx-auto px-8 md:px-12 lg:px-16">
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-serif font-bold tracking-tight mb-6 text-[#1A5463]">
+              Ready to Experience Compassionate Care?
+            </h2>
+            <p className="text-lg md:text-xl text-[#1A5463] mb-8 max-w-3xl mx-auto leading-relaxed">
+              Join thousands of families who trust NestAid to provide the care their loved ones deserve. 
+              Start your journey today and discover the difference personalized, professional care can make.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button 
+                onClick={() => setGetStartedModalOpen(true)}
+                className="group bg-[#275F48] hover:bg-[#234018] text-white font-bold text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-full flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                JOIN US TODAY
+                <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
+                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </button>
+              <Link href="/find-care" className="text-base md:text-lg underline underline-offset-4 text-[#1A5463] hover:text-[#275F48] transition-colors duration-200">
+                Learn More About Our Services
+              </Link>
+            </div>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-[#1A5463]/80">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#275F48] rounded-full"></div>
+                <span>Free consultation</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#275F48] rounded-full"></div>
+                <span>Personalized care plans</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#275F48] rounded-full"></div>
+                <span>Professional caregivers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className=" text-background bg-[#275F49]">
         <div className="container mx-auto px-4 pt-16 pb-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
