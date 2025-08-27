@@ -1,9 +1,62 @@
 "use server"
 
+import { createUser, getUserByEmail, createFamilyCaregiverApplication } from '@/lib/db-operations';
+
 // Simple form handlers without database - just log and return success
 export async function submitClientApplication(formData: FormData) {
   try {
-    // Extract form data
+    const careType = formData.get("careType")
+    
+    // Handle family caregiver eligibility applications
+    if (careType === "family_caregiver_eligibility") {
+      const firstName = formData.get("firstName") as string
+      const lastName = formData.get("lastName") as string
+      const phone = formData.get("phone") as string
+      const email = formData.get("email") as string
+      const postalCode = formData.get("postalCode") as string
+      const state = formData.get("state") as string
+      const lookingFor = formData.get("lookingFor") as string
+      const relationship = formData.get("relationship") as string
+      const liveWith = formData.get("liveWith") as string
+      const dailyHelp = formData.get("dailyHelp") as string
+      const guardian = formData.get("guardian") as string
+      const medicaid = formData.get("medicaid") as string
+      const language = formData.get("language") as string
+      const smsConsent = formData.get("smsConsent") === "true"
+
+      // Check if user already exists
+      let user = await getUserByEmail(email)
+      
+      if (!user) {
+        // Create new user
+        user = await createUser({
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          phone: phone,
+          postalCode: postalCode,
+        })
+      }
+
+      // Create family caregiver application
+      await createFamilyCaregiverApplication(user.id, {
+        state: state,
+        lookingFor: lookingFor,
+        relationship: relationship,
+        liveWith: liveWith === 'Yes',
+        dailyHelp: dailyHelp === 'Yes',
+        guardian: guardian === 'Yes',
+        medicaid: medicaid === 'Yes',
+        language: language,
+      })
+
+      return {
+        success: true,
+        message: "Thank you! Your family caregiver application has been submitted successfully. We'll contact you within 24 hours to discuss your eligibility."
+      }
+    }
+
+    // Handle other care applications (existing logic)
     const data = {
       careType: formData.get("careType"),
       fullName: formData.get("fullName"),

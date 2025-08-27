@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -35,6 +35,19 @@ export function FamilyCaregiverEligibilityModal({ isOpen, onClose }: FamilyCareg
   const [guardian, setGuardian] = useState("")
   const [medicaid, setMedicaid] = useState("")
   const [language, setLanguage] = useState("")
+
+  // Handle body scroll when modal opens/closes
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('modal-open')
+    } else {
+      document.body.classList.remove('modal-open')
+    }
+
+    return () => {
+      document.body.classList.remove('modal-open')
+    }
+  }, [isOpen])
 
   const handleClose = () => {
     setCurrentStep("state")
@@ -310,7 +323,7 @@ export function FamilyCaregiverEligibilityModal({ isOpen, onClose }: FamilyCareg
         </div>
         <div className="text-center px-8">
           <h1 className="text-2xl md:text-3xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
-            Does your caregiver provide daily help with tasks like bathing, dressing, eating, walking, toileting, or monitoring your safety?
+            Does your caregiver provide daily help with tasks like <span className="font-bold" style={{ color: '#275F48' }}>bathing</span>, <span className="font-bold" style={{ color: '#275F48' }}>dressing</span>, <span className="font-bold" style={{ color: '#275F48' }}>eating</span>, <span className="font-bold" style={{ color: '#275F48' }}>walking</span>, <span className="font-bold" style={{ color: '#275F48' }}>toileting</span>, or <span className="font-bold" style={{ color: '#275F48' }}>monitoring</span> your safety?
           </h1>
         </div>
       </div>
@@ -466,6 +479,11 @@ export function FamilyCaregiverEligibilityModal({ isOpen, onClose }: FamilyCareg
       try {
         const formDataObj = new FormData()
         formDataObj.append("careType", "family_caregiver_eligibility")
+        formDataObj.append("firstName", formData.firstName)
+        formDataObj.append("lastName", formData.lastName)
+        formDataObj.append("phone", formData.phone)
+        formDataObj.append("email", formData.email)
+        formDataObj.append("postalCode", formData.postalCode)
         formDataObj.append("state", selectedState)
         formDataObj.append("lookingFor", lookingFor)
         formDataObj.append("relationship", relationship)
@@ -474,11 +492,6 @@ export function FamilyCaregiverEligibilityModal({ isOpen, onClose }: FamilyCareg
         formDataObj.append("guardian", guardian)
         formDataObj.append("medicaid", medicaid)
         formDataObj.append("language", language)
-        formDataObj.append("firstName", formData.firstName)
-        formDataObj.append("lastName", formData.lastName)
-        formDataObj.append("phone", formData.phone)
-        formDataObj.append("email", formData.email)
-        formDataObj.append("postalCode", formData.postalCode)
         formDataObj.append("smsConsent", formData.smsConsent.toString())
 
         const result = await submitClientApplication(formDataObj)

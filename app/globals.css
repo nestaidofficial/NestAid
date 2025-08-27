@@ -94,10 +94,24 @@
   * {
     @apply border-border;
   }
+  
+  /* Prevent layout shift when scrollbar appears/disappears */
+  html {
+    scrollbar-gutter: stable;
+  }
+  
   body {
     @apply text-foreground;
     background-color: #e8e8e8;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* Prevent layout shift when modal opens/closes */
+    overflow-y: scroll;
+  }
+  
+  /* When modal is open, prevent body scroll but maintain scrollbar space */
+  body.modal-open {
+    overflow: hidden;
+    padding-right: 0; /* Prevent padding compensation */
   }
 }
 

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, AlertCircle, ArrowLeft } from "lucide-react"
-import { submitClientApplication } from "@/app/actions/simple-forms"
+import { submitCareApplication } from "@/app/actions/database-forms"
 
 interface InHomeCareFormProps {
   onClose?: () => void
@@ -36,16 +36,16 @@ export function InHomeCareForm({ onClose, inModal = false, onBack }: InHomeCareF
     setIsSubmitting(true)
 
     try {
-      const formDataObj = new FormData()
-      formDataObj.append("careType", "in_home_care")
-      formDataObj.append("firstName", formData.firstName)
-      formDataObj.append("lastName", formData.lastName)
-      formDataObj.append("phone", formData.phone)
-      formDataObj.append("email", formData.email)
-      formDataObj.append("postalCode", formData.postalCode)
-      formDataObj.append("smsConsent", formData.smsConsent.toString())
-
-      const result = await submitClientApplication(formDataObj)
+      const result = await submitCareApplication({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        email: formData.email,
+        postalCode: formData.postalCode,
+        serviceType: "in_home_care",
+        whoNeedsCare: "parent_loved_one" // Default value, could be made configurable
+      })
+      
       setSubmitResult(result)
 
       if (result.success) {

@@ -247,15 +247,15 @@ export default function FamilyCaregiversPage() {
       <section className="py-16 md:py-24 bg-[#EFF5F4] overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-8" data-aos="fade-up">
+            <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-8">
               See How Nestaid Changed Lives
             </h2>
-            <p className="text-lg text-[#1A5463] mb-12" data-aos="fade-up">
+            <p className="text-lg text-[#1A5463] mb-12">
               Watch real families share their experiences with our Family Caregiver Program
             </p>
             
             {/* Video Placeholder */}
-            <div className="relative bg-gradient-to-br from-[#275F49] to-[#1A5463] rounded-3xl overflow-hidden shadow-2xl" data-aos="fade-up">
+            <div className="relative bg-gradient-to-br from-[#275F49] to-[#1A5463] rounded-3xl overflow-hidden shadow-2xl">
               <div className="aspect-video flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:bg-white/30 transition-colors">

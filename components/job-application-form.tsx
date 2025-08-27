@@ -6,15 +6,20 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, AlertCircle, ArrowLeft } from "lucide-react"
-import { submitClientApplication } from "@/app/actions/simple-forms"
+import { submitJobApplication } from "@/app/actions/database-forms"
 
 interface JobApplicationFormProps {
   onClose?: () => void
   onBack?: () => void
   inModal?: boolean
+  jobPreferences?: {
+    gender: string
+    experience: string
+    careTypes?: string[]
+  }
 }
 
-export function JobApplicationForm({ onClose, inModal = false, onBack }: JobApplicationFormProps) {
+export function JobApplicationForm({ onClose, inModal = false, onBack, jobPreferences }: JobApplicationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string } | null>(null)
 
@@ -36,16 +41,17 @@ export function JobApplicationForm({ onClose, inModal = false, onBack }: JobAppl
     setIsSubmitting(true)
 
     try {
-      const formDataObj = new FormData()
-      formDataObj.append("careType", "job_application")
-      formDataObj.append("firstName", formData.firstName)
-      formDataObj.append("lastName", formData.lastName)
-      formDataObj.append("phone", formData.phone)
-      formDataObj.append("email", formData.email)
-      formDataObj.append("postalCode", formData.postalCode)
-      formDataObj.append("smsConsent", formData.smsConsent.toString())
-
-      const result = await submitClientApplication(formDataObj)
+      const result = await submitJobApplication({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        email: formData.email,
+        postalCode: formData.postalCode,
+        gender: jobPreferences?.gender || "Not specified",
+        experience: jobPreferences?.experience || "Not specified",
+        careTypes: jobPreferences?.careTypes || ["General Care"]
+      })
+      
       setSubmitResult(result)
 
       if (result.success) {
