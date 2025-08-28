@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -32,7 +32,7 @@ interface LocationGroup {
   jobs: JobPosting[];
 }
 
-export default function SearchResultsPage() {
+function SearchResultsContent() {
   const searchParams = useSearchParams()
   const [locationGroups, setLocationGroups] = useState<LocationGroup[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -429,5 +429,20 @@ export default function SearchResultsPage() {
         </div>
       </section>
     </div>
+  )
+}
+
+export default function SearchResultsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#FCFDFB] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-[#275F48] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#1A5463] text-lg">Loading...</p>
+        </div>
+      </div>
+    }>
+      <SearchResultsContent />
+    </Suspense>
   )
 }
