@@ -446,7 +446,7 @@ export default function FamilyCaregiversPage() {
       {/* Success Stories Section */}
       <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="text-center mb-12 md:mb-16" data-aos="fade-up">
+          <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-4">
               Real Stories, Real Results
             </h2>
@@ -457,7 +457,7 @@ export default function FamilyCaregiversPage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {successStories.map((story, index) => (
-              <Card key={story.name} className="bg-white border-2 border-[#E4F2D4] hover:shadow-lg transition-shadow" data-aos="fade-up">
+              <Card key={story.name} className="bg-white border-2 border-[#E4F2D4] hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay={index * 100}>
                 <CardContent className="p-6">
                   <div className="text-center mb-6">
                     <div className="relative w-20 h-20 mx-auto mb-4">
@@ -495,17 +495,16 @@ export default function FamilyCaregiversPage() {
       <section className="py-16 md:py-24 overflow-x-hidden" style={{ backgroundColor: '#275F49' }} data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6" data-aos="fade-up">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Ready to Turn Your Care into Support?
             </h2>
-            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed" data-aos="fade-up">
+            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
               Nestaid makes it easy—no stress, no confusion. We'll handle the paperwork and guide you through the process so you can focus on caring for your family while receiving the financial support you deserve.
                 </p>
                 <Button 
                   size="lg" 
               className="bg-[#16803C] hover:bg-[#1f4a37] text-white font-bold text-xl px-12 py-6 rounded-full transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105"
               onClick={() => setShowEligibilityModal(true)}
-              data-aos="fade-up"
                 >
               Get Started Today
                 </Button>

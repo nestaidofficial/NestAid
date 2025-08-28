@@ -9,6 +9,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { GooglePlacesAutocomplete } from "@/components/google-places-autocomplete"
+import { SimpleLocationInput } from "@/components/simple-location-input"
 import { 
   MapPin, 
   Users, 
@@ -24,12 +26,36 @@ import {
   Shield,
   Star,
   Quote,
-  Search,
-  Navigation
+  Navigation,
+  AlertCircle
 } from "lucide-react"
 
+interface LocationData {
+  formatted_address: string;
+  zipcode: string;
+  city: string;
+  state: string;
+  lat: number;
+  lng: number;
+}
+
+interface JobPosting {
+  id: string;
+  title: string;
+  description: string;
+  zipcode: string;
+  city: string;
+  state: string;
+  lat?: number;
+  lng?: number;
+  created_at: string;
+  updated_at: string;
+}
+
 export default function FindJobsPage() {
-  const [locationQuery, setLocationQuery] = useState("")
+  const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Initialize AOS
   useEffect(() => {
@@ -41,19 +67,45 @@ export default function FindJobsPage() {
     });
   }, []);
 
-  const handleUseCurrentLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          // In a real app, you'd reverse geocode this to get city/state
-          setLocationQuery("Current Location")
-        },
-        (error) => {
-          console.error("Error getting location:", error)
-        }
-      )
+  const handleLocationSelect = (location: LocationData) => {
+    setSelectedLocation(location);
+    setError(null);
+  };
+
+  const handleSearchJobs = async () => {
+    if (!selectedLocation) {
+      setError('Please select a location first');
+      return;
     }
-  }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Build search parameters for the results page
+      const searchParams = new URLSearchParams();
+      
+      if (selectedLocation.zipcode) {
+        searchParams.append('zipcode', selectedLocation.zipcode);
+      } else if (selectedLocation.lat && selectedLocation.lng) {
+        searchParams.append('lat', selectedLocation.lat.toString());
+        searchParams.append('lng', selectedLocation.lng.toString());
+        searchParams.append('radius', '80.47'); // 50 miles in km
+      }
+      
+      // Add the formatted location for display
+      searchParams.append('location', selectedLocation.formatted_address);
+      
+      // Redirect to search results page
+      window.location.href = `/jobs/search-results?${searchParams.toString()}`;
+    } catch (err) {
+      setError('An error occurred while searching for jobs.');
+      console.error('Error searching jobs:', err);
+      setIsLoading(false);
+    }
+  };
+
+
 
   return (
     <div className="bg-background text-foreground">
@@ -82,44 +134,39 @@ export default function FindJobsPage() {
               zIndex: 5
             }}
           >
-            <div className="flex flex-col justify-center items-center text-center px-8 py-12 max-w-5xl mx-auto h-full">
-              <h1 className="text-4xl lg:text-5xl font-bold text-[#1A5463] mb-6 leading-tight">
-                Care with Purpose. Work with Heart.
-              </h1>
-              <p className="text-lg lg:text-xl text-[#1A5463] mb-8 leading-relaxed">
-                Join our growing team of caregivers and make every day meaningful.
-              </p>
+                         <div className="flex flex-col justify-center items-center text-center px-8 py-8 max-w-5xl mx-auto h-full" style={{ transform: 'translateY(-60px)' }}>
+               <h1 className="text-3xl lg:text-4xl font-bold text-[#1A5463] mb-4 leading-tight">
+                 Care with Purpose. Work with Heart.
+               </h1>
+               <p className="text-base lg:text-lg text-[#1A5463] mb-6 leading-relaxed">
+                 Join our growing team of caregivers and make every day meaningful.
+               </p>
               
               {/* Job Search Bar */}
               <div className="w-full max-w-2xl space-y-4">
                 <div className="flex flex-col sm:flex-row gap-3 items-center">
                   <div className="relative flex-1 w-full sm:max-w-md">
-                    <Input
-                      type="text"
+                    <GooglePlacesAutocomplete
+                      onLocationSelect={handleLocationSelect}
                       placeholder="Postal Code or City & State"
-                      value={locationQuery}
-                      onChange={(e) => setLocationQuery(e.target.value)}
-                      className="h-14 px-4 border-2 border-gray-300 rounded-full text-base bg-white focus:border-[#275F48] focus:ring-0 shadow-sm"
                     />
                   </div>
                   
-                  <Button className="h-14 bg-[#4A6741] hover:bg-[#3d5436] text-white font-semibold text-base px-8 rounded-full transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap">
-                    Find Jobs
+                  <Button 
+                    onClick={handleSearchJobs}
+                    disabled={isLoading || !selectedLocation}
+                    className="h-14 bg-[#4A6741] hover:bg-[#3d5436] text-white font-semibold text-base px-8 rounded-full transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? 'Searching...' : 'Find Jobs'}
                   </Button>
                 </div>
                 
-                <div className="flex justify-start">
-                  <Button 
-                    onClick={handleUseCurrentLocation}
-                    variant="ghost"
-                    className="text-[#275F48] hover:text-[#1f4a37] text-base font-medium transition-all duration-300 flex items-center gap-2 underline decoration-2 underline-offset-4"
-                  >
-                    <div className="w-5 h-5 rounded-full border-2 border-[#275F48] flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-[#275F48]"></div>
-                    </div>
-                    Use Current Location
-                  </Button>
-                </div>
+                {error && (
+                  <div className="flex items-center gap-2 text-red-600 text-sm">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>{error}</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -141,48 +188,52 @@ export default function FindJobsPage() {
           {/* Content Section */}
           <div className="bg-[#FCFDFB] px-4 py-8 md:px-6 md:py-12">
             <div className="flex flex-col justify-center items-center text-center max-w-5xl mx-auto">
-              <h1 className="text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 md:mb-6 leading-tight">
+              <h1 className="text-2xl md:text-3xl font-serif font-bold text-[#1A5463] leading-tight">
                 Care with Purpose. Work with Heart.
               </h1>
-              <p className="text-sm md:text-lg text-[#1A5463] mb-6 md:mb-8 leading-relaxed">
+              <p className="text-sm md:text-lg text-[#1A5463] leading-relaxed">
                 Join our growing team of caregivers and make every day meaningful.
               </p>
-              
-              {/* Job Search Bar */}
-              <div className="w-full max-w-2xl space-y-3 md:space-y-4">
-                <div className="flex flex-col gap-3 items-center">
-                  <div className="relative w-full">
-                    <Input
-                      type="text"
-                      placeholder="Postal Code or City & State"
-                      value={locationQuery}
-                      onChange={(e) => setLocationQuery(e.target.value)}
-                      className="h-12 md:h-14 px-4 border-2 border-gray-300 rounded-full text-sm md:text-base bg-white focus:border-[#275F48] focus:ring-0 shadow-sm"
-                    />
-                  </div>
-                  
-                  <Button className="w-full h-12 md:h-14 bg-[#4A6741] hover:bg-[#3d5436] text-white font-semibold text-sm md:text-base px-6 md:px-8 rounded-full transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105">
-                    Find Jobs
-                  </Button>
-                </div>
-                
-                <div className="flex justify-center">
-                  <Button 
-                    onClick={handleUseCurrentLocation}
-                    variant="ghost"
-                    className="text-[#275F48] hover:text-[#1f4a37] text-sm md:text-base font-medium transition-all duration-300 flex items-center gap-2 underline decoration-2 underline-offset-4"
-                  >
-                    <div className="w-4 h-4 md:w-5 md:h-5 rounded-full border-2 border-[#275F48] flex items-center justify-center">
-                      <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#275F48]"></div>
-                    </div>
-                    Use Current Location
-                  </Button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Mobile Search Section */}
+      <section className="lg:hidden bg-[#FCFDFB] pt-4 pb-8 md:pt-6 md:pb-12 border-b border-gray-100">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-2xl mx-auto">
+            {/* Job Search Bar */}
+            <div className="w-full space-y-4">
+              <div className="flex flex-col gap-3 items-center">
+                <div className="relative w-full">
+                  <GooglePlacesAutocomplete
+                    onLocationSelect={handleLocationSelect}
+                    placeholder="Postal Code or City & State"
+                  />
+                </div>
+                
+                <Button 
+                  onClick={handleSearchJobs}
+                  disabled={isLoading || !selectedLocation}
+                  className="w-full h-12 md:h-14 bg-[#4A6741] hover:bg-[#3d5436] text-white font-semibold text-sm md:text-base px-6 md:px-8 rounded-full transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? 'Searching...' : 'Find Jobs'}
+                </Button>
+              </div>
+              
+              {error && (
+                <div className="flex items-center gap-2 text-red-600 text-sm">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>{error}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* Impact Highlight - Stats Section */}
       <section className="py-16 md:py-24 bg-[#FCFDFB]" data-aos="fade-up">

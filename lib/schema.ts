@@ -47,3 +47,16 @@ export interface JobApplication {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface JobPosting {
+  id: string;
+  title: string;
+  description: string;
+  zipcode: string;
+  city: string;
+  state: string;
+  lat?: number;
+  lng?: number;
+  createdAt: Date;
+  updatedAt: Date;
+}

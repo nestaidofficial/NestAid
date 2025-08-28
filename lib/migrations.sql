@@ -60,3 +60,22 @@ CREATE INDEX IF NOT EXISTS idx_job_applications_user_id ON job_applications(user
 CREATE INDEX IF NOT EXISTS idx_applications_status ON family_caregiver_applications(status);
 CREATE INDEX IF NOT EXISTS idx_care_applications_status ON care_applications(status);
 CREATE INDEX IF NOT EXISTS idx_job_applications_status ON job_applications(status);
+
+-- Job Postings table
+CREATE TABLE IF NOT EXISTS job_postings (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  zipcode VARCHAR(10) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  state VARCHAR(50) NOT NULL,
+  lat DECIMAL(10, 8),
+  lng DECIMAL(11, 8),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Indexes for job_postings
+CREATE INDEX IF NOT EXISTS idx_job_postings_zipcode ON job_postings(zipcode);
+CREATE INDEX IF NOT EXISTS idx_job_postings_location ON job_postings(lat, lng);
+CREATE INDEX IF NOT EXISTS idx_job_postings_created_at ON job_postings(created_at DESC);

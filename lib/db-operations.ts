@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import { User, FamilyCaregiverApplication, CareApplication, JobApplication } from './schema';
+import { User, FamilyCaregiverApplication, CareApplication, JobApplication, JobPosting } from './schema';
 
 // Database connection function
 async function getClient() {
@@ -171,6 +171,69 @@ export async function createJobApplication(
       RETURNING *
     `, [userId, applicationData.gender, applicationData.experience, applicationData.careTypes]);
     return result.rows[0];
+  } finally {
+    await client.end();
+  }
+}
+
+// Job Posting operations
+export async function createJobPosting(jobData: Omit<JobPosting, 'id' | 'createdAt' | 'updatedAt'>) {
+  const client = await getClient();
+  try {
+    const result = await client.query(`
+      INSERT INTO job_postings (title, description, zipcode, city, state, lat, lng)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
+      RETURNING *
+    `, [jobData.title, jobData.description, jobData.zipcode, jobData.city, jobData.state, jobData.lat, jobData.lng]);
+    return result.rows[0];
+  } finally {
+    await client.end();
+  }
+}
+
+export async function getJobPostings(zipcode?: string, radius?: number, lat?: number, lng?: number) {
+  const client = await getClient();
+  try {
+    let query = `
+      SELECT * FROM job_postings
+    `;
+    let params: any[] = [];
+    let paramIndex = 1;
+
+    if (zipcode) {
+      query += ` WHERE zipcode = $${paramIndex}`;
+      params.push(zipcode);
+      paramIndex++;
+    } else if (lat && lng && radius) {
+      // Haversine formula for radius search (25 miles = ~40.23 km)
+      query += `
+        WHERE (
+          6371 * acos(
+            cos(radians($${paramIndex})) * cos(radians(lat)) * cos(radians(lng) - radians($${paramIndex + 1})) +
+            sin(radians($${paramIndex})) * sin(radians(lat))
+          )
+        ) <= $${paramIndex + 2}
+      `;
+      params.push(lat, lng, radius);
+    }
+
+    query += ` ORDER BY created_at DESC`;
+
+    const result = await client.query(query, params);
+    return result.rows;
+  } finally {
+    await client.end();
+  }
+}
+
+export async function getAllJobPostings() {
+  const client = await getClient();
+  try {
+    const result = await client.query(`
+      SELECT * FROM job_postings 
+      ORDER BY created_at DESC
+    `);
+    return result.rows;
   } finally {
     await client.end();
   }
