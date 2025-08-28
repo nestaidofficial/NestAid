@@ -10,6 +10,7 @@ import Link from "next/link"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { GooglePlacesAutocomplete } from "@/components/google-places-autocomplete"
+import { JobDetailsModal } from "@/components/job-details-modal"
 
 interface JobPosting {
   id: string;
@@ -38,6 +39,8 @@ function SearchResultsContent() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [searchLocation, setSearchLocation] = useState<string>("")
+  const [selectedJob, setSelectedJob] = useState<JobPosting | null>(null)
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false)
 
   // Initialize AOS
   useEffect(() => {
@@ -153,10 +156,9 @@ function SearchResultsContent() {
     // You can redirect to a job application form or open a modal
   }
 
-  const handleViewDetails = (jobId: string) => {
-    // TODO: Implement job details view
-    console.log('Viewing details for job:', jobId)
-    // You can redirect to a job details page or open a modal
+  const handleViewDetails = (job: JobPosting) => {
+    setSelectedJob(job)
+    setIsDetailsModalOpen(true)
   }
 
   const formatDistance = (distance: number): string => {
@@ -198,11 +200,11 @@ function SearchResultsContent() {
           </div>
           <h2 className="text-xl font-semibold text-[#1A5463] mb-2">Search Error</h2>
           <p className="text-[#1A5463] mb-6">{error}</p>
-          <Link href="/jobs/senior-care">
-            <Button className="bg-[#275F48] hover:bg-[#1f4a37] text-white">
-              Back to Search
-            </Button>
-          </Link>
+                          <Link href="/jobs/senior-care">
+                  <Button className="bg-[#16803C] hover:bg-[#126030] text-white">
+                    Back to Search
+                  </Button>
+                </Link>
         </div>
       </div>
     )
@@ -216,7 +218,7 @@ function SearchResultsContent() {
           <div className="max-w-6xl mx-auto">
             <div className="relative bg-white rounded-3xl shadow-xl overflow-hidden">
               {/* Hero Image */}
-              <div className="relative h-64 md:h-80 lg:h-96 w-full">
+              <div className="relative h-80 md:h-80 lg:h-96 w-full">
                 <div 
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                   style={{
@@ -235,18 +237,40 @@ function SearchResultsContent() {
       </section>
 
       {/* Content Section Below Hero */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16 bg-gradient-to-b from-white to-[#F8FBF8]">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-5xl lg:text-6xl font-serif font-bold text-[#1A5463] mb-6 leading-tight">
+          <div className="text-center max-w-5xl mx-auto">
+            {/* Decorative elements */}
+            <div className="flex justify-center mb-6">
+              <div className="w-20 h-1 bg-gradient-to-r from-[#275F48] to-[#4A6741] rounded-full"></div>
+            </div>
+            
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-[#1A5463] mb-8 leading-tight">
               Find Your Perfect Job
             </h1>
-            <p className="text-lg md:text-xl font-serif  lg:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed text-[#1A5463]">
-              {searchLocation 
-                ? <>Discover rewarding caregiver opportunities near <span className="font-bold">{searchLocation}</span></>
-                : 'Explore meaningful caregiver positions that match your skills and passion'
-              }
-            </p>
+            
+            <div className="relative">
+              <p className="text-xl md:text-2xl lg:text-3xl font-serif mb-8 max-w-4xl mx-auto leading-relaxed text-[#1A5463]">
+                {searchLocation 
+                  ? (
+                    <span className="relative">
+                      Discover rewarding caregiver opportunities near{' '}
+                      <span className="relative inline-block">
+                        <span className="font-bold text-[#275F48] relative z-10">{searchLocation}</span>
+                        <span className="absolute inset-0 bg-[#E8F5E8] transform -rotate-1 rounded-lg -z-10"></span>
+                      </span>
+                    </span>
+                  )
+                  : (
+                    <span className="font-light">
+                      Explore meaningful caregiver positions that match your skills and passion
+                    </span>
+                  )
+                }
+              </p>
+            </div>
+            
+
           </div>
         </div>
       </section>
@@ -263,7 +287,7 @@ function SearchResultsContent() {
                 <div key={`${group.city}-${group.state}`} data-aos="fade-up" data-aos-delay={groupIndex * 100}>
                   <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
                     {/* Location Header */}
-                    <div className="bg-[#275F49] px-6 py-4">
+                    <div className="bg-[#4B7682] px-6 py-4">
                       <div className="flex items-center justify-between">
                         <div>
                           <h3 className="text-xl font-serif font-bold text-white">
@@ -302,17 +326,17 @@ function SearchResultsContent() {
                             </div>
                             <div className="flex flex-col sm:flex-row gap-3 lg:flex-shrink-0">
                               <Button
-                                onClick={() => handleViewDetails(job.id)}
+                                onClick={() => handleViewDetails(job)}
                                 variant="outline"
                                 size="lg"
-                                className="border-2 border-[#275F48] text-[#275F48] hover:bg-[#275F48] hover:text-white font-semibold px-6"
+                                className="border-2 border-[#16803C] text-[#16803C] hover:bg-[#16803C] hover:text-white font-semibold px-6 rounded-full"
                               >
                                 View Details
                               </Button>
                               <Button
                                 onClick={() => handleApplyToJob(job.id)}
                                 size="lg"
-                                className="bg-[#275F48] hover:bg-[#1f4a37] text-white font-semibold px-8 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                                className="bg-[#16803C] hover:bg-[#126030] text-white font-semibold px-8 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 rounded-full"
                               >
                                 Apply Now
                               </Button>
@@ -338,7 +362,7 @@ function SearchResultsContent() {
                 <Link href="/jobs/senior-care">
                   <Button 
                     size="lg"
-                    className="bg-[#275F48] hover:bg-[#1f4a37] text-white font-semibold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    className="bg-[#16803C] hover:bg-[#126030] text-white font-semibold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                   >
                     Search Different Location
                   </Button>
@@ -390,7 +414,7 @@ function SearchResultsContent() {
                     }
                   }}
                   disabled={!searchLocation}
-                  className="h-14 bg-[#4A6741] hover:bg-[#3d5436] text-white font-semibold text-base px-8 rounded-full transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-14 bg-[#16803C] hover:bg-[#126030] text-white font-semibold text-base px-8 rounded-full transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Search Jobs
                 </Button>
@@ -420,7 +444,7 @@ function SearchResultsContent() {
                 }}
                 variant="outline"
                 size="lg"
-                className="border-2 border-[#275F48] text-[#275F48] hover:bg-[#275F48] hover:text-white font-semibold px-6 py-3 transition-all duration-300"
+                className="border-2 border-[#16803C] text-[#16803C] hover:bg-[#16803C] hover:text-white font-semibold px-6 py-3 transition-all duration-300"
               >
                 Use Current Location
               </Button>
@@ -428,6 +452,19 @@ function SearchResultsContent() {
           </div>
         </div>
       </section>
+
+      {/* Job Details Modal */}
+      {selectedJob && (
+        <JobDetailsModal
+          isOpen={isDetailsModalOpen}
+          onClose={() => {
+            setIsDetailsModalOpen(false)
+            setSelectedJob(null)
+          }}
+          job={selectedJob}
+          onApply={handleApplyToJob}
+        />
+      )}
     </div>
   )
 }
