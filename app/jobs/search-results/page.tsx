@@ -11,6 +11,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { GooglePlacesAutocomplete } from "@/components/google-places-autocomplete"
 import { JobDetailsModal } from "@/components/job-details-modal"
+import { JobApplicationForm } from "@/components/job-application-form"
 
 interface JobPosting {
   id: string;
@@ -41,6 +42,7 @@ function SearchResultsContent() {
   const [searchLocation, setSearchLocation] = useState<string>("")
   const [selectedJob, setSelectedJob] = useState<JobPosting | null>(null)
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false)
+  const [isApplicationFormOpen, setIsApplicationFormOpen] = useState(false)
 
   // Initialize AOS
   useEffect(() => {
@@ -150,10 +152,15 @@ function SearchResultsContent() {
     return R * c
   }
 
-  const handleApplyToJob = (jobId: string) => {
-    // TODO: Implement job application logic
-    console.log('Applying to job:', jobId)
-    // You can redirect to a job application form or open a modal
+  const handleApplyToJob = (job: JobPosting) => {
+    setSelectedJob(job)
+    setIsDetailsModalOpen(false) // Close details modal
+    setIsApplicationFormOpen(true) // Open application form
+  }
+
+  const handleGoBackToDetails = () => {
+    setIsApplicationFormOpen(false) // Close application form
+    setIsDetailsModalOpen(true) // Open details modal
   }
 
   const handleViewDetails = (job: JobPosting) => {
@@ -334,7 +341,7 @@ function SearchResultsContent() {
                                 View Details
                               </Button>
                               <Button
-                                onClick={() => handleApplyToJob(job.id)}
+                                onClick={() => handleApplyToJob(job)}
                                 size="lg"
                                 className="bg-[#16803C] hover:bg-[#126030] text-white font-semibold px-8 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 rounded-full"
                               >
@@ -463,6 +470,20 @@ function SearchResultsContent() {
           }}
           job={selectedJob}
           onApply={handleApplyToJob}
+        />
+      )}
+
+      {/* Job Application Form */}
+      {selectedJob && (
+        <JobApplicationForm
+          isOpen={isApplicationFormOpen}
+          onClose={() => {
+            setIsApplicationFormOpen(false)
+            setSelectedJob(null)
+          }}
+          onGoBack={handleGoBackToDetails}
+          job={selectedJob}
+          searchLocation={searchLocation}
         />
       )}
     </div>

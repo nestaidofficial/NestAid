@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import { User, FamilyCaregiverApplication, CareApplication, JobApplication, JobPosting } from './schema';
+import { User, FamilyCaregiverApplication, CareApplication, JobApplication, JobPosting, PrimaryJobApplication } from './schema';
 
 // Database connection function
 async function getClient() {
@@ -234,6 +234,38 @@ export async function getAllJobPostings() {
       ORDER BY created_at DESC
     `);
     return result.rows;
+  } finally {
+    await client.end();
+  }
+}
+
+export async function createPrimaryJobApplication(applicationData: Omit<PrimaryJobApplication, 'id' | 'createdAt' | 'updatedAt'>) {
+  const client = await getClient();
+  try {
+    const result = await client.query(`
+      INSERT INTO primary_job_applications (
+        job_id,
+        first_name,
+        last_name,
+        mobile_number,
+        email,
+        search_location,
+        job_title,
+        status
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      RETURNING *
+    `, [
+      applicationData.jobId,
+      applicationData.firstName,
+      applicationData.lastName,
+      applicationData.mobileNumber,
+      applicationData.email,
+      applicationData.searchLocation,
+      applicationData.jobTitle,
+      'pending'
+    ]);
+    return result.rows[0];
   } finally {
     await client.end();
   }

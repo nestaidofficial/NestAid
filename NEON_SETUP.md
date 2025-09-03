@@ -102,3 +102,4 @@ const pendingApps = await sql`
 - Check Neon's documentation: https://neon.tech/docs
 - Review the migration script in `lib/migrations.sql`
 - Test with a simple query first
+

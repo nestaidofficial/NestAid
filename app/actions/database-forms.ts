@@ -148,3 +148,4 @@ export async function submitJobApplication(formData: {
     };
   }
 }
+

@@ -34,7 +34,7 @@ interface JobDetailsModalProps {
     zipcode: string
     created_at: string
   }
-  onApply: (jobId: string) => void
+  onApply: (job: any) => void
 }
 
 export function JobDetailsModal({ isOpen, onClose, job, onApply }: JobDetailsModalProps) {
@@ -208,7 +208,7 @@ export function JobDetailsModal({ isOpen, onClose, job, onApply }: JobDetailsMod
               Close
             </Button>
             <Button
-              onClick={() => onApply(job.id)}
+              onClick={() => onApply(job)}
               size="lg"
               className="flex-1 bg-[#16803C] hover:bg-[#126030] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 py-4 md:py-3 text-lg md:text-base"
             >

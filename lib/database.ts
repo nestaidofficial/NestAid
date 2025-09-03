@@ -7,3 +7,4 @@ export { sql };
 
 // Example usage:
 // const result = await sql`SELECT * FROM users WHERE id = ${userId}`;
+

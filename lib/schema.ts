@@ -60,3 +60,17 @@ export interface JobPosting {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface PrimaryJobApplication {
+  id: string;
+  jobId: string;
+  firstName: string;
+  lastName: string;
+  mobileNumber: string;
+  email: string;
+  searchLocation: string;
+  jobTitle: string;
+  status: 'pending' | 'reviewed' | 'contacted' | 'hired' | 'rejected';
+  createdAt: Date;
+  updatedAt: Date;
+}

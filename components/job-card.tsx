@@ -88,3 +88,4 @@ export function JobCard({ job, onApply }: JobCardProps) {
     </Card>
   );
 }
+
