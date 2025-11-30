@@ -5,10 +5,21 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { Playfair_Display, Inter } from "next/font/google"
 
 import { Bath, Heart, Users, MessageCircle, Car, Utensils, Clock, Accessibility, Phone, UserCheck, AlertCircle, Stethoscope, FileText, Calendar, UserPlus, Target, Activity, Flower, Brain, Dumbbell, Apple, Smile } from "lucide-react"
 import { useState, useEffect } from "react"
 import { GetStartedModal } from "@/components/get-started-modal"
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
+
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
 
 const AppStoreIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 29 29" fill="currentColor" {...props}>
@@ -100,99 +111,74 @@ export default function FindCarePage() {
 
 
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-background text-foreground overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative overflow-x-hidden">
-        {/* Desktop Layout - Full height with overlay */}
-        <div className="hidden lg:block relative h-[100vh] flex items-center">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <Image 
-              src="/images/bg-image/find-care-bg.jpg" 
-              alt="Find Care Background" 
-              fill 
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/10"></div>
-          </div>
+      <section className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
+        <div className="container mx-auto px-4 md:px-6 lg:px-12 h-full">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-12 md:py-16">
+            {/* Left Section - Text Content */}
+            <div className="flex flex-col justify-center space-y-5" data-aos="fade-right">
+              {/* Tagline */}
+              <div className="flex items-center gap-2">
+                <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
+                <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
+                  WE ARE ALWAYS CLOSE
+                </p>
+              </div>
 
-          {/* Background Box with Content */}
-          <div 
-            className="absolute bg-white/40 backdrop-blur-sm w-[650px] h-[550px] right-8"
-            style={{
-              borderRadius: '33% 67% 79% 21% / 44% 34% 66% 56%',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 5
-            }}
-          >
-            <div className="flex flex-col justify-center items-center text-center px-8 py-8 max-w-full h-full">
-              <h1 className="text-4xl lg:text-5xl font-bold text-[#1A5463] mb-6 leading-tight">
-                Find the Care You Deserve, Right at Home
+              {/* Headline */}
+              <h1 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-[#1A5463] leading-[1.08]`}>
+                Exceptional, Tailored<br />
+                Senior Care
               </h1>
-              <p className="text-base lg:text-lg text-[#1A5463] mb-6 leading-relaxed">
-                At <span className="font-bold" style={{ color: '#1A5463' }}>NestAid</span>, we believe care should be personal. Our trusted caregivers are here to bring comfort, dignity, and peace of mind—right to your doorstep.
+
+              {/* Body Text */}
+              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-xl`}>
+                At NestAid, we provide compassionate adult daycare services that go beyond routine care. With personalised attention, meaningful activities
               </p>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-start gap-4 pt-2">
                 <button 
                   onClick={() => setGetStartedModalOpen(true)}
-                  className="group bg-[#275F48] hover:bg-[#234018] text-white font-bold text-base px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300"
+                  className={`${inter.className} bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
                 >
-                  JOIN US
-                  <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
+                  MAKE AN ENQUIRY
                 </button>
-                <Link href="/help-center" className="text-base underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
-                  Learn More
+                <Link 
+                  href="#services"
+                  className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
+                >
+                  OUR SERVICES
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Mobile & Tablet Layout - Stacked: Image first, then content */}
-        <div className="lg:hidden">
-          {/* Background Image Section */}
-          <div className="relative h-[50vh] md:h-[60vh]">
-            <Image 
-              src="/images/bg-image/find-care-bg.jpg" 
-              alt="Find Care Background" 
-              fill 
-              className="object-cover"
-              priority
-            />
-          </div>
+            {/* Right Section - Image */}
+            <div className="relative flex items-center justify-center md:justify-end" data-aos="fade-left">
+              <div className="relative w-full max-w-md md:max-w-lg">
+                {/* Decorative Purple Butterfly/Flower Element */}
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-10">
+                  <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M40 50C40 35 25 25 15 25C5 25 0 35 0 45C0 55 5 65 15 65C25 65 40 55 40 50Z" fill="#8B5CF6" opacity="0.8"/>
+                    <path d="M80 50C80 35 95 25 105 25C115 25 120 35 120 45C120 55 115 65 105 65C95 65 80 55 80 50Z" fill="#A78BFA" opacity="0.8"/>
+                    <path d="M60 30C60 20 50 10 40 10C30 10 25 20 25 30C25 40 30 50 40 50C50 50 60 40 60 30Z" fill="#C4B5FD" opacity="0.7"/>
+                    <path d="M60 70C60 80 50 90 40 90C30 90 25 80 25 70C25 60 30 50 40 50C50 50 60 60 60 70Z" fill="#DDD6FE" opacity="0.7"/>
+                  </svg>
+                </div>
 
-          {/* Content Section */}
-          <div className="bg-[#E4F2D4] px-4 py-8 md:px-6 md:py-12">
-            <div className="flex flex-col justify-center items-center text-center max-w-5xl mx-auto">
-              <h1 className="text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 md:mb-6 leading-tight">
-                Find the Care You Deserve, Right at Home
-              </h1>
-              <p className="text-sm md:text-lg text-[#1A5463] mb-6 md:mb-8 leading-relaxed">
-                At <span className="font-bold" style={{ color: '#1A5463' }}>NestAid</span>, we believe care should be personal. Our trusted caregivers are here to bring comfort, dignity, and peace of mind—right to your doorstep.
-              </p>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col gap-4 items-center w-full max-w-2xl">
-                <button 
-                  onClick={() => setGetStartedModalOpen(true)}
-                  className="group bg-[#275F48] text-white font-bold text-sm md:text-base px-6 py-3 md:py-4 rounded-full flex items-center justify-center gap-2 transition-all duration-300 w-full"
-                >
-                  JOIN US
-                  <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-1.5 md:p-2 transition-transform duration-200">
-                    <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
-                </button>
-                <Link href="/help-center" className="text-sm md:text-base underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
-                  Learn More
-                </Link>
+                {/* Main Image */}
+                <div className="relative w-full aspect-square">
+                  <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="/images/bg-image/find-care-bg.jpg"
+                      alt="Caregiver with senior"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -200,186 +186,208 @@ export default function FindCarePage() {
       </section>
 
       {/* Care We Provide Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }} >
+      <section id="services" className="py-20 md:py-28" style={{ backgroundColor: '#F5F5EC' }} >
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
-          <h2 className="text-3xl md:text-5xl font-serif py-10 font-bold tracking-tight text-center text-white mb-16" data-aos="fade-up">Care We Provide</h2>
-          
-
-          {/* Service Cards - New Layout */}
-          <div className="space-y-16 md:space-y-24">
-            {/* Service 1: In‑Home Care Services - Right aligned */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
-              <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-[400px] h-[400px] flex items-center justify-center">
-                  <Image src="/images/adult-care.jpg" alt="In‑Home Care Services" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
-                </div>
-              </div>
-              <div className="w-full md:w-1/2 ">
-                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#DBD9FE' }}>
-                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">In‑Home Care Services</h3>
-                  <ul className="space-y-4">
-                    {serviceDetails['in-home'].map((item, index) => {
-                      const IconComponent = item.icon;
-                      return (
-                        <li key={index} className="flex items-start space-x-4">
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#275F49' }}>
-                            <IconComponent className="w-5 h-5 text-white" />
-                          </div>
-                          <span className="text-base text-[#275F49] leading-relaxed">{item.text}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
+          {/* Header */}
+          <div className="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
+              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
+                HELPING SENIORS THRIVE WITH CARE
+              </p>
             </div>
+            <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08]`}>
+              Exceptional Care, Tailored To<br />Every Need
+            </h2>
+          </div>
 
-            {/* Service 2: Companion & Household Support - Left aligned */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
-              <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-[400px] h-[400px] flex items-center justify-center">
-                  <Image src="/images/group.png" alt="Companion & Household Support" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
-                </div>
+          {/* Service Cards Grid - 3 columns, 2 rows */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            
+            {/* Card 1: Companionship */}
+            <Link 
+              href="/care/companionship"
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
+              style={{ backgroundColor: '#5B8A7D' }} 
+              data-aos="fade-up" 
+              data-aos-delay="0"
+            >
+              {/* Decorative Icon */}
+              <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="white" opacity="0.9">
+                  <circle cx="20" cy="20" r="10"/>
+                  <circle cx="40" cy="20" r="10"/>
+                  <circle cx="20" cy="40" r="10"/>
+                  <circle cx="40" cy="40" r="10"/>
+                </svg>
               </div>
-              <div className="w-full md:w-1/2 ">
-                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#E4F2D4' }}>
-                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">Companion & Household Support</h3>
-                  <ul className="space-y-4">
-                    {serviceDetails['companion'].map((item, index) => {
-                      const IconComponent = item.icon;
-                      return (
-                        <li key={index} className="flex items-start space-x-4">
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#275F49' }}>
-                            <IconComponent className="w-5 h-5 text-white" />
-                          </div>
-                          <span className="text-base text-[#275F49] leading-relaxed">{item.text}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
+              
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
+                Companionship
+              </h3>
+              <p className={`${inter.className} text-white text-base leading-relaxed mb-6`}>
+                Meaningful companionship that brightens each day with care.
+              </p>
+              <ul className={`${inter.className} space-y-2 text-white text-sm`}>
+                {serviceDetails['companion'].map((item, index) => (
+                  <li key={index}>• {item.text}</li>
+                ))}
+              </ul>
+            </Link>
 
-            {/* Service 3: Special Needs & Disability Support - Right aligned */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
-              <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-[400px] h-[400px] flex items-center justify-center">
-                  <Image src="/images/adult-care.jpg" alt="Special Needs & Disability Support" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
-                </div>
+            {/* Card 2: Assistance */}
+            <Link 
+              href="/care/assistance"
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
+              style={{ backgroundColor: '#B084CC' }} 
+              data-aos="fade-up" 
+              data-aos-delay="100"
+            >
+              {/* Decorative Icon */}
+              <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="white" opacity="0.9">
+                  <path d="M30 10L35 25L50 25L38 35L43 50L30 40L17 50L22 35L10 25L25 25Z"/>
+                </svg>
               </div>
-              <div className="w-full md:w-1/2 ">
-                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#F0F0F0' }}>
-                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">Special Needs & Disability Support</h3>
-                  <ul className="space-y-4">
-                    {serviceDetails['special-needs'].map((item, index) => {
-                      const IconComponent = item.icon;
-                      return (
-                        <li key={index} className="flex items-start space-x-4">
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#275F49' }}>
-                            <IconComponent className="w-5 h-5 text-white" />
-                          </div>
-                          <span className="text-base text-[#275F49] leading-relaxed">{item.text}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
+              
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
+                Assistance
+              </h3>
+              <p className={`${inter.className} text-white text-base leading-relaxed mb-6`}>
+                Tailored assistance to make daily life easier and more fulfilling.
+              </p>
+              <ul className={`${inter.className} space-y-2 text-white text-sm`}>
+                {serviceDetails['in-home'].map((item, index) => (
+                  <li key={index}>• {item.text}</li>
+                ))}
+              </ul>
+            </Link>
 
-            {/* Service 4: 24/7 Live‑In Care - Left aligned */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
-              <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-[400px] h-[400px] flex items-center justify-center">
-                  <Image src="/images/pet-care.jpg" alt="24/7 Live‑In Care" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
-                </div>
+            {/* Card 3: Support */}
+            <Link 
+              href="/care/support"
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
+              style={{ backgroundColor: '#6B6B6B' }} 
+              data-aos="fade-up" 
+              data-aos-delay="200"
+            >
+              {/* Decorative Icon */}
+              <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="white" opacity="0.9">
+                  <path d="M30 10L40 20L50 10L50 30L40 40L50 50L30 50L20 40L10 50L10 30L20 20Z"/>
+                </svg>
               </div>
-              <div className="w-full md:w-1/2 ">
-                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#DBD9FE' }}>
-                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">24/7 Live‑In Care</h3>
-                  <ul className="space-y-4">
-                    {serviceDetails['live-in'].map((item, index) => {
-                      const IconComponent = item.icon;
-                      return (
-                        <li key={index} className="flex items-start space-x-4">
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#275F49' }}>
-                            <IconComponent className="w-5 h-5 text-white" />
-                          </div>
-                          <span className="text-base text-[#275F49] leading-relaxed">{item.text}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
+              
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
+                Support
+              </h3>
+              <p className={`${inter.className} text-white text-base leading-relaxed mb-6`}>
+                Reliable support designed to nurture comfort and independence.
+              </p>
+              <ul className={`${inter.className} space-y-2 text-white text-sm`}>
+                {serviceDetails['special-needs'].map((item, index) => (
+                  <li key={index}>• {item.text}</li>
+                ))}
+              </ul>
+            </Link>
 
-            {/* Service 5: Personalized Care Plans - Right aligned */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
-              <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                <div className="w-[400px] h-[400px] flex items-center justify-center">
-                  <Image src="/images/group.png" alt="Personalized Care Plans" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
-                </div>
+            {/* Card 4: Caregiving */}
+            <Link 
+              href="/care/caregiving"
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
+              style={{ backgroundColor: '#A6C8E1' }} 
+              data-aos="fade-up" 
+              data-aos-delay="0"
+            >
+              {/* Decorative Icon */}
+              <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="white" opacity="0.9">
+                  <path d="M20 20L40 20L40 40L20 40Z" transform="rotate(45 30 30)"/>
+                </svg>
               </div>
-              <div className="w-full md:w-1/2 ">
-                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#E4F2D4' }}>
-                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">Personalized Care Plans</h3>
-                  <ul className="space-y-4">
-                    {serviceDetails['care-plans'].map((item, index) => {
-                      const IconComponent = item.icon;
-                      return (
-                        <li key={index} className="flex items-start space-x-4">
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#275F49' }}>
-                            <IconComponent className="w-5 h-5 text-white" />
-                          </div>
-                          <span className="text-base text-[#275F49] leading-relaxed">{item.text}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
+              
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4`}>
+                Caregiving
+              </h3>
+              <p className={`${inter.className} text-[#1A5463] text-base leading-relaxed mb-6`}>
+                Dedicated caregivers offering daily support with warmth and respect.
+              </p>
+              <ul className={`${inter.className} space-y-2 text-[#1A5463] text-sm`}>
+                {serviceDetails['live-in'].map((item, index) => (
+                  <li key={index}>• {item.text}</li>
+                ))}
+              </ul>
+            </Link>
 
-            {/* Service 6: Wellness & Yoga - Left aligned */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
-              <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                <div className="w-[400px] h-[400px] flex items-center justify-center">
-                  <Image src="/images/senior-care.jpg" alt="Wellness & Yoga" width={400} height={400} className="object-cover w-full h-full" style={{ borderRadius: '55% 45% 69% 31% / 36% 55% 45% 64%' }} />
-                </div>
+            {/* Card 5: Guidance */}
+            <Link 
+              href="/care/guidance"
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
+              style={{ backgroundColor: '#D4B896' }} 
+              data-aos="fade-up" 
+              data-aos-delay="100"
+            >
+              {/* Decorative Icon */}
+              <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="white" opacity="0.9">
+                  <circle cx="30" cy="30" r="20"/>
+                </svg>
               </div>
-              <div className="w-full md:w-1/2 ">
-                <div className="rounded-3xl p-8 md:p-10" style={{ backgroundColor: '#F0F0F0' }}>
-                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#275F49] mb-6">Wellness & Yoga</h3>
-                  <ul className="space-y-4">
-                    {serviceDetails['wellness'].map((item, index) => {
-                      const IconComponent = item.icon;
-                      return (
-                        <li key={index} className="flex items-start space-x-4">
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#275F49' }}>
-                            <IconComponent className="w-5 h-5 text-white" />
-                          </div>
-                          <span className="text-base text-[#275F49] leading-relaxed">{item.text}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
+              
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4`}>
+                Guidance
+              </h3>
+              <p className={`${inter.className} text-[#4A4A4A] text-base leading-relaxed mb-6`}>
+                Compassionate guidance for seniors and families at every step.
+              </p>
+              <ul className={`${inter.className} space-y-2 text-[#4A4A4A] text-sm`}>
+                {serviceDetails['care-plans'].map((item, index) => (
+                  <li key={index}>• {item.text}</li>
+                ))}
+              </ul>
+            </Link>
+
+            {/* Card 6: Therapy */}
+            <Link 
+              href="/care/therapy"
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
+              style={{ backgroundColor: '#5B8A7D' }} 
+              data-aos="fade-up" 
+              data-aos-delay="200"
+            >
+              {/* Decorative Icon */}
+              <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="white" opacity="0.9">
+                  <path d="M30 10L35 20L45 25L35 30L30 40L25 30L15 25L25 20Z"/>
+                  <circle cx="30" cy="30" r="8"/>
+                </svg>
               </div>
-            </div>
+              
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
+                Therapy
+              </h3>
+              <p className={`${inter.className} text-white text-base leading-relaxed mb-6`}>
+                Personalized therapies to restore strength, balance, and peace.
+              </p>
+              <ul className={`${inter.className} space-y-2 text-white text-sm`}>
+                {serviceDetails['wellness'].map((item, index) => (
+                  <li key={index}>• {item.text}</li>
+                ))}
+              </ul>
+            </Link>
+
           </div>
         </div>
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 md:py-24 bg-[#E4F2D4] overflow-x-hidden" data-aos="fade-up">
+      <section className="py-16 md:py-24 bg-[#FCF5EB] overflow-x-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1A5463] mb-6" data-aos="fade-up">
+            <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08] mb-6`} data-aos="fade-up">
               Ready to Find the Care You Deserve?
             </h2>
-            <p className="text-lg md:text-xl text-[#1A5463] mb-8 leading-relaxed" data-aos="fade-up">
+            <p className={`${inter.className} text-base md:text-lg text-[#1A5463] mb-8 leading-relaxed`} data-aos="fade-up">
               Just like we mentioned at the top—care should be personal. Our trusted caregivers are here to bring comfort, dignity, and peace of mind right to your doorstep. 
               <span className="font-bold"> It's time to take the next step.</span>
             </p>
@@ -387,17 +395,15 @@ export default function FindCarePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4" data-aos="fade-up">
               <button 
                 onClick={() => setGetStartedModalOpen(true)}
-                className="group bg-[#275F49] hover:bg-[#1f4a37] text-white font-bold text-base md:text-lg px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className={`${inter.className} group bg-[#275F49] hover:bg-[#1f4a37] text-white font-semibold text-base px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl`}
               >
-                JOIN US
-                <span className="bg-[#D9FB74] text-[#2C4F26] rounded-full p-2 group-hover:scale-110 transition-transform duration-200">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
+                MAKE AN ENQUIRY
               </button>
-              <Link href="/help-center" className="text-base md:text-lg underline underline-offset-4 text-[#1A5463] transition-all duration-400 hover:text-[#275F48]">
-                Learn More
+              <Link 
+                href="#services" 
+                className={`${inter.className} bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
+              >
+                OUR SERVICES
               </Link>
             </div>
           </div>

@@ -207,11 +207,11 @@ function SearchResultsContent() {
           </div>
           <h2 className="text-xl font-semibold text-[#1A5463] mb-2">Search Error</h2>
           <p className="text-[#1A5463] mb-6">{error}</p>
-                          <Link href="/jobs/senior-care">
+          <Link href="/jobs/senior-care">
                   <Button className="bg-[#16803C] hover:bg-[#126030] text-white">
-                    Back to Search
-                  </Button>
-                </Link>
+              Back to Search
+            </Button>
+          </Link>
         </div>
       </div>
     )
@@ -258,7 +258,7 @@ function SearchResultsContent() {
             
             <div className="relative">
               <p className="text-xl md:text-2xl lg:text-3xl font-serif mb-8 max-w-4xl mx-auto leading-relaxed text-[#1A5463]">
-                {searchLocation 
+              {searchLocation 
                   ? (
                     <span className="relative">
                       Discover rewarding caregiver opportunities near{' '}
@@ -273,8 +273,8 @@ function SearchResultsContent() {
                       Explore meaningful caregiver positions that match your skills and passion
                     </span>
                   )
-                }
-              </p>
+              }
+            </p>
             </div>
             
 
@@ -394,37 +394,37 @@ function SearchResultsContent() {
             <div className="w-full max-w-2xl space-y-4">
               <div className="flex flex-col sm:flex-row gap-3 items-center">
                 <div className="relative flex-1 w-full sm:max-w-md">
-                  <GooglePlacesAutocomplete
+                <GooglePlacesAutocomplete
                     placeholder="Postal Code or City & State"
-                    onLocationSelect={(locationData) => {
-                      setSearchLocation(locationData.formatted_address);
-                      // Auto-search when location is selected
-                      const searchParams = new URLSearchParams();
-                      if (locationData.zipcode) {
-                        searchParams.append('zipcode', locationData.zipcode);
-                      } else if (locationData.lat && locationData.lng) {
-                        searchParams.append('lat', locationData.lat.toString());
-                        searchParams.append('lng', locationData.lng.toString());
-                      }
-                      searchParams.append('location', locationData.formatted_address);
-                      window.location.href = `/jobs/search-results?${searchParams.toString()}`;
-                    }}
-                  />
-                </div>
-                
-                <Button 
-                  onClick={() => {
-                    if (searchLocation) {
-                      const searchParams = new URLSearchParams();
-                      searchParams.append('location', searchLocation);
-                      window.location.href = `/jobs/search-results?${searchParams.toString()}`;
+                  onLocationSelect={(locationData) => {
+                    setSearchLocation(locationData.formatted_address);
+                    // Auto-search when location is selected
+                    const searchParams = new URLSearchParams();
+                    if (locationData.zipcode) {
+                      searchParams.append('zipcode', locationData.zipcode);
+                    } else if (locationData.lat && locationData.lng) {
+                      searchParams.append('lat', locationData.lat.toString());
+                      searchParams.append('lng', locationData.lng.toString());
                     }
+                    searchParams.append('location', locationData.formatted_address);
+                    window.location.href = `/jobs/search-results?${searchParams.toString()}`;
                   }}
+                />
+              </div>
+                
+              <Button
+                onClick={() => {
+                  if (searchLocation) {
+                    const searchParams = new URLSearchParams();
+                    searchParams.append('location', searchLocation);
+                    window.location.href = `/jobs/search-results?${searchParams.toString()}`;
+                  }
+                }}
                   disabled={!searchLocation}
                   className="h-14 bg-[#16803C] hover:bg-[#126030] text-white font-semibold text-base px-8 rounded-full transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Search Jobs
-                </Button>
+              >
+                Search Jobs
+              </Button>
               </div>
             </div>
             

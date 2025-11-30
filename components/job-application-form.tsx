@@ -117,9 +117,9 @@ export function JobApplicationForm({ isOpen, onClose, onGoBack, job, searchLocat
               <div className="flex items-center gap-2 text-[#1A5463] mb-2">
                 <MapPin className="w-4 h-4 text-[#16803C]" />
                 <span className="font-semibold">{job.title}</span>
-              </div>
+        </div>
               <p className="text-[#1A5463]/70 text-sm">{job.city}, {job.state}</p>
-            </div>
+        </div>
           </DialogHeader>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -136,44 +136,44 @@ export function JobApplicationForm({ isOpen, onClose, onGoBack, job, searchLocat
                   <AlertCircle className="w-5 h-5" />
                 )}
                 <span className="text-sm">{submitResult.message}</span>
-              </div>
+      </div>
             )}
 
             {/* Name Fields */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
+            <div>
                 <Label htmlFor="firstName" className="text-[#1A5463] font-medium">
                   First Name *
                 </Label>
                 <div className="relative mt-1">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#1A5463]/50" />
-                  <Input
+              <Input
                     id="firstName"
                     type="text"
-                    value={formData.firstName}
+                value={formData.firstName}
                     onChange={handleInputChange('firstName')}
                     className="pl-10 border-2 border-gray-200 focus:border-[#16803C] focus:ring-0 rounded-full"
                     placeholder="Enter first name"
-                    required
-                  />
+                required
+              />
                 </div>
-              </div>
+            </div>
 
-              <div>
+            <div>
                 <Label htmlFor="lastName" className="text-[#1A5463] font-medium">
                   Last Name *
                 </Label>
                 <div className="relative mt-1">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#1A5463]/50" />
-                  <Input
+              <Input
                     id="lastName"
                     type="text"
-                    value={formData.lastName}
+                value={formData.lastName}
                     onChange={handleInputChange('lastName')}
                     className="pl-10 border-2 border-gray-200 focus:border-[#16803C] focus:ring-0 rounded-full"
                     placeholder="Enter last name"
-                    required
-                  />
+                required
+              />
                 </div>
               </div>
             </div>
@@ -185,15 +185,15 @@ export function JobApplicationForm({ isOpen, onClose, onGoBack, job, searchLocat
               </Label>
               <div className="relative mt-1">
                 <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#1A5463]/50" />
-                <Input
+              <Input
                   id="mobileNumber"
-                  type="tel"
+                type="tel"
                   value={formData.mobileNumber}
                   onChange={handleInputChange('mobileNumber')}
                   className="pl-10 border-2 border-gray-200 focus:border-[#16803C] focus:ring-0 rounded-full"
                   placeholder="Enter mobile number"
-                  required
-                />
+                required
+              />
               </div>
             </div>
 
@@ -204,17 +204,17 @@ export function JobApplicationForm({ isOpen, onClose, onGoBack, job, searchLocat
               </Label>
               <div className="relative mt-1">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#1A5463]/50" />
-                <Input
+              <Input
                   id="email"
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange('email')}
                   className="pl-10 border-2 border-gray-200 focus:border-[#16803C] focus:ring-0 rounded-full"
                   placeholder="Enter email address"
-                  required
-                />
-              </div>
+                required
+              />
             </div>
+          </div>
 
             
 
@@ -230,15 +230,15 @@ export function JobApplicationForm({ isOpen, onClose, onGoBack, job, searchLocat
               >
                 Go Back
               </Button>
-              <Button
+            <Button
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
                 className="flex-1 bg-[#16803C] hover:bg-[#126030] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 py-4 md:py-3 text-lg md:text-base"
-              >
+            >
                 {isSubmitting ? 'Submitting...' : 'Submit Application'}
-              </Button>
-            </div>
+            </Button>
+          </div>
           </form>
         </div>
       </DialogContent>

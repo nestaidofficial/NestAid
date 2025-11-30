@@ -103,3 +103,4 @@ const pendingApps = await sql`
 - Review the migration script in `lib/migrations.sql`
 - Test with a simple query first
 
+
