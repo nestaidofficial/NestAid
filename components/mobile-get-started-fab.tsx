@@ -47,11 +47,11 @@ export function MobileGetStartedFab() {
     if (chatBotOpen) {
       document.addEventListener('keydown', handleKeyDown)
       // Prevent body scroll when chatbot is open
-      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
       
       return () => {
         document.removeEventListener('keydown', handleKeyDown)
-        document.body.style.overflow = 'unset'
+        document.documentElement.style.overflow = ''
       }
     }
   }, [chatBotOpen])

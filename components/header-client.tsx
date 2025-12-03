@@ -21,19 +21,37 @@ export function HeaderClient() {
   const isAdminPage = pathname.startsWith("/admin")
 
   useEffect(() => {
+    let ticking = false
+    let lastKnownScrollY = 0
+    
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      const heroSectionHeight = window.innerHeight // Hero section is 100vh
+      lastKnownScrollY = window.scrollY
       
-      // Show header if scrolling up (any amount) or if still in hero section
-      if (currentScrollY < lastScrollY || currentScrollY <= heroSectionHeight) {
-        setIsHeaderVisible(true)
-      } else if (currentScrollY > lastScrollY && currentScrollY > heroSectionHeight) {
-        // Hide header only when scrolling down AND past hero section
-        setIsHeaderVisible(false)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = lastKnownScrollY
+          const heroSectionHeight = window.innerHeight // Hero section is 100vh
+          const scrollDelta = currentScrollY - lastScrollY
+          
+          // Only trigger state change if scroll delta is significant (> 5px)
+          // This prevents micro-movements from causing glitches
+          if (Math.abs(scrollDelta) > 5) {
+            // Show header if scrolling up or if still in hero section
+            if (scrollDelta < 0 || currentScrollY <= heroSectionHeight) {
+              setIsHeaderVisible(true)
+            } else if (scrollDelta > 0 && currentScrollY > heroSectionHeight) {
+              // Hide header only when scrolling down AND past hero section
+              setIsHeaderVisible(false)
+            }
+            
+            setLastScrollY(currentScrollY)
+          }
+          
+          ticking = false
+        })
+        
+        ticking = true
       }
-      
-      setLastScrollY(currentScrollY)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -43,10 +61,15 @@ export function HeaderClient() {
   return (
     <>
       <header 
-        className={`fixed top-0 z-40 w-full bg-transparent transition-transform duration-300 ${
-          isHeaderVisible ? 'transform translate-y-0' : 'transform -translate-y-full'
+        className={`fixed top-0 z-40 w-full bg-transparent ${
+          isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
         }`} 
-        style={{ backgroundColor: 'transparent', backdropFilter: 'none' }}
+        style={{ 
+          backgroundColor: 'transparent', 
+          backdropFilter: 'none',
+          transition: 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+          willChange: 'transform'
+        }}
       >
 
       <div className="container mx-auto flex items-center justify-between px-4" style={{ height: '4rem', minHeight: '4rem', maxHeight: '4rem' }}>

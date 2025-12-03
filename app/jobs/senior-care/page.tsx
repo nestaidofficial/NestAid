@@ -69,14 +69,15 @@ export default function FindJobsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Initialize AOS with smooth settings
+  // Initialize AOS with optimized settings
   useEffect(() => {
     AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
+      duration: 600,
+      easing: 'ease-out',
       once: true,
-      offset: 50
-    });
+      offset: 50,
+      anchorPlacement: 'top-bottom'
+    } as Parameters<typeof AOS.init>[0]);
   }, []);
 
   const handleLocationSelect = (location: LocationData) => {
@@ -122,13 +123,13 @@ export default function FindJobsPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
-        <div className="container mx-auto px-4 md:px-6 lg:px-12 h-full">
+      <section className="relative w-full min-h-screen" style={{ backgroundColor: '#FCF5EB' }}>
+        <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-screen py-12 md:py-16">
             
             {/* Left Image */}
             <div className="hidden lg:flex lg:col-span-3 justify-center items-center" data-aos="fade-right" data-aos-delay="200">
-              <div className="relative w-[280px] h-[380px] transform -rotate-3">
+              <div className="relative w-[280px] h-[380px] -rotate-3" style={{ transform: 'rotate(-3deg) translateZ(0)', backfaceVisibility: 'hidden' }}>
                 <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl">
                   <Image
                     src="/images/adult-care.jpg"
@@ -199,7 +200,7 @@ export default function FindJobsPage() {
 
             {/* Right Image */}
             <div className="hidden lg:flex lg:col-span-3 justify-center items-center" data-aos="fade-left" data-aos-delay="200">
-              <div className="relative w-[280px] h-[380px] transform rotate-3">
+              <div className="relative w-[280px] h-[380px] rotate-3" style={{ transform: 'rotate(3deg) translateZ(0)', backfaceVisibility: 'hidden' }}>
                 <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl">
                   <Image
                     src="/images/senior-care.jpg"
@@ -219,7 +220,7 @@ export default function FindJobsPage() {
 
         {/* Mobile Images Row */}
         <div className="lg:hidden flex justify-center gap-4 px-4 pb-8">
-          <div className="relative w-[140px] h-[180px] transform -rotate-3">
+          <div className="relative w-[140px] h-[180px]" style={{ transform: 'rotate(-3deg) translateZ(0)', backfaceVisibility: 'hidden' }}>
             <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/adult-care.jpg"
@@ -229,7 +230,7 @@ export default function FindJobsPage() {
               />
             </div>
           </div>
-          <div className="relative w-[140px] h-[180px] transform rotate-3">
+          <div className="relative w-[140px] h-[180px]" style={{ transform: 'rotate(3deg) translateZ(0)', backfaceVisibility: 'hidden' }}>
             <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/senior-care.jpg"

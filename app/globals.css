@@ -19,6 +19,15 @@
     box-sizing: border-box;
   }
 
+  /* GPU acceleration for transformed elements */
+  [style*="transform"],
+  [class*="rotate"],
+  [class*="translate"] {
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
   /* Reset margins and padding for consistent spacing */
   body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
     margin: 0;
@@ -95,32 +104,70 @@
     @apply border-border;
   }
   
-  /* Prevent layout shift when scrollbar appears/disappears */
+  /* Single scroll container - html element only */
   html {
-    scrollbar-gutter: stable;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll; /* Always show scrollbar to prevent layout shift */
+    background-color: #e8e8e8;
+    -webkit-overflow-scrolling: touch;
   }
   
   body {
-    @apply text-foreground bg-background;
+    @apply text-foreground;
+    background-color: #e8e8e8;
     font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100%;
+    height: auto;
+    overflow-x: hidden !important; /* Prevent horizontal overflow */
+    overflow-y: visible;
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
+  /* Ensure main content wrapper doesn't create scroll container */
+  body > div {
+    overflow-x: hidden;
+    overflow-y: visible;
+    height: auto;
+    max-width: 100vw;
+  }
+  
+  /* Prevent any section from causing horizontal overflow */
+  main, section, article {
+    max-width: 100vw;
     overflow-x: hidden;
   }
   
-  /* When modal is open, prevent body scroll but maintain scrollbar space */
-  body.modal-open {
-    overflow: hidden;
-    padding-right: 0; /* Prevent padding compensation */
+  /* When modal is open, prevent scroll on html */
+  html.modal-open {
+    overflow: hidden !important;
+  }
+  
+  /* Fix Radix UI scroll lock - prevent it from adding padding to body */
+  body[data-scroll-locked] {
+    overflow: visible !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Ensure html handles scroll lock for modals */
+  html:has([data-radix-dialog-overlay]),
+  html:has([data-radix-alert-dialog-overlay]) {
+    overflow: hidden !important;
   }
 }
 
-/* Smooth scroll behavior for the entire page */
-html {
+/* Only apply smooth scroll for anchor links, not general scrolling */
+html:focus-within {
   scroll-behavior: smooth;
 }
 
-/* Enhanced smooth scrolling with custom easing */
+/* Enhanced scrolling settings */
 @media (prefers-reduced-motion: no-preference) {
-  html {
+  /* Smooth scroll only for anchor navigation */
+  html:focus-within {
     scroll-behavior: smooth;
   }
   
