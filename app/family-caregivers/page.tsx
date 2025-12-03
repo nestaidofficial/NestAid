@@ -135,7 +135,7 @@ export default function FamilyCaregiversPage() {
   return (
     <div className="min-h-screen bg-background">
             {/* Hero Section */}
-      <section className="relative overflow-x-hidden bg-[#EFF5F4]">
+      <section className="relative bg-[#EFF5F4]">
         {/* Desktop Layout - Image left, title and content box right */}
         <div className="hidden lg:block">
           <div className="container mx-auto px-16 py-32">
@@ -244,7 +244,7 @@ export default function FamilyCaregiversPage() {
 
 
       {/* Video Testimonial Section */}
-      <section className="py-16 md:py-24 bg-[#EFF5F4] overflow-x-hidden" data-aos="fade-up">
+      <section className="py-16 md:py-24 bg-[#EFF5F4]" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-8">
@@ -350,7 +350,7 @@ export default function FamilyCaregiversPage() {
       </section>
 
       {/* Eligibility Section */}
-      <section className="py-16 md:py-24 bg-[#EFF5F4] overflow-x-hidden" data-aos="fade-up">
+      <section className="py-16 md:py-24 bg-[#EFF5F4]" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-4">
@@ -444,7 +444,7 @@ export default function FamilyCaregiversPage() {
       </section>
 
       {/* Success Stories Section */}
-      <section className="py-16 md:py-24 bg-[#FCFDFB] overflow-x-hidden" data-aos="fade-up">
+      <section className="py-16 md:py-24 bg-[#FCFDFB]" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#1A5463] mb-4">
@@ -492,7 +492,7 @@ export default function FamilyCaregiversPage() {
 
 
       {/* Final CTA Section */}
-      <section className="py-16 md:py-24 overflow-x-hidden" style={{ backgroundColor: '#275F49' }} data-aos="fade-up">
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#275F49' }} data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">

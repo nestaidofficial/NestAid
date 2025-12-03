@@ -111,13 +111,13 @@ export default function FindCarePage() {
 
 
   return (
-    <div className="bg-background text-foreground overflow-x-hidden">
+    <div className="bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12 h-full">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-12 md:py-16">
             {/* Left Section - Text Content */}
-            <div className="flex flex-col justify-center space-y-5" data-aos="fade-right">
+            <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left space-y-5 mt-8 md:mt-0" data-aos="fade-right">
               {/* Tagline */}
               <div className="flex items-center gap-2">
                 <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
@@ -137,20 +137,19 @@ export default function FindCarePage() {
                 At NestAid, we provide compassionate adult daycare services that go beyond routine care. With personalised attention, meaningful activities
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-start gap-4 pt-2">
+              {/* CTA Button */}
+              <div className="pt-2">
                 <button 
                   onClick={() => setGetStartedModalOpen(true)}
-                  className={`${inter.className} bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
+                  className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
                 >
-                  MAKE AN ENQUIRY
+                  <span>Join Us</span>
+                  <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#4E342E] transition-colors">
+                    <svg className="w-5 h-5 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
+                    </svg>
+                  </span>
                 </button>
-                <Link 
-                  href="#services"
-                  className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
-                >
-                  OUR SERVICES
-                </Link>
               </div>
             </div>
 

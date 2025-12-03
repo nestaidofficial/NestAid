@@ -120,7 +120,7 @@ export default function FindJobsPage() {
 
 
   return (
-    <div className="bg-background text-foreground overflow-x-hidden">
+    <div className="bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12 h-full">

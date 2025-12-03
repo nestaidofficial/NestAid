@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${inter.className} h-full`} suppressHydrationWarning={true}>
+    <html lang="en">
+      <body className={inter.className} suppressHydrationWarning={true}>
         <ExtensionErrorSuppressor />
         <div className="min-h-screen bg-background">
           <Header />

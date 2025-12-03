@@ -101,11 +101,9 @@
   }
   
   body {
-    @apply text-foreground;
-    background-color: #e8e8e8;
+    @apply text-foreground bg-background;
     font-feature-settings: "rlig" 1, "calt" 1;
-    /* Prevent layout shift when modal opens/closes */
-    overflow-y: scroll;
+    overflow-x: hidden;
   }
   
   /* When modal is open, prevent body scroll but maintain scrollbar space */
@@ -118,7 +116,6 @@
 /* Smooth scroll behavior for the entire page */
 html {
   scroll-behavior: smooth;
-  background-color: #e8e8e8;
 }
 
 /* Enhanced smooth scrolling with custom easing */

@@ -229,7 +229,7 @@ function SearchResultsContent() {
   }
 
   return (
-    <div className="bg-background text-foreground overflow-x-hidden">
+    <div className="bg-background text-foreground">
       {/* Hero Section with Location Header */}
       <section className="relative w-full py-16 md:py-24" style={{ backgroundColor: '#F9FBFA' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12">

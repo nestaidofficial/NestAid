@@ -210,7 +210,7 @@ export default function Component() {
 
 
   return (
-    <div className="bg-background text-foreground overflow-x-hidden">
+    <div className="bg-background text-foreground">
 
 
       <main>
@@ -219,7 +219,7 @@ export default function Component() {
           <div className="container mx-auto px-4 md:px-6 lg:px-12 h-full">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-12 md:py-16">
               {/* Left Section - Text Content */}
-              <div className="flex flex-col justify-center space-y-5" data-aos="fade-right">
+              <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left space-y-5 mt-8 md:mt-0" data-aos="fade-right">
                 
 
                 {/* Headline */}
