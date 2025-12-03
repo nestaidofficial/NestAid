@@ -124,7 +124,7 @@ export default function FindCarePage() {
                 <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
                   WE ARE ALWAYS CLOSE
                 </p>
-              </div>
+          </div>
 
               {/* Headline */}
               <h1 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-[#1A5463] leading-[1.08]`}>
@@ -165,19 +165,19 @@ export default function FindCarePage() {
                     <path d="M60 30C60 20 50 10 40 10C30 10 25 20 25 30C25 40 30 50 40 50C50 50 60 40 60 30Z" fill="#C4B5FD" opacity="0.7"/>
                     <path d="M60 70C60 80 50 90 40 90C30 90 25 80 25 70C25 60 30 50 40 50C50 50 60 60 60 70Z" fill="#DDD6FE" opacity="0.7"/>
                   </svg>
-                </div>
+        </div>
 
                 {/* Main Image */}
                 <div className="relative w-full aspect-square">
                   <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
-                    <Image
-                      src="/images/bg-image/find-care-bg.jpg"
+            <Image 
+              src="/images/bg-image/find-care-bg.jpg" 
                       alt="Caregiver with senior"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
+              fill 
+              className="object-cover"
+              priority
+            />
+          </div>
                 </div>
               </div>
             </div>
@@ -232,7 +232,7 @@ export default function FindCarePage() {
                 {serviceDetails['companion'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
-              </ul>
+                  </ul>
             </Link>
 
             {/* Card 2: Assistance */}
@@ -248,8 +248,8 @@ export default function FindCarePage() {
                 <svg width="60" height="60" viewBox="0 0 60 60" fill="white" opacity="0.9">
                   <path d="M30 10L35 25L50 25L38 35L43 50L30 40L17 50L22 35L10 25L25 25Z"/>
                 </svg>
-              </div>
-              
+            </div>
+
               <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
                 Assistance
               </h3>
@@ -288,7 +288,7 @@ export default function FindCarePage() {
                 {serviceDetails['special-needs'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
-              </ul>
+                  </ul>
             </Link>
 
             {/* Card 4: Caregiving */}
@@ -304,8 +304,8 @@ export default function FindCarePage() {
                 <svg width="60" height="60" viewBox="0 0 60 60" fill="white" opacity="0.9">
                   <path d="M20 20L40 20L40 40L20 40Z" transform="rotate(45 30 30)"/>
                 </svg>
-              </div>
-              
+            </div>
+
               <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4`}>
                 Caregiving
               </h3>
@@ -316,7 +316,7 @@ export default function FindCarePage() {
                 {serviceDetails['live-in'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
-              </ul>
+                  </ul>
             </Link>
 
             {/* Card 5: Guidance */}
@@ -332,8 +332,8 @@ export default function FindCarePage() {
                 <svg width="60" height="60" viewBox="0 0 60 60" fill="white" opacity="0.9">
                   <circle cx="30" cy="30" r="20"/>
                 </svg>
-              </div>
-              
+            </div>
+
               <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4`}>
                 Guidance
               </h3>
@@ -344,7 +344,7 @@ export default function FindCarePage() {
                 {serviceDetails['care-plans'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
-              </ul>
+                  </ul>
             </Link>
 
             {/* Card 6: Therapy */}
@@ -361,8 +361,8 @@ export default function FindCarePage() {
                   <path d="M30 10L35 20L45 25L35 30L30 40L25 30L15 25L25 20Z"/>
                   <circle cx="30" cy="30" r="8"/>
                 </svg>
-              </div>
-              
+            </div>
+
               <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
                 Therapy
               </h3>
@@ -373,7 +373,7 @@ export default function FindCarePage() {
                 {serviceDetails['wellness'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
-              </ul>
+                  </ul>
             </Link>
 
           </div>
