@@ -9,9 +9,20 @@ import { Search } from "lucide-react"
 import Link from "next/link"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { Playfair_Display, Inter } from "next/font/google"
 import { GooglePlacesAutocomplete } from "@/components/google-places-autocomplete"
 import { JobDetailsModal } from "@/components/job-details-modal"
 import { JobApplicationForm } from "@/components/job-application-form"
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
+
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
 
 interface JobPosting {
   id: string;
@@ -189,10 +200,10 @@ function SearchResultsContent() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#FCFDFB] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F9FBFA] flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#275F48] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-[#1A5463] text-lg">Searching for jobs...</p>
+          <div className="w-16 h-16 border-4 border-[#8BB9A8] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className={`${inter.className} text-[#5A6B6A] text-lg`}>Searching for jobs...</p>
         </div>
       </div>
     )
@@ -200,15 +211,15 @@ function SearchResultsContent() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#FCFDFB] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F9FBFA] flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4">
-          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Search className="w-8 h-8 text-red-600" />
+          <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Search className="w-8 h-8 text-red-400" />
           </div>
-          <h2 className="text-xl font-semibold text-[#1A5463] mb-2">Search Error</h2>
-          <p className="text-[#1A5463] mb-6">{error}</p>
+          <h2 className={`${playfair.className} text-2xl font-semibold text-[#2C5F4F] mb-2`}>Search Error</h2>
+          <p className={`${inter.className} text-[#5A6B6A] mb-6`}>{error}</p>
           <Link href="/jobs/senior-care">
-                  <Button className="bg-[#16803C] hover:bg-[#126030] text-white">
+            <Button className="bg-[#5A8B7A] hover:bg-[#4A7B6A] text-white rounded-full px-8 py-3">
               Back to Search
             </Button>
           </Link>
@@ -218,96 +229,79 @@ function SearchResultsContent() {
   }
 
   return (
-    <div className="bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="relative bg-[#FCFDFB] py-16 md:py-24">
+    <div className="bg-background text-foreground overflow-x-hidden">
+      {/* Hero Section with Location Header */}
+      <section className="relative w-full py-16 md:py-24" style={{ backgroundColor: '#F9FBFA' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="relative bg-white rounded-3xl shadow-xl overflow-hidden">
-              {/* Hero Image */}
-              <div className="relative h-80 md:h-80 lg:h-96 w-full">
-                <div 
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                  style={{
-                    backgroundImage: `url('/images/bg-image/find-job-bg.jpg')`
-                  }}
-                >
-                  {/* Overlay for better text readability */}
-                  <div className="absolute inset-0 bg-black/20"></div>
-                </div>
-                
-
-              </div>
+          <div className="max-w-5xl mx-auto text-center" data-aos="fade-up">
+            {/* Tagline */}
+            <div className="flex items-center justify-center gap-2 mb-6 mt-8 md:mt-12">
+              <span className="text-[#8BB9A8] text-lg font-semibold">✺</span>
+              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#5A6B6A]`}>
+                CAREGIVER OPPORTUNITIES
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Content Section Below Hero */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-white to-[#F8FBF8]">
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="text-center max-w-5xl mx-auto">
-            {/* Decorative elements */}
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-1 bg-gradient-to-r from-[#275F48] to-[#4A6741] rounded-full"></div>
-            </div>
-            
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-[#1A5463] mb-8 leading-tight">
-              Find Your Perfect Job
-            </h1>
-            
-            <div className="relative">
-              <p className="text-xl md:text-2xl lg:text-3xl font-serif mb-8 max-w-4xl mx-auto leading-relaxed text-[#1A5463]">
+            {/* Main Headline with Location */}
+            <h1 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#2C5F4F] leading-[1.08] mb-8`}>
               {searchLocation 
-                  ? (
-                    <span className="relative">
-                      Discover rewarding caregiver opportunities near{' '}
-                      <span className="relative inline-block">
-                        <span className="font-bold text-[#275F48] relative z-10">{searchLocation}</span>
-                        <span className="absolute inset-0 bg-[#E8F5E8] transform -rotate-1 rounded-lg -z-10"></span>
-                      </span>
-                    </span>
-                  )
-                  : (
-                    <span className="font-light">
-                      Explore meaningful caregiver positions that match your skills and passion
-                    </span>
-                  )
+                ? (
+                  <>
+                    Discover Rewarding<br />
+                    Caregiver Opportunities
+                  </>
+                )
+                : (
+                  <>
+                    Find Your Perfect<br />
+                    Caregiver Job
+                  </>
+                )
               }
-            </p>
-            </div>
-            
+            </h1>
 
+            {/* Location-based description */}
+            {searchLocation && (
+              <div className="relative mb-8" data-aos="fade-up" data-aos-delay="100">
+                <p className={`${inter.className} text-lg md:text-xl text-[#5A6B6A] leading-relaxed max-w-3xl mx-auto`}>
+                  Showing positions near{' '}
+                  <span className="font-bold text-[#3A6F5E]">{searchLocation}</span>
+                </p>
+              </div>
+            )}
+
+            {/* Decorative divider */}
+            <div className="flex justify-center mb-8">
+              <div className="w-20 h-1 bg-gradient-to-r from-[#B8D4CB] to-[#8BB9A8] rounded-full"></div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Jobs Results Section */}
-      <section className="py-16 md:py-24 bg-[#FAFDFA]">
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#FAFAF8' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           {locationGroups.length > 0 ? (
             <div className="space-y-8">
-
-
               {/* Location Groups */}
               {locationGroups.map((group, groupIndex) => (
                 <div key={`${group.city}-${group.state}`} data-aos="fade-up" data-aos-delay={groupIndex * 100}>
-                  <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                  <div className="bg-white rounded-3xl shadow-md border border-gray-100 overflow-hidden">
                     {/* Location Header */}
-                    <div className="bg-[#4B7682] px-6 py-4">
-                      <div className="flex items-center justify-between">
+                    <div className="bg-gradient-to-r from-[#E8F5F1] to-[#F0F9F6] px-6 md:px-8 py-5 border-b border-gray-100">
+                      <div className="flex items-center justify-between flex-wrap gap-4">
                         <div>
-                          <h3 className="text-xl font-serif font-bold text-white">
-                            <span className="font-bold">{group.city}, {group.state}</span>
+                          <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#2C5F4F]`}>
+                            {group.city}, {group.state}
                           </h3>
                           {group.distance !== undefined && (
-                            <p className="text-white/80 text-sm">
+                            <p className={`${inter.className} text-[#5A8B7A] text-sm mt-1`}>
                               {formatDistance(group.distance)} from your search
                             </p>
                           )}
                         </div>
-                        <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
-                          <span className="text-white font-semibold text-sm">
+                        <div className="bg-white rounded-full px-5 py-2 shadow-sm border border-gray-200">
+                          <span className={`${inter.className} text-[#2C5F4F] font-semibold text-sm`}>
                             {group.jobs.length} position{group.jobs.length === 1 ? '' : 's'}
                           </span>
                         </div>
@@ -315,18 +309,18 @@ function SearchResultsContent() {
                     </div>
                     
                     {/* Jobs List */}
-                    <div className="divide-y divide-gray-100">
+                    <div className="divide-y divide-gray-50">
                       {group.jobs.map((job, jobIndex) => (
-                        <div key={job.id} className="p-6 hover:bg-gray-50 transition-all duration-300">
+                        <div key={job.id} className="p-6 md:p-8 hover:bg-[#F8FAF9] transition-all duration-300">
                           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                             <div className="flex-1">
-                              <h4 className="text-xl font-serif font-bold text-[#1A5463] mb-3">
+                              <h4 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-3`}>
                                 {job.title}
                               </h4>
-                              <p className="text-gray-600 text-base leading-relaxed mb-4 line-clamp-3">
+                              <p className={`${inter.className} text-[#5A6B6A] text-base md:text-lg leading-relaxed mb-4 line-clamp-3`}>
                                 {job.description}
                               </p>
-                              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+                              <div className={`${inter.className} flex flex-wrap items-center gap-6 text-sm text-[#7A8B8A]`}>
                                 <span className="font-medium">{job.zipcode}</span>
                                 <span>Posted {formatDate(job.created_at)}</span>
                               </div>
@@ -336,14 +330,14 @@ function SearchResultsContent() {
                                 onClick={() => handleViewDetails(job)}
                                 variant="outline"
                                 size="lg"
-                                className="border-2 border-[#16803C] text-[#16803C] hover:bg-[#16803C] hover:text-white font-semibold px-6 rounded-full"
+                                className={`${inter.className} border-2 border-[#B8D4CB] text-[#3A6F5E] hover:bg-[#E8F5F1] hover:border-[#8BB9A8] font-semibold px-6 rounded-full transition-all duration-300`}
                               >
                                 View Details
                               </Button>
                               <Button
                                 onClick={() => handleApplyToJob(job)}
                                 size="lg"
-                                className="bg-[#16803C] hover:bg-[#126030] text-white font-semibold px-8 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 rounded-full"
+                                className={`${inter.className} bg-[#5A8B7A] hover:bg-[#4A7B6A] text-white font-semibold px-8 shadow-md hover:shadow-lg transition-all duration-300 rounded-full`}
                               >
                                 Apply Now
                               </Button>
@@ -359,17 +353,17 @@ function SearchResultsContent() {
           ) : (
             <div className="text-center py-16">
               <div className="max-w-md mx-auto">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#275F48] to-[#4A6741] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Search className="w-10 h-10 text-white" />
+                <div className="w-20 h-20 bg-[#E8F5F1] rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-[#B8D4CB]">
+                  <Search className="w-10 h-10 text-[#5A8B7A]" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1A5463] mb-4">No Jobs Found</h3>
-                <p className="text-[#1A5463] text-lg mb-8 leading-relaxed">
+                <h3 className={`${playfair.className} text-3xl font-bold text-[#1A5463] mb-4`}>No Jobs Found</h3>
+                <p className={`${inter.className} text-[#5A6B6A] text-lg mb-8 leading-relaxed`}>
                   We couldn't find any caregiver positions in this area. Try searching for a different location or check back later for new opportunities.
                 </p>
                 <Link href="/jobs/senior-care">
                   <Button 
                     size="lg"
-                    className="bg-[#16803C] hover:bg-[#126030] text-white font-semibold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    className={`${inter.className} bg-[#5A8B7A] hover:bg-[#4A7B6A] text-white font-semibold px-8 py-4 shadow-md hover:shadow-lg transition-all duration-300 rounded-full`}
                   >
                     Search Different Location
                   </Button>
@@ -381,50 +375,58 @@ function SearchResultsContent() {
       </section>
 
       {/* Adjust Search Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#F9FBFA' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-serif  md:text-3xl font-serif font-bold text-[#1A5463] mb-6">
+            {/* Tagline */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="text-[#8BB9A8] text-lg font-semibold">✺</span>
+              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#5A6B6A]`}>
+                REFINE YOUR SEARCH
+              </p>
+            </div>
+
+            <h2 className={`${playfair.className} text-[32px] md:text-[42px] font-bold text-[#2C5F4F] mb-6 leading-tight`}>
               Adjust Your Search
             </h2>
-            <p className="text-lg font-serif text-[#1A5463] mb-8">
-              Type ZIP Code or City & State
+            <p className={`${inter.className} text-base md:text-lg text-[#5A6B6A] mb-8 leading-relaxed`}>
+              Enter ZIP Code or City & State
             </p>
             
             <div className="w-full max-w-2xl space-y-4">
               <div className="flex flex-col sm:flex-row gap-3 items-center">
                 <div className="relative flex-1 w-full sm:max-w-md">
-                <GooglePlacesAutocomplete
+                  <GooglePlacesAutocomplete
                     placeholder="Postal Code or City & State"
-                  onLocationSelect={(locationData) => {
-                    setSearchLocation(locationData.formatted_address);
-                    // Auto-search when location is selected
-                    const searchParams = new URLSearchParams();
-                    if (locationData.zipcode) {
-                      searchParams.append('zipcode', locationData.zipcode);
-                    } else if (locationData.lat && locationData.lng) {
-                      searchParams.append('lat', locationData.lat.toString());
-                      searchParams.append('lng', locationData.lng.toString());
-                    }
-                    searchParams.append('location', locationData.formatted_address);
-                    window.location.href = `/jobs/search-results?${searchParams.toString()}`;
-                  }}
-                />
-              </div>
+                    onLocationSelect={(locationData) => {
+                      setSearchLocation(locationData.formatted_address);
+                      // Auto-search when location is selected
+                      const searchParams = new URLSearchParams();
+                      if (locationData.zipcode) {
+                        searchParams.append('zipcode', locationData.zipcode);
+                      } else if (locationData.lat && locationData.lng) {
+                        searchParams.append('lat', locationData.lat.toString());
+                        searchParams.append('lng', locationData.lng.toString());
+                      }
+                      searchParams.append('location', locationData.formatted_address);
+                      window.location.href = `/jobs/search-results?${searchParams.toString()}`;
+                    }}
+                  />
+                </div>
                 
-              <Button
-                onClick={() => {
-                  if (searchLocation) {
-                    const searchParams = new URLSearchParams();
-                    searchParams.append('location', searchLocation);
-                    window.location.href = `/jobs/search-results?${searchParams.toString()}`;
-                  }
-                }}
+                <Button
+                  onClick={() => {
+                    if (searchLocation) {
+                      const searchParams = new URLSearchParams();
+                      searchParams.append('location', searchLocation);
+                      window.location.href = `/jobs/search-results?${searchParams.toString()}`;
+                    }
+                  }}
                   disabled={!searchLocation}
-                  className="h-14 bg-[#16803C] hover:bg-[#126030] text-white font-semibold text-base px-8 rounded-full transition-all duration-400 shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Search Jobs
-              </Button>
+                  className={`${inter.className} h-14 bg-[#5A8B7A] hover:bg-[#4A7B6A] text-white font-semibold text-base px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
+                >
+                  Search Jobs
+                </Button>
               </div>
             </div>
             
@@ -451,7 +453,7 @@ function SearchResultsContent() {
                 }}
                 variant="outline"
                 size="lg"
-                className="border-2 border-[#16803C] text-[#16803C] hover:bg-[#16803C] hover:text-white font-semibold px-6 py-3 transition-all duration-300"
+                className={`${inter.className} border-2 border-[#B8D4CB] text-[#3A6F5E] hover:bg-[#E8F5F1] hover:border-[#8BB9A8] font-semibold px-6 py-3 rounded-full transition-all duration-300`}
               >
                 Use Current Location
               </Button>
@@ -493,10 +495,10 @@ function SearchResultsContent() {
 export default function SearchResultsPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-[#FCFDFB] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F9FBFA] flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#275F48] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-[#1A5463] text-lg">Loading...</p>
+          <div className="w-16 h-16 border-4 border-[#8BB9A8] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className={`${inter.className} text-[#5A6B6A] text-lg`}>Loading...</p>
         </div>
       </div>
     }>

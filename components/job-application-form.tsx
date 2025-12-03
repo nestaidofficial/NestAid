@@ -6,8 +6,19 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Playfair_Display, Inter } from "next/font/google"
 import { AlertCircle, CheckCircle, User, Mail, Phone, MapPin, Briefcase } from "lucide-react"
 import { submitJobApplication } from "@/app/actions/job-applications"
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
+
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
 
 interface JobApplicationFormProps {
   isOpen: boolean
@@ -104,141 +115,141 @@ export function JobApplicationForm({ isOpen, onClose, onGoBack, job, searchLocat
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose} className="z-[99999]">
-      <DialogContent className="w-full h-full max-w-none max-h-none m-0 p-0 bg-white md:max-w-2xl md:max-h-[90vh] md:m-auto md:rounded-lg overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6">
-        <div className="p-6 md:p-8">
-          <DialogHeader className="mb-6">
-            <DialogTitle className="text-2xl font-serif font-bold text-[#1A5463] flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#16803C] rounded-full flex items-center justify-center">
-                <Briefcase className="w-5 h-5 text-white" />
+      <DialogContent className="w-full h-full max-w-none max-h-none m-0 p-0 bg-[#F9FBFA] md:max-w-2xl md:max-h-[90vh] md:m-auto md:rounded-3xl overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:text-[#5A6B6A]">
+        <div className="p-6 md:p-8 lg:p-10">
+          <DialogHeader className="mb-8">
+            <DialogTitle className={`${playfair.className} text-3xl md:text-4xl font-bold text-[#2C5F4F] flex items-center gap-4`}>
+              <div className="w-12 h-12 bg-[#5A8B7A] rounded-full flex items-center justify-center flex-shrink-0">
+                <Briefcase className="w-6 h-6 text-white" />
               </div>
               Apply for Position
             </DialogTitle>
-            <div className="mt-4 p-4 bg-[#F8FBF8] rounded-lg border border-[#E4F2D4]">
-              <div className="flex items-center gap-2 text-[#1A5463] mb-2">
-                <MapPin className="w-4 h-4 text-[#16803C]" />
-                <span className="font-semibold">{job.title}</span>
-        </div>
-              <p className="text-[#1A5463]/70 text-sm">{job.city}, {job.state}</p>
-        </div>
+            <div className="mt-6 p-5 bg-gradient-to-r from-[#E8F5F1] to-[#F0F9F6] rounded-2xl border border-[#B8D4CB] shadow-sm">
+              <div className="flex items-center gap-3 text-[#2C5F4F] mb-2">
+                <MapPin className="w-5 h-5 text-[#5A8B7A]" />
+                <span className={`${playfair.className} font-bold text-lg`}>{job.title}</span>
+              </div>
+              <p className={`${inter.className} text-[#5A6B6A] text-sm`}>{job.city}, {job.state}</p>
+            </div>
           </DialogHeader>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Submit Result */}
             {submitResult && (
-              <div className={`flex items-center gap-2 p-4 rounded-lg ${
+              <div className={`${inter.className} flex items-center gap-3 p-4 rounded-2xl ${
                 submitResult.success 
-                  ? 'bg-green-50 text-green-700 border border-green-200' 
-                  : 'bg-red-50 text-red-700 border border-red-200'
+                  ? 'bg-[#E8F5F1] text-[#3A6F5E] border border-[#B8D4CB]' 
+                  : 'bg-red-50 text-red-600 border border-red-200'
               }`}>
                 {submitResult.success ? (
-                  <CheckCircle className="w-5 h-5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" />
                 ) : (
-                  <AlertCircle className="w-5 h-5" />
+                  <AlertCircle className="w-5 h-5 flex-shrink-0" />
                 )}
                 <span className="text-sm">{submitResult.message}</span>
-      </div>
+              </div>
             )}
 
             {/* Name Fields */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-                <Label htmlFor="firstName" className="text-[#1A5463] font-medium">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <Label htmlFor="firstName" className={`${inter.className} text-[#2C5F4F] font-semibold mb-2 block`}>
                   First Name *
                 </Label>
-                <div className="relative mt-1">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#1A5463]/50" />
-              <Input
+                <div className="relative mt-2">
+                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#5A8B7A]" />
+                  <Input
                     id="firstName"
                     type="text"
-                value={formData.firstName}
+                    value={formData.firstName}
                     onChange={handleInputChange('firstName')}
-                    className="pl-10 border-2 border-gray-200 focus:border-[#16803C] focus:ring-0 rounded-full"
+                    className={`${inter.className} pl-12 h-12 border-2 border-[#B8D4CB] focus:border-[#5A8B7A] focus:ring-0 rounded-full bg-white text-[#2C5F4F] placeholder:text-[#8BB9A8]`}
                     placeholder="Enter first name"
-                required
-              />
+                    required
+                  />
                 </div>
-            </div>
+              </div>
 
-            <div>
-                <Label htmlFor="lastName" className="text-[#1A5463] font-medium">
+              <div>
+                <Label htmlFor="lastName" className={`${inter.className} text-[#2C5F4F] font-semibold mb-2 block`}>
                   Last Name *
                 </Label>
-                <div className="relative mt-1">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#1A5463]/50" />
-              <Input
+                <div className="relative mt-2">
+                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#5A8B7A]" />
+                  <Input
                     id="lastName"
                     type="text"
-                value={formData.lastName}
+                    value={formData.lastName}
                     onChange={handleInputChange('lastName')}
-                    className="pl-10 border-2 border-gray-200 focus:border-[#16803C] focus:ring-0 rounded-full"
+                    className={`${inter.className} pl-12 h-12 border-2 border-[#B8D4CB] focus:border-[#5A8B7A] focus:ring-0 rounded-full bg-white text-[#2C5F4F] placeholder:text-[#8BB9A8]`}
                     placeholder="Enter last name"
-                required
-              />
+                    required
+                  />
                 </div>
               </div>
             </div>
 
             {/* Mobile Number */}
             <div>
-              <Label htmlFor="mobileNumber" className="text-[#1A5463] font-medium">
+              <Label htmlFor="mobileNumber" className={`${inter.className} text-[#2C5F4F] font-semibold mb-2 block`}>
                 Mobile Number *
               </Label>
-              <div className="relative mt-1">
-                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#1A5463]/50" />
-              <Input
+              <div className="relative mt-2">
+                <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#5A8B7A]" />
+                <Input
                   id="mobileNumber"
-                type="tel"
+                  type="tel"
                   value={formData.mobileNumber}
                   onChange={handleInputChange('mobileNumber')}
-                  className="pl-10 border-2 border-gray-200 focus:border-[#16803C] focus:ring-0 rounded-full"
+                  className={`${inter.className} pl-12 h-12 border-2 border-[#B8D4CB] focus:border-[#5A8B7A] focus:ring-0 rounded-full bg-white text-[#2C5F4F] placeholder:text-[#8BB9A8]`}
                   placeholder="Enter mobile number"
-                required
-              />
+                  required
+                />
               </div>
             </div>
 
             {/* Email */}
             <div>
-              <Label htmlFor="email" className="text-[#1A5463] font-medium">
+              <Label htmlFor="email" className={`${inter.className} text-[#2C5F4F] font-semibold mb-2 block`}>
                 Email Address *
               </Label>
-              <div className="relative mt-1">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#1A5463]/50" />
-              <Input
+              <div className="relative mt-2">
+                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#5A8B7A]" />
+                <Input
                   id="email"
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange('email')}
-                  className="pl-10 border-2 border-gray-200 focus:border-[#16803C] focus:ring-0 rounded-full"
+                  className={`${inter.className} pl-12 h-12 border-2 border-[#B8D4CB] focus:border-[#5A8B7A] focus:ring-0 rounded-full bg-white text-[#2C5F4F] placeholder:text-[#8BB9A8]`}
                   placeholder="Enter email address"
-                required
-              />
+                  required
+                />
+              </div>
             </div>
-          </div>
 
             
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
+            <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-[#B8D4CB]">
               <Button
                 type="button"
                 onClick={handleGoBack}
                 variant="outline"
                 size="lg"
                 disabled={isSubmitting}
-                className="flex-1 border-2 border-[#16803C] text-[#16803C] hover:bg-[#16803C] hover:text-white font-semibold rounded-full py-4 md:py-3 text-lg md:text-base"
+                className={`${inter.className} flex-1 border-2 border-[#B8D4CB] text-[#3A6F5E] hover:bg-[#E8F5F1] hover:border-[#8BB9A8] font-semibold rounded-full py-4 md:py-3 text-base transition-all duration-300 disabled:opacity-50`}
               >
                 Go Back
               </Button>
-            <Button
+              <Button
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="flex-1 bg-[#16803C] hover:bg-[#126030] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 py-4 md:py-3 text-lg md:text-base"
-            >
+                className={`${inter.className} flex-1 bg-[#5A8B7A] hover:bg-[#4A7B6A] text-white font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300 py-4 md:py-3 text-base disabled:opacity-50`}
+              >
                 {isSubmitting ? 'Submitting...' : 'Submit Application'}
-            </Button>
-          </div>
+              </Button>
+            </div>
           </form>
         </div>
       </DialogContent>
