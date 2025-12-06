@@ -215,24 +215,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="bg-[#F5F5EC] min-h-screen">
-      {/* Breadcrumb Navigation */}
-      <div className="border-b border-[#E6DED0]">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16 py-4">
-          <nav className={`${inter.className} flex items-center gap-2 text-sm text-[#1A5463]`}>
-            <Link href="/" className="hover:text-[#8B5CF6] transition-colors">
-              HOME
-            </Link>
-            <span>/</span>
-            <Link href="/blog" className="hover:text-[#8B5CF6] transition-colors">
-              BLOG
-            </Link>
-            <span>/</span>
-            <span className="text-[#8B5CF6] font-medium">BLOG DETAILS</span>
-          </nav>
-        </div>
-      </div>
-
-      <main className="container mx-auto px-6 md:px-12 lg:px-16 py-12 md:py-16">
+      <main className="container mx-auto px-6 md:px-12 lg:px-16 pt-24 md:pt-32 pb-12 md:pb-16">
         {/* Article Header */}
         <div className="max-w-4xl mx-auto text-center mb-10">
           <h1 className={`${playfair.className} text-[36px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.1] mb-6`}>
@@ -336,5 +319,6 @@ export async function generateStaticParams() {
     slug: slug,
   }))
 }
+
 
 

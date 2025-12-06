@@ -1,0 +1,49 @@
+# NestAid Cursor Rules
+
+## Font Families
+
+### Titles/Headings
+- All titles, headings (h1, h2, h3, etc.), and heading-level text should use:
+  - font-family: 'Playfair Display', 'Playfair Display Fallback';
+  - Import from: `next/font/google` using `Playfair_Display`
+  - Apply using: `${playfair.className}` or inline style
+
+### Paragraphs/Body Text
+- All paragraphs, body text, and non-heading text should use:
+  - font-family: 'Inter', 'Inter Fallback';
+  - Import from: `next/font/google` using `Inter`
+  - Apply using: `${inter.className}` or inline style
+
+## Code Style Guidelines
+
+### Typography Usage
+```typescript
+// For headings/titles
+<h1 className={`${playfair.className} ...`}>Title Text</h1>
+
+// For paragraphs/body text
+<p className={`${inter.className} ...`}>Paragraph text</p>
+```
+
+### Font Imports
+Always import fonts at the top of component files:
+```typescript
+import { Playfair_Display, Inter } from "next/font/google"
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
+
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
+```
+
+## Best Practices
+- Use Playfair Display for all heading elements (h1-h6)
+- Use Inter for all body text, paragraphs, links, and general content
+- Maintain consistency across all pages and components
+- Avoid using system fonts or other font families unless specifically required
+

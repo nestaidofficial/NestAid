@@ -49,12 +49,6 @@ export default function HelpCenterPage() {
       color: "#DBD9FE"
     },
     {
-      icon: FileText,
-      title: "Family Caregiver Program",
-      description: "Get paid to care for family members through Medicaid",
-      color: "#F0F0F0"
-    },
-    {
       icon: MessageCircle,
       title: "Support & Communication",
       description: "How to get help and stay connected with your care team",
@@ -68,7 +62,7 @@ export default function HelpCenterPage() {
       questions: [
         {
           question: "What makes NestAid different from other home care services?",
-          answer: "NestAid combines personalized care with comprehensive family support. We don't just provide caregivers—we offer complete care solutions including family caregiver programs, Medicaid navigation, and ongoing support throughout your care journey."
+          answer: "NestAid combines personalized care with comprehensive family support. We don't just provide caregivers—we offer complete care solutions including Medicaid navigation and ongoing support throughout your care journey."
         },
         {
           question: "How do I get started with NestAid?",
@@ -85,11 +79,11 @@ export default function HelpCenterPage() {
       questions: [
         {
           question: "What types of care do you provide?",
-          answer: "We offer comprehensive non-medical home care including companion care, personal care assistance, specialized care for disabilities, live-in care, and family caregiver support programs."
+          answer: "We offer comprehensive non-medical home care including companion care, personal care assistance, specialized care for disabilities, and live-in care."
         },
         {
           question: "How quickly can care services begin?",
-          answer: "For immediate care needs, we can often arrange services within 24-48 hours. For specialized programs like family caregiver compensation, the process typically takes 30-60 days due to Medicaid approval requirements."
+          answer: "For immediate care needs, we can often arrange services within 24-48 hours."
         },
         {
           question: "Can I choose my caregiver?",
@@ -98,27 +92,6 @@ export default function HelpCenterPage() {
         {
           question: "What if I'm not satisfied with my caregiver?",
           answer: "If you're not completely satisfied, please contact our support team immediately. We'll work with you to resolve any issues and help you find a better match if needed. Your satisfaction is our priority."
-        },
-      ]
-    },
-    {
-      category: "Family Caregiver Program",
-      questions: [
-        {
-          question: "Can family members get paid to provide care?",
-          answer: "Yes! Through our family caregiver program, eligible family members can receive compensation up to $2,900/month for providing care to their loved ones, funded through Medicaid programs."
-        },
-        {
-          question: "Who is eligible for the family caregiver program?",
-          answer: "Eligibility depends on your state's Medicaid rules. Generally, the care recipient must be enrolled in Medicaid and require assistance with daily activities, while the caregiver must be 18+, legally able to work in the US, and capable of providing necessary care."
-        },
-        {
-          question: "How long does the family caregiver enrollment process take?",
-          answer: "The process typically takes 30-60 days from application to receiving your first payment. This includes eligibility verification, paperwork processing, and Medicaid approval."
-        },
-        {
-          question: "What support do family caregivers receive?",
-          answer: "Family caregivers receive dedicated care manager support, free training modules, ongoing guidance, emotional support resources, and help with all paperwork and compliance requirements."
         },
       ]
     },
@@ -144,7 +117,7 @@ export default function HelpCenterPage() {
       questions: [
         {
           question: "Do you help with insurance and Medicaid?",
-          answer: "Yes! We specialize in helping families navigate Medicaid-funded care programs, including family caregiver compensation programs. Our team assists with applications, paperwork, and compliance requirements."
+          answer: "Yes! We specialize in helping families navigate Medicaid-funded care programs. Our team assists with applications, paperwork, and compliance requirements."
         },
         {
           question: "How much does care cost?",

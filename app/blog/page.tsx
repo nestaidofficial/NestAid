@@ -39,7 +39,7 @@ const blogArticles = [
 export default function BlogPage() {
   return (
     <div className="bg-[#F5F5EC] min-h-screen">
-      <main className="container mx-auto px-6 md:px-12 lg:px-16 py-16 md:py-24">
+      <main className="container mx-auto px-6 md:px-12 lg:px-16 pt-24 md:pt-32 pb-16 md:pb-24">
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
@@ -83,15 +83,6 @@ export default function BlogPage() {
               </div>
             </Link>
           ))}
-        </div>
-
-        <div className="mt-16">
-          <Link
-            href="/"
-            className={`${inter.className} inline-flex items-center justify-center rounded-full bg-white text-[#1A5463] border border-[#E6DED0] px-6 py-3 font-medium shadow-sm hover:shadow-md transition-all duration-200`}
-          >
-            Back to Home
-          </Link>
         </div>
       </main>
     </div>

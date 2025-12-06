@@ -1,125 +1,132 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import { Facebook, Twitter, Instagram, Linkedin, Building2, Phone, Mail, Globe } from "lucide-react"
+import { Playfair_Display } from "next/font/google"
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="text-white" style={{ backgroundColor: "#1A5463" }}>
+      <div className="container mx-auto px-4 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
+          {/* Company Information */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <Image src="/logo.png" alt="Maya Care Logo" width={120} height={32} className="brightness-0 invert" />
+              <div className="w-10 h-10 bg-white rounded flex items-center justify-center">
+                <span className="text-[#1A5463] font-bold text-xl">N</span>
+              </div>
+              <span className={`${playfair.className} text-xl font-bold`}>NestAid</span>
             </Link>
-            <p className="text-sm text-primary-foreground/80">
-              Find trusted care, for peace of mind. Connecting families with qualified caregivers across the country.
+            <p className="text-base text-white/90 leading-relaxed">
+              At NestAid, we understand the importance of maintaining open communication.
             </p>
-            <div className="flex space-x-4">
-              <Link href="#" className="text-primary-foreground/60 hover:text-primary-foreground">
-                <Facebook className="h-5 w-5" />
+            <div className="space-y-2 text-base">
+              <div className="flex items-center gap-2 text-white/90">
+                <Building2 className="h-5 w-5" />
+                <span>8 Franklin St Somerville 02145</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/90">
+                <Phone className="h-5 w-5" />
+                <span>4129530622</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/90">
+                <Mail className="h-5 w-5" />
+                <span>information@nestaid.com</span>
+              </div>
+            </div>
+            <div className="flex space-x-3 pt-2">
+              <Link href="#" className="w-9 h-9 rounded-full border-2 border-white/30 bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <Facebook className="h-4 w-4" />
               </Link>
-              <Link href="#" className="text-primary-foreground/60 hover:text-primary-foreground">
-                <Twitter className="h-5 w-5" />
+              <Link href="#" className="w-9 h-9 rounded-full border-2 border-white/30 bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <Instagram className="h-4 w-4" />
               </Link>
-              <Link href="#" className="text-primary-foreground/60 hover:text-primary-foreground">
-                <Instagram className="h-5 w-5" />
+              <Link href="#" className="w-9 h-9 rounded-full border-2 border-white/30 bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <Twitter className="h-4 w-4" />
               </Link>
-              <Link href="#" className="text-primary-foreground/60 hover:text-primary-foreground">
-                <Linkedin className="h-5 w-5" />
+              <Link href="#" className="w-9 h-9 rounded-full border-2 border-white/30 bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <Globe className="h-4 w-4" />
               </Link>
             </div>
           </div>
 
-          {/* Services */}
+          {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Services</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className={`${playfair.className} text-lg font-bold text-white`}>Quick Links</h3>
+            <ul className="space-y-2 text-base">
               <li>
-                <Link href="/care/in-home-care" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  In-home care
+                <Link href="/" className="text-white/90 hover:text-white transition-colors">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="/care/companion-care" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  Companion care
+                <Link href="/about-us" className="text-white/90 hover:text-white transition-colors">
+                  About Us
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/care/special-needs-care"
-                  className="text-primary-foreground/80 hover:text-primary-foreground"
-                >
-                  Special needs care
+                <Link href="#" className="text-white/90 hover:text-white transition-colors">
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="text-white/90 hover:text-white transition-colors">
+                  Events
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Useful Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Company</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className={`${playfair.className} text-lg font-bold text-white`}>Useful links</h3>
+            <ul className="space-y-2 text-base">
               <li>
-                <Link href="/about-us" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  About us
+                <Link href="/find-care" className="text-white/90 hover:text-white transition-colors">
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  Careers
+                <Link href="#" className="text-white/90 hover:text-white transition-colors">
+                  Living Options
                 </Link>
               </li>
               <li>
-                <Link href="/safety-center" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  Safety center
+                <Link href="#" className="text-white/90 hover:text-white transition-colors">
+                  Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/become-a-partner" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  Become a partner
+                <Link href="/blog" className="text-white/90 hover:text-white transition-colors">
+                  Blog
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Open Hours & CTA */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Support</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/help-center" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  Help center
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/corporate-benefits" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  Corporate benefits
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground">
-                  Contact us
-                </Link>
-              </li>
-            </ul>
+            <h3 className={`${playfair.className} text-lg font-bold text-white`}>Open Hours</h3>
+            <p className="text-base text-white/90">9 AM - 8 PM, Monday - Sunday</p>
+            <p className="text-base text-white/90 leading-relaxed">
+              Contact us today to learn more about our senior care services and how we can assist you and your loved ones.
+            </p>
+            <Link
+              href="tel:4129530622"
+              className="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full transition-colors"
+            >
+              Call Us Today
+            </Link>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-primary-foreground/60">© 2024 Maya Care. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="#" className="text-sm text-primary-foreground/60 hover:text-primary-foreground">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-sm text-primary-foreground/60 hover:text-primary-foreground">
-              Terms of Service
-            </Link>
-            <Link href="#" className="text-sm text-primary-foreground/60 hover:text-primary-foreground">
-              Cookie Policy
-            </Link>
-          </div>
+        {/* Bottom Section */}
+        <div className="border-t border-white/20 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-base text-white/70">© NestAid. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

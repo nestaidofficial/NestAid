@@ -156,16 +156,6 @@ export default function FindCarePage() {
             {/* Right Section - Image */}
             <div className="relative flex items-center justify-center md:justify-end" data-aos="fade-left">
               <div className="relative w-full max-w-md md:max-w-lg">
-                {/* Decorative Purple Butterfly/Flower Element */}
-                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-10">
-                  <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M40 50C40 35 25 25 15 25C5 25 0 35 0 45C0 55 5 65 15 65C25 65 40 55 40 50Z" fill="#8B5CF6" opacity="0.8"/>
-                    <path d="M80 50C80 35 95 25 105 25C115 25 120 35 120 45C120 55 115 65 105 65C95 65 80 55 80 50Z" fill="#A78BFA" opacity="0.8"/>
-                    <path d="M60 30C60 20 50 10 40 10C30 10 25 20 25 30C25 40 30 50 40 50C50 50 60 40 60 30Z" fill="#C4B5FD" opacity="0.7"/>
-                    <path d="M60 70C60 80 50 90 40 90C30 90 25 80 25 70C25 60 30 50 40 50C50 50 60 60 60 70Z" fill="#DDD6FE" opacity="0.7"/>
-                  </svg>
-        </div>
-
                 {/* Main Image */}
                 <div className="relative w-full aspect-square">
                   <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
@@ -408,93 +398,6 @@ export default function FindCarePage() {
           </div>
         </div>
       </section>
-
-      <footer className="bg-[#275F49] text-background">
-        <div className="container mx-auto px-4 pt-16 pb-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-bold mb-4">Maya Care</h3>
-              <ul className="space-y-2 text-background/70">
-                <li>
-                  <Link href="/about-us" className="hover:text-white">
-                    About us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/careers" className="hover:text-white">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white">
-                    Press
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">Resources</h3>
-              <ul className="space-y-2 text-background/70">
-                <li>
-                  <Link href="/safety-center" className="hover:text-white">
-                    Safety Center
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/help-center" className="hover:text-white">
-                    Help Center
-                  </Link>
-                </li>
-
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">For Business</h3>
-              <ul className="space-y-2 text-background/70">
-                <li>
-                  <Link href="/corporate-benefits" className="hover:text-white">
-                    Corporate Benefits
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/become-a-partner" className="hover:text-white">
-                    Become a Partner
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div className="flex flex-col space-y-4">
-                <a
-                  href="#"
-                  className="bg-background text-foreground rounded-lg p-2 flex items-center justify-center font-semibold"
-                >
-                  <AppStoreIcon className="w-6 h-6 mr-2" />
-                  Download on the App Store
-                </a>
-                <a
-                  href="#"
-                  className="bg-background text-foreground rounded-lg p-2 flex items-center justify-center font-semibold"
-                >
-                  <GooglePlayIcon className="w-6 h-6 mr-2" />
-                  Get it on Google Play
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-background/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-background/50">
-            <p>© 2025 Maya Care, Inc. All rights reserved.</p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
-              <Link href="#" className="hover:text-white">
-                Terms of use
-              </Link>
-              <Link href="#" className="hover:text-white">
-                Privacy Policy
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
 
       {/* Get Started Modal */}
       <GetStartedModal

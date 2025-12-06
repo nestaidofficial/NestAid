@@ -3,8 +3,9 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 import { ExtensionErrorSuppressor } from "@/components/extension-error-suppressor"
-import { MobileGetStartedFab } from "@/components/mobile-get-started-fab"
+import { ChatWidget } from "@/components/chat-widget"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -26,7 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="min-h-screen bg-background">
           <Header />
           {children}
-          <MobileGetStartedFab />
+          <Footer />
+          <ChatWidget />
         </div>
       </body>
     </html>

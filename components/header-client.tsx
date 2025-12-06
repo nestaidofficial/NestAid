@@ -94,9 +94,6 @@ export function HeaderClient() {
                   <Link href="/blog" className="text-base font-medium px-4 py-2 rounded-full transition-all duration-200 hover:bg-gray-100 text-gray-700 hover:text-gray-900">
                     Stories
                   </Link>
-                  <Link href="/family-caregivers" className="text-base font-medium px-4 py-2 rounded-full transition-all duration-200 hover:bg-gray-100 text-gray-700 hover:text-gray-900">
-                    Family Caregivers
-                  </Link>
                   <NavigationMenu>
                     <NavigationMenuList>
                       <NavigationMenuItem>
@@ -157,7 +154,6 @@ export function HeaderClient() {
                       <Link href="/find-care" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Find care</Link>
                       <Link href="/jobs/senior-care" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Find jobs</Link>
                       <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Stories</Link>
-                      <Link href="/family-caregivers" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Family Caregivers</Link>
                       <button onClick={() => setMobileResourcesOpen(prev => !prev)} className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">
                         Resources
                         <ChevronDown className={`h-4 w-4 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
