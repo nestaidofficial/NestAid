@@ -74,8 +74,15 @@ export function HeaderClient() {
 
       <div className="container mx-auto flex items-center justify-between px-4" style={{ height: '4rem', minHeight: '4rem', maxHeight: '4rem' }}>
         <Link href="/" className="flex items-center">
-          <div className="bg-green-700 rounded-full px-6 py-3 shadow-sm">
-            <span className="text-white font-serif text-xl font-medium">NestAid</span>
+          <div className="rounded-full px-4 py-2  flex items-center" style={{ backgroundColor: '#FCF5EB' }}>
+            <Image
+              src="/logo.png"
+              alt="NestAid Logo"
+              width={120}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </div>
         </Link>
         

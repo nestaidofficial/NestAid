@@ -220,18 +220,23 @@ export default function Component() {
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-12 md:py-16">
               {/* Left Section - Text Content */}
               <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left space-y-5 mt-8 md:mt-0" data-aos="fade-right">
-                
+                {/* Tagline */}
+                <div className="flex items-center gap-2 mt-0 md:mt-4">
+                  <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
+                  <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
+                    ALWAYS THERE FOR YOU
+                  </p>
+                </div>
 
                 {/* Headline */}
                 <h1 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-[#1A5463] leading-[1.08]`}>
-                  Exceptional Senior<br />
-                  Care, Thoughtfully<br />
-                  Tailored Comfort
+                  Care that is thoughtfully<br />
+                  tailored
                 </h1>
 
                 {/* Body Text */}
                 <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-xl`}>
-                  At NestAid, we provide compassionate adult daycare services that go beyond routine care. With personalized attention, meaningful activities, and a community-driven environment, we help your loved ones live with joy.
+                  At NestAid, we provide warm, dependable, non-medical home care for seniors and adults across Massachusetts—care that feels less like a service and more like a trusted helping hand.
                 </p>
 
                 {/* CTA Button */}
@@ -240,7 +245,7 @@ export default function Component() {
                     onClick={() => setGetStartedModalOpen(true)}
                     className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
                   >
-                    <span>Join Us</span>
+                    <span>Join Now</span>
                     <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#4E342E] transition-colors">
                       <svg className="w-5 h-5 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
@@ -257,7 +262,7 @@ export default function Component() {
                   <div className="relative w-full aspect-square">
                     <div className="relative w-full h-full rounded-full overflow-hidden">
                       <Image
-                        src="/images/group-photoroom.png"
+                        src="/images/landing_page/herosection.jpg"
                         alt="Caregiver and senior"
                         fill
                         className="object-cover"
@@ -281,7 +286,7 @@ export default function Component() {
                 <div className="flex items-center gap-2 mb-2" data-aos="fade-right" data-aos-delay="0">
                   <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
                   <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                    WE ARE ALWAYS CLOSE
+                    Care that grows with you
                   </p>
                 </div>
 
@@ -295,21 +300,13 @@ export default function Component() {
                   Choosing NestAid means placing your loved ones in the hands of a deeply dedicated, compassionate, and experienced team—committed to providing exceptional care.
                 </p>
 
-                {/* Headshots */}
+                {/* Home Icon with Text */}
                 <div className="flex items-center gap-3 pt-2" data-aos="fade-right" data-aos-delay="300">
-                  <div className="flex -space-x-2">
-                    {["#8B5CF6", "#87CEEB", "#87CEEB", "#F4D7B5", "#D4AF37"].map((color, idx) => (
-                      <div
-                        key={`headshot-${idx}`}
-                        className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center overflow-hidden p-0.5 shadow-sm"
-                        style={{ backgroundColor: color }}
-                      >
-                        <Image src="/placeholder-user.jpg" alt="Family" width={44} height={44} className="rounded-full object-cover" />
-                      </div>
-                    ))}
+                  <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center shadow-sm bg-[#8B5CF6]">
+                    <Home className="w-5 h-5 text-white" />
                   </div>
                   <p className={`${inter.className} text-sm text-[#1A5463] font-medium`}>
-                    Over 2,000 Satisfied Families
+                    Serving Families Across Massachusetts
                   </p>
                 </div>
               </div>
@@ -319,34 +316,34 @@ export default function Component() {
                 <div className="grid grid-cols-2 gap-5">
                   {/* Top Left - Purple */}
                   <div className="bg-[#8B5CF6] rounded-2xl p-6 md:p-8 text-white shadow-lg" data-aos="fade-left" data-aos-delay="0">
-                    <div className={`${playfair.className} text-[40px] md:text-[48px] leading-none mb-4`}>92+</div>
+                    <div className={`${playfair.className} text-[40px] md:text-[48px] leading-none mb-4`}>100%</div>
                     <p className={`${inter.className} text-[15px] leading-relaxed`}>
-                      Trusted Nursing Professionals for Your Loved Ones
+                    Carefully vetted caregivers you can trust for safe, reliable support.
                     </p>
                   </div>
 
                   {/* Top Right - Gold */}
-                  <div className="bg-[#D4AF37] rounded-2xl p-6 md:p-8 text-[#1A5463] relative overflow-hidden shadow-lg" data-aos="fade-left" data-aos-delay="100">
+                  <div className="bg-[#e2c876] rounded-2xl p-6 md:p-8 text-[#1A5463] relative overflow-hidden shadow-lg" data-aos="fade-left" data-aos-delay="100">
                     <div className="absolute -top-6 -right-6 w-24 h-24 border-[6px] border-[#1A5463] rounded-full opacity-30"></div>
-                    <div className={`${playfair.className} text-[40px] md:text-[48px] leading-none mb-4`}>2K+</div>
+                    <div className={`${playfair.className} text-[40px] md:text-[48px] leading-none mb-4`}> 24hr</div>
                     <p className={`${inter.className} text-[15px] leading-relaxed`}>
-                      Proudly Serving 2,000+ Satisfied Patients with Compassionate Support
+                    Quickly matched care, tailored to your loved one’s needs.
                     </p>
                   </div>
 
                   {/* Bottom Left - Light Blue */}
                   <div className="bg-[#87CEEB] rounded-2xl p-6 md:p-8 text-[#1A5463] shadow-lg" data-aos="fade-left" data-aos-delay="200">
-                    <div className={`${playfair.className} text-[40px] md:text-[48px] leading-none mb-4`}>120+</div>
+                    <div className={`${playfair.className} text-[40px] md:text-[48px] leading-none mb-4`}>24/7</div>
                     <p className={`${inter.className} text-[15px] leading-relaxed`}>
-                      Building a Strong Community of Caring Volunteers
+                    Support available anytime, day or night.
                     </p>
                   </div>
 
                   {/* Bottom Right - Dark Green */}
                   <div className="bg-[#1A5463] rounded-2xl p-6 md:p-8 text-white shadow-lg" data-aos="fade-left" data-aos-delay="300">
-                    <div className={`${playfair.className} text-[40px] md:text-[48px] leading-none mb-4`}>300+</div>
+                    <div className={`${playfair.className} text-[40px] md:text-[48px] leading-none mb-4`}>1:1 </div>
                     <p className={`${inter.className} text-[15px] leading-relaxed`}>
-                      Trusted by Hundreds of Families and Clients Across the Region
+                    Focused, personalized care from a dedicated caregiver.
                     </p>
                   </div>
                 </div>
@@ -375,14 +372,14 @@ export default function Component() {
           
 
           {/* Service Cards - New Layout */}
-          <div className="space-y-0">
+          <div className="space-y-0 rounded-[25px] overflow-hidden">
             {/* Service 1: Compassionate Care - Image left, Text right */}
             <div className="flex flex-col lg:flex-row items-stretch min-h-[500px] lg:min-h-[600px]">
               {/* Image Column */}
               <div className="w-full lg:w-1/2 relative bg-[#FCF5EB] flex items-center justify-center p-8 lg:p-12" data-aos="fade-right">
                 <div className="relative rounded-2xl md:rounded-3xl lg:rounded-[2rem] shadow-2xl overflow-hidden w-full max-w-lg h-[300px] md:h-[400px] lg:h-full lg:max-h-[600px]">
                   <Image 
-                    src="/images/adult-care.jpg" 
+                    src="/images/landing_page/compassionate_care.jpg" 
                     alt="Compassionate Care" 
                     fill
                     className="object-cover" 
@@ -426,7 +423,7 @@ export default function Component() {
               <div className="w-full lg:w-1/2 relative bg-[#FCF5EB] flex items-center justify-center p-8 lg:p-12" data-aos="fade-left">
                 <div className="relative rounded-2xl md:rounded-3xl lg:rounded-[2rem] shadow-2xl overflow-hidden w-full max-w-lg h-[300px] md:h-[400px] lg:h-full lg:max-h-[600px]">
                   <Image 
-                    src="/images/group.png" 
+                    src="/images/landing_page/image1.jpg" 
                     alt="Professional Team" 
                     fill
                     className="object-cover" 
@@ -470,7 +467,7 @@ export default function Component() {
               <div className="w-full lg:w-1/2 relative bg-[#FCF5EB] flex items-center justify-center p-8 lg:p-12" data-aos="fade-right">
                 <div className="relative rounded-2xl md:rounded-3xl lg:rounded-[2rem] shadow-2xl overflow-hidden w-full max-w-lg h-[300px] md:h-[400px] lg:h-full lg:max-h-[600px]">
                   <Image 
-                    src="/images/senior-care.jpg" 
+                    src="/images/landing_page/image2.jpg" 
                     alt="Quality Service" 
                     fill
                     className="object-cover" 

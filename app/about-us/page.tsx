@@ -219,18 +219,18 @@ export default function AboutUsPage() {
             <div className="relative" data-aos="fade-right">
               {/* Pink Container with Triangle Pattern */}
               <div className="relative rounded-2xl overflow-visible" style={{ backgroundColor: '#F2D4F7', padding: '40px' }}>
-                {/* Triangle Pattern Background */}
+            {/* Triangle Pattern Background */}
                 <div className="absolute inset-0 overflow-hidden rounded-2xl">
-                  <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
+              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
                       <pattern id="trianglePattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
                         <polygon points="25,8 21,16 29,16" fill="#2A5F5A" opacity="0.5"/>
-                      </pattern>
-                    </defs>
+                  </pattern>
+                </defs>
                     <rect width="100%" height="100%" fill="url(#trianglePattern)"/>
-                  </svg>
-                </div>
-                
+              </svg>
+            </div>
+            
                 {/* Circular Image Container */}
                 <div className="relative w-full aspect-square max-w-[420px] mx-auto">
                   {/* White arc decoration at top right */}
@@ -238,26 +238,26 @@ export default function AboutUsPage() {
                   
                   {/* Main circular image */}
                   <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl z-10">
-                    <Image
-                      src="/images/senior-care.jpg"
-                      alt="Caregiver assisting senior"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-                
+                  <Image
+                    src="/images/senior-care.jpg"
+                    alt="Caregiver assisting senior"
+                    fill
+                    className="object-cover"
+                  />
+              </div>
+            </div>
+            
                 {/* Decorative Cross at bottom left */}
                 <div className="absolute bottom-6 left-6 z-20">
                   <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="22" y="0" width="16" height="60" rx="8" fill="#2A5F5A"/>
                     <rect x="0" y="22" width="60" height="16" rx="8" fill="#2A5F5A"/>
-                  </svg>
+              </svg>
                 </div>
-              </div>
             </div>
+          </div>
 
-            {/* Right Side - Content */}
+          {/* Right Side - Content */}
             <div className="py-8 md:py-12">
               {/* Tagline */}
               <div className="flex items-center gap-2 mb-6" data-aos="fade-up">
@@ -370,15 +370,15 @@ export default function AboutUsPage() {
                   {/* Info Block */}
                   <div className="p-5" style={{ backgroundColor: expert.color }}>
                     <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
+                  <div className="flex-1">
                         <h3 className={`${inter.className} text-lg md:text-xl font-bold text-[#1A5463] mb-1`}>
                           {expert.name}
                         </h3>
                         <p className={`${inter.className} text-sm md:text-base text-[#1A5463]/80`}>
                           {expert.title}
-                        </p>
-                      </div>
-                      
+              </p>
+            </div>
+
                       {/* Social Icons */}
                       <div className="flex items-center gap-3 flex-shrink-0">
                         <a 
@@ -405,7 +405,7 @@ export default function AboutUsPage() {
                         </a>
                       </div>
                     </div>
-                  </div>
+            </div>
                 </div>
               ))}
             </div>
@@ -417,10 +417,10 @@ export default function AboutUsPage() {
       <section className="relative w-full h-[600px] md:h-[700px] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <Image
+                      <Image
             src="/images/senior-care.jpg"
             alt="Senior care support"
-            fill
+                        fill
             className="object-cover"
             priority
           />

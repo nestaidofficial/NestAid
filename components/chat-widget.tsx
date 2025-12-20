@@ -209,7 +209,13 @@ export function ChatWidget() {
                 <div className="flex items-center justify-between mb-8">
                   {/* Logo */}
                   <div className="flex items-center bg-white px-4 py-1.5 rounded-full shadow-md">
-                    <h3 className="text-[15px] font-bold tracking-tight lowercase" style={{ color: "#059669" }}>nestaid</h3>
+                    <Image
+                      src="/logo.png"
+                      alt="NestAid Logo"
+                      width={80}
+                      height={30}
+                      className="h-6 w-auto"
+                    />
                   </div>
                   
                   {/* Team Avatars and Close Button */}

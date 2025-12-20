@@ -47,3 +47,5 @@ const inter = Inter({
 - Maintain consistency across all pages and components
 - Avoid using system fonts or other font families unless specifically required
 
+
+
