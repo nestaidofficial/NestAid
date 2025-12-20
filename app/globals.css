@@ -159,6 +159,20 @@
   }
 }
 
+/* Floating animation for service cards */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
 /* Only apply smooth scroll for anchor links, not general scrolling */
 html:focus-within {
   scroll-behavior: smooth;
