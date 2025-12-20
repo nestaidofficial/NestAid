@@ -132,7 +132,7 @@ export default function FindJobsPage() {
               <div className="relative w-[280px] h-[380px] -rotate-3" style={{ transform: 'rotate(-3deg) translateZ(0)', backfaceVisibility: 'hidden' }}>
                 <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/adult-care.jpg"
+                    src="/images/findjobs/image5.jpg"
                     alt="Senior with flowers"
                     fill
                     className="object-cover"
@@ -203,7 +203,7 @@ export default function FindJobsPage() {
               <div className="relative w-[280px] h-[380px] rotate-3" style={{ transform: 'rotate(3deg) translateZ(0)', backfaceVisibility: 'hidden' }}>
                 <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/senior-care.jpg"
+                    src="/images/findjobs/image3.jpg"
                     alt="Elderly couple"
                     fill
                     className="object-cover"
@@ -223,7 +223,7 @@ export default function FindJobsPage() {
           <div className="relative w-[140px] h-[180px]" style={{ transform: 'rotate(-3deg) translateZ(0)', backfaceVisibility: 'hidden' }}>
             <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/adult-care.jpg"
+                src="/images/findjobs/image5.jpg"
                 alt="Senior with flowers"
                 fill
                 className="object-cover"
@@ -233,7 +233,7 @@ export default function FindJobsPage() {
           <div className="relative w-[140px] h-[180px]" style={{ transform: 'rotate(3deg) translateZ(0)', backfaceVisibility: 'hidden' }}>
             <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/senior-care.jpg"
+                src="/images/findjobs/image3.jpg"
                 alt="Elderly couple"
                 fill
                 className="object-cover"

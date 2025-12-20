@@ -272,46 +272,46 @@ export default function Component() {
                     
                     {/* Floating Service Cards */}
                     {/* Top Left - Companionship */}
-                    <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float" data-aos="fade-up" data-aos-delay="200">
-                      <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#E8D4F0' }}>
-                        <Heart className="w-6 h-6 text-[#8B5CF6]" />
+                    <div className="absolute top-8 -left-4 md:top-12 md:-left-6 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="200">
+                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#E8D4F0' }}>
+                        <Heart className="w-4 h-4 md:w-5 md:h-5 text-[#8B5CF6]" />
                       </div>
                       <div>
-                        <p className={`${inter.className} text-xs text-gray-500 uppercase tracking-wider`}>Companionship</p>
-                        <p className={`${inter.className} text-lg font-bold text-[#1A5463]`}>24/7 Care</p>
+                        <p className={`${inter.className} text-[10px] text-gray-500 uppercase tracking-wider`}>Companionship</p>
+                        <p className={`${inter.className} text-sm md:text-base font-bold text-[#1A5463]`}>24/7 Care</p>
                       </div>
                     </div>
                     
                     {/* Top Right - Meal Preparation */}
-                    <div className="absolute -top-2 -right-4 md:-right-8 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float" data-aos="fade-up" data-aos-delay="300" style={{ animationDelay: '0.5s' }}>
-                      <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F2D4F7' }}>
-                        <Utensils className="w-6 h-6 text-[#D896E5]" />
+                    <div className="absolute top-12 -right-4 md:top-16 md:-right-8 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="300" style={{ animationDelay: '0.5s' }}>
+                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F2D4F7' }}>
+                        <Utensils className="w-4 h-4 md:w-5 md:h-5 text-[#D896E5]" />
                       </div>
                       <div>
-                        <p className={`${inter.className} text-xs text-gray-500 uppercase tracking-wider`}>Meal Prep</p>
-                        <p className={`${inter.className} text-lg font-bold text-[#1A5463]`}>Daily</p>
+                        <p className={`${inter.className} text-[10px] text-gray-500 uppercase tracking-wider`}>Meal Prep</p>
+                        <p className={`${inter.className} text-sm md:text-base font-bold text-[#1A5463]`}>Daily</p>
                       </div>
                     </div>
                     
                     {/* Bottom Left - House Helper */}
-                    <div className="absolute -bottom-4 -left-6 md:-bottom-8 md:-left-8 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float" data-aos="fade-up" data-aos-delay="400" style={{ animationDelay: '1s' }}>
-                      <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#A8D5E2' }}>
-                        <Home className="w-6 h-6 text-[#1A5463]" />
+                    <div className="absolute -bottom-4 -left-6 md:-bottom-8 md:-left-8 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="400" style={{ animationDelay: '1s' }}>
+                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#A8D5E2' }}>
+                        <Home className="w-4 h-4 md:w-5 md:h-5 text-[#1A5463]" />
                       </div>
                       <div>
-                        <p className={`${inter.className} text-xs text-gray-500 uppercase tracking-wider`}>House Helper</p>
-                        <p className={`${inter.className} text-lg font-bold text-[#1A5463]`}>Available</p>
+                        <p className={`${inter.className} text-[10px] text-gray-500 uppercase tracking-wider`}>House Helper</p>
+                        <p className={`${inter.className} text-sm md:text-base font-bold text-[#1A5463]`}>Available</p>
                       </div>
                     </div>
                     
                     {/* Bottom Right - Errands */}
-                    <div className="absolute -bottom-6 -right-2 md:-right-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float" data-aos="fade-up" data-aos-delay="500" style={{ animationDelay: '1.5s' }}>
-                      <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#D4AF37' }}>
-                        <ShoppingBasket className="w-6 h-6 text-white" />
+                    <div className="absolute -bottom-6 -right-2 md:-right-6 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="500" style={{ animationDelay: '1.5s' }}>
+                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#D4AF37' }}>
+                        <ShoppingBasket className="w-4 h-4 md:w-5 md:h-5 text-white" />
                       </div>
                       <div>
-                        <p className={`${inter.className} text-xs text-gray-500 uppercase tracking-wider`}>Errands</p>
-                        <p className={`${inter.className} text-lg font-bold text-[#1A5463]`}>Support</p>
+                        <p className={`${inter.className} text-[10px] text-gray-500 uppercase tracking-wider`}>Errands</p>
+                        <p className={`${inter.className} text-sm md:text-base font-bold text-[#1A5463]`}>Support</p>
                       </div>
                     </div>
                   </div>

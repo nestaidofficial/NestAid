@@ -464,8 +464,9 @@ const careServices: Record<string, {
   }
 }
 
-export default function CareServicePage({ params }: { params: { slug: string } }) {
-  const service = careServices[params.slug]
+export default async function CareServicePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const service = careServices[slug]
 
   if (!service) {
     notFound()
