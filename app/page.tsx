@@ -272,7 +272,7 @@ export default function Component() {
                     
                     {/* Floating Service Cards */}
                     {/* Top Left - Companionship */}
-                    <div className="absolute top-8 -left-4 md:top-12 md:-left-6 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="200">
+                    <div className="absolute top-8 -left-4 md:top-12 md:-left-6 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="50">
                       <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#E8D4F0' }}>
                         <Heart className="w-4 h-4 md:w-5 md:h-5 text-[#8B5CF6]" />
                       </div>
@@ -283,7 +283,7 @@ export default function Component() {
                     </div>
                     
                     {/* Top Right - Meal Preparation */}
-                    <div className="absolute top-12 -right-4 md:top-16 md:-right-8 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="300" style={{ animationDelay: '0.5s' }}>
+                    <div className="absolute top-12 -right-4 md:top-16 md:-right-8 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="100" style={{ animationDelay: '0.2s' }}>
                       <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F2D4F7' }}>
                         <Utensils className="w-4 h-4 md:w-5 md:h-5 text-[#D896E5]" />
                       </div>
@@ -294,7 +294,7 @@ export default function Component() {
                     </div>
                     
                     {/* Bottom Left - House Helper */}
-                    <div className="absolute -bottom-4 -left-6 md:-bottom-8 md:-left-8 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="400" style={{ animationDelay: '1s' }}>
+                    <div className="absolute -bottom-4 -left-6 md:-bottom-8 md:-left-8 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="150" style={{ animationDelay: '0.3s' }}>
                       <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#A8D5E2' }}>
                         <Home className="w-4 h-4 md:w-5 md:h-5 text-[#1A5463]" />
                       </div>
@@ -305,7 +305,7 @@ export default function Component() {
                     </div>
                     
                     {/* Bottom Right - Errands */}
-                    <div className="absolute -bottom-6 -right-2 md:-right-6 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="500" style={{ animationDelay: '1.5s' }}>
+                    <div className="absolute -bottom-6 -right-2 md:-right-6 bg-white rounded-xl md:rounded-xl shadow-xl p-2 md:p-3 flex items-center gap-2 animate-float" data-aos="fade-up" data-aos-delay="200" style={{ animationDelay: '0.4s' }}>
                       <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#D4AF37' }}>
                         <ShoppingBasket className="w-4 h-4 md:w-5 md:h-5 text-white" />
                       </div>
@@ -407,11 +407,11 @@ export default function Component() {
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="text-[#D9FB74] text-lg font-semibold">✺</span>
               <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-white/80`}>
-                EXCELLENCE IN CARE
+                Trusted by Families
               </p>
             </div>
             <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-white leading-[1.08]`}>
-              Why We Stand Out
+              Our Approach to Care
             </h2>
           </div>
           
@@ -439,24 +439,16 @@ export default function Component() {
                     Compassionate<br />Care
                   </h3>
                   <p className={`${inter.className} text-[#1A5463] mb-6 leading-relaxed text-base md:text-lg`}>
-                    Personalized support delivered with kindness and trust. We understand that care needs don't follow a schedule—which is why our professional team provides consistent, compassionate assistance tailored to each individual.
+                    At NestAid, compassion is not a promise—it's the standard that guides every interaction.
                   </p>
                   
-                  {/* Decorative Wavy Line */}
+                  {/* Soft Divider */}
                   <div className="mb-6">
-                    <svg className="w-full max-w-md h-16" viewBox="0 0 400 60" preserveAspectRatio="none">
-                      <path
-                        d="M 0 30 Q 50 10, 100 30 T 200 30 T 300 30 T 400 30"
-                        stroke="#1A5463"
-                        strokeWidth="2"
-                        fill="none"
-                        strokeLinecap="round"
-                      />
-                    </svg>
+                    <div className="h-px bg-[#1A5463]/20 w-full max-w-md"></div>
                   </div>
                   
                   <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base md:text-lg`}>
-                    This approach ensures peace of mind for families and consistent, compassionate care for your loved ones—anytime, day or night.
+                    We provide thoughtful in-home support that honors dignity, independence, and daily routines. Families trust NestAid for care that feels steady, personal, and deeply respectful.
                   </p>
                 </div>
               </div>
@@ -483,25 +475,13 @@ export default function Component() {
                     Professional<br />Team
                   </h3>
                   <p className={`${inter.className} text-[#1A5463] mb-6 leading-relaxed text-base md:text-lg`}>
-                    Experienced caregivers dedicated to your well-being. Quality support involves more than just meeting needs; it's about exceeding expectations with every interaction. Our trained team provides consistent, compassionate assistance tailored to each individual.
+                    Experienced caregivers dedicated to your well-being. Our caregivers are carefully screened, trained, and matched to each family to ensure dependable, respectful support.
                   </p>
                   
-                  {/* Decorative Wavy Line */}
+                  {/* Soft Divider */}
                   <div className="mb-6">
-                    <svg className="w-full max-w-md h-16" viewBox="0 0 400 60" preserveAspectRatio="none">
-                      <path
-                        d="M 0 30 Q 50 10, 100 30 T 200 30 T 300 30 T 400 30"
-                        stroke="#1A5463"
-                        strokeWidth="2"
-                        fill="none"
-                        strokeLinecap="round"
-                      />
-                    </svg>
+                    <div className="h-px bg-[#1A5463]/20 w-full max-w-md"></div>
                   </div>
-                  
-                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base md:text-lg`}>
-                    Whether it's daily care, emotional support, or simply being present, we're here to uplift and empower every step of the way.
-                  </p>
                 </div>
               </div>
             </div>
@@ -527,25 +507,13 @@ export default function Component() {
                     Quality<br />Service
                   </h3>
                   <p className={`${inter.className} text-[#1A5463] mb-6 leading-relaxed text-base md:text-lg`}>
-                    High standards with personalized care plans for every client. We ensure safety, dignity, and peace of mind through consistent, compassionate assistance that goes beyond meeting basic needs.
+                    Care at NestAid is guided by high standards and thoughtful attention to detail. We create personalized care plans that prioritize safety, dignity, and consistency—so families can feel confident every step of the way.
                   </p>
                   
-                  {/* Decorative Wavy Line */}
+                  {/* Soft Divider */}
                   <div className="mb-6">
-                    <svg className="w-full max-w-md h-16" viewBox="0 0 400 60" preserveAspectRatio="none">
-                      <path
-                        d="M 0 30 Q 50 10, 100 30 T 200 30 T 300 30 T 400 30"
-                        stroke="#1A5463"
-                        strokeWidth="2"
-                        fill="none"
-                        strokeLinecap="round"
-                      />
-                    </svg>
+                    <div className="h-px bg-[#1A5463]/20 w-full max-w-md"></div>
                   </div>
-                  
-                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base md:text-lg`}>
-                    From identifying specific needs to creating tailored solutions, we're committed to excellence in care that makes a real difference in the lives of those we serve.
-                  </p>
                 </div>
               </div>
             </div>
@@ -657,10 +625,10 @@ export default function Component() {
               </p>
             </div>
             <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08] mb-6`}>
-              First Time Considering Professional Home Care?
+              Considering Professional Home Care for the First Time?
             </h2>
             <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-3xl mx-auto`}>
-              Starting home care can feel like a big step, but at NestAid, we make it easier. Our caring team works closely with you to create a personalized plan that brings comfort, safety, and peace of mind right to your home.
+              Choosing home care is an important decision. At NestAid, we guide you through every step with clarity, care, and a personalized approach designed for your family's peace of mind.
             </p>
           </div>
 
@@ -686,7 +654,7 @@ export default function Component() {
                     </h3>
                   </div>
                   <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base`}>
-                    We'll start by meeting with you and your family to understand your specific needs, preferences, and goals. In this free consultation, we'll answer your questions, explain how professional caregivers can help, and guide you through the next steps.
+                    We begin with a complimentary consultation to understand your needs, preferences, and goals. Our team answers your questions, explains care options clearly, and helps you determine the right next steps—without pressure.
                   </p>
                 </div>
               </div>
@@ -709,7 +677,7 @@ export default function Component() {
                     </h3>
                   </div>
                   <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base`}>
-                    Once you choose NestAid, we'll visit your loved one's home to assess safety, comfort, and daily living needs. From identifying fall risks to suggesting ways to make life easier, we'll design a tailored care plan and schedule—built around your approval.
+                    Following your consultation, we assess your loved one's home environment and daily needs. From safety considerations to routine support, we create a personalized care plan and schedule—designed with your input and approval.
                   </p>
                 </div>
               </div>
@@ -732,7 +700,7 @@ export default function Component() {
                     </h3>
                   </div>
                   <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base`}>
-                    We carefully screen and hand-select caregivers who fit your loved one's needs, personality, and preferences. You'll have peace of mind knowing they're safe, comfortable, and cared for—by someone who feels like family.
+                    We carefully screen, train, and match caregivers based on experience, personality, and compatibility. You can feel confident knowing your loved one is supported by someone dependable, respectful, and trusted.
                   </p>
                 </div>
               </div>
@@ -767,7 +735,7 @@ export default function Component() {
                 </p>
               </div>
               <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08]`}>
-                Helpful Articles, Stories<br />For Seniors
+                Care Insights for<br />Everyday Living
               </h2>
             </div>
             <Link

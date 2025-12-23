@@ -15,11 +15,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Information */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white rounded flex items-center justify-center">
-                <span className="text-[#1A5463] font-bold text-xl">N</span>
+            <Link href="/" className="flex items-center">
+              <div className="rounded-full px-4 py-2 shadow-sm border border-white/30 flex items-center" style={{ backgroundColor: '#FCF5EB' }}>
+                <Image
+                  src="/logo.png"
+                  alt="NestAid Logo"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </div>
-              <span className={`${playfair.className} text-xl font-bold`}>NestAid</span>
             </Link>
             <p className="text-base text-white/90 leading-relaxed">
               At NestAid, we understand the importance of maintaining open communication.
@@ -27,7 +32,7 @@ export function Footer() {
             <div className="space-y-2 text-base">
               <div className="flex items-center gap-2 text-white/90">
                 <Building2 className="h-5 w-5" />
-                <span>8 Franklin St Somerville 02145</span>
+                <span>Somerville, Massachusetts</span>
               </div>
               <div className="flex items-center gap-2 text-white/90">
                 <Phone className="h-5 w-5" />

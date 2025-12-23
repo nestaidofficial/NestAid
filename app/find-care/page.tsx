@@ -122,19 +122,19 @@ export default function FindCarePage() {
               <div className="flex items-center gap-2">
                 <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
                 <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                  WE ARE ALWAYS CLOSE
+                  Care that grows with you
                 </p>
-          </div>
+              </div>
 
               {/* Headline */}
               <h1 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-[#1A5463] leading-[1.08]`}>
-                Exceptional, Tailored<br />
-                Senior Care
+                Personalized In-Home Care<br />
+                You Can Rely On
               </h1>
 
               {/* Body Text */}
               <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-xl`}>
-                At NestAid, we provide compassionate adult daycare services that go beyond routine care. With personalised attention, meaningful activities
+                NestAid supports adults and seniors with compassionate, non-medical care delivered in the comfort of home. Every care plan is personalized, professionally managed, and built to support safety, independence, and peace of mind.
               </p>
 
               {/* CTA Button */}
@@ -143,7 +143,7 @@ export default function FindCarePage() {
                   onClick={() => setGetStartedModalOpen(true)}
                   className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
                 >
-                  <span>Join Us</span>
+                  <span>Schedule a Free Consultation</span>
                   <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#4E342E] transition-colors">
                     <svg className="w-5 h-5 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
@@ -182,11 +182,11 @@ export default function FindCarePage() {
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
               <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                HELPING SENIORS THRIVE WITH CARE
+                SUPPORTING INDEPENDENCE AT HOME
               </p>
             </div>
             <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08]`}>
-              Exceptional Care, Tailored To<br />Every Need
+              Personalized In-Home Care,<br />Built Around Your Needs
             </h2>
           </div>
 
