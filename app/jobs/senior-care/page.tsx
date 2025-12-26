@@ -29,7 +29,10 @@ import {
   Quote,
   Navigation,
   AlertCircle,
-  Search
+  Search,
+  Calendar,
+  UserCircle,
+  Sparkles
 } from "lucide-react"
 
 const playfair = Playfair_Display({
@@ -121,9 +124,9 @@ export default function FindJobsPage() {
 
 
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-background text-foreground overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen" style={{ backgroundColor: '#FCF5EB' }}>
+      <section id="hero-section" className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-screen py-12 md:py-16">
             
@@ -148,35 +151,29 @@ export default function FindJobsPage() {
             <div className="lg:col-span-6 flex flex-col justify-center items-center text-center space-y-6" data-aos="fade-up">
               {/* Tagline */}
               <p className={`${inter.className} text-sm md:text-base uppercase tracking-[0.2em] text-[#8B5CF6] font-semibold`}>
-                SENIOR CARE SERVICES
+                CAREER OPPORTUNITIES IN HOME CARE
               </p>
 
               {/* Main Headline */}
               <div className="relative">
                 <h1 className={`${playfair.className} text-[36px] md:text-[48px] lg:text-[56px] xl:text-[64px] text-[#1A5463] leading-[1.1]`}>
-                  Best elder care for<br />
-                  <span className="relative inline-block">
-                    your loved ones
-                    {/* Decorative underline */}
-                    <svg className="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2 8C50 2 100 10 150 6C200 2 250 10 298 4" stroke="#C4B5FD" strokeWidth="6" strokeLinecap="round"/>
-                    </svg>
-                  </span>
+                  Find caregiving jobs<br />
+                  that fit your life
                 </h1>
               </div>
 
               {/* Description */}
               <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-lg`}>
-                Join our growing team of caregivers and make every day meaningful. We connect compassionate caregivers with families who need support.
+                Join a supportive caregiving community where your work is valued. NestAid connects dedicated caregivers with families who need reliable, non-medical in-home support.
               </p>
 
-              {/* Postal Code Search */}
-              <div className="w-full max-w-md space-y-4 pt-4">
+              {/* ZIP Code Search */}
+              <div className="w-full max-w-md space-y-4 pt-4 px-2 sm:px-0">
                 <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
                   <div className="relative flex-1 w-full">
                     <GooglePlacesAutocomplete
                       onLocationSelect={handleLocationSelect}
-                      placeholder="Enter Postal Code or City"
+                      placeholder="Enter ZIP code or city"
                     />
                   </div>
                   
@@ -249,8 +246,27 @@ export default function FindJobsPage() {
       <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Section - Image */}
-            <div className="relative" data-aos="fade-right">
+            {/* Left Section - Content */}
+            <div className="space-y-6 order-2 lg:order-1" data-aos="fade-right">
+              <div className="flex items-center gap-2">
+                <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
+                <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
+                  JOIN OUR TEAM
+                </p>
+              </div>
+              <h2 className={`${playfair.className} text-[38px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.08]`}>
+                Why Caregivers Choose NestAid
+              </h2>
+              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
+                Choosing a career in home care means choosing work that truly matters. At NestAid, caregivers play a vital role in helping individuals live safely, comfortably, and with dignity in their own homes.
+              </p>
+              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
+                We support our caregivers with respectful placements, meaningful one-on-one care, and a culture built on trust, compassion, and reliability—because great care starts with feeling valued.
+              </p>
+            </div>
+
+            {/* Right Section - Image */}
+            <div className="relative order-1 lg:order-2" data-aos="fade-left" data-aos-delay="100">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image 
                   src="/images/group.jpg" 
@@ -263,34 +279,72 @@ export default function FindJobsPage() {
               {/* Decorative element */}
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#E8E3FF] rounded-3xl -z-10"></div>
             </div>
-
-            {/* Right Section - Content */}
-            <div className="space-y-6" data-aos="fade-left" data-aos-delay="100">
+          </div>
+        </div>
+      </section>
+ {/* Who We're Looking For Section */}
+ <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
+        <div className="container mx-auto px-8 md:px-12 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Section - Content */}
+            <div className="space-y-6 order-2 lg:order-1" data-aos="fade-right">
               <div className="flex items-center gap-2">
                 <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
                 <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                  JOIN OUR TEAM
+                  WHO WE'RE LOOKING FOR
                 </p>
               </div>
               <h2 className={`${playfair.className} text-[38px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.08]`}>
-                Why Join Our Care Team?
+                Our Caregivers are the heart of our Company
               </h2>
               <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
-                Choosing a career in home care means choosing a profession that truly matters. In-home caregiving is one of the fastest-growing, most stable, and most meaningful fields today.
+                We welcome individuals who are compassionate, reliable, and committed to making a difference. Whether you're experienced or just beginning your caregiving journey, if you have a genuine desire to help others, we'd love to meet you.
               </p>
-              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
-                It is a role built on trust, compassion, and human connection—and one where you can make an immediate, lasting impact on someone's life.
-              </p>
-              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
-                More than <span className="font-bold text-[#8B5CF6]">90% of people</span> view in-home care as an essential, respected profession. When you join our team, you become part of a community that values dignity, compassion, and the belief that every person deserves to age comfortably in their own home.
-              </p>
+              
+              {/* Basic Requirements Heading */}
+              <h3 className={`${playfair.className} text-2xl md:text-3xl text-[#1A5463] pt-4`}>
+                Basic requirements we are looking for-
+              </h3>
+              
+              {/* Qualities Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                {[
+                  { icon: Heart, text: "Compassion & empathy" },
+                  { icon: Users, text: "Strong communication skills" },
+                  { icon: CheckCircle, text: "Good organization & attention to detail" },
+                  { icon: Clock, text: "Excellent time-management" },
+                  { icon: Car, text: "A valid driver's license (optional)" },
+                  { icon: Shield, text: "Ability to pass background check" }
+                ].map((quality, index) => (
+                  <div key={index} className="flex items-center gap-3 bg-white rounded-2xl px-5 py-4 shadow-sm border border-[#E8E3FF]">
+                    <div className="w-10 h-10 rounded-full bg-[#E8E3FF] flex items-center justify-center flex-shrink-0">
+                      <quality.icon className="w-5 h-5 text-[#8B5CF6]" />
+                    </div>
+                    <span className={`${inter.className} text-sm font-medium text-[#1A5463]`}>{quality.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Section - Image */}
+            <div className="relative order-1 lg:order-2" data-aos="fade-left" data-aos-delay="100">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <Image 
+                  src="/images/adult-care.jpg" 
+                  alt="Compassionate Caregiver" 
+                  width={600} 
+                  height={500}
+                  className="object-cover w-full h-[400px] md:h-[500px]" 
+                />
+              </div>
+              {/* Decorative element */}
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#8B5CF6]/20 rounded-3xl -z-10"></div>
             </div>
           </div>
         </div>
       </section>
-
       {/* What It Means to Be a Caregiver Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#1A5463' }}>
+      <section className="py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#1A5463' }}>
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Header */}
           <div className="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
@@ -309,7 +363,7 @@ export default function FindJobsPage() {
           </div>
 
           {/* Caregiver Roles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 px-2 lg:px-0">
             
             {/* Card 1: Alzheimer's & Dementia Support */}
             <div className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: '#5B8A7D' }} data-aos="fade-up" data-aos-delay="0">
@@ -393,65 +447,10 @@ export default function FindJobsPage() {
         </div>
       </section>
 
-      {/* Who We're Looking For Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
-        <div className="container mx-auto px-8 md:px-12 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Section - Content */}
-            <div className="space-y-6 order-2 lg:order-1" data-aos="fade-right">
-              <div className="flex items-center gap-2">
-                <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
-                <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                  WHO WE'RE LOOKING FOR
-                </p>
-              </div>
-              <h2 className={`${playfair.className} text-[38px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.08]`}>
-                Great Caregiving Is About The Heart
-              </h2>
-              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
-                We welcome individuals who are compassionate, reliable, and committed to making a difference. Whether you're experienced or just beginning your caregiving journey, if you have a genuine desire to help others, we'd love to meet you.
-              </p>
-              
-              {/* Qualities Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                {[
-                  { icon: Heart, text: "Compassion & empathy" },
-                  { icon: Users, text: "Strong communication skills" },
-                  { icon: CheckCircle, text: "Good organization & attention to detail" },
-                  { icon: Clock, text: "Excellent time-management" },
-                  { icon: Car, text: "A valid driver's license" },
-                  { icon: Shield, text: "Ability to pass background check" }
-                ].map((quality, index) => (
-                  <div key={index} className="flex items-center gap-3 bg-white rounded-2xl px-5 py-4 shadow-sm border border-[#E8E3FF]">
-                    <div className="w-10 h-10 rounded-full bg-[#E8E3FF] flex items-center justify-center flex-shrink-0">
-                      <quality.icon className="w-5 h-5 text-[#8B5CF6]" />
-                    </div>
-                    <span className={`${inter.className} text-sm font-medium text-[#1A5463]`}>{quality.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Section - Image */}
-            <div className="relative order-1 lg:order-2" data-aos="fade-left" data-aos-delay="100">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <Image 
-                  src="/images/adult-care.jpg" 
-                  alt="Compassionate Caregiver" 
-                  width={600} 
-                  height={500}
-                  className="object-cover w-full h-[400px] md:h-[500px]" 
-                />
-              </div>
-              {/* Decorative element */}
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#8B5CF6]/20 rounded-3xl -z-10"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* A Career With Purpose Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#8B5CF6' }}>
+      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Section - Image */}
@@ -466,41 +465,42 @@ export default function FindJobsPage() {
                 />
               </div>
               {/* Decorative element */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-white/20 rounded-3xl -z-10"></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#E8E3FF] rounded-3xl -z-10"></div>
             </div>
 
             {/* Right Section - Content */}
             <div className="space-y-6" data-aos="fade-left" data-aos-delay="100">
               <div className="flex items-center gap-2">
-                <span className="text-[#D9FB74] text-lg font-semibold">✺</span>
-                <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-white/80`}>
+                <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
+                <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
                   A CAREER WITH PURPOSE
                 </p>
               </div>
-              <h2 className={`${playfair.className} text-[38px] md:text-[48px] lg:text-[56px] text-white leading-[1.08]`}>
-                When You Join Our Team, You Join A Family
+              <h2 className={`${playfair.className} text-[38px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.08]`}>
+                When you Join our Team You Join A Family
               </h2>
-              <p className={`${inter.className} text-base md:text-lg text-white/90 leading-relaxed`}>
+              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
                 We believe in supporting you with ongoing training, guidance, and a work environment where you feel valued and appreciated.
               </p>
-              <p className={`${inter.className} text-base md:text-lg text-white/90 leading-relaxed`}>
+              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
                 Our caregivers play a vital role in our mission to provide exceptional care in the community, and we're committed to helping you grow—professionally and personally.
               </p>
               
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-6">
-                <div className="text-center">
-                  <h3 className={`${playfair.className} text-3xl md:text-4xl font-bold text-white`}>92+</h3>
-                  <p className={`${inter.className} text-sm text-white/80`}>Professionals</p>
-                </div>
-                <div className="text-center">
-                  <h3 className={`${playfair.className} text-3xl md:text-4xl font-bold text-white`}>2K+</h3>
-                  <p className={`${inter.className} text-sm text-white/80`}>Clients Served</p>
-                </div>
-                <div className="text-center">
-                  <h3 className={`${playfair.className} text-3xl md:text-4xl font-bold text-white`}>98%</h3>
-                  <p className={`${inter.className} text-sm text-white/80`}>Satisfaction</p>
-                </div>
+              {/* Features Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                {[
+                  { icon: Calendar, text: "Flexible schedules" },
+                  { icon: Heart, text: "Meaningful one-on-one care" },
+                  { icon: Users, text: "Supportive care team" },
+                  { icon: Home, text: "Non-medical home care roles" }
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-center gap-3 bg-white rounded-2xl px-5 py-4 shadow-sm border border-[#E8E3FF] hover:shadow-md transition-all duration-300 group">
+                    <div className="w-12 h-12 rounded-xl bg-[#E8E3FF] flex items-center justify-center flex-shrink-0 group-hover:bg-[#8B5CF6] transition-all duration-300">
+                      <feature.icon className="w-6 h-6 text-[#8B5CF6] group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <span className={`${inter.className} text-base font-medium text-[#1A5463]`}>{feature.text}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -508,7 +508,7 @@ export default function FindJobsPage() {
       </section>
 
       {/* Training & Benefits Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Header */}
           <div className="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
@@ -519,22 +519,22 @@ export default function FindJobsPage() {
               </p>
             </div>
             <h2 className={`${playfair.className} text-[38px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.08] mb-6`}>
-              We Invest In Your Success
+              We Support You at Every Step
             </h2>
             <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-3xl mx-auto`}>
-              We offer comprehensive onboarding, continuous training, and a range of benefits designed to help you succeed.
+              From day one, we provide the training, guidance, and support you need to feel confident and prepared in your role.
             </p>
           </div>
 
           {/* Benefits Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto px-2 lg:px-0">
             <div className="bg-white rounded-3xl p-8 shadow-lg text-center hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="0">
               <div className="w-16 h-16 rounded-full bg-[#E8E3FF] flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-[#8B5CF6]" />
               </div>
               <h3 className={`${playfair.className} text-xl font-bold text-[#1A5463] mb-3`}>Comprehensive Training</h3>
               <p className={`${inter.className} text-sm text-[#1A5463] leading-relaxed`}>
-                Full onboarding and ongoing skill development programs.
+                Full onboarding and ongoing training to help you feel confident, capable, and supported.
               </p>
             </div>
 
@@ -544,7 +544,7 @@ export default function FindJobsPage() {
               </div>
               <h3 className={`${playfair.className} text-xl font-bold text-[#1A5463] mb-3`}>Flexible Scheduling</h3>
               <p className={`${inter.className} text-sm text-[#1A5463] leading-relaxed`}>
-                Choose hours that work for your lifestyle.
+                Flexible schedules that fit your life—not the other way around.
               </p>
             </div>
 
@@ -554,7 +554,7 @@ export default function FindJobsPage() {
               </div>
               <h3 className={`${playfair.className} text-xl font-bold text-[#1A5463] mb-3`}>Career Growth</h3>
               <p className={`${inter.className} text-sm text-[#1A5463] leading-relaxed`}>
-                Opportunities for advancement and specialization.
+                Opportunities to grow your skills, gain experience, and take on meaningful responsibilities.
               </p>
             </div>
 
@@ -564,30 +564,13 @@ export default function FindJobsPage() {
               </div>
               <h3 className={`${playfair.className} text-xl font-bold text-[#1A5463] mb-3`}>Supportive Community</h3>
               <p className={`${inter.className} text-sm text-[#1A5463] leading-relaxed`}>
-                A team that has your back every step of the way.
+                A responsive, respectful team that listens and supports you when you need it.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#1A5463' }}>
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto text-center" data-aos="zoom-in">
-            <Quote className="w-12 h-12 text-white/60 mx-auto mb-6" />
-            <blockquote className={`${playfair.className} text-xl md:text-2xl lg:text-3xl italic text-white mb-6 leading-relaxed`}>
-              "Being a caregiver isn't just a job. It's building a bond that changes lives — theirs and mine."
-            </blockquote>
-            <div className="flex items-center justify-center gap-2">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
-              ))}
-            </div>
-            <p className={`${inter.className} text-white/80 mt-4`}>— Sarah M., Caregiver</p>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
@@ -596,25 +579,27 @@ export default function FindJobsPage() {
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
               <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                START YOUR JOURNEY
+                JOIN OUR CARE TEAM
               </p>
             </div>
             <h2 className={`${playfair.className} text-[38px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.08] mb-6`}>
               Ready to Make a Difference?
             </h2>
             <p className={`${inter.className} text-base md:text-lg text-[#1A5463] mb-10 leading-relaxed`}>
-              Join thousands of caregivers who are making a difference every day. Your compassionate heart is exactly what families are looking for.
+              Join a team where your compassion, reliability, and care truly matter—to families and to us.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className={`${inter.className} bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold text-base px-10 py-5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}>
+              <Button 
+                onClick={() => {
+                  const heroSection = document.getElementById('hero-section');
+                  if (heroSection) {
+                    heroSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className={`${inter.className} h-14 bg-[#275F48] hover:bg-[#1f4a37] text-white font-semibold text-base px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
+              >
                 Start Your Application
               </Button>
-              <Link 
-                href="/find-care"
-                className={`${inter.className} bg-[#1A5463] hover:bg-[#275F48] text-white font-semibold text-base px-10 py-5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center`}
-              >
-                Learn About Our Services
-              </Link>
             </div>
           </div>
         </div>

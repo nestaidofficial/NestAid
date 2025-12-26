@@ -245,7 +245,7 @@ export default function Component() {
                     onClick={() => setGetStartedModalOpen(true)}
                     className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
                   >
-                    <span>Join Now</span>
+                    <span>Get Started</span>
                     <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#4E342E] transition-colors">
                       <svg className="w-5 h-5 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
@@ -614,7 +614,7 @@ export default function Component() {
 
 
       {/* First Time Considering Professional Home Care Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }} data-aos="fade-up">
+      <section className="py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#FCF5EB' }} data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Header Section */}
           <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20" data-aos="fade-up">
@@ -633,7 +633,7 @@ export default function Component() {
           </div>
 
           {/* Three Step Cards with Creative Design */}
-          <div className="relative">
+          <div className="relative px-4 lg:px-0">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 relative">
               
               {/* Step 1 */}
@@ -739,8 +739,9 @@ export default function Component() {
               </h2>
             </div>
             <Link
-              href="/blog"
-              className={`${inter.className} inline-flex items-center justify-center bg-[#8B5CF6] text-white font-semibold text-base md:text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5`}
+              href="/resources"
+              className={`${inter.className} inline-flex items-center justify-center text-white font-semibold text-base md:text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1f4a37]`}
+              style={{ backgroundColor: '#275F48' }}
             >
               View More Blog
             </Link>
@@ -750,7 +751,7 @@ export default function Component() {
             {featuredArticles.map((article) => (
               <Link
                 key={article.id}
-                href={`/blog/${article.id}`}
+                href={`/resources/${article.id}`}
                 className="bg-white rounded-[32px] shadow-lg overflow-hidden border border-[#ECE7DA] flex flex-col h-full group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative w-full h-64 overflow-hidden">
@@ -805,12 +806,12 @@ export default function Component() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button 
                 onClick={() => setGetStartedModalOpen(true)}
-                className={`${inter.className} group relative bg-[#D9FB74] hover:bg-[#C4E860] text-[#1A5463] font-bold text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-full flex items-center gap-3 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105`}
+                className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
               >
                 <span>JOIN US TODAY</span>
-                <span className="bg-[#275F48] text-white rounded-full p-2 group-hover:bg-[#1A5463] group-hover:scale-110 transition-all duration-200">
-                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#4E342E] transition-colors">
+                  <svg className="w-5 h-5 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
                   </svg>
                 </span>
               </button>

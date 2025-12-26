@@ -36,7 +36,7 @@ const blogArticles = [
   }
 ]
 
-export default function BlogPage() {
+export default function ResourcesPage() {
   return (
     <div className="bg-[#F5F5EC] min-h-screen">
       <main className="container mx-auto px-6 md:px-12 lg:px-16 pt-24 md:pt-32 pb-16 md:pb-24">
@@ -44,7 +44,7 @@ export default function BlogPage() {
           <div className="flex items-center gap-2 mb-4">
             <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
             <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-              NestAid Blog
+              NestAid Resources
             </p>
           </div>
           <h1 className={`${playfair.className} text-[40px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.1] mb-6`}>
@@ -59,7 +59,7 @@ export default function BlogPage() {
           {blogArticles.map((article) => (
             <Link
               key={article.id}
-              href={`/blog/${article.id}`}
+              href={`/resources/${article.id}`}
               className="bg-white rounded-[32px] shadow-lg overflow-hidden border border-[#ECE7DA] flex flex-col h-full group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative w-full h-64 overflow-hidden">

@@ -238,6 +238,7 @@ export function GooglePlacesAutocomplete({
           onChange={handleInputChange}
           placeholder={placeholder}
           className="h-14 px-4 pr-12 border-2 border-gray-300 rounded-full text-base bg-white focus:border-[#275F48] focus:ring-0 shadow-sm"
+          style={{ fontSize: '16px' }}
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {isLoading && (
@@ -257,7 +258,7 @@ export function GooglePlacesAutocomplete({
 
       {/* Predictions Dropdown */}
       {showPredictions && predictions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto overflow-x-hidden">
           {predictions.map((prediction) => (
             <button
               key={prediction.place_id}

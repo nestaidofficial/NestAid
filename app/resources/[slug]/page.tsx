@@ -206,7 +206,7 @@ const blogPosts: Record<string, {
   }
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ResourcePostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = blogPosts[slug]
 
@@ -297,10 +297,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         </article>
 
-        {/* Back to Blog Link */}
+        {/* Back to Resources Link */}
         <div className="max-w-3xl mx-auto mt-12">
           <Link
-            href="/blog"
+            href="/resources"
             className={`${inter.className} inline-flex items-center gap-2 text-[#1A5463] hover:text-[#8B5CF6] transition-colors font-medium`}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -320,6 +320,4 @@ export async function generateStaticParams() {
     slug: slug,
   }))
 }
-
-
 

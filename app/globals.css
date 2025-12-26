@@ -12,6 +12,12 @@
   
   html {
     font-display: swap;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    position: relative;
   }
 
   /* Ensure consistent box-sizing */

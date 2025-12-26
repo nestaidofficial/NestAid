@@ -6,16 +6,15 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu"
-import { Menu, Phone, ChevronDown } from "lucide-react"
+import { Menu, Phone } from "lucide-react"
 import { GetStartedModal } from "./get-started-modal"
 import { MobileHeaderExtension } from "./mobile-header-extension"
 
 export function HeaderClient() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false)
   const [getStartedModalOpen, setGetStartedModalOpen] = useState(false)
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
+  const [isCallButtonVisible, setIsCallButtonVisible] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
   const pathname = usePathname()
   const isAdminPage = pathname.startsWith("/admin")
@@ -42,6 +41,15 @@ export function HeaderClient() {
             } else if (scrollDelta > 0 && currentScrollY > heroSectionHeight) {
               // Hide header only when scrolling down AND past hero section
               setIsHeaderVisible(false)
+            }
+            
+            // Call button visibility - show when scrolling up, hide when scrolling down
+            if (scrollDelta < 0 && currentScrollY > 100) {
+              // Scrolling up and not at the very top
+              setIsCallButtonVisible(true)
+            } else if (scrollDelta > 0 || currentScrollY <= 100) {
+              // Scrolling down or near the top
+              setIsCallButtonVisible(false)
             }
             
             setLastScrollY(currentScrollY)
@@ -98,33 +106,9 @@ export function HeaderClient() {
                   <Link href="/jobs/senior-care" className="text-base font-medium px-4 py-2 rounded-full transition-all duration-200 hover:bg-gray-100 text-gray-700 hover:text-gray-900">
                     Find jobs
                   </Link>
-                  <Link href="/blog" className="text-base font-medium px-4 py-2 rounded-full transition-all duration-200 hover:bg-gray-100 text-gray-700 hover:text-gray-900">
-                    Stories
+                  <Link href="/resources" className="text-base font-medium px-4 py-2 rounded-full transition-all duration-200 hover:bg-gray-100 text-gray-700 hover:text-gray-900">
+                    Resources
                   </Link>
-                  <NavigationMenu>
-                    <NavigationMenuList>
-                      <NavigationMenuItem>
-                        <NavigationMenuTrigger className="text-base font-medium px-4 py-2 rounded-full transition-all duration-200 hover:bg-gray-100 text-gray-700 hover:text-gray-900 !bg-transparent data-[state=open]:!bg-gray-100">
-                          Resources
-                        </NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                          <ul className="grid w-[280px] gap-3 p-4">
-                            <li>
-                              <NavigationMenuLink asChild>
-                                <Link href="/about-us" className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 text-sm font-medium">About us</Link>
-                              </NavigationMenuLink>
-                            </li>
-
-                            <li>
-                              <NavigationMenuLink asChild>
-                                <Link href="/help-center" className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 text-sm font-medium">Help center</Link>
-                              </NavigationMenuLink>
-                            </li>
-                          </ul>
-                        </NavigationMenuContent>
-                      </NavigationMenuItem>
-                    </NavigationMenuList>
-                  </NavigationMenu>
                 </div>
               </div>
             </nav>
@@ -132,14 +116,25 @@ export function HeaderClient() {
 
           {/* Header Buttons - Hidden on mobile, shown on desktop */}
           {!isAdminPage && (
-            <div className="hidden md:flex items-center">
+            <div className="hidden md:flex items-center gap-3">
               {/* Contact Us Button */}
               <Button
                 onClick={() => setGetStartedModalOpen(true)}
                 className="rounded-full text-gray-700 font-medium hover:bg-gray-100 transition-all shadow-sm border border-gray-200/50 px-6 py-6"
-                style={{ backgroundColor: '#E4F2D4', fontSize: '1rem', lineHeight: '1.5' }}
+                style={{ backgroundColor: '#D9FB74', fontSize: '1rem', lineHeight: '1.5' }}
               >
                 Join Now
+              </Button>
+              {/* Call Button */}
+              <Button
+                asChild
+                className="rounded-full font-medium hover:bg-[#1f4a37] transition-all shadow-sm border border-gray-200/50 px-6 py-6"
+                style={{ backgroundColor: '#D9FB74', fontSize: '1rem', lineHeight: '1.5' }}
+              >
+                <Link href="tel:4129530622" className="flex items-center gap-2 " >
+                  <Phone className="w-5 h-5 text-gray-700" />
+                  <span className="text-gray-900" style={{  fontSize: '1rem', lineHeight: '1.5' }} >(412) 953-0622</span>
+                </Link>
               </Button>
             </div>
           )}
@@ -160,18 +155,7 @@ export function HeaderClient() {
                     <>
                       <Link href="/find-care" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Find care</Link>
                       <Link href="/jobs/senior-care" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Find jobs</Link>
-                      <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Stories</Link>
-                      <button onClick={() => setMobileResourcesOpen(prev => !prev)} className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">
-                        Resources
-                        <ChevronDown className={`h-4 w-4 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                      {mobileResourcesOpen && (
-                        <div className="pl-3 space-y-1">
-                          <Link href="/about-us" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-sm hover:bg-white/50">About us</Link>
-
-                          <Link href="/help-center" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-sm hover:bg-white/50">Help center</Link>
-                        </div>
-                      )}
+                      <Link href="/resources" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-white/50">Resources</Link>
                     </>
                   )}
                 </nav>
@@ -192,6 +176,28 @@ export function HeaderClient() {
       
       {/* Mobile Header Extension - Shows location and phone on mobile */}
       <MobileHeaderExtension isAdminPage={isAdminPage} />
+      
+      {/* Mobile Call Button - Sticky at bottom left, hidden on desktop, shows on scroll up */}
+      {!isAdminPage && (
+        <div 
+          className={`md:hidden fixed bottom-6 left-6 z-50 transition-all duration-300 ${
+            isCallButtonVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+          }`}
+        >
+          <Link href="tel:4129530622">
+            <button
+              className="w-16 h-16 rounded-full flex items-center justify-center active:scale-95 relative group"
+              style={{
+                backgroundColor: '#D9FB74',
+                boxShadow: "0 8px 32px rgba(217, 251, 116, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1)",
+              }}
+              aria-label="Call us"
+            >
+              <Phone className="w-7 h-7 transition-transform group-hover:scale-110" style={{ color: '#275F48' }} />
+            </button>
+          </Link>
+        </div>
+      )}
     </>
   )
 }

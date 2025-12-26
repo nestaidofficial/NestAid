@@ -175,7 +175,7 @@ export default function FindCarePage() {
       </section>
 
       {/* Care We Provide Section */}
-      <section id="services" className="py-20 md:py-28" style={{ backgroundColor: '#F5F5EC' }} >
+      <section id="services" className="py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F5F5EC' }} >
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Header */}
           <div className="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
@@ -191,7 +191,7 @@ export default function FindCarePage() {
           </div>
 
           {/* Service Cards Grid - 3 columns, 2 rows */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 px-2 lg:px-0">
             
             {/* Card 1: Companionship */}
             <Link 
@@ -370,30 +370,23 @@ export default function FindCarePage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 md:py-24 bg-[#FCF5EB] overflow-x-hidden" data-aos="fade-up">
+      <section className="py-16 md:py-24 bg-[#FCF5EB] overflow-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08] mb-6`} data-aos="fade-up">
-              Ready to Find the Care You Deserve?
+              Let's Find the Right Care—Together
             </h2>
             <p className={`${inter.className} text-base md:text-lg text-[#1A5463] mb-8 leading-relaxed`} data-aos="fade-up">
-              Just like we mentioned at the top—care should be personal. Our trusted caregivers are here to bring comfort, dignity, and peace of mind right to your doorstep. 
-              <span className="font-bold"> It's time to take the next step.</span>
+              Our trusted caregivers are here to bring comfort, dignity, and peace of mind right to your doorstep. It's time to take the next step.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4" data-aos="fade-up">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-2" data-aos="fade-up">
               <button 
                 onClick={() => setGetStartedModalOpen(true)}
                 className={`${inter.className} group bg-[#275F49] hover:bg-[#1f4a37] text-white font-semibold text-base px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl`}
               >
-                MAKE AN ENQUIRY
+                Make an Enquiry
               </button>
-              <Link 
-                href="#services" 
-                className={`${inter.className} bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
-              >
-                OUR SERVICES
-              </Link>
             </div>
           </div>
         </div>
