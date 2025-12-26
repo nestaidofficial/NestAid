@@ -63,6 +63,42 @@ export default function FindCarePage() {
   
   // Service details data with icons
   const serviceDetails = {
+    'companionship': [
+      { text: 'Meaningful conversation and presence', icon: MessageCircle },
+      { text: 'Engagement in daily activities', icon: Activity },
+      { text: 'Encouraging independence', icon: Heart },
+      { text: 'Consistent, trusted support', icon: UserCheck }
+    ],
+    'personal-care': [
+      { text: 'Bathing, grooming, and dressing help', icon: Bath },
+      { text: 'Daily routine and mobility support', icon: Accessibility },
+      { text: 'Always respectful and private', icon: Heart },
+      { text: 'Comfort-focused, personal care', icon: Users }
+    ],
+    'household-help': [
+      { text: 'Light housekeeping and laundry', icon: Activity },
+      { text: 'Home organization and tidying', icon: FileText },
+      { text: 'Safe, clean living spaces', icon: UserCheck },
+      { text: 'Support for daily comfort', icon: Heart }
+    ],
+    'respite-care': [
+      { text: 'Short-term caregiver relief', icon: Clock },
+      { text: 'Reliable, uninterrupted care', icon: Heart },
+      { text: 'Flexible scheduling', icon: Calendar },
+      { text: 'Peace of mind for families', icon: Users }
+    ],
+    'meal-prep': [
+      { text: 'Nutritious meal support', icon: Utensils },
+      { text: 'Dietary preferences respected', icon: Heart },
+      { text: 'Daily nourishment assistance', icon: Activity },
+      { text: 'Comfort-focused routines', icon: Smile }
+    ],
+    'transportation': [
+      { text: 'Appointments and errands', icon: Car },
+      { text: 'Safe everyday outings', icon: UserCheck },
+      { text: 'Dependable, punctual care', icon: Clock },
+      { text: 'Supporting independence', icon: Heart }
+    ],
     'in-home': [
       { text: 'Bathing', icon: Bath },
       { text: 'Personal Hygiene', icon: Heart },
@@ -218,15 +254,15 @@ export default function FindCarePage() {
                 Meaningful companionship that brightens each day with care.
               </p>
               <ul className={`${inter.className} space-y-2 text-white text-sm`}>
-                {serviceDetails['companion'].map((item, index) => (
+                {serviceDetails['companionship'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
                   </ul>
             </Link>
 
-            {/* Card 2: Assistance */}
+            {/* Card 2: Personal Care */}
             <Link 
-              href="/care/assistance"
+              href="/care/personal-care"
               className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
               style={{ backgroundColor: '#B084CC' }} 
               data-aos="fade-up" 
@@ -240,21 +276,21 @@ export default function FindCarePage() {
             </div>
 
               <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
-                Assistance
+                Personal Care
               </h3>
               <p className={`${inter.className} text-white text-base leading-relaxed mb-6`}>
-                Tailored assistance to make daily life easier and more fulfilling.
+                Compassionate personal care with dignity and respect.
               </p>
               <ul className={`${inter.className} space-y-2 text-white text-sm`}>
-                {serviceDetails['in-home'].map((item, index) => (
+                {serviceDetails['personal-care'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
               </ul>
             </Link>
 
-            {/* Card 3: Support */}
+            {/* Card 3: Household Help */}
             <Link 
-              href="/care/support"
+              href="/care/household-help"
               className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
               style={{ backgroundColor: '#6B6B6B' }} 
               data-aos="fade-up" 
@@ -268,21 +304,21 @@ export default function FindCarePage() {
               </div>
               
               <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
-                Support
+                Household Help
               </h3>
               <p className={`${inter.className} text-white text-base leading-relaxed mb-6`}>
-                Reliable support designed to nurture comfort and independence.
+                Keeping your home comfortable, organized, and welcoming.
               </p>
               <ul className={`${inter.className} space-y-2 text-white text-sm`}>
-                {serviceDetails['special-needs'].map((item, index) => (
+                {serviceDetails['household-help'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
                   </ul>
             </Link>
 
-            {/* Card 4: Caregiving */}
+            {/* Card 4: Respite Care */}
             <Link 
-              href="/care/caregiving"
+              href="/care/respite-care"
               className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
               style={{ backgroundColor: '#A6C8E1' }} 
               data-aos="fade-up" 
@@ -296,21 +332,21 @@ export default function FindCarePage() {
             </div>
 
               <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4`}>
-                Caregiving
+                Respite Care
               </h3>
               <p className={`${inter.className} text-[#1A5463] text-base leading-relaxed mb-6`}>
-                Dedicated caregivers offering daily support with warmth and respect.
+                Temporary relief for family caregivers, ensuring continuous care.
               </p>
               <ul className={`${inter.className} space-y-2 text-[#1A5463] text-sm`}>
-                {serviceDetails['live-in'].map((item, index) => (
+                {serviceDetails['respite-care'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
                   </ul>
             </Link>
 
-            {/* Card 5: Guidance */}
+            {/* Card 5: Meal Preparation */}
             <Link 
-              href="/care/guidance"
+              href="/care/meal-preparation"
               className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
               style={{ backgroundColor: '#D4B896' }} 
               data-aos="fade-up" 
@@ -324,21 +360,21 @@ export default function FindCarePage() {
             </div>
 
               <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4`}>
-                Guidance
+                Meal Preparation
               </h3>
               <p className={`${inter.className} text-[#4A4A4A] text-base leading-relaxed mb-6`}>
-                Compassionate guidance for seniors and families at every step.
+                Healthy, delicious meals prepared with care and consideration.
               </p>
               <ul className={`${inter.className} space-y-2 text-[#4A4A4A] text-sm`}>
-                {serviceDetails['care-plans'].map((item, index) => (
+                {serviceDetails['meal-prep'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
                   </ul>
             </Link>
 
-            {/* Card 6: Therapy */}
+            {/* Card 6: Transportation */}
             <Link 
-              href="/care/therapy"
+              href="/care/transportation"
               className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer" 
               style={{ backgroundColor: '#5B8A7D' }} 
               data-aos="fade-up" 
@@ -353,13 +389,13 @@ export default function FindCarePage() {
             </div>
 
               <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
-                Therapy
+                Transportation
               </h3>
               <p className={`${inter.className} text-white text-base leading-relaxed mb-6`}>
-                Personalized therapies to restore strength, balance, and peace.
+                Safe, reliable rides to keep you connected and independent.
               </p>
               <ul className={`${inter.className} space-y-2 text-white text-sm`}>
-                {serviceDetails['wellness'].map((item, index) => (
+                {serviceDetails['transportation'].map((item, index) => (
                   <li key={index}>• {item.text}</li>
                 ))}
                   </ul>

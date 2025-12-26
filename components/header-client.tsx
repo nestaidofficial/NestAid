@@ -82,7 +82,7 @@ export function HeaderClient() {
 
       <div className="container mx-auto flex items-center justify-between px-4" style={{ height: '4rem', minHeight: '4rem', maxHeight: '4rem' }}>
         <Link href="/" className="flex items-center">
-          <div className="rounded-full px-4 py-2  flex items-center" style={{ backgroundColor: '#FCF5EB' }}>
+          <div className="rounded-full px-4 py-2  flex items-center" style={{ backgroundColor: '#DEED6A' }}>
             <Image
               src="/logo.png"
               alt="NestAid Logo"
@@ -121,7 +121,7 @@ export function HeaderClient() {
               <Button
                 onClick={() => setGetStartedModalOpen(true)}
                 className="rounded-full text-gray-700 font-medium hover:bg-gray-100 transition-all shadow-sm border border-gray-200/50 px-6 py-6"
-                style={{ backgroundColor: '#D9FB74', fontSize: '1rem', lineHeight: '1.5' }}
+                style={{ backgroundColor: '#DBD9FE', fontSize: '1rem', lineHeight: '1.5' }}
               >
                 Join Now
               </Button>
@@ -129,7 +129,7 @@ export function HeaderClient() {
               <Button
                 asChild
                 className="rounded-full font-medium hover:bg-[#1f4a37] transition-all shadow-sm border border-gray-200/50 px-6 py-6"
-                style={{ backgroundColor: '#D9FB74', fontSize: '1rem', lineHeight: '1.5' }}
+                style={{ backgroundColor: '#DEED6A', fontSize: '1rem', lineHeight: '1.5' }}
               >
                 <Link href="tel:4129530622" className="flex items-center gap-2 " >
                   <Phone className="w-5 h-5 text-gray-700" />
@@ -188,12 +188,12 @@ export function HeaderClient() {
             <button
               className="w-16 h-16 rounded-full flex items-center justify-center active:scale-95 relative group"
               style={{
-                backgroundColor: '#D9FB74',
-                boxShadow: "0 8px 32px rgba(217, 251, 116, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1)",
+                backgroundColor: '#8B5CF6',
+                boxShadow: "0 8px 32px rgba(139, 92, 246, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1)",
               }}
               aria-label="Call us"
             >
-              <Phone className="w-7 h-7 transition-transform group-hover:scale-110" style={{ color: '#275F48' }} />
+              <Phone className="w-7 h-7 text-white transition-transform group-hover:scale-110" />
             </button>
           </Link>
         </div>
