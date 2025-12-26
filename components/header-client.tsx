@@ -143,8 +143,8 @@ export function HeaderClient() {
           <div className="md:hidden mr-4">
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" className="rounded-full px-6 py-4" style={{ backgroundColor: '#DBD9FE' }}>
-                  <Menu className="h-12 w-12" />
+                <Button variant="ghost" className="rounded-full px-6 py-6" style={{ backgroundColor: '#DBD9FE' }}>
+                  <Menu className="h-15 w-15" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>

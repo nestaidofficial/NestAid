@@ -11,6 +11,12 @@ import { X, ArrowLeft, Briefcase, Heart, Users, User } from "lucide-react"
 import { InHomeCareForm } from "./in-home-care-form"
 import { CompanionCareForm } from "./companion-care-form"
 import { JobApplicationForm } from "./job-application-form"
+import { Playfair_Display } from "next/font/google"
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
 
 
 interface GetStartedModalProps {
@@ -22,7 +28,7 @@ type Step = "initial" | "jobs" | "care" | "services" | "who_needs_care" | "job_g
 type Category = "senior_care" | "adult_care"
 type ServiceType = "jobs" | "care"
 type FormType = "in_home_care" | "companion_care" | "part_time_care" | "other"
-type WhoNeedsCare = "parent_loved_one" | "me"
+type WhoNeedsCare = "me" | "parent" | "spouse" | "someone_else"
 
 export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
   const [currentStep, setCurrentStep] = useState<Step>("initial")
@@ -153,7 +159,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
     // Initial Step - What are you looking for?
   const InitialStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#F5F5F0]">
+    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -161,7 +167,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
           <div className="w-10 h-10" />
         </div>
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
+          <h1 className={`${playfair.className} text-3xl md:text-4xl font-normal text-black mb-4`}>
             What are you looking for?
           </h1>
         </div>
@@ -172,22 +178,16 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
         <div className="max-w-lg mx-auto space-y-4">
           <button
             onClick={() => handleInitialChoice("jobs")}
-            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
           >
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-              <Briefcase className="w-7 h-7 text-gray-600" />
-            </div>
-            <span>A job</span>
+            <span className={playfair.className}>A job</span>
           </button>
 
           <button
             onClick={() => handleInitialChoice("care")}
-            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
           >
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-              <Heart className="w-7 h-7 text-gray-600" />
-            </div>
-            <span>Care for an adult</span>
+            <span className={playfair.className}>Care for an adult</span>
           </button>
         </div>
       </div>
@@ -196,7 +196,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Jobs Step - Job Categories
   const JobsStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#F5F5F0]">
+    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -206,7 +206,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
           <div className="w-10 h-10" />
         </div>
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
+          <h1 className={`${playfair.className} text-3xl md:text-4xl font-normal text-black mb-4`}>
             What type of job are you looking for?
           </h1>
         </div>
@@ -215,21 +215,15 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
       {/* Options */}
       <div className="px-6 pb-8">
         <div className="max-w-lg mx-auto space-y-4">
-          {jobCategories.map((category, index) => {
-            const Icon = category.icon
-            return (
-              <button
-                key={category.id}
-                onClick={() => handleCategoryChoice(category.id)}
-                className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
-              >
-                <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-                  <Icon className="w-7 h-7 text-gray-600" />
-                </div>
-                <span>{category.title}</span>
-              </button>
-            )
-          })}
+          {jobCategories.map((category, index) => (
+            <button
+              key={category.id}
+              onClick={() => handleCategoryChoice(category.id)}
+              className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
+            >
+              <span className={playfair.className}>{category.title}</span>
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -237,7 +231,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Care Step - Care Categories
   const CareStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#F5F5F0]">
+    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -247,7 +241,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
           <div className="w-10 h-10" />
         </div>
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
+          <h1 className={`${playfair.className} text-3xl md:text-4xl font-normal text-black mb-4`}>
             What type of care are you looking for?
           </h1>
         </div>
@@ -256,21 +250,15 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
       {/* Options */}
       <div className="px-6 pb-8">
         <div className="max-w-lg mx-auto space-y-4">
-          {careCategories.map((category, index) => {
-            const Icon = category.icon
-            return (
-              <button
-                key={category.id}
-                onClick={() => handleCategoryChoice(category.id)}
-                className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
-              >
-                <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-                  <Icon className="w-7 h-7 text-gray-600" />
-                </div>
-                <span>{category.title}</span>
-              </button>
-            )
-          })}
+          {careCategories.map((category, index) => (
+            <button
+              key={category.id}
+              onClick={() => handleCategoryChoice(category.id)}
+              className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
+            >
+              <span className={playfair.className}>{category.title}</span>
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -284,7 +272,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
     const categoryTitle = careCategories.find(c => c.id === selectedCategory)?.title || ""
 
     return (
-      <div className="min-h-screen md:min-h-[500px] bg-[#F5F5F0]">
+      <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
         {/* Header */}
         <div className="px-6 py-8">
           <div className="flex items-center justify-between mb-6">
@@ -294,7 +282,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
             <div className="w-10 h-10" />
           </div>
           <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
+            <h1 className={`${playfair.className} text-3xl md:text-4xl font-normal text-black mb-4`}>
               {serviceType === "jobs" ? "Job Opportunities" : `${categoryTitle} Services`}
             </h1>
           </div>
@@ -306,18 +294,18 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
             {serviceType === "jobs" ? (
               // Job flow - show checklist options
               [
-                { title: "In-Home Care", icon: Briefcase },
-                { title: "Companionship", icon: Heart },
-                { title: "Live-In Care", icon: Users },
-                { title: "Transportation", icon: Briefcase },
-                { title: "Respite Care", icon: Heart }
+                { title: "In-Home Care" },
+                { title: "Companionship" },
+                { title: "Live-In Care" },
+                { title: "Transportation" },
+                { title: "Respite Care" }
               ].map((service, index) => (
                 <div key={index}>
                   <Button
                     onClick={() => setCurrentStep("job_gender")}
                     className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 h-auto"
                   >
-                    <span>{service.title}</span>
+                    <span className={playfair.className}>{service.title}</span>
                   </Button>
                 </div>
               ))
@@ -329,7 +317,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
                     onClick={() => handleServiceChoice(service)}
                     className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 h-auto"
                   >
-                    <span>{service.title}</span>
+                    <span className={playfair.className}>{service.title}</span>
                   </Button>
                 </div>
               ))
@@ -342,7 +330,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Job Gender Step
   const JobGenderStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#F5F5F0]">
+    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -352,7 +340,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
           <div className="w-10 h-10" />
         </div>
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
+          <h1 className={`${playfair.className} text-3xl md:text-4xl font-normal text-black mb-4`}>
             Gender
           </h1>
         </div>
@@ -363,22 +351,16 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
         <div className="max-w-lg mx-auto space-y-4">
           <button
             onClick={() => handleJobGenderChoice("Male")}
-            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
           >
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-              <User className="w-7 h-7 text-gray-600" />
-            </div>
-            <span>Male</span>
+            <span className={playfair.className}>Male</span>
           </button>
 
           <button
             onClick={() => handleJobGenderChoice("Female")}
-            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
           >
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-              <User className="w-7 h-7 text-gray-600" />
-            </div>
-            <span>Female</span>
+            <span className={playfair.className}>Female</span>
           </button>
         </div>
       </div>
@@ -387,7 +369,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Job Experience Step
   const JobExperienceStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#F5F5F0]">
+    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -397,7 +379,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
           <div className="w-10 h-10" />
         </div>
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
+          <h1 className={`${playfair.className} text-3xl md:text-4xl font-normal text-black mb-4`}>
             Do you have prior experience as caregiver?
           </h1>
         </div>
@@ -408,22 +390,16 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
         <div className="max-w-lg mx-auto space-y-4">
           <button
             onClick={() => handleJobExperienceChoice("Yes")}
-            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
           >
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-              <User className="w-7 h-7 text-gray-600" />
-            </div>
-            <span>Yes</span>
+            <span className={playfair.className}>Yes</span>
           </button>
 
           <button
             onClick={() => handleJobExperienceChoice("No")}
-            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
           >
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-              <User className="w-7 h-7 text-gray-600" />
-            </div>
-            <span>No</span>
+            <span className={playfair.className}>No</span>
           </button>
         </div>
       </div>
@@ -432,7 +408,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Who Needs Care Step
   const WhoNeedsCareStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#F5F5F0]">
+    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -442,8 +418,8 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
           <div className="w-10 h-10" />
         </div>
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
-            Who needs care?
+          <h1 className={`${playfair.className} text-3xl md:text-4xl font-normal text-black mb-4`}>
+            Who the care is for:
           </h1>
         </div>
       </div>
@@ -452,23 +428,31 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
       <div className="px-6 pb-8">
         <div className="max-w-lg mx-auto space-y-4">
           <button
-            onClick={() => handleWhoNeedsCareChoice("parent_loved_one")}
-            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
+            onClick={() => handleWhoNeedsCareChoice("me")}
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
           >
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-              <Users className="w-7 h-7 text-gray-600" />
-            </div>
-            <span>A Parent or Loved One</span>
+            <span className={playfair.className}>Me</span>
           </button>
 
           <button
-            onClick={() => handleWhoNeedsCareChoice("me")}
-            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200 relative"
+            onClick={() => handleWhoNeedsCareChoice("parent")}
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
           >
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
-              <User className="w-7 h-7 text-gray-600" />
-            </div>
-            <span>Me</span>
+            <span className={playfair.className}>A Parent</span>
+          </button>
+
+          <button
+            onClick={() => handleWhoNeedsCareChoice("spouse")}
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
+          >
+            <span className={playfair.className}>My Spouse</span>
+          </button>
+
+          <button
+            onClick={() => handleWhoNeedsCareChoice("someone_else")}
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
+          >
+            <span className={playfair.className}>Someone else</span>
           </button>
         </div>
       </div>
@@ -545,7 +529,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
   return (
     <>
       <Dialog open={isOpen} onOpenChange={handleClose} className="z-[99999]">
-        <DialogContent className="w-full h-full max-w-none max-h-none m-0 p-0 bg-[#F5F5F0] md:max-w-4xl md:max-h-[90vh] md:m-auto md:rounded-lg overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:top-6 [&>button]:rounded-full [&>button]:bg-white [&>button]:w-12 [&>button]:h-12 [&>button]:shadow-lg [&>button]:border [&>button]:border-gray-200 [&>button]:hover:bg-gray-50 [&>button]:z-20 [&>button]:flex [&>button]:items-center [&>button]:justify-center">
+        <DialogContent className="w-full h-full max-w-none max-h-none m-0 p-0 bg-[#FCF5EB] md:max-w-4xl md:max-h-[90vh] md:m-auto md:rounded-lg overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:top-6 [&>button]:rounded-full [&>button]:bg-white [&>button]:w-12 [&>button]:h-12 [&>button]:shadow-lg [&>button]:border [&>button]:border-gray-200 [&>button]:hover:bg-gray-50 [&>button]:z-20 [&>button]:flex [&>button]:items-center [&>button]:justify-center">
           <DialogTitle className="sr-only">
             Get Started - Find Care or Jobs
           </DialogTitle>
