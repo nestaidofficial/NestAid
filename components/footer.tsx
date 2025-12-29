@@ -87,7 +87,7 @@ export function Footer() {
           </div>
 
           {/* Right Side - Light Green Section with Links */}
-          <div className="bg-[#fff] rounded-b-3xl lg:rounded-r-3xl lg:rounded-bl-none p-6 md:p-8 lg:p-10">
+          <div className="bg-[#F5F5EC] rounded-b-3xl lg:rounded-r-3xl lg:rounded-bl-none p-6 md:p-8 lg:p-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
               {/* Quick Links */}
               <div>

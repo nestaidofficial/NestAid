@@ -216,13 +216,13 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
       <div className="px-6 pb-8">
         <div className="max-w-lg mx-auto space-y-4">
           {jobCategories.map((category, index) => (
-            <button
-              key={category.id}
-              onClick={() => handleCategoryChoice(category.id)}
+              <button
+                key={category.id}
+                onClick={() => handleCategoryChoice(category.id)}
               className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
-            >
+              >
               <span className={playfair.className}>{category.title}</span>
-            </button>
+              </button>
           ))}
         </div>
       </div>
@@ -251,13 +251,13 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
       <div className="px-6 pb-8">
         <div className="max-w-lg mx-auto space-y-4">
           {careCategories.map((category, index) => (
-            <button
-              key={category.id}
-              onClick={() => handleCategoryChoice(category.id)}
+              <button
+                key={category.id}
+                onClick={() => handleCategoryChoice(category.id)}
               className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
-            >
+              >
               <span className={playfair.className}>{category.title}</span>
-            </button>
+              </button>
           ))}
         </div>
       </div>

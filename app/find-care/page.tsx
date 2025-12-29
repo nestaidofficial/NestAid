@@ -440,12 +440,12 @@ export default function FindCarePage() {
               
               {/* Step 1 */}
               <div className="relative group" data-aos="fade-up" data-aos-delay="0">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#8B5CF6] via-[#87CEEB] to-[#D4AF37] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl bg-white" style={{ backgroundColor: '#FFFFFF' }}>
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#A6C8E1] via-[#87CEEB] to-[#5C8A7D] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#A6C8E1' }}>
                   <div className="flex flex-col items-start mb-6">
                     <div className="relative mb-4">
-                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9] flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <Phone className="w-10 h-10 text-white" />
+                      <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg bg-white">
+                        <Phone className="w-10 h-10" style={{ color: '#0D2F3A' }} />
                       </div>
                       <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#D9FB74] flex items-center justify-center">
                         <span className={`${playfair.className} text-sm font-bold text-[#1A5463]`}>01</span>
@@ -463,12 +463,12 @@ export default function FindCarePage() {
 
               {/* Step 2 */}
               <div className="relative group" data-aos="fade-up" data-aos-delay="100">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#87CEEB] via-[#1A5463] to-[#8B5CF6] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#EFF5F4' }}>
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#D5B896] via-[#A6C8E1] to-[#5C8A7D] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#D5B896' }}>
                   <div className="flex flex-col items-start mb-6">
                     <div className="relative mb-4">
-                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#1A5463] to-[#275F48] flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <ClipboardList className="w-10 h-10 text-white" />
+                      <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg bg-white">
+                        <ClipboardList className="w-10 h-10" style={{ color: '#0D2F3A' }} />
                       </div>
                       <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#D9FB74] flex items-center justify-center">
                         <span className={`${playfair.className} text-sm font-bold text-[#1A5463]`}>02</span>
@@ -486,22 +486,22 @@ export default function FindCarePage() {
 
               {/* Step 3 */}
               <div className="relative group" data-aos="fade-up" data-aos-delay="200">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#D4AF37] via-[#8B5CF6] to-[#87CEEB] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#EDFAE1' }}>
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#5C8A7D] via-[#A6C8E1] to-[#D5B896] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#5C8A7D' }}>
                   <div className="flex flex-col items-start mb-6">
                     <div className="relative mb-4">
-                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#275F48] to-[#1A5463] flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <UserCheck className="w-10 h-10 text-white" />
+                      <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg bg-white">
+                        <UserCheck className="w-10 h-10" style={{ color: '#0D2F3A' }} />
                       </div>
                       <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#D9FB74] flex items-center justify-center">
                         <span className={`${playfair.className} text-sm font-bold text-[#1A5463]`}>03</span>
                       </div>
                     </div>
-                    <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 leading-tight`}>
+                    <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4 leading-tight`}>
                       Meet Your Caregiver
                     </h3>
                   </div>
-                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base`}>
+                  <p className={`${inter.className} text-white/90 leading-relaxed text-base`}>
                     We carefully screen, train, and match caregivers based on experience, personality, and compatibility. You can feel confident knowing your loved one is supported by someone dependable, respectful, and trusted.
                   </p>
                 </div>
