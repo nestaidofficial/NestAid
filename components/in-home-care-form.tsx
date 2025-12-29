@@ -8,13 +8,20 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle, AlertCircle, ArrowLeft } from "lucide-react"
 import { submitCareApplication } from "@/app/actions/database-forms"
 
+interface CareFlowData {
+  careCategory?: string | null
+  serviceType?: string | null
+  whoNeedsCare?: string | null
+}
+
 interface InHomeCareFormProps {
   onClose?: () => void
   onBack?: () => void
   inModal?: boolean
+  flowData?: CareFlowData
 }
 
-export function InHomeCareForm({ onClose, inModal = false, onBack }: InHomeCareFormProps) {
+export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: InHomeCareFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string } | null>(null)
 
@@ -42,8 +49,10 @@ export function InHomeCareForm({ onClose, inModal = false, onBack }: InHomeCareF
         phone: formData.phone,
         email: formData.email,
         postalCode: formData.postalCode,
-        serviceType: "in_home_care",
-        whoNeedsCare: "parent_loved_one" // Default value, could be made configurable
+        serviceType: flowData?.serviceType || "in_home_care",
+        whoNeedsCare: flowData?.whoNeedsCare || "parent_loved_one",
+        careCategory: flowData?.careCategory || undefined,
+        smsConsent: formData.smsConsent
       })
       
       setSubmitResult(result)

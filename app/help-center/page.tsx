@@ -1,367 +1,448 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Search, MessageCircle, Phone, Mail, HelpCircle, Users, CreditCard, Shield, Home, Heart, FileText, Clock, Star, CheckCircle, AlertTriangle } from "lucide-react"
-import Link from "next/link"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { Playfair_Display, Inter } from "next/font/google"
+import { Search, ChevronDown, Play, DollarSign, Shield, MessageCircle } from "lucide-react"
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
+
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
+
+type FAQ = {
+  question: string
+  answer: string
+}
+
+type Category = {
+  id: string
+  title: string
+  description: string
+  icon: any
+  color: string
+  faqs: FAQ[]
+}
 
 export default function HelpCenterPage() {
-  const [searchTerm, setSearchTerm] = useState("")
-  const [filteredFaqs, setFilteredFaqs] = useState([])
+  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
 
   useEffect(() => {
     AOS.init({
-      duration: 600,
+      duration: 400,
       easing: 'ease-in-out',
       once: true,
       offset: 100
     });
   }, []);
 
-  const categories = [
+  const categories: Category[] = [
     {
-      icon: Users,
+      id: "getting-started",
       title: "Getting Started",
       description: "Learn how to find care and get started with NestAid",
-      color: "#E8F5E8"
+      icon: Play,
+      color: "#E8D4F0",
+      faqs: [
+        {
+          question: "How does NestAid work?",
+          answer: "NestAid connects families with trusted, vetted caregivers for in-home support. We start with a care consultation, match you with a suitable caregiver, and coordinate care based on your schedule, needs, and preferences."
+        },
+        {
+          question: "Who can use NestAid services?",
+          answer: "NestAid services are available for seniors, adults needing daily support, individuals recovering at home, and families seeking respite or companion care."
+        },
+        {
+          question: "How do I request care?",
+          answer: "You can request care by filling out our online form, calling our support team, or scheduling a consultation. A care coordinator will guide you through the next steps."
+        },
+        {
+          question: "How long does it take to start care?",
+          answer: "Care can often begin within a few days, depending on your location, care needs, and caregiver availability."
+        },
+        {
+          question: "What information do I need to get started?",
+          answer: "We'll ask about care needs, schedule preferences, home environment, and any special considerations to ensure a safe and appropriate caregiver match."
+        },
+        {
+          question: "Can I speak to someone before booking care?",
+          answer: "Yes. You can speak directly with a NestAid care coordinator before making any commitment."
+        },
+        {
+          question: "What areas does NestAid serve?",
+          answer: "NestAid currently serves only Massachusetts region. Availability may vary by location—contact us to confirm service in your area."
+        }
+      ]
     },
     {
-      icon: Heart,
+      id: "care-services",
       title: "Care Services",
-      description: "Information about our different types of care services",
-      color: "#FCFDFB"
-    },
-    {
-      icon: CreditCard,
-      title: "Payments & Billing",
-      description: "Understand costs, insurance, and Medicaid coverage",
-      color: "#E4F2D4"
-    },
-    {
-      icon: Shield,
-      title: "Safety & Security",
-      description: "Background checks, safety features, and best practices",
-      color: "#DBD9FE"
-    },
-    {
+      description: "Explore our in-home care options and support services",
       icon: MessageCircle,
+      color: "#A8D5E2",
+      faqs: [
+        {
+          question: "What types of in-home care does NestAid offer?",
+          answer: "NestAid provides non-medical in-home care, including companionship, personal assistance, live-in care, 24-hour care, and respite support."
+        },
+        {
+          question: "What is the difference between live-in and 24-hour care?",
+          answer: "Live-in care involves one caregiver living in the home with scheduled rest periods. 24-hour care includes multiple caregivers working in shifts to provide continuous, around-the-clock support."
+        },
+        {
+          question: "Do you offer hourly or part-time care?",
+          answer: "Yes. NestAid offers flexible hourly and part-time care options based on your needs and schedule."
+        },
+        {
+          question: "Can care be short-term or temporary?",
+          answer: "Yes. Care can be arranged for short-term recovery, travel coverage, or temporary family support."
+        },
+        {
+          question: "What is respite care?",
+          answer: "Respite care provides temporary caregiver support to give family caregivers time to rest, recharge, or attend to personal needs."
+        },
+        {
+          question: "What tasks can a caregiver help with?",
+          answer: "Caregivers assist with daily living activities such as personal care, meal preparation, light housekeeping, companionship, and mobility support."
+        },
+        {
+          question: "Do caregivers provide companionship?",
+          answer: "Yes. Companionship is a core part of our services, including conversation, shared activities, and emotional support."
+        },
+        {
+          question: "Can caregivers help with meals and errands?",
+          answer: "Caregivers can help with meal preparation, grocery shopping, and essential errands as part of daily support."
+        },
+        {
+          question: "What care is not provided?",
+          answer: "NestAid does not provide medical care, nursing services, medication administration, or clinical treatments."
+        }
+      ]
+    },
+    {
+      id: "payments-billing",
+      title: "Payments & Billing",
+      description: "Understand pricing, billing, and payment options",
+      icon: DollarSign,
+      color: "#D896E5",
+      faqs: [
+        {
+          question: "How much does in-home care cost?",
+          answer: "The cost of in-home care depends on care type, hours, and location. NestAid provides transparent pricing after your care consultation."
+        },
+        {
+          question: "How is pricing calculated?",
+          answer: "Pricing is based on the level of care required, schedule, and duration of services."
+        },
+        {
+          question: "What payment methods are accepted?",
+          answer: "NestAid accepts common payment methods including credit cards and electronic payments."
+        },
+        {
+          question: "Do you accept insurance or Medicaid?",
+          answer: "NestAid is a non-medical home care agency and does not directly accept Medicare, Medicaid, or traditional health insurance for payment. Our services focus on personal care, companionship, and daily living support, which are typically not covered by medical insurance plans.\n\nHowever, depending on their individual plan, some families are able to offset costs through long-term care insurance, veterans' benefits, or personal health accounts such as HSAs or FSAs.\n\nOur team is happy to help you understand your options and provide any documentation you may need for reimbursement."
+        },
+        {
+          question: "When will I be billed?",
+          answer: "Billing typically occurs on a regular schedule, such as weekly or bi-weekly, depending on your care arrangement."
+        },
+        {
+          question: "Can I change or cancel care?",
+          answer: "Yes. Care schedules can be adjusted or canceled with advance notice, subject to our cancellation policy."
+        },
+        {
+          question: "Are there any long-term contracts?",
+          answer: "No. NestAid does not require long-term contracts. Our care services are flexible and designed to adapt as your needs change."
+        }
+      ]
+    },
+    {
+      id: "safety-security",
+      title: "Safety & Security",
+      description: "How we protect families and caregivers",
+      icon: Shield,
+      color: "#F2D4F7",
+      faqs: [
+        {
+          question: "How are caregivers screened?",
+          answer: "All caregivers undergo a thorough screening process, including interviews, experience verification, and background checks."
+        },
+        {
+          question: "Do caregivers undergo background checks?",
+          answer: "Yes. At NestAid, every caregiver undergoes a thorough background screening before they begin working with families. This typically includes criminal history checks, reference verification, and other vetting to help ensure safety and trust."
+        },
+        {
+          question: "How does NestAid ensure caregiver quality?",
+          answer: "Caregivers are evaluated based on experience, references, and ongoing performance feedback."
+        },
+        {
+          question: "What safety measures are in place?",
+          answer: "NestAid follows safety best practices, caregiver guidelines, and clear communication protocols to protect families and caregivers."
+        },
+        {
+          question: "What happens if I have a safety concern?",
+          answer: "You can contact NestAid support immediately. We take all concerns seriously and act promptly."
+        },
+        {
+          question: "How does NestAid protect my personal information?",
+          answer: "NestAid uses secure systems and privacy safeguards to protect personal and financial information."
+        }
+      ]
+    },
+    {
+      id: "support-communication",
       title: "Support & Communication",
-      description: "How to get help and stay connected with your care team",
-      color: "#E8F5E8"
-    },
-  ]
-
-  const comprehensiveFaqs = [
-    {
-      category: "Getting Started",
-      questions: [
+      description: "Get help and stay connected with your care team",
+      icon: MessageCircle,
+      color: "#E8D4F0",
+      faqs: [
         {
-          question: "What makes NestAid different from other home care services?",
-          answer: "NestAid combines personalized care with comprehensive family support. We don't just provide caregivers—we offer complete care solutions including Medicaid navigation and ongoing support throughout your care journey."
-        },
-        {
-          question: "How do I get started with NestAid?",
-          answer: "Getting started is easy! Simply contact us for a free consultation where we'll assess your needs, explain your options, and help you create a personalized care plan. We'll handle all the paperwork and guide you through every step."
-        },
-        {
-          question: "What areas do you serve?",
-          answer: "We currently serve families in Pennsylvania, Ohio, Massachusetts, and are rapidly expanding to additional states. Contact us to check availability in your area."
-        },
-      ]
-    },
-    {
-      category: "Care Services",
-      questions: [
-        {
-          question: "What types of care do you provide?",
-          answer: "We offer comprehensive non-medical home care including companion care, personal care assistance, specialized care for disabilities, and live-in care."
-        },
-        {
-          question: "How quickly can care services begin?",
-          answer: "For immediate care needs, we can often arrange services within 24-48 hours."
-        },
-        {
-          question: "Can I choose my caregiver?",
-          answer: "Absolutely! We carefully match you with caregivers based on your specific needs, personality, and preferences. You have the final say in selecting your caregiver, and we ensure they're the right fit for your family."
-        },
-        {
-          question: "What if I'm not satisfied with my caregiver?",
-          answer: "If you're not completely satisfied, please contact our support team immediately. We'll work with you to resolve any issues and help you find a better match if needed. Your satisfaction is our priority."
-        },
-      ]
-    },
-    {
-      category: "Safety & Security",
-      questions: [
-        {
-          question: "How do you ensure the quality and safety of your caregivers?",
-          answer: "Every caregiver undergoes comprehensive background checks, identity verification, reference checks, and ongoing training. We also provide continuous monitoring and support to maintain the highest standards of care."
-        },
-        {
-          question: "What happens in case of an emergency?",
-          answer: "All caregivers are trained in basic emergency procedures. For medical emergencies, call 911 immediately. You can also contact our 24/7 safety hotline for urgent safety concerns."
-        },
-        {
-          question: "Are caregivers insured?",
-          answer: "Yes, all our caregivers are covered by comprehensive insurance including liability and bonding coverage. This provides additional protection and peace of mind for families."
-        },
-      ]
-    },
-    {
-      category: "Payments & Billing",
-      questions: [
-        {
-          question: "Do you help with insurance and Medicaid?",
-          answer: "Yes! We specialize in helping families navigate Medicaid-funded care programs. Our team assists with applications, paperwork, and compliance requirements."
-        },
-        {
-          question: "How much does care cost?",
-          answer: "Care costs vary based on your specific needs, location, and type of services. Many of our services are covered by Medicaid or insurance. We provide free consultations to discuss options and costs."
-        },
-        {
-          question: "What insurance do you accept?",
-          answer: "We work with most major insurance plans and specialize in Medicaid programs. Our team will verify your coverage and help maximize your benefits to reduce out-of-pocket costs."
-        },
-        {
-          question: "Are there any hidden fees?",
-          answer: "No, we believe in transparent pricing. All costs are discussed upfront during your consultation, and there are no hidden fees or surprise charges."
-        },
-      ]
-    },
-    {
-      category: "Support & Communication",
-      questions: [
-        {
-          question: "How do I contact my care team?",
-          answer: "You'll have direct contact information for your caregiver and care manager. We also provide 24/7 support through phone, email, and live chat for any urgent needs or questions."
+          question: "How do I contact my care coordinator?",
+          answer: "You can reach your assigned care coordinator by phone, email, or through NestAid support channels."
         },
         {
           question: "What if I need to change my care schedule?",
-          answer: "We understand that needs can change. Simply contact your care manager, and we'll work with you to adjust your schedule. We strive to accommodate changes whenever possible."
+          answer: "Schedule changes can be requested through your care coordinator with reasonable notice."
         },
         {
-          question: "How often will you check in with us?",
-          answer: "Your care manager will check in regularly to ensure everything is going well. The frequency depends on your needs, but typically includes weekly check-ins initially, then monthly ongoing support."
+          question: "How do I provide feedback or report an issue?",
+          answer: "Feedback and concerns can be shared directly with NestAid support or your care coordinator."
         },
+        {
+          question: "What happens if my caregiver is unavailable?",
+          answer: "NestAid will work to arrange a replacement caregiver whenever possible to ensure continuity of care."
+        },
+        {
+          question: "How do I reach NestAid support?",
+          answer: "You can contact NestAid by phone, email or through Nessa- our AI agent."
+        },
+        {
+          question: "What are your support hours?",
+          answer: "Our support hours are 9am-8pm. Emergency concerns are prioritized whenever they arise."
+        }
       ]
     }
   ]
 
-  const contactOptions = [
-    {
-      icon: MessageCircle,
-      title: "Live Chat",
-      description: "Get instant help from our support team",
-      action: "Start Chat",
-      available: "Available 24/7",
-      color: "#E8F5E8"
-    },
-    {
-      icon: Phone,
-      title: "Phone Support",
-      description: "Speak directly with a support representative",
-      action: "Call (1-800-NESTAID)",
-      available: "Mon-Fri 8AM-8PM EST",
-      color: "#FCFDFB"
-    },
-    {
-      icon: Mail,
-      title: "Email Support",
-      description: "Send us a detailed message about your issue",
-      action: "help@nestaid.com",
-      available: "Response within 24 hours",
-      color: "#E4F2D4"
-    },
-  ]
+  // Filter categories and FAQs based on search query
+  const filteredCategories = categories.map(category => {
+    const filteredFaqs = category.faqs.filter(faq =>
+      faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    return { ...category, faqs: filteredFaqs }
+  }).filter(category => 
+    category.faqs.length > 0 || 
+    category.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    category.description.toLowerCase().includes(searchQuery.toLowerCase())
+  )
 
-  // Filter FAQs based on search term
-  useEffect(() => {
-    if (searchTerm.trim() === "") {
-      setFilteredFaqs(comprehensiveFaqs)
-    } else {
-      const filtered = comprehensiveFaqs.map(category => ({
-        ...category,
-        questions: category.questions.filter(faq => 
-          faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      })).filter(category => category.questions.length > 0)
-      setFilteredFaqs(filtered)
-    }
-  }, [searchTerm])
+  const toggleFaq = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index)
+  }
+
+  const displayCategories = searchQuery ? filteredCategories : categories
 
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden" style={{ backgroundColor: '#E8F5E8' }}>
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
+      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }} data-aos="fade-up">
+        <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-[#1A5463] mb-6" data-aos="fade-up">
-              Help Center
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
+              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
+                WE'RE HERE TO HELP
+              </p>
+            </div>
+            <h1 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08] mb-8`}>
+              How Can We Help You?
             </h1>
-            <p className="text-xl md:text-2xl text-[#1A5463]/80 mb-8 leading-relaxed" data-aos="fade-up">
-              Find answers to your questions and get the support you need
+            <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed mb-10`}>
+              Find answers to common questions about NestAid's in-home care services, pricing, and support.
             </p>
-            
+
             {/* Search Bar */}
-            <div className="max-w-2xl mx-auto" data-aos="fade-up">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#1A5463]/60 w-6 h-6" />
-                <Input 
-                  placeholder="Search for help articles, FAQs, or topics..." 
-                  className="pl-12 py-4 text-lg border-2 border-[#275F49]/20 focus:border-[#275F49] rounded-2xl"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
+            <div className="relative max-w-2xl mx-auto">
+              <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                <Search className="w-5 h-5 text-[#1A5463]/40" />
               </div>
+              <input
+                type="text"
+                placeholder="Search for help..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={`${inter.className} w-full pl-12 pr-4 py-4 rounded-full border-2 border-[#1A5463]/20 focus:border-[#8B5CF6] focus:outline-none text-[#1A5463] placeholder:text-[#1A5463]/40 bg-white shadow-sm`}
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Browse by Category */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16" data-aos="fade-up">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#1A5463] mb-6">Browse by Category</h2>
-              <p className="text-lg text-[#1A5463]/80">
-                Find information organized by topic to get answers quickly
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {categories.map((category, index) => (
-                <Card key={index} className="hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-[#275F49]/20" data-aos="fade-up">
-                  <CardHeader className="text-center" style={{ backgroundColor: category.color }}>
-                    <category.icon className="w-16 h-16 mx-auto mb-4 text-[#275F49]" />
-                    <CardTitle className="text-xl text-[#1A5463]">{category.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <p className="text-[#1A5463]/80 text-center">{category.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
+      {/* Categories Grid (show only when no search or no category selected) */}
+      {!searchQuery && !selectedCategory && (
+        <section className="py-20 md:py-28" style={{ backgroundColor: '#F5F5EC' }} data-aos="fade-up">
+          <div className="container mx-auto px-8 md:px-12 lg:px-16">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {categories.map((category, index) => {
+                const Icon = category.icon
+                return (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className="bg-white rounded-2xl p-8 text-left hover:shadow-lg transition-all duration-300 group"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                  >
+                    <div 
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                      style={{ backgroundColor: category.color }}
+                    >
+                      <Icon className="w-8 h-8 text-[#1A5463]" />
+                    </div>
+                    <h3 className={`${playfair.className} text-2xl font-bold text-[#1A5463] mb-3`}>
+                      {category.title}
+                    </h3>
+                    <p className={`${inter.className} text-base text-[#1A5463]/80 leading-relaxed`}>
+                      {category.description}
+                    </p>
+                    <div className={`${inter.className} text-sm text-[#8B5CF6] mt-4 flex items-center gap-2 group-hover:gap-3 transition-all`}>
+                      View FAQs
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </button>
+                )
+              })}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Comprehensive FAQ Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#FCFDFB' }}>
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16" data-aos="fade-up">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#1A5463] mb-6">Frequently Asked Questions</h2>
-              <p className="text-lg text-[#1A5463]/80">
-                Get comprehensive answers to the most common questions about NestAid and our services
-              </p>
-            </div>
-
-            <div className="space-y-12">
-              {(filteredFaqs.length > 0 ? filteredFaqs : comprehensiveFaqs).map((category, categoryIndex) => (
-                <div key={categoryIndex} data-aos="fade-up">
-                  <h3 className="text-2xl font-bold text-[#275F49] mb-6 flex items-center">
-                    <div className="w-2 h-2 bg-[#275F49] rounded-full mr-3"></div>
-                    {category.category}
-                  </h3>
-                  
-                  <Accordion type="single" collapsible className="w-full">
-                    {category.questions.map((faq, index) => (
-                      <AccordionItem key={index} value={`${categoryIndex}-${index}`} className="border-b border-[#E4F2D4]">
-                        <AccordionTrigger className="text-left py-6 hover:no-underline">
-                          <span className="flex items-start text-[#1A5463]">
-                            <HelpCircle className="w-5 h-5 text-[#275F49] mr-3 flex-shrink-0 mt-0.5" />
-                            <span className="font-semibold text-left">{faq.question}</span>
-                          </span>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-6">
-                          <p className="text-[#1A5463]/80 ml-8 leading-relaxed">{faq.answer}</p>
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </div>
-              ))}
-            </div>
-
-            {filteredFaqs.length === 0 && searchTerm.trim() !== "" && (
-              <div className="text-center py-12" data-aos="fade-up">
-                <AlertTriangle className="w-16 h-16 mx-auto mb-4 text-[#275F49]/60" />
-                <h3 className="text-xl font-semibold text-[#1A5463] mb-2">No results found</h3>
-                <p className="text-[#1A5463]/80 mb-6">
-                  We couldn't find any FAQs matching "{searchTerm}". Try different keywords or browse by category.
-                </p>
-                <Button onClick={() => setSearchTerm("")} className="bg-[#275F49] hover:bg-[#1f4a37]">
-                  Clear Search
-                </Button>
-              </div>
+      {/* FAQs Section */}
+      {(searchQuery || selectedCategory) && (
+        <section className="py-20 md:py-28" style={{ backgroundColor: '#F5F5EC' }} data-aos="fade-up">
+          <div className="container mx-auto px-8 md:px-12 lg:px-16">
+            {selectedCategory && !searchQuery && (
+              <button
+                onClick={() => setSelectedCategory(null)}
+                className={`${inter.className} text-[#8B5CF6] hover:text-[#1A5463] mb-8 flex items-center gap-2 transition-colors`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to all categories
+              </button>
             )}
-          </div>
-        </div>
-      </section>
 
-      {/* Contact Support */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16" data-aos="fade-up">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#1A5463] mb-6">Contact Support</h2>
-              <p className="text-lg text-[#1A5463]/80">
-                Can't find what you're looking for? Our support team is here to help
-              </p>
+            <div className="max-w-4xl mx-auto">
+              {displayCategories.map((category) => {
+                if (selectedCategory && category.id !== selectedCategory) return null
+                
+                const Icon = category.icon
+                return (
+                  <div key={category.id} className="mb-12">
+                    {/* Category Header */}
+                    <div className="flex items-center gap-4 mb-8">
+                      <div 
+                        className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                        style={{ backgroundColor: category.color }}
+                      >
+                        <Icon className="w-7 h-7 text-[#1A5463]" />
+                      </div>
+                      <div>
+                        <h2 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463]`}>
+                          {category.title}
+                        </h2>
+                        <p className={`${inter.className} text-sm md:text-base text-[#1A5463]/70`}>
+                          {category.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* FAQs */}
+                    <div className="space-y-4">
+                      {category.faqs.map((faq, index) => {
+                        const globalIndex = categories.findIndex(c => c.id === category.id) * 1000 + index
+                        return (
+                          <div 
+                            key={index}
+                            className="bg-white rounded-xl overflow-hidden shadow-sm"
+                            data-aos="fade-up"
+                            data-aos-delay={index * 50}
+                          >
+                            <button
+                              onClick={() => toggleFaq(globalIndex)}
+                              className="w-full px-6 md:px-8 py-5 md:py-6 flex items-center justify-between gap-4 text-left hover:bg-gray-50 transition-colors"
+                            >
+                              <span className={`${playfair.className} text-lg md:text-xl font-semibold text-[#1A5463]`}>
+                                {faq.question}
+                              </span>
+                              <ChevronDown 
+                                className={`flex-shrink-0 w-5 h-5 text-[#1A5463] transition-transform ${
+                                  openFaqIndex === globalIndex ? 'rotate-180' : ''
+                                }`}
+                              />
+                            </button>
+                            {openFaqIndex === globalIndex && (
+                              <div className="px-6 md:px-8 pb-5 md:pb-6">
+                                <p className={`${inter.className} text-base md:text-lg text-[#1A5463]/80 leading-relaxed whitespace-pre-line`}>
+                                  {faq.answer}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )
+              })}
+
+              {displayCategories.length === 0 && (
+                <div className="text-center py-12">
+                  <p className={`${inter.className} text-lg text-[#1A5463]/60`}>
+                    No results found for "{searchQuery}". Try a different search term.
+                  </p>
+                </div>
+              )}
             </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {contactOptions.map((option, index) => (
-                <Card key={index} className="text-center border-2 border-[#E4F2D4] hover:shadow-lg transition-shadow" data-aos="fade-up">
-                  <CardHeader style={{ backgroundColor: option.color }}>
-                    <option.icon className="w-16 h-16 mx-auto mb-4 text-[#275F49]" />
-                    <CardTitle className="text-xl text-[#1A5463]">{option.title}</CardTitle>
-                    <p className="text-sm text-[#1A5463]/70 font-medium">{option.available}</p>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <p className="text-[#1A5463]/80 mb-6">{option.description}</p>
-                    <Button className="w-full bg-[#275F49] hover:bg-[#1f4a37]">{option.action}</Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Quick Links */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#E8F5E8' }}>
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
+      {/* Contact CTA */}
+      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }} data-aos="fade-up">
+        <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A5463] mb-8" data-aos="fade-up">
-              Still Need Help?
+            <h2 className={`${playfair.className} text-[32px] md:text-[42px] lg:text-[48px] text-[#1A5463] leading-[1.1] mb-6`}>
+              Still Have Questions?
             </h2>
-            <p className="text-lg text-[#1A5463]/80 mb-8" data-aos="fade-up">
-              Explore our other resources or get personalized assistance
+            <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed mb-10`}>
+              Our care team is here to help. Reach out for personalized support and guidance.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4" data-aos="fade-up">
-              <Link href="/safety-center">
-                <Button size="lg" variant="outline" className="border-[#275F49] text-[#275F49] hover:bg-[#275F49] hover:text-white font-bold text-lg px-8 py-4">
-                  Safety Center
-                </Button>
-              </Link>
-              <Link href="/about-us">
-                <Button size="lg" variant="outline" className="border-[#275F49] text-[#275F49] hover:bg-[#275F49] hover:text-white font-bold text-lg px-8 py-4">
-                  About NestAid
-                </Button>
-              </Link>
-              <Link href="/find-care">
-                <Button size="lg" className="bg-[#275F49] hover:bg-[#1f4a37] font-bold text-lg px-8 py-4">
-                  Get Started
-                </Button>
-              </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="tel:4129530622"
+                className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg`}
+              >
+                Call Us: (412) 953-0622
+              </a>
+              <a
+                href="mailto:information@nestaid.com"
+                className={`${inter.className} bg-white hover:bg-gray-50 text-[#1A5463] border-2 border-[#1A5463] font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg`}
+              >
+                Email Support
+              </a>
             </div>
           </div>
         </div>

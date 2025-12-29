@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getJobPostings, getAllJobPostings } from '@/lib/db-operations';
+import { createJobPosting, getJobPostings, getAllJobPostings } from '@/app/actions/supabase-actions';
 
 // Function to geocode ZIP code to coordinates
 async function geocodeZipcode(zipcode: string): Promise<{ lat: number; lng: number } | null> {
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     const lng = searchParams.get('lng');
     const radius = searchParams.get('radius');
 
-    let jobs;
+    let result;
 
     if (zipcode) {
       // First try to geocode the ZIP code to get coordinates
@@ -39,23 +39,38 @@ export async function GET(request: NextRequest) {
       
       if (coordinates && radius) {
         // Use radius search with geocoded coordinates
-        jobs = await getJobPostings(undefined, parseFloat(radius), coordinates.lat, coordinates.lng);
+        result = await getJobPostings({
+          lat: coordinates.lat,
+          lng: coordinates.lng,
+          radius: parseFloat(radius)
+        });
       } else {
         // Fallback to exact ZIP code search if geocoding fails
-        jobs = await getJobPostings(zipcode);
+        result = await getJobPostings({ zipcode });
       }
     } else if (lat && lng && radius) {
-      // Search by radius (50 miles = ~80.47 km)
-      jobs = await getJobPostings(undefined, parseFloat(radius), parseFloat(lat), parseFloat(lng));
+      // Search by radius
+      result = await getJobPostings({
+        lat: parseFloat(lat),
+        lng: parseFloat(lng),
+        radius: parseFloat(radius)
+      });
     } else {
-      // Return all jobs if no filters provided
-      jobs = await getAllJobPostings();
+      // Return all active jobs if no filters provided
+      result = await getAllJobPostings();
+    }
+
+    if (!result.success) {
+      return NextResponse.json(
+        { success: false, error: result.error },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ 
       success: true, 
-      jobs,
-      count: jobs.length 
+      jobs: result.data,
+      count: result.data?.length || 0
     });
   } catch (error) {
     console.error('Error fetching jobs:', error);
@@ -69,32 +84,45 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { title, description, zipcode, city, state, lat, lng } = body;
+    const { title, description, zipcode, city, state, lat, lng, radius_miles } = body;
 
     // Validate required fields
-    if (!title || !description || !zipcode || !city || !state) {
+    if (!title || !description || !city || !state) {
       return NextResponse.json(
-        { success: false, error: 'Missing required fields' },
+        { success: false, error: 'Missing required fields: title, description, city, and state are required' },
         { status: 400 }
       );
     }
 
-    // Import the createJobPosting function
-    const { createJobPosting } = await import('@/lib/db-operations');
-    
-    const job = await createJobPosting({
+    // Zipcode is optional, but if not provided, we'll use state as identifier
+    // Format: "STATE" or zipcode if provided (max 20 chars)
+    let finalZipcode = zipcode || state || '00000';
+    // Ensure it doesn't exceed 20 characters (database limit)
+    if (finalZipcode.length > 20) {
+      finalZipcode = finalZipcode.substring(0, 20);
+    }
+
+    const result = await createJobPosting({
       title,
       description,
-      zipcode,
+      zipcode: finalZipcode,
       city,
       state,
       lat: lat ? parseFloat(lat) : undefined,
       lng: lng ? parseFloat(lng) : undefined,
+      radius_miles: radius_miles ? parseInt(radius_miles) : 25
     });
+
+    if (!result.success) {
+      return NextResponse.json(
+        { success: false, error: result.error },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ 
       success: true, 
-      job 
+      job: result.data
     });
   } catch (error) {
     console.error('Error creating job posting:', error);

@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 import { X, ArrowLeft, Briefcase, Heart, Users, User } from "lucide-react"
 import { InHomeCareForm } from "./in-home-care-form"
 import { CompanionCareForm } from "./companion-care-form"
-import { JobApplicationForm } from "./job-application-form"
+import { ModalJobApplicationForm } from "./modal-job-application-form"
 import { Playfair_Display } from "next/font/google"
 
 const playfair = Playfair_Display({
@@ -466,14 +466,30 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Form Step - Show the selected form
   const FormStep = () => {
+    // Prepare care flow data
+    const careFlowData = {
+      careCategory: selectedCategory,
+      serviceType: selectedForm,
+      whoNeedsCare: whoNeedsCare
+    }
+
+    // Prepare job flow data
+    const jobFlowData = {
+      jobCategory: selectedCategory,
+      serviceType: selectedForm,
+      gender: jobPreferences.gender,
+      experience: jobPreferences.experience
+    }
+
     if (serviceType === "jobs") {
       return (
         <div className="min-h-screen md:min-h-[600px] h-full">
-          <JobApplicationForm 
+          <ModalJobApplicationForm 
             onClose={handleClose} 
             inModal={true} 
             onBack={handleBack}
             jobPreferences={jobPreferences}
+            flowData={jobFlowData}
           />
         </div>
       )
@@ -484,13 +500,13 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
     const renderForm = () => {
       switch (selectedForm) {
         case "in_home_care":
-          return <InHomeCareForm onClose={handleClose} inModal={true} onBack={handleBack} />
+          return <InHomeCareForm onClose={handleClose} inModal={true} onBack={handleBack} flowData={careFlowData} />
         case "companion_care":
-          return <CompanionCareForm onClose={handleClose} inModal={true} onBack={handleBack} />
+          return <CompanionCareForm onClose={handleClose} inModal={true} onBack={handleBack} flowData={careFlowData} />
         case "part_time_care":
-          return <InHomeCareForm onClose={handleClose} inModal={true} onBack={handleBack} />
+          return <InHomeCareForm onClose={handleClose} inModal={true} onBack={handleBack} flowData={careFlowData} />
         case "other":
-          return <InHomeCareForm onClose={handleClose} inModal={true} onBack={handleBack} />
+          return <InHomeCareForm onClose={handleClose} inModal={true} onBack={handleBack} flowData={careFlowData} />
         default:
           return null
       }

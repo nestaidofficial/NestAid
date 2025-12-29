@@ -1,6 +1,6 @@
 "use server"
 
-import { createPrimaryJobApplication } from '@/lib/db-operations';
+import { submitJobApplication as supabaseSubmitJobApplication } from './supabase-actions';
 
 export async function submitJobApplication(formData: FormData) {
   try {
@@ -42,14 +42,18 @@ export async function submitJobApplication(formData: FormData) {
       };
     }
 
-    // Save to database
-    const result = await createPrimaryJobApplication(applicationData);
+    // Save to Supabase
+    const result = await supabaseSubmitJobApplication({
+      job_posting_id: applicationData.jobId,
+      first_name: applicationData.firstName,
+      last_name: applicationData.lastName,
+      phone: applicationData.mobileNumber,
+      email: applicationData.email,
+      search_location: applicationData.searchLocation,
+      job_title: applicationData.jobTitle,
+    });
 
-    return {
-      success: true,
-      message: "Application submitted successfully! We'll contact you soon.",
-      data: result
-    };
+    return result;
 
   } catch (error) {
     console.error("Error submitting job application:", error);

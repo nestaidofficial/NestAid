@@ -6,6 +6,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ExtensionErrorSuppressor } from "@/components/extension-error-suppressor"
 import { ChatWidget } from "@/components/chat-widget"
+import { ConditionalLayout } from "@/components/conditional-layout"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -24,12 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
         <ExtensionErrorSuppressor />
-        <div className="min-h-screen bg-background">
-          <Header />
+        <ConditionalLayout>
           {children}
-          <Footer />
-          <ChatWidget />
-        </div>
+        </ConditionalLayout>
       </body>
     </html>
   )

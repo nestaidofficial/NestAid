@@ -26,57 +26,6 @@ export default function AboutUsPage() {
     });
   }, []);
 
-  const experts = [
-    {
-      name: "Michael Johnson",
-      title: "Director of Senior Services",
-      image: "/images/group.png",
-      color: "#E8D4F0",
-      facebook: "https://facebook.com",
-      linkedin: "https://linkedin.com"
-    },
-    {
-      name: "Sophia Grace",
-      title: "Senior Nurse",
-      image: "/images/senior-care.jpg",
-      color: "#A8D5E2",
-      facebook: "https://facebook.com",
-      linkedin: "https://linkedin.com"
-    },
-    {
-      name: "Ethan Williams",
-      title: "Health Officer",
-      image: "/images/adult-care.jpg",
-      color: "#F2D4F7",
-      facebook: "https://facebook.com",
-      linkedin: "https://linkedin.com"
-    },
-    {
-      name: "David Martinez",
-      title: "Care Coordinator",
-      image: "/images/group.jpg",
-      color: "#D896E5",
-      facebook: "https://facebook.com",
-      linkedin: "https://linkedin.com"
-    },
-    {
-      name: "Jennifer Lee",
-      title: "Senior Care Specialist",
-      image: "/images/group.png",
-      color: "#E8D4F0",
-      facebook: "https://facebook.com",
-      linkedin: "https://linkedin.com"
-    },
-    {
-      name: "Robert Taylor",
-      title: "Patient Care Manager",
-      image: "/images/senior-care.jpg",
-      color: "#A8D5E2",
-      facebook: "https://facebook.com",
-      linkedin: "https://linkedin.com"
-    }
-  ]
-
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -89,13 +38,13 @@ export default function AboutUsPage() {
               <div className="flex items-center justify-center gap-2 mb-4 mt-8 md:mt-12" data-aos="fade-up">
                 <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
                 <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                  HELPING SENIORS THRIVE WITH CARE
+                  CARE THAT FEELS LIKE FAMILY
                 </p>
               </div>
               {/* Main Heading */}
               <h1 className={`${playfair.className} text-[40px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.1] mb-8 md:mb-12`} data-aos="fade-up">
-                Building A Better<br />
-                Tomorrow For Seniors
+                Building a Better Tomorrow,<br />
+                at Home
               </h1>
             </div>
           </div>
@@ -125,9 +74,12 @@ export default function AboutUsPage() {
               </p>
             </div>
             {/* Content */}
-            <div className="max-w-3xl mx-auto" data-aos="fade-up">
-              <p className={`${playfair.className} text-xl md:text-2xl lg:text-3xl text-[#1A5463] leading-relaxed text-left`}>
-                At NestAid, we believe that growing older should be embraced with dignity, comfort, and joy. Our mission is to provide compassionate adult daycare services that support the emotional, physical, and social well-being of every individual in our care.
+            <div className="max-w-3xl mx-auto space-y-6" data-aos="fade-up">
+              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
+                At NestAid, we believe care should feel personal, respectful, and reassuring. We support adults and seniors with thoughtful in-home care that helps them live safely, comfortably, and independently in the place they call home.
+              </p>
+              <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
+                Our approach is centered on dignity, consistency, and genuine human connection—so families can feel confident knowing their loved ones are cared for with attention and heart.
               </p>
             </div>
           </div>
@@ -149,8 +101,8 @@ export default function AboutUsPage() {
               </div>
               {/* Heading */}
               <h2 className={`${playfair.className} text-[40px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.1]`}>
-                Building A Better<br />
-                Tomorrow For Seniors
+                Supporting Better Living—<br />
+                Today and Tomorrow
               </h2>
             </div>
 
@@ -171,7 +123,7 @@ export default function AboutUsPage() {
                   </div>
                 </div>
                 <p className={`${inter.className} text-sm md:text-base text-[#1A5463] leading-relaxed`}>
-                  At NestAid, we provide personalized adult daycare services that prioritize individual needs. Our engaging activities promote mental and physical well-being, while our community environment fosters social connections and a sense of belonging.
+                  At NestAid, our mission is to provide personalized in-home care that honors each individual's needs, routines, and independence. Through thoughtful support and meaningful companionship, we promote physical well-being, emotional comfort, and a genuine sense of connection—right at home.
                 </p>
               </div>
 
@@ -193,7 +145,7 @@ export default function AboutUsPage() {
                   </div>
                 </div>
                 <p className={`${inter.className} text-sm md:text-base text-white leading-relaxed`}>
-                  We aim for a world where seniors are valued and involved, with communities that include them in decisions and appreciate their roles. Through lifelong learning, social engagement, and quality healthcare, we strive to improve their lives.
+                  To redefine in-home care by creating a future where every adult and senior can age with dignity, independence, and peace of mind—supported by compassionate care that feels like family.
                 </p>
               </div>
             </div>
@@ -263,20 +215,19 @@ export default function AboutUsPage() {
               <div className="flex items-center gap-2 mb-6" data-aos="fade-up">
                 <span className="text-[#D896E5] text-xl font-semibold">✺</span>
                 <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-white`}>
-                  WE ARE ALWAYS CLOSE
+                  WHAT GUIDES US
                 </p>
               </div>
               
               {/* Heading */}
               <h2 className={`${playfair.className} text-[32px] md:text-[42px] lg:text-[48px] text-white leading-[1.2] mb-6`} data-aos="fade-up">
-                Driven By Integrity The<br />
-                Principles Steering Every<br />
-                Step
+                Care Rooted in Integrity,<br />
+                Guided by Purpose
               </h2>
               
               {/* Description */}
               <p className={`${inter.className} text-base md:text-lg text-white/90 leading-relaxed mb-8`} data-aos="fade-up">
-                Choosing NestAid means placing your loved ones in the hands of a deeply dedicated, compassionate, and experienced team—committed to providing exceptional care.
+                Choosing NestAid means choosing a team that leads with honesty, compassion, and accountability. Every decision we make is grounded in what's best for the individuals and families we serve—because trust is the foundation of meaningful care.
               </p>
               
               {/* Checkpoints */}
@@ -288,7 +239,7 @@ export default function AboutUsPage() {
                     </svg>
                   </div>
                   <p className={`${inter.className} text-base text-white/90`}>
-                    We do what's right, even when no one is watching staying true
+                    <span className="font-semibold text-white">Integrity</span> We do what's right, consistently and transparently
                   </p>
                 </div>
                 
@@ -299,7 +250,7 @@ export default function AboutUsPage() {
                     </svg>
                   </div>
                   <p className={`${inter.className} text-base text-white/90`}>
-                    Excellence we strive for the highest quality in everything aiming to exceed
+                    <span className="font-semibold text-white">Excellence</span> We hold ourselves to high standards to deliver reliable, thoughtful care every day.
                   </p>
                 </div>
                 
@@ -310,7 +261,7 @@ export default function AboutUsPage() {
                     </svg>
                   </div>
                   <p className={`${inter.className} text-base text-white/90`}>
-                    Collaboration we believe in working together, combining diverse
+                    <span className="font-semibold text-white">Collaboration</span> We work closely with families, caregivers, and communities to create the best outcomes together.
                   </p>
                 </div>
               </div>
@@ -326,131 +277,6 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Meet Our Experts Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#F2F2EF' }}>
-        <div className="container mx-auto px-4 md:px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
-            {/* Top Section - Header with Two Columns */}
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16">
-              {/* Left Column - Tagline and Heading */}
-              <div data-aos="fade-up">
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="text-[#8B5CF6] text-xl font-semibold">✺</span>
-                  <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                    WE ARE ALWAYS CLOSE
-                  </p>
-                </div>
-                <h2 className={`${playfair.className} text-[36px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.2]`}>
-                  Meet Our Experts
-                </h2>
-              </div>
-
-              {/* Right Column - Description */}
-              <div className="flex items-center" data-aos="fade-up">
-                <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed`}>
-                  We're redefining the aging journey with compassion and care. We believe every stage of life should be lived with dignity, comfort, and connection.
-                </p>
-              </div>
-            </div>
-
-            {/* Experts Grid */}
-            <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-              {experts.map((expert, index) => (
-                <div key={expert.name} className="bg-white rounded-2xl overflow-hidden shadow-sm" data-aos="fade-up" data-aos-delay={index * 100}>
-                  {/* Image */}
-                  <div className="relative w-full aspect-[3/4]">
-                    <Image
-                      src={expert.image}
-                      alt={expert.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  
-                  {/* Info Block */}
-                  <div className="p-5" style={{ backgroundColor: expert.color }}>
-                    <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                        <h3 className={`${inter.className} text-lg md:text-xl font-bold text-[#1A5463] mb-1`}>
-                          {expert.name}
-                        </h3>
-                        <p className={`${inter.className} text-sm md:text-base text-[#1A5463]/80`}>
-                          {expert.title}
-              </p>
-            </div>
-
-                      {/* Social Icons */}
-                      <div className="flex items-center gap-3 flex-shrink-0">
-                        <a 
-                          href={expert.facebook} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-[#1A5463] hover:opacity-70 transition-opacity"
-                          aria-label="Facebook"
-                        >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                          </svg>
-                        </a>
-                        <a 
-                          href={expert.linkedin} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-[#1A5463] hover:opacity-70 transition-opacity"
-                          aria-label="LinkedIn"
-                        >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-            </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Support Senior Care Hero Section */}
-      <section className="relative w-full h-[600px] md:h-[700px] overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-                      <Image
-            src="/images/senior-care.jpg"
-            alt="Senior care support"
-                        fill
-            className="object-cover"
-            priority
-          />
-          {/* Dark Overlay on Left Side */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
-        </div>
-
-        {/* Content Overlay */}
-        <div className="relative h-full container mx-auto px-4 md:px-6 lg:px-12 flex items-center">
-          <div className="max-w-2xl">
-            {/* Main Heading */}
-            <h2 className={`${playfair.className} text-[36px] md:text-[48px] lg:text-[56px] text-white leading-[1.2] mb-6`} data-aos="fade-up">
-              Support Senior Care<br />
-              Where It's Needed Most
-            </h2>
-            
-            {/* Description */}
-            <p className={`${inter.className} text-base md:text-lg text-white leading-relaxed mb-8`} data-aos="fade-up" data-aos-delay="100">
-              Choosing NestAid means placing your loved ones in the hands of a deeply dedicated, compassionate, and experienced team
-            </p>
-            
-            {/* CTA Button */}
-            <div data-aos="fade-up" data-aos-delay="200">
-              <button className={`${inter.className} px-8 py-4 rounded-full font-semibold text-white uppercase tracking-wider text-sm transition-all hover:opacity-90`} style={{ backgroundColor: '#D896E5' }}>
-                MAKE AN ENQUIRY
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

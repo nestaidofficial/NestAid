@@ -180,18 +180,27 @@ export function GooglePlacesAutocomplete({
       
       if (types.includes('postal_code')) {
         zipcode = component.long_name;
-      } else if (types.includes('locality')) {
-        city = component.long_name;
+      } else if (types.includes('locality') || types.includes('sublocality') || types.includes('sublocality_level_1')) {
+        // Try multiple city types
+        if (!city) {
+          city = component.long_name;
+        }
       } else if (types.includes('administrative_area_level_1')) {
         state = component.short_name;
+      } else if (types.includes('administrative_area_level_2') && !city) {
+        // Fallback to county if city not found
+        city = component.long_name;
       }
     });
 
+    // If zipcode is missing but we have city and state, that's okay
+    // The API will handle it with a fallback
+
     return {
       formatted_address: place.formatted_address,
-      zipcode,
-      city,
-      state,
+      zipcode: zipcode || '', // Can be empty, API will handle fallback
+      city: city || '',
+      state: state || '',
       lat: place.geometry.location.lat(),
       lng: place.geometry.location.lng()
     };

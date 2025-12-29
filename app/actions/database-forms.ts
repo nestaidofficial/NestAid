@@ -1,8 +1,7 @@
 "use server"
 
-import { createUser, getUserByEmail, createCareApplication, createJobApplication } from '@/lib/db-operations';
-
-// Family Caregiver Application - REMOVED
+import { submitCareApplication as supabaseSubmitCareApplication, submitJobApplication as supabaseSubmitJobApplication } from './supabase-actions';
+import type { CreateCareApplicationInput, CreateJobApplicationInput } from '@/lib/supabase/types';
 
 // Care Application
 export async function submitCareApplication(formData: {
@@ -13,42 +12,25 @@ export async function submitCareApplication(formData: {
   postalCode: string;
   serviceType: string;
   whoNeedsCare: string;
+  careCategory?: string;
+  smsConsent?: boolean;
 }) {
-  try {
-    // Check if user already exists
-    let user = await getUserByEmail(formData.email);
-    
-    if (!user) {
-      // Create new user
-      user = await createUser({
-        email: formData.email,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        phone: formData.phone,
-        postalCode: formData.postalCode,
-      });
-    }
+  const input: CreateCareApplicationInput = {
+    first_name: formData.firstName,
+    last_name: formData.lastName,
+    phone: formData.phone,
+    email: formData.email,
+    postal_code: formData.postalCode,
+    service_type: formData.serviceType as any,
+    who_needs_care: formData.whoNeedsCare as any,
+    care_category: formData.careCategory as any,
+    sms_consent: formData.smsConsent || false,
+  };
 
-    // Create care application
-    await createCareApplication(user.id, {
-      serviceType: formData.serviceType as any,
-      whoNeedsCare: formData.whoNeedsCare as any,
-    });
-
-    return {
-      success: true,
-      message: "Thank you! Your care application has been submitted successfully. We'll contact you within 24 hours to discuss your care needs."
-    };
-  } catch (error) {
-    console.error("Care application error:", error);
-    return {
-      success: false,
-      message: "There was an error submitting your application. Please try again or call us directly."
-    };
-  }
+  return await supabaseSubmitCareApplication(input);
 }
 
-// Job Application
+// Job Application (from GetStartedModal flow)
 export async function submitJobApplication(formData: {
   firstName: string;
   lastName: string;
@@ -58,40 +40,20 @@ export async function submitJobApplication(formData: {
   gender: string;
   experience: string;
   careTypes: string[];
+  jobCategory?: string;
+  serviceType?: string;
 }) {
-  try {
-    // Check if user already exists
-    let user = await getUserByEmail(formData.email);
-    
-    if (!user) {
-      // Create new user
-      user = await createUser({
-        email: formData.email,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        phone: formData.phone,
-        postalCode: formData.postalCode,
-      });
-    }
+  const input: CreateJobApplicationInput = {
+    first_name: formData.firstName,
+    last_name: formData.lastName,
+    phone: formData.phone,
+    email: formData.email,
+    postal_code: formData.postalCode,
+    gender: formData.gender as any,
+    has_experience: formData.experience === 'Yes',
+    job_category: formData.jobCategory as any,
+    service_type: formData.serviceType || (formData.careTypes.length > 0 ? formData.careTypes[0] : undefined),
+  };
 
-    // Create job application
-    await createJobApplication(user.id, {
-      gender: formData.gender,
-      experience: formData.experience === 'Yes',
-      careTypes: formData.careTypes,
-    });
-
-    return {
-      success: true,
-      message: "Thank you for your interest! Your job application has been submitted. We'll review it and get back to you soon."
-    };
-  } catch (error) {
-    console.error("Job application error:", error);
-    return {
-      success: false,
-      message: "There was an error submitting your application. Please try again or contact us directly."
-    };
-  }
+  return await supabaseSubmitJobApplication(input);
 }
-
-

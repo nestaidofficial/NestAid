@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertCircle, Shield } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { authenticateAdmin } from '@/app/actions/admin-auth';
 
 export default function AdminLoginPage() {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -18,13 +19,14 @@ export default function AdminLoginPage() {
     setIsLoading(true);
     setError('');
 
-    // Simple admin authentication (you should use proper auth in production)
-    if (credentials.username === 'admin' && credentials.password === 'nestaid2024') {
+    const result = await authenticateAdmin(credentials.username, credentials.password);
+    
+    if (result.success) {
       // Set admin session cookie
       document.cookie = 'adminAuthenticated=true; path=/; max-age=3600'; // 1 hour
       router.push('/admin/dashboard');
     } else {
-      setError('Invalid credentials');
+      setError(result.error || 'Invalid credentials');
     }
     
     setIsLoading(false);

@@ -528,7 +528,7 @@ export default function Component() {
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
               <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                WE ARE ALWAYS CLOSE
+                Voices From the Families We Serve
               </p>
             </div>
             <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08]`}>
@@ -613,116 +613,6 @@ export default function Component() {
 
 
 
-      {/* First Time Considering Professional Home Care Section */}
-      <section className="py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#FCF5EB' }} data-aos="fade-up">
-        <div className="container mx-auto px-8 md:px-12 lg:px-16">
-          {/* Header Section */}
-          <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20" data-aos="fade-up">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
-              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                YOUR JOURNEY STARTS HERE
-              </p>
-            </div>
-            <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08] mb-6`}>
-              Considering Professional Home Care for the First Time?
-            </h2>
-            <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-3xl mx-auto`}>
-              Choosing home care is an important decision. At NestAid, we guide you through every step with clarity, care, and a personalized approach designed for your family's peace of mind.
-            </p>
-          </div>
-
-          {/* Three Step Cards with Creative Design */}
-          <div className="relative px-4 lg:px-0">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 relative">
-              
-              {/* Step 1 */}
-              <div className="relative group" data-aos="fade-up" data-aos-delay="0">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#8B5CF6] via-[#87CEEB] to-[#D4AF37] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl bg-white" style={{ backgroundColor: '#FFFFFF' }}>
-                  <div className="flex flex-col items-start mb-6">
-                    <div className="relative mb-4">
-                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9] flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <Phone className="w-10 h-10 text-white" />
-                      </div>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#D9FB74] flex items-center justify-center">
-                        <span className={`${playfair.className} text-sm font-bold text-[#1A5463]`}>01</span>
-                      </div>
-                    </div>
-                    <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 leading-tight`}>
-                      Book Your Free Consultation
-                    </h3>
-                  </div>
-                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base`}>
-                    We begin with a complimentary consultation to understand your needs, preferences, and goals. Our team answers your questions, explains care options clearly, and helps you determine the right next steps—without pressure.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="relative group" data-aos="fade-up" data-aos-delay="100">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#87CEEB] via-[#1A5463] to-[#8B5CF6] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#EFF5F4' }}>
-                  <div className="flex flex-col items-start mb-6">
-                    <div className="relative mb-4">
-                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#1A5463] to-[#275F48] flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <ClipboardList className="w-10 h-10 text-white" />
-                      </div>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#D9FB74] flex items-center justify-center">
-                        <span className={`${playfair.className} text-sm font-bold text-[#1A5463]`}>02</span>
-                      </div>
-                    </div>
-                    <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 leading-tight`}>
-                      Build Your Care Plan
-                    </h3>
-                  </div>
-                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base`}>
-                    Following your consultation, we assess your loved one's home environment and daily needs. From safety considerations to routine support, we create a personalized care plan and schedule—designed with your input and approval.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="relative group" data-aos="fade-up" data-aos-delay="200">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#D4AF37] via-[#8B5CF6] to-[#87CEEB] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#EDFAE1' }}>
-                  <div className="flex flex-col items-start mb-6">
-                    <div className="relative mb-4">
-                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#275F48] to-[#1A5463] flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <UserCheck className="w-10 h-10 text-white" />
-                      </div>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#D9FB74] flex items-center justify-center">
-                        <span className={`${playfair.className} text-sm font-bold text-[#1A5463]`}>03</span>
-                      </div>
-                    </div>
-                    <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 leading-tight`}>
-                      Meet Your Caregiver
-                    </h3>
-                  </div>
-                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base`}>
-                    We carefully screen, train, and match caregivers based on experience, personality, and compatibility. You can feel confident knowing your loved one is supported by someone dependable, respectful, and trusted.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Decorative Connecting Line */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 -z-10">
-              <svg className="w-full h-full" viewBox="0 0 1200 4" preserveAspectRatio="none">
-                <path
-                  d="M 0 2 Q 200 0, 400 2 T 800 2 T 1200 2"
-                  stroke="#1A5463"
-                  strokeWidth="2"
-                  fill="none"
-                  strokeDasharray="8 4"
-                  opacity="0.3"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Helpful Articles Section */}
       <section className="py-20 md:py-28" style={{ backgroundColor: '#F5F5EC' }} data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
@@ -731,7 +621,7 @@ export default function Component() {
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
                 <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                  Care Services Designed With Heart
+                  Here to Support You
                 </p>
               </div>
               <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08]`}>
@@ -798,8 +688,7 @@ export default function Component() {
             
             {/* Description */}
             <p className={`${inter.className} text-base md:text-lg text-[#1A5463] mb-10 max-w-3xl mx-auto leading-relaxed`}>
-              Join thousands of families who trust NestAid to provide the care their loved ones deserve. 
-              Start your journey today and discover the difference personalized, professional care can make.
+              Join families who trust NestAid to care for their loved ones with compassion and respect. Begin your journey today and experience care that's truly personal.
             </p>
 
             {/* CTA Buttons */}
