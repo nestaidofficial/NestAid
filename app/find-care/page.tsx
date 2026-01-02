@@ -37,6 +37,8 @@ const GooglePlayIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function FindCarePage() {
   const [getStartedModalOpen, setGetStartedModalOpen] = useState(false)
+  const [quickCareHours, setQuickCareHours] = useState(2)
+  const [steadyDays, setSteadyDays] = useState(3)
   
   // Initialize AOS
   useEffect(() => {
@@ -46,6 +48,28 @@ export default function FindCarePage() {
       once: true,
       offset: 100
     });
+  }, []);
+
+  // Animate QuickCare hours (1-8 and back)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setQuickCareHours(prev => {
+        if (prev === 8) return 1;
+        return prev + 1;
+      });
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Animate Steady Days (1-7 and back)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSteadyDays(prev => {
+        if (prev === 7) return 1;
+        return prev + 1;
+      });
+    }, 2500);
+    return () => clearInterval(interval);
   }, []);
 
   // Listen for custom event from mobile FAB to open modal
@@ -194,7 +218,7 @@ export default function FindCarePage() {
               <div className="relative w-full max-w-md md:max-w-lg">
                 {/* Main Image */}
                 <div className="relative w-full aspect-square">
-                  <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
+                  <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl">
             <Image 
               src="/images/bg-image/find-care-bg.jpg" 
                       alt="Caregiver with senior"
@@ -204,6 +228,62 @@ export default function FindCarePage() {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
+                  
+                  {/* Floating Service Cards - All on Right Side with Uniform Spacing */}
+                  {/* QuickCare */}
+                  <div className="absolute top-[5%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.1s' }} data-aos="fade-up" data-aos-delay="50">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#E8D4F0' }}>
+                      <Clock className="w-4 h-4 md:w-5 md:h-5 text-[#8B5CF6]" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className={`${inter.className} text-xs md:text-sm font-bold text-[#1A5463] whitespace-nowrap`}>QuickCare</p>
+                      <p className={`${inter.className} text-[10px] md:text-xs text-gray-500 transition-all duration-300 whitespace-nowrap`}>{quickCareHours} hr{quickCareHours !== 1 ? 's' : ''}/day</p>
+                    </div>
+                  </div>
+                  
+                  {/* Steady Days */}
+                  <div className="absolute top-[25%] -right-8 md:-right-12 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.2s' }} data-aos="fade-up" data-aos-delay="100">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#F2D4F7' }}>
+                      <Calendar className="w-4 h-4 md:w-5 md:h-5 text-[#D896E5]" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className={`${inter.className} text-xs md:text-sm font-bold text-[#1A5463] whitespace-nowrap`}>Steady Days</p>
+                      <p className={`${inter.className} text-[10px] md:text-xs text-gray-500 transition-all duration-300 whitespace-nowrap`}>{steadyDays} day{steadyDays !== 1 ? 's' : ''}/week</p>
+                    </div>
+                  </div>
+                  
+                  {/* Overnight */}
+                  <div className="absolute top-[45%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.3s' }} data-aos="fade-up" data-aos-delay="150">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#A8D5E2' }}>
+                      <Users className="w-4 h-4 md:w-5 md:h-5 text-[#3BA9B8]" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className={`${inter.className} text-xs md:text-sm font-bold text-[#1A5463] whitespace-nowrap`}>Overnight</p>
+                      <p className={`${inter.className} text-[10px] md:text-xs text-gray-500 whitespace-nowrap`}>8 hrs/night</p>
+                    </div>
+                  </div>
+                  
+                  {/* Shopping Companion */}
+                  <div className="absolute top-[65%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.4s' }} data-aos="fade-up" data-aos-delay="200">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE68A' }}>
+                      <Car className="w-4 h-4 md:w-5 md:h-5 text-[#F59E0B]" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className={`${inter.className} text-xs md:text-sm font-bold text-[#1A5463] whitespace-nowrap`}>Shopping</p>
+                      <p className={`${inter.className} text-[10px] md:text-xs text-gray-500 whitespace-nowrap`}>Companion</p>
+                    </div>
+                  </div>
+                  
+                  {/* Hospital Companion */}
+                  <div className="absolute top-[85%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.5s' }} data-aos="fade-up" data-aos-delay="250">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#DBEAFE' }}>
+                      <Heart className="w-4 h-4 md:w-5 md:h-5 text-[#3B82F6]" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className={`${inter.className} text-xs md:text-sm font-bold text-[#1A5463] whitespace-nowrap`}>Hospital</p>
+                      <p className={`${inter.className} text-[10px] md:text-xs text-gray-500 whitespace-nowrap`}>Companion</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

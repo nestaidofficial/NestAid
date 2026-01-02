@@ -269,11 +269,11 @@ export default function FindJobsPage() {
             <div className="relative order-1 lg:order-2" data-aos="fade-left" data-aos-delay="100">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/images/group.jpg" 
-                  alt="Care Team" 
+                  src="/images/findjobs/Joinourteam.png" 
+                  alt="Caregiver with Senior" 
                   width={600} 
                   height={500}
-                  className="object-cover w-full h-[400px] md:h-[500px]" 
+                  className="w-full h-auto" 
                 />
               </div>
               {/* Decorative element */}
@@ -330,11 +330,11 @@ export default function FindJobsPage() {
             <div className="relative order-1 lg:order-2" data-aos="fade-left" data-aos-delay="100">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/images/adult-care.jpg" 
+                  src="/images/findjobs/whowearelookingfor.png" 
                   alt="Compassionate Caregiver" 
                   width={600} 
                   height={500}
-                  className="object-cover w-full h-[400px] md:h-[500px]" 
+                  className="w-full h-auto" 
                 />
               </div>
               {/* Decorative element */}
@@ -527,11 +527,11 @@ export default function FindJobsPage() {
             <div className="relative" data-aos="fade-right">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/images/senior-care.jpg" 
+                  src="/images/findjobs/careerwithpurpose.png" 
                   alt="Career with Purpose" 
                   width={600} 
                   height={500}
-                  className="object-cover w-full h-[400px] md:h-[500px]" 
+                  className="w-full h-auto" 
                 />
               </div>
               {/* Decorative element */}

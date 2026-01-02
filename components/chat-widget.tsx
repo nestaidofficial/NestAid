@@ -160,8 +160,10 @@ export function ChatWidget() {
                   onClick={() => {
                     if (bookingStep === 'date') {
                       setShowBooking(false)
+                      setSelectedDate(null)
                     } else if (bookingStep === 'time') {
                       setBookingStep('date')
+                      setSelectedDate(null)
                     } else {
                       setBookingStep('time')
                     }
@@ -341,7 +343,7 @@ export function ChatWidget() {
                       <div className="flex items-center gap-2">
                         <div className="w-6 h-6 rounded-full border border-gray-200 overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
                           <Image
-                            src="/logosvg.svg"
+                            src="/logosvg.png"
                             alt="NestAid Logo"
                             width={24}
                             height={24}
@@ -446,6 +448,14 @@ export function ChatWidget() {
                       alert('Consultation scheduled!')
                       setShowBooking(false)
                       setIsOpen(false)
+                      // Reset booking form
+                      setSelectedDate(null)
+                      setSelectedTime('')
+                      setBookingName('')
+                      setBookingEmail('')
+                      setBookingPhone('')
+                      setBookingNotes('')
+                      setBookingStep('date')
                     }}
                     disabled={!bookingName || !bookingEmail || !bookingPhone}
                     className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-xl transition-all"
@@ -473,7 +483,7 @@ export function ChatWidget() {
                 <div className="flex items-center gap-3 flex-1">
                   <div className="w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
                     <Image
-                      src="/logosvg.svg"
+                      src="/logosvg.png"
                       alt="NestAid Logo"
                       width={40}
                       height={40}
@@ -600,7 +610,7 @@ export function ChatWidget() {
                   Hi i am Nessa<span className="inline-block animate-wave">👋</span>
                 </h2>
                 <p className={`${playfair.className} text-[32px] font-bold text-white leading-[1.1] tracking-tight`}>
-                  How can we help?
+                  How can i help?
                 </p>
               </div>
 
@@ -618,11 +628,8 @@ export function ChatWidget() {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <p className="font-semibold text-gray-900 text-[15px] mb-1">
+                      <p className="font-semibold text-gray-900 text-[15px]">
                         Send us a message
-                      </p>
-                      <p className="text-[13px] text-gray-500 font-normal">
-                        We typically reply within 2 hours
                       </p>
                     </div>
                       <svg
@@ -650,6 +657,8 @@ export function ChatWidget() {
                     setShowMessageForm(false)
                     setShowConversation(false)
                     setBookingStep('date')
+                    setSelectedDate(null)
+                    setSelectedTime('')
                   }}
                   className="w-full bg-white rounded-[20px] border border-gray-200 p-4 shadow-sm hover:shadow-md transition-all hover:border-gray-300 text-left group"
                 >
@@ -734,7 +743,7 @@ export function ChatWidget() {
                 <div className="flex-1 flex items-center justify-center gap-2">
                   <div className="w-8 h-8 rounded-full border-2 border-gray-200 overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
                     <Image
-                      src="/logosvg.svg"
+                      src="/logosvg.png"
                       alt="NestAid Logo"
                       width={32}
                       height={32}
@@ -745,7 +754,7 @@ export function ChatWidget() {
                     <p className="text-[14px] font-semibold text-gray-900">Nessa Agent</p>
                     <p className="text-[11px] text-gray-500 flex items-center justify-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                      Within 2 hours
+                      online
                     </p>
                   </div>
                 </div>

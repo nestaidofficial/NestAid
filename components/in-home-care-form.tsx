@@ -7,6 +7,17 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, AlertCircle, ArrowLeft } from "lucide-react"
 import { submitCareApplication } from "@/app/actions/database-forms"
+import { Playfair_Display, Inter } from "next/font/google"
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
+
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
 
 interface CareFlowData {
   careCategory?: string | null
@@ -97,7 +108,7 @@ export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: I
   }
 
   return (
-    <div className="min-h-screen md:min-h-[500px]">
+    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -110,8 +121,8 @@ export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: I
           <div className="w-10 h-10" />
         </div>
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-normal text-black mb-4" style={{ fontFamily: 'serif' }}>
-            Talk to a Care Specialist
+          <h1 className={`${playfair.className} text-3xl md:text-4xl font-normal text-black mb-4`}>
+            Complete Your Application
           </h1>
         </div>
       </div>
@@ -125,8 +136,7 @@ export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: I
                 placeholder="First Name"
                 value={formData.firstName}
                 onChange={handleFieldChange("firstName")}
-                className="w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
-                style={{ fontFamily: 'serif' }}
+                className={`${inter.className} w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 bg-white`}
                 required
               />
             </div>
@@ -136,8 +146,7 @@ export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: I
                 placeholder="Last Name"
                 value={formData.lastName}
                 onChange={handleFieldChange("lastName")}
-                className="w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
-                style={{ fontFamily: 'serif' }}
+                className={`${inter.className} w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 bg-white`}
                 required
               />
             </div>
@@ -148,8 +157,7 @@ export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: I
                 placeholder="Phone Number"
                 value={formData.phone}
                 onChange={handleFieldChange("phone")}
-                className="w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
-                style={{ fontFamily: 'serif' }}
+                className={`${inter.className} w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 bg-white`}
                 required
               />
             </div>
@@ -160,21 +168,19 @@ export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: I
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleFieldChange("email")}
-                className="w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
-                style={{ fontFamily: 'serif' }}
+                className={`${inter.className} w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 bg-white`}
               />
             </div>
 
             <div className="space-y-2">
-              <Label className="text-lg font-normal text-black" style={{ fontFamily: 'serif' }}>
-                Postal code where care is needed
+              <Label className={`${inter.className} text-lg font-normal text-black`}>
+                Zip code where care is needed
               </Label>
               <Input
-                placeholder="Postal Code"
+                placeholder="Zip Code"
                 value={formData.postalCode}
                 onChange={handleFieldChange("postalCode")}
-                className="w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
-                style={{ fontFamily: 'serif' }}
+                className={`${inter.className} w-full p-6 text-lg font-normal text-black rounded-2xl border-2 border-gray-200 focus:border-gray-400 focus:ring-0 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 bg-white`}
                 required
               />
             </div>
@@ -187,7 +193,7 @@ export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: I
               onCheckedChange={(checked) => setFormData({ ...formData, smsConsent: !!checked })}
               className="mt-1"
             />
-            <Label htmlFor="sms-consent" className="text-lg font-normal text-black leading-relaxed" style={{ fontFamily: 'serif' }}>
+            <Label htmlFor="sms-consent" className={`${inter.className} text-lg font-normal text-black leading-relaxed`}>
               By checking this box, I consent to receive SMS messages from NestAid. Message & data rates may apply. 
               Reply STOP to opt out. See our{" "}
               <a href="#" className="text-blue-600 underline">Privacy Policy</a>.
@@ -198,14 +204,14 @@ export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: I
             <Button
               onClick={handleSubmit}
               disabled={isSubmitting || !formData.firstName || !formData.lastName || !formData.phone || !formData.postalCode}
-              className="w-full text-white py-6 px-6 rounded-2xl text-lg font-normal disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-200 hover:opacity-90"
-              style={{ fontFamily: 'serif', backgroundColor: '#27645E' }}
+              className={`${playfair.className} w-full text-black py-6 px-6 rounded-2xl text-lg font-normal disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-200 hover:opacity-90`}
+              style={{ backgroundColor: '#DEED6A' }}
             >
               {isSubmitting ? "Submitting..." : "Request A Free Consultation"}
             </Button>
           </div>
 
-          <p className="text-lg font-normal text-black text-center mt-4" style={{ fontFamily: 'serif' }}>
+          <p className={`${inter.className} text-lg font-normal text-black text-center mt-4`}>
             By clicking "Request A Free Consultation", you agree to our Terms of Service and Privacy Policy.
           </p>
         </div>

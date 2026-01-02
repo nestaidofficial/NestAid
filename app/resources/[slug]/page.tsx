@@ -215,7 +215,7 @@ export default async function ResourcePostPage({ params }: { params: Promise<{ s
   }
 
   return (
-    <div className="bg-[#F5F5EC] min-h-screen">
+    <div className="bg-[#FCF5EB] min-h-screen">
       <main className="container mx-auto px-6 md:px-12 lg:px-16 pt-24 md:pt-32 pb-12 md:pb-16">
         {/* Article Header */}
         <div className="max-w-4xl mx-auto text-center mb-10">
@@ -297,19 +297,6 @@ export default async function ResourcePostPage({ params }: { params: Promise<{ s
             </span>
           </div>
         </article>
-
-        {/* Back to Resources Link */}
-        <div className="max-w-3xl mx-auto mt-12">
-          <Link
-            href="/resources"
-            className={`${inter.className} inline-flex items-center gap-2 text-[#1A5463] hover:text-[#8B5CF6] transition-colors font-medium`}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to All Articles
-          </Link>
-        </div>
       </main>
     </div>
   )

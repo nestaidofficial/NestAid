@@ -362,6 +362,13 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
           >
             <span className={playfair.className}>Female</span>
           </button>
+
+          <button
+            onClick={() => handleJobGenderChoice("Other")}
+            className="w-full p-6 text-center text-black text-lg font-medium bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 rounded-2xl transition-all duration-200"
+          >
+            <span className={playfair.className}>Other</span>
+          </button>
         </div>
       </div>
     </div>

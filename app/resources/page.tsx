@@ -38,7 +38,7 @@ const blogArticles = [
 
 export default function ResourcesPage() {
   return (
-    <div className="bg-[#F5F5EC] min-h-screen">
+    <div className="bg-[#FCF5EB] min-h-screen">
       <main className="container mx-auto px-6 md:px-12 lg:px-16 pt-24 md:pt-32 pb-16 md:pb-24">
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 mb-4">

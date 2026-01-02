@@ -133,12 +133,6 @@ export function ModalJobApplicationForm({
           <h1 className={`${playfair.className} text-3xl md:text-4xl font-normal text-black mb-4`}>
             Complete Your Application
           </h1>
-          {(jobPreferences?.gender || jobPreferences?.experience) && (
-            <div className={`${inter.className} text-sm text-gray-600 space-x-4`}>
-              {jobPreferences?.gender && <span>Gender: {jobPreferences.gender}</span>}
-              {jobPreferences?.experience && <span>Experience: {jobPreferences.experience}</span>}
-            </div>
-          )}
         </div>
       </div>
 

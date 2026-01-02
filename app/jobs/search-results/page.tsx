@@ -200,7 +200,7 @@ function SearchResultsContent() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#F9FBFA] flex items-center justify-center">
+      <div className="min-h-screen bg-[#FCF5EB] flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[#8BB9A8] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className={`${inter.className} text-[#5A6B6A] text-lg`}>Searching for jobs...</p>
@@ -211,7 +211,7 @@ function SearchResultsContent() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#F9FBFA] flex items-center justify-center">
+      <div className="min-h-screen bg-[#FCF5EB] flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4">
           <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-red-400" />
@@ -231,19 +231,19 @@ function SearchResultsContent() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section with Location Header */}
-      <section className="relative w-full py-16 md:py-24" style={{ backgroundColor: '#F9FBFA' }}>
+      <section className="relative w-full py-16 md:py-24" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-5xl mx-auto text-center" data-aos="fade-up">
             {/* Tagline */}
             <div className="flex items-center justify-center gap-2 mb-6 mt-8 md:mt-12">
-              <span className="text-[#8BB9A8] text-lg font-semibold">✺</span>
-              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#5A6B6A]`}>
+              <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
+              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1E4D47]`}>
                 CAREGIVER OPPORTUNITIES
               </p>
             </div>
 
             {/* Main Headline with Location */}
-            <h1 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#2C5F4F] leading-[1.08] mb-8`}>
+            <h1 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1E4D47] leading-[1.08] mb-8`}>
               {searchLocation 
                 ? (
                   <>
@@ -263,64 +263,64 @@ function SearchResultsContent() {
             {/* Location-based description */}
             {searchLocation && (
               <div className="relative mb-8" data-aos="fade-up" data-aos-delay="100">
-                <p className={`${inter.className} text-lg md:text-xl text-[#5A6B6A] leading-relaxed max-w-3xl mx-auto`}>
+                <p className={`${inter.className} text-lg md:text-xl text-[#1E4D47]/70 leading-relaxed max-w-3xl mx-auto`}>
                   Showing positions near{' '}
-                  <span className="font-bold text-[#3A6F5E]">{searchLocation}</span>
+                  <span className="font-bold text-[#1E4D47]">{searchLocation}</span>
                 </p>
               </div>
             )}
 
             {/* Decorative divider */}
             <div className="flex justify-center mb-8">
-              <div className="w-20 h-1 bg-gradient-to-r from-[#B8D4CB] to-[#8BB9A8] rounded-full"></div>
+              <div className="w-20 h-1 bg-gradient-to-r from-[#D9FB74] to-[#1E4D47] rounded-full"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Jobs Results Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#FAFAF8' }}>
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           {locationGroups.length > 0 ? (
             <div className="space-y-8">
               {/* Location Groups */}
               {locationGroups.map((group, groupIndex) => (
                 <div key={`${group.city}-${group.state}`} data-aos="fade-up" data-aos-delay={groupIndex * 100}>
-                  <div className="bg-white rounded-3xl shadow-md border border-gray-100 overflow-hidden">
-                    {/* Location Header */}
-                    <div className="bg-gradient-to-r from-[#E8F5F1] to-[#F0F9F6] px-6 md:px-8 py-5 border-b border-gray-100">
-                      <div className="flex items-center justify-between flex-wrap gap-4">
-                        <div>
-                          <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#2C5F4F]`}>
-                            {group.city}, {group.state}
-                          </h3>
-                          {group.distance !== undefined && (
-                            <p className={`${inter.className} text-[#5A8B7A] text-sm mt-1`}>
-                              {formatDistance(group.distance)} from your search
-                            </p>
-                          )}
-                        </div>
-                        <div className="bg-white rounded-full px-5 py-2 shadow-sm border border-gray-200">
-                          <span className={`${inter.className} text-[#2C5F4F] font-semibold text-sm`}>
-                            {group.jobs.length} position{group.jobs.length === 1 ? '' : 's'}
-                          </span>
+                    <div className="bg-white rounded-3xl shadow-md border border-gray-100 overflow-hidden">
+                      {/* Location Header */}
+                      <div className="bg-[#3F736D] px-6 md:px-8 py-5 border-b border-gray-100">
+                        <div className="flex items-center justify-between flex-wrap gap-4">
+                          <div>
+                            <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white`}>
+                              {group.city}, {group.state}
+                            </h3>
+                            {group.distance !== undefined && (
+                              <p className={`${inter.className} text-white/80 text-sm mt-1`}>
+                                {formatDistance(group.distance)} from your search
+                              </p>
+                            )}
+                          </div>
+                          <div className="bg-[#D9FB74] rounded-full px-5 py-2 shadow-sm">
+                            <span className={`${inter.className} text-[#1E4D47] font-semibold text-sm`}>
+                              {group.jobs.length} position{group.jobs.length === 1 ? '' : 's'}
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
                     
                     {/* Jobs List */}
                     <div className="divide-y divide-gray-50">
                       {group.jobs.map((job, jobIndex) => (
-                        <div key={job.id} className="p-6 md:p-8 hover:bg-[#F8FAF9] transition-all duration-300">
+                        <div key={job.id} className="p-6 md:p-8 hover:bg-[#D9FB74]/5 transition-all duration-300">
                           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                             <div className="flex-1">
-                              <h4 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-3`}>
+                              <h4 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1E4D47] mb-3`}>
                                 {job.title}
                               </h4>
-                              <p className={`${inter.className} text-[#5A6B6A] text-base md:text-lg leading-relaxed mb-4 line-clamp-3`}>
+                              <p className={`${inter.className} text-[#1E4D47]/70 text-base md:text-lg leading-relaxed mb-4 line-clamp-3`}>
                                 {job.description}
                               </p>
-                              <div className={`${inter.className} flex flex-wrap items-center gap-6 text-sm text-[#7A8B8A]`}>
+                              <div className={`${inter.className} flex flex-wrap items-center gap-6 text-sm text-[#1E4D47]/60`}>
                                 <span className="font-medium">{job.zipcode}</span>
                                 <span>Posted {formatDate(job.created_at)}</span>
                               </div>
@@ -330,14 +330,14 @@ function SearchResultsContent() {
                                 onClick={() => handleViewDetails(job)}
                                 variant="outline"
                                 size="lg"
-                                className={`${inter.className} border-2 border-[#B8D4CB] text-[#3A6F5E] hover:bg-[#E8F5F1] hover:border-[#8BB9A8] font-semibold px-6 rounded-full transition-all duration-300`}
+                                className={`${inter.className} border-2 border-[#1E4D47] text-[#1E4D47] hover:bg-[#D9FB74]/20 hover:border-[#1E4D47] font-semibold px-6 rounded-full transition-all duration-300`}
                               >
                                 View Details
                               </Button>
-                              <Button
+                              <Button 
                                 onClick={() => handleApplyToJob(job)}
                                 size="lg"
-                                className={`${inter.className} bg-[#5A8B7A] hover:bg-[#4A7B6A] text-white font-semibold px-8 shadow-md hover:shadow-lg transition-all duration-300 rounded-full`}
+                                className={`${inter.className} bg-[#1E4D47] hover:bg-[#163D37] text-white font-semibold px-8 shadow-md hover:shadow-lg transition-all duration-300 rounded-full`}
                               >
                                 Apply Now
                               </Button>
@@ -353,17 +353,17 @@ function SearchResultsContent() {
           ) : (
             <div className="text-center py-16">
               <div className="max-w-md mx-auto">
-                <div className="w-20 h-20 bg-[#E8F5F1] rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-[#B8D4CB]">
-                  <Search className="w-10 h-10 text-[#5A8B7A]" />
+                <div className="w-20 h-20 bg-[#D9FB74]/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-[#1E4D47]">
+                  <Search className="w-10 h-10 text-[#1E4D47]" />
                 </div>
-                <h3 className={`${playfair.className} text-3xl font-bold text-[#1A5463] mb-4`}>No Jobs Found</h3>
-                <p className={`${inter.className} text-[#5A6B6A] text-lg mb-8 leading-relaxed`}>
+                <h3 className={`${playfair.className} text-3xl font-bold text-[#1E4D47] mb-4`}>No Jobs Found</h3>
+                <p className={`${inter.className} text-[#1E4D47]/70 text-lg mb-8 leading-relaxed`}>
                   We couldn't find any caregiver positions in this area. Try searching for a different location or check back later for new opportunities.
                 </p>
                 <Link href="/jobs/senior-care">
                   <Button 
                     size="lg"
-                    className={`${inter.className} bg-[#5A8B7A] hover:bg-[#4A7B6A] text-white font-semibold px-8 py-4 shadow-md hover:shadow-lg transition-all duration-300 rounded-full`}
+                    className={`${inter.className} bg-[#1E4D47] hover:bg-[#163D37] text-white font-semibold px-8 py-4 shadow-md hover:shadow-lg transition-all duration-300 rounded-full`}
                   >
                     Search Different Location
                   </Button>
@@ -375,21 +375,21 @@ function SearchResultsContent() {
       </section>
 
       {/* Adjust Search Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#F9FBFA' }}>
+      <section className="py-16 md:py-24" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
             {/* Tagline */}
             <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="text-[#8BB9A8] text-lg font-semibold">✺</span>
-              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#5A6B6A]`}>
+              <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
+              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1E4D47]`}>
                 REFINE YOUR SEARCH
               </p>
             </div>
 
-            <h2 className={`${playfair.className} text-[32px] md:text-[42px] font-bold text-[#2C5F4F] mb-6 leading-tight`}>
+            <h2 className={`${playfair.className} text-[32px] md:text-[42px] font-bold text-[#1E4D47] mb-6 leading-tight`}>
               Adjust Your Search
             </h2>
-            <p className={`${inter.className} text-base md:text-lg text-[#5A6B6A] mb-8 leading-relaxed`}>
+            <p className={`${inter.className} text-base md:text-lg text-[#1E4D47]/70 mb-8 leading-relaxed`}>
               Enter ZIP Code or City & State
             </p>
             
@@ -423,7 +423,7 @@ function SearchResultsContent() {
                     }
                   }}
                   disabled={!searchLocation}
-                  className={`${inter.className} h-14 bg-[#5A8B7A] hover:bg-[#4A7B6A] text-white font-semibold text-base px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
+                  className={`${inter.className} h-14 bg-[#1E4D47] hover:bg-[#163D37] text-white font-semibold text-base px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
                   Search Jobs
                 </Button>
@@ -495,7 +495,7 @@ function SearchResultsContent() {
 export default function SearchResultsPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-[#F9FBFA] flex items-center justify-center">
+      <div className="min-h-screen bg-[#FCF5EB] flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[#8BB9A8] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className={`${inter.className} text-[#5A6B6A] text-lg`}>Loading...</p>
