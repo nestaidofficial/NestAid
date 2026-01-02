@@ -433,7 +433,7 @@ export default function HelpCenterPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="tel:4129530622"
-                className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg`}
+                className={`${inter.className} bg-[#27645E] hover:bg-[#1f4d47] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg`}
               >
                 Call Us: (412) 953-0622
               </a>

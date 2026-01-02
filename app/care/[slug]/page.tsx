@@ -500,6 +500,7 @@ export default async function CareServicePage({ params }: { params: Promise<{ sl
               fill
               className="object-cover"
               priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1280px"
             />
           </div>
         </div>
@@ -576,13 +577,13 @@ export default async function CareServicePage({ params }: { params: Promise<{ sl
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/find-care#services"
-              className={`${inter.className} bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
+              className={`${inter.className} bg-[#27645E] hover:bg-[#1f4d47] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
             >
               EXPLORE ALL SERVICES
             </Link>
             <Link
               href="/"
-              className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
+              className={`${inter.className} bg-[#27645E] hover:bg-[#1f4d47] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
             >
               CONTACT US
             </Link>

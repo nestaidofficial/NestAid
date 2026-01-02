@@ -58,6 +58,7 @@ export default function AboutUsPage() {
             fill
             className="object-cover object-center"
             priority
+            sizes="100vw"
           />
         </div>
       </section>
@@ -268,7 +269,7 @@ export default function AboutUsPage() {
               
               {/* CTA Button */}
               <div data-aos="fade-up">
-                <button className={`${inter.className} px-8 py-4 rounded-full font-semibold text-white uppercase tracking-wider text-sm transition-all hover:opacity-90`} style={{ backgroundColor: '#D896E5' }}>
+                <button className={`${inter.className} px-8 py-4 rounded-full font-semibold text-white uppercase tracking-wider text-sm transition-all hover:opacity-90`} style={{ backgroundColor: '#27645E' }}>
                   MAKE AN ENQUIRY
                 </button>
               </div>

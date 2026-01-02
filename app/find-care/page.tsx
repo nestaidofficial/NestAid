@@ -170,17 +170,17 @@ export default function FindCarePage() {
 
               {/* Body Text */}
               <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-xl`}>
-                NestAid supports adults and seniors with compassionate, non-medical care delivered in the comfort of home. Every care plan is personalized, professionally managed, and built to support safety, independence, and peace of mind.
+                NestAid supports adults and seniors with compassionate, non-medical care delivered in the comfort of your home. Every care plan is personalized, professionally managed, and built to support safety, independence, and peace of mind.
               </p>
 
               {/* CTA Button */}
               <div className="pt-2">
                 <button 
                   onClick={() => setGetStartedModalOpen(true)}
-                  className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
+                  className={`${inter.className} bg-[#27645E] hover:bg-[#1f4d47] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
                 >
                   <span>Schedule a Free Consultation</span>
-                  <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#4E342E] transition-colors">
+                  <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
                     </svg>
@@ -201,6 +201,7 @@ export default function FindCarePage() {
               fill 
               className="object-cover"
               priority
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
                 </div>
@@ -436,12 +437,12 @@ export default function FindCarePage() {
 
           {/* Three Step Cards with Creative Design */}
           <div className="relative px-4 lg:px-0">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 relative">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 relative items-stretch">
               
               {/* Step 1 */}
-              <div className="relative group" data-aos="fade-up" data-aos-delay="0">
+              <div className="relative group flex" data-aos="fade-up" data-aos-delay="0">
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#A6C8E1] via-[#87CEEB] to-[#5C8A7D] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#A6C8E1' }}>
+                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl flex flex-col w-full" style={{ backgroundColor: '#A6C8E1' }}>
                   <div className="flex flex-col items-start mb-6">
                     <div className="relative mb-4">
                       <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg bg-white">
@@ -455,16 +456,16 @@ export default function FindCarePage() {
                       Book Your Free Consultation
                     </h3>
                   </div>
-                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base`}>
+                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base flex-1`}>
                     We begin with a complimentary consultation to understand your needs, preferences, and goals. Our team answers your questions, explains care options clearly, and helps you determine the right next steps—without pressure.
                   </p>
                 </div>
               </div>
 
               {/* Step 2 */}
-              <div className="relative group" data-aos="fade-up" data-aos-delay="100">
+              <div className="relative group flex" data-aos="fade-up" data-aos-delay="100">
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#D5B896] via-[#A6C8E1] to-[#5C8A7D] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#D5B896' }}>
+                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl flex flex-col w-full" style={{ backgroundColor: '#D5B896' }}>
                   <div className="flex flex-col items-start mb-6">
                     <div className="relative mb-4">
                       <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg bg-white">
@@ -478,16 +479,16 @@ export default function FindCarePage() {
                       Build Your Care Plan
                     </h3>
                   </div>
-                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base`}>
+                  <p className={`${inter.className} text-[#1A5463] leading-relaxed text-base flex-1`}>
                     Following your consultation, we assess your loved one's home environment and daily needs. From safety considerations to routine support, we create a personalized care plan and schedule—designed with your input and approval.
                   </p>
                 </div>
               </div>
 
               {/* Step 3 */}
-              <div className="relative group" data-aos="fade-up" data-aos-delay="200">
+              <div className="relative group flex" data-aos="fade-up" data-aos-delay="200">
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#5C8A7D] via-[#A6C8E1] to-[#D5B896] rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl" style={{ backgroundColor: '#5C8A7D' }}>
+                <div className="relative rounded-3xl p-8 md:p-10 shadow-xl flex flex-col w-full" style={{ backgroundColor: '#5C8A7D' }}>
                   <div className="flex flex-col items-start mb-6">
                     <div className="relative mb-4">
                       <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg bg-white">
@@ -501,7 +502,7 @@ export default function FindCarePage() {
                       Meet Your Caregiver
                     </h3>
                   </div>
-                  <p className={`${inter.className} text-white/90 leading-relaxed text-base`}>
+                  <p className={`${inter.className} text-white/90 leading-relaxed text-base flex-1`}>
                     We carefully screen, train, and match caregivers based on experience, personality, and compatibility. You can feel confident knowing your loved one is supported by someone dependable, respectful, and trusted.
                   </p>
                 </div>
@@ -539,9 +540,14 @@ export default function FindCarePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-2" data-aos="fade-up">
               <button 
                 onClick={() => setGetStartedModalOpen(true)}
-                className={`${inter.className} group bg-[#275F49] hover:bg-[#1f4a37] text-white font-semibold text-base px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl`}
+                className={`${inter.className} bg-[#27645E] hover:bg-[#1f4d47] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
               >
-                Make an Enquiry
+                <span>Make an Enquiry</span>
+                <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
+                  </svg>
+                </span>
               </button>
             </div>
           </div>

@@ -157,14 +157,14 @@ export function Footer() {
                     </div>
                   </div>
                   <p className={`${inter.className} text-sm text-[#3D5A52]/80 leading-relaxed`}>
-                    Contact us today to learn more about our senior care services and how we can assist you.
+                    Contact us today to learn more about our care services and how we can assist you.
                   </p>
                   <Link
                     href="tel:4129530622"
-                    className={`${inter.className} w-full inline-flex items-center justify-center gap-3 text-white font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg group bg-[#275F48] hover:bg-[#1f4a37]`}
+                    className={`${inter.className} w-full inline-flex items-center justify-center gap-3 text-white font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg group bg-[#27645E] hover:bg-[#1f4d47]`}
                   >
                     <span>Call Us Today</span>
-                    <span className="w-8 h-8 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#4E342E] transition-colors">
+                    <span className="w-8 h-8 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
                       </svg>

@@ -198,8 +198,8 @@ export function CompanionCareForm({ onClose, inModal = false, onBack, flowData }
             <Button
               onClick={handleSubmit}
               disabled={isSubmitting || !formData.firstName || !formData.lastName || !formData.phone || !formData.postalCode}
-              className="w-full text-black py-6 px-6 rounded-2xl text-lg font-normal disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-200 hover:opacity-90"
-              style={{ fontFamily: 'serif', backgroundColor: '#DEED6A' }}
+              className="w-full text-white py-6 px-6 rounded-2xl text-lg font-normal disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-200 hover:opacity-90"
+              style={{ fontFamily: 'serif', backgroundColor: '#27645E' }}
             >
               {isSubmitting ? "Submitting..." : "Request A Free Consultation"}
             </Button>

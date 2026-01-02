@@ -243,10 +243,10 @@ export default function Component() {
                 <div className="pt-2">
                   <button 
                     onClick={() => setGetStartedModalOpen(true)}
-                    className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
+                    className={`${inter.className} bg-[#27645E] hover:bg-[#1f4d47] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
                   >
                     <span>Get Started</span>
-                    <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#4E342E] transition-colors">
+                    <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-5 h-5 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
                       </svg>
@@ -267,6 +267,7 @@ export default function Component() {
                         fill
                         className="object-cover"
                         priority
+                        sizes="100vw"
                       />
                     </div>
                     
@@ -545,7 +546,8 @@ export default function Component() {
                   alt={`Testimonial from ${testimonials[currentTestimonial].name}`}
                   fill
                   className="object-cover transition-opacity duration-500"
-                  priority={false}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
@@ -695,10 +697,10 @@ export default function Component() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button 
                 onClick={() => setGetStartedModalOpen(true)}
-                className={`${inter.className} bg-[#275F48] hover:bg-[#1f4a37] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
+                className={`${inter.className} bg-[#27645E] hover:bg-[#1f4d47] text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 shadow-md hover:shadow-lg group`}
               >
                 <span>JOIN US TODAY</span>
-                <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#4E342E] transition-colors">
+                <span className="w-10 h-10 bg-[#D9FB74] rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-5 h-5 text-[#234018]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5L19.5 4.5M19.5 4.5H9.75M19.5 4.5V14.25" />
                   </svg>

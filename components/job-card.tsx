@@ -78,7 +78,7 @@ export function JobCard({ job, onApply }: JobCardProps) {
           {onApply && (
             <Button 
               onClick={() => onApply(job.id)}
-              className="bg-[#275F48] hover:bg-[#1f4a37] text-white text-sm px-4 py-2 rounded-full transition-all duration-200"
+              className="bg-[#27645E] hover:bg-[#1f4d47] text-white text-sm px-4 py-2 rounded-full transition-all duration-200"
             >
               Apply Now
             </Button>

@@ -311,8 +311,8 @@ export function SpecialNeedsCareForm({ onClose, inModal = false, onBack }: Speci
             <Button
               onClick={handleSubmit}
               disabled={isSubmitting || !formData.firstName || !formData.lastName || !formData.phone || !formData.postalCode}
-              className="w-full text-black p-4 rounded-full text-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-all duration-200"
-              style={{ backgroundColor: '#DEED6A' }}
+              className="w-full text-white p-4 rounded-full text-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-all duration-200"
+              style={{ backgroundColor: '#27645E' }}
             >
               {isSubmitting ? "Submitting..." : "Request A Free Consultation"}
             </Button>

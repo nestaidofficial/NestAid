@@ -90,6 +90,7 @@ export function HeaderClient() {
               height={40}
               className="h-10 w-auto"
               priority
+              sizes="120px"
             />
           </div>
         </Link>
@@ -120,8 +121,8 @@ export function HeaderClient() {
               {/* Contact Us Button */}
               <Button
                 onClick={() => setGetStartedModalOpen(true)}
-                className="rounded-full text-gray-700 font-medium hover:bg-gray-100 transition-all shadow-sm border border-gray-200/50 px-6 py-6"
-                style={{ backgroundColor: '#DBD9FE', fontSize: '1rem', lineHeight: '1.5' }}
+                className="rounded-full text-white font-medium transition-all shadow-sm border border-gray-200/50 px-6 py-6 hover:opacity-90"
+                style={{ backgroundColor: '#27645E', fontSize: '1rem', lineHeight: '1.5' }}
               >
                 Join Now
               </Button>

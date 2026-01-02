@@ -180,7 +180,7 @@ export default function FindJobsPage() {
                   <Button 
                     onClick={handleSearchJobs}
                     disabled={isLoading || !selectedLocation}
-                    className={`${inter.className} h-14 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold text-base px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
+                    className={`${inter.className} h-14 bg-[#27645E] hover:bg-[#1f4d47] text-white font-semibold text-base px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
                     {isLoading ? 'Searching...' : 'Find Jobs'}
                   </Button>
@@ -355,7 +355,7 @@ export default function FindJobsPage() {
               </p>
             </div>
             <h2 className={`${playfair.className} text-[38px] md:text-[48px] lg:text-[56px] text-white leading-[1.08] mb-6`}>
-              Our Caregivers Are The Heart Of Our Company
+              Caregiving That Supports Daily Life with Dignity
             </h2>
             <p className={`${inter.className} text-base md:text-lg text-white/90 leading-relaxed`}>
               You are the friendly face, the trusted support, and the steady presence that brings comfort and dignity to clients and their families. Depending on your training and experience, you may help with:
@@ -365,81 +365,151 @@ export default function FindJobsPage() {
           {/* Caregiver Roles Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 px-2 lg:px-0">
             
-            {/* Card 1: Alzheimer's & Dementia Support */}
-            <div className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: '#5B8A7D' }} data-aos="fade-up" data-aos-delay="0">
+            {/* Card 1: Companionship */}
+            <div 
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group transition-all duration-300" 
+              style={{ backgroundColor: '#5B8A7D' }} 
+              data-aos="fade-up" 
+              data-aos-delay="0"
+            >
+              {/* Decorative Icon - Companionship */}
               <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
-                <Brain className="w-12 h-12 text-white/80" />
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" opacity="0.95">
+                  <circle cx="22" cy="26" r="6" fill="white"/>
+                  <circle cx="42" cy="26" r="6" fill="white"/>
+                  <path d="M12 44C12 38 16 34 22 34C26 34 28.5 35.5 30 38" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+                  <path d="M52 44C52 38 48 34 42 34C38 34 35.5 35.5 34 38" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+                  <circle cx="32" cy="20" r="4" fill="white" opacity="0.8"/>
+                  <path d="M20 40C20 36 24 32 32 32C40 32 44 36 44 40" stroke="white" strokeWidth="2.5" strokeLinecap="round" opacity="0.7"/>
+                </svg>
               </div>
-              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4 mt-8`}>
-                Alzheimer's & Dementia Support
+              
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
+                Companionship
               </h3>
-              <p className={`${inter.className} text-white/90 text-base leading-relaxed`}>
-                Providing patience, understanding, and safety for clients with memory challenges.
+              <p className={`${inter.className} text-white text-base leading-relaxed`}>
+                Meaningful companionship that brightens each day with care.
               </p>
             </div>
 
-            {/* Card 2: Meal Preparation */}
-            <div className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: '#B084CC' }} data-aos="fade-up" data-aos-delay="100">
+            {/* Card 2: Personal Care */}
+            <div 
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group transition-all duration-300" 
+              style={{ backgroundColor: '#B084CC' }} 
+              data-aos="fade-up" 
+              data-aos-delay="100"
+            >
+              {/* Decorative Icon - Personal Care */}
               <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
-                <Utensils className="w-12 h-12 text-white/80" />
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" opacity="0.95">
+                  <path d="M32 18C32 18 24 12 18 15C12 18 12 26 18 32C22 36 32 46 32 46C32 46 42 36 46 32C52 26 52 18 46 15C40 12 32 18 32 18Z" fill="white"/>
+                  <circle cx="32" cy="28" r="8" fill="white" opacity="0.3"/>
+                  <path d="M24 36L28 40L40 28" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.9"/>
+                </svg>
               </div>
-              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4 mt-8`}>
-                Meal Preparation
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
+                Personal Care
               </h3>
-              <p className={`${inter.className} text-white/90 text-base leading-relaxed`}>
-                Preparing nutritious meals that support health and daily comfort.
+              <p className={`${inter.className} text-white text-base leading-relaxed`}>
+                Compassionate personal care with dignity and respect.
               </p>
             </div>
 
             {/* Card 3: Household Help */}
-            <div className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: '#6B6B6B' }} data-aos="fade-up" data-aos-delay="200">
+            <div 
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group transition-all duration-300" 
+              style={{ backgroundColor: '#6B6B6B' }} 
+              data-aos="fade-up" 
+              data-aos-delay="200"
+            >
+              {/* Decorative Icon - Household Help */}
               <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
-                <Home className="w-12 h-12 text-white/80" />
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" opacity="0.95">
+                  <path d="M32 12L18 24V48C18 49.1046 18.8954 50 20 50H24V38C24 36.8954 24.8954 36 26 36H38C39.1046 36 40 36.8954 40 38V50H44C45.1046 50 46 49.1046 46 48V24L32 12Z" fill="white"/>
+                  <rect x="28" y="40" width="8" height="10" fill="white" opacity="0.2"/>
+                  <circle cx="46" cy="28" r="2" fill="white" opacity="0.6"/>
+                  <path d="M16 52L48 52" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.5"/>
+                </svg>
               </div>
-              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4 mt-8`}>
+              
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
                 Household Help
               </h3>
-              <p className={`${inter.className} text-white/90 text-base leading-relaxed`}>
-                Light housekeeping, organization, and creating a warm, safe home environment.
+              <p className={`${inter.className} text-white text-base leading-relaxed`}>
+                Keeping your home comfortable, organized, and welcoming.
               </p>
             </div>
 
-            {/* Card 4: Personal Care */}
-            <div className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: '#A6C8E1' }} data-aos="fade-up" data-aos-delay="0">
+            {/* Card 4: Respite Care */}
+            <div 
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group transition-all duration-300" 
+              style={{ backgroundColor: '#A6C8E1' }} 
+              data-aos="fade-up" 
+              data-aos-delay="0"
+            >
+              {/* Decorative Icon - Respite Care */}
               <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
-                <Heart className="w-12 h-12 text-[#1A5463]/70" />
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" opacity="0.95">
+                  <path d="M32 14L18 20V34C18 42 24 48 32 50C40 48 46 42 46 34V20L32 14Z" fill="#1A5463" stroke="#1A5463" strokeWidth="2" strokeLinejoin="round" opacity="0.9"/>
+                  <path d="M32 24L28 28L32 32L36 28L32 24Z" fill="#fff" opacity="0.6"/>
+                  <circle cx="32" cy="38" r="3" fill="#fff" opacity="0.7"/>
+                  <path d="M26 40L38 40" stroke="#fff" strokeWidth="2" strokeLinecap="round" opacity="0.8"/>
+                </svg>
               </div>
-              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 mt-8`}>
-                Personal Care
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4`}>
+                Respite Care
               </h3>
               <p className={`${inter.className} text-[#1A5463] text-base leading-relaxed`}>
-                Assistance with bathing, grooming, dressing, and daily routines—always with dignity and respect.
+                Temporary relief for family caregivers, ensuring continuous care.
               </p>
             </div>
 
-            {/* Card 5: Transportation */}
-            <div className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: '#D4B896' }} data-aos="fade-up" data-aos-delay="100">
+            {/* Card 5: Meal Preparation */}
+            <div 
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group transition-all duration-300" 
+              style={{ backgroundColor: '#D4B896' }} 
+              data-aos="fade-up" 
+              data-aos-delay="100"
+            >
+              {/* Decorative Icon - Meal Preparation */}
               <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
-                <Car className="w-12 h-12 text-[#1A5463]/70" />
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" opacity="0.95">
+                  <circle cx="32" cy="32" r="18" fill="#fff" opacity="0.85"/>
+                  <circle cx="32" cy="32" r="14" stroke="#D4B896" strokeWidth="2" opacity="0.4"/>
+                  <path d="M24 24L28 28M32 20L32 28M40 24L36 28" stroke="#D4B896" strokeWidth="2.5" strokeLinecap="round" opacity="0.6"/>
+                  <path d="M32 38C34.2091 38 36 36.2091 36 34C36 31.7909 34.2091 30 32 30C29.7909 30 28 31.7909 28 34C28 36.2091 29.7909 38 32 38Z" fill="#D4B896" opacity="0.5"/>
+                </svg>
               </div>
-              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4 mt-8`}>
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-[#1A5463] mb-4`}>
+                Meal Preparation
+              </h3>
+              <p className={`${inter.className} text-[#4A4A4A] text-base leading-relaxed`}>
+                Healthy, delicious meals prepared with care and consideration.
+              </p>
+            </div>
+
+            {/* Card 6: Transportation */}
+            <div 
+              className="rounded-3xl p-8 lg:p-10 relative shadow-lg group transition-all duration-300" 
+              style={{ backgroundColor: '#5B8A7D' }} 
+              data-aos="fade-up" 
+              data-aos-delay="200"
+            >
+              {/* Decorative Icon - Transportation */}
+              <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" opacity="0.95">
+                  <path d="M16 38C16 40.2091 17.7909 42 20 42C22.2091 42 24 40.2091 24 38C24 35.7909 22.2091 34 20 34C17.7909 34 16 35.7909 16 38Z" fill="white"/>
+                  <path d="M40 38C40 40.2091 41.7909 42 44 42C46.2091 42 48 40.2091 48 38C48 35.7909 46.2091 34 44 34C41.7909 34 40 35.7909 40 38Z" fill="white"/>
+                  <path d="M50 32L52 26C52.5 24 51 22 49 22H44L40 18H24L20 22H15C13 22 11.5 24 12 26L14 32L10 36V44C10 45.1046 10.8954 46 12 46H14C15.1046 46 16 45.1046 16 44V42H48V44C48 45.1046 48.8954 46 50 46H52C53.1046 46 54 45.1046 54 44V36L50 32Z" fill="white"/>
+                  <rect x="18" y="26" width="28" height="12" rx="2" fill="white" opacity="0.3"/>
+                  <path d="M24 30L40 30" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.5"/>
+                </svg>
+              </div>
+              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
                 Transportation
               </h3>
-              <p className={`${inter.className} text-[#1A5463] text-base leading-relaxed`}>
-                Helping clients get to appointments, outings, and errands safely.
-              </p>
-            </div>
-
-            {/* Card 6: Companionship */}
-            <div className="rounded-3xl p-8 lg:p-10 relative shadow-lg group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: '#5B8A7D' }} data-aos="fade-up" data-aos-delay="200">
-              <div className="absolute top-8 right-8 group-hover:scale-110 transition-transform duration-300">
-                <Users className="w-12 h-12 text-white/80" />
-              </div>
-              <h3 className={`${playfair.className} text-2xl md:text-3xl font-bold text-white mb-4 mt-8`}>
-                Companionship
-              </h3>
-              <p className={`${inter.className} text-white/90 text-base leading-relaxed`}>
-                Every task you perform contributes to a client's independence, confidence, and overall well-being.
+              <p className={`${inter.className} text-white text-base leading-relaxed`}>
+                Safe, reliable rides to keep you connected and independent.
               </p>
             </div>
 
@@ -507,7 +577,7 @@ export default function FindJobsPage() {
         </div>
       </section>
 
-      {/* Training & Benefits Section */}
+      {/* Training & Support Section */}
       <section className="py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Header */}
@@ -515,7 +585,7 @@ export default function FindJobsPage() {
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="text-[#8B5CF6] text-lg font-semibold">✺</span>
               <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#1A5463]`}>
-                TRAINING & BENEFITS
+                TRAINING & SUPPORT
               </p>
             </div>
             <h2 className={`${playfair.className} text-[38px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.08] mb-6`}>
@@ -596,7 +666,7 @@ export default function FindJobsPage() {
                     heroSection.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className={`${inter.className} h-14 bg-[#275F48] hover:bg-[#1f4a37] text-white font-semibold text-base px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
+                className={`${inter.className} h-14 bg-[#27645E] hover:bg-[#1f4d47] text-white font-semibold text-base px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl`}
               >
                 Start Your Application
               </Button>

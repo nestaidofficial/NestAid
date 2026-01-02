@@ -165,7 +165,7 @@ export default function LivingOptionsPage() {
               </a>
               <button 
                 onClick={() => setGetStartedModalOpen(true)}
-                className={`${inter.className} bg-[#D9FB74] hover:bg-[#c5e665] text-[#1A5463] font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg`}
+                className={`${inter.className} bg-[#27645E] hover:bg-[#1f4d47] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg`}
               >
                 Request a Care Consultation
               </button>

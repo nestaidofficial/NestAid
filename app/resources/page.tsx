@@ -68,6 +68,8 @@ export default function ResourcesPage() {
                   alt={article.title} 
                   fill 
                   className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="p-6 lg:p-8 flex flex-col gap-4 flex-grow">

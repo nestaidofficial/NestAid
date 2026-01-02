@@ -249,6 +249,7 @@ export default async function ResourcePostPage({ params }: { params: Promise<{ s
               fill
               className="object-cover"
               priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1280px"
             />
           </div>
         </div>
