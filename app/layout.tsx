@@ -18,10 +18,6 @@ export const metadata: Metadata = {
   title: "NestAid",
   description: "Find trusted care, for peace of mind.",
   generator: "v0.dev",
-  icons: {
-    icon: "/logosvg.png",
-    apple: "/logosvg.png",
-  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

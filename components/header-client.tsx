@@ -82,7 +82,7 @@ export function HeaderClient() {
 
       <div className="container mx-auto flex items-center justify-between px-4" style={{ height: '4rem', minHeight: '4rem', maxHeight: '4rem' }}>
         <Link href="/" className="flex items-center">
-          <div className="rounded-full px-4 py-2  flex items-center" style={{ backgroundColor: '#DEED6A' }}>
+          <div className="rounded-full px-4 py-2  flex items-center" style={{ backgroundColor: '#FDE664' }}>
             <Image
               src="/logo.png"
               alt="NestAid Logo"
@@ -130,7 +130,7 @@ export function HeaderClient() {
               <Button
                 asChild
                 className="rounded-full font-medium hover:bg-[#1f4a37] transition-all shadow-sm border border-gray-200/50 px-6 py-6"
-                style={{ backgroundColor: '#DEED6A', fontSize: '1rem', lineHeight: '1.5' }}
+                style={{ backgroundColor: '#FDE664', fontSize: '1rem', lineHeight: '1.5' }}
               >
                 <Link href="tel:4129530622" className="flex items-center gap-2 " >
                   <Phone className="w-5 h-5 text-gray-700" />

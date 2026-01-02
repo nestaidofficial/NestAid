@@ -123,7 +123,7 @@ export default function CareersPage() {
             <h1 className="text-5xl font-bold text-gray-900 mb-4 leading-tight">
               Become part of our team and make a difference!
             </h1>
-            <p className="text-lg text-gray-600 mb-6">Working for NestAid is much more than just a job:</p>
+            <p className="text-lg text-gray-600 mb-6">Working for Maya Care is much more than just a job:</p>
             <p className="text-gray-600 mb-8 leading-relaxed">
               It's exciting, creative, and driven by the common humanity we share with our loved ones, patients, and
               fellow workers. You too can do pioneering work and revolutionize the healthcare system.
@@ -135,8 +135,8 @@ export default function CareersPage() {
           <div className="relative">
             <div className="absolute top-0 -right-10 w-40 h-40 bg-pink-100/50 rounded-full blur-3xl"></div>
             <Image
-              src="/images/group.jpg"
-              alt="NestAid team photo"
+              src="/placeholder.svg?height=400&width=570&text=Maya+Care+Team"
+              alt="Maya Care team photo"
               width={570}
               height={400}
               className="rounded-2xl object-cover shadow-lg"
@@ -151,7 +151,7 @@ export default function CareersPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <Image
-                src="/images/adult-care.jpg"
+                src="/placeholder.svg?height=500&width=500&text=Happy+Employee"
                 alt="A smiling employee"
                 width={500}
                 height={500}
@@ -165,7 +165,7 @@ export default function CareersPage() {
               </div>
             </div>
             <div className="pl-8">
-              <h2 className="text-4xl font-bold text-gray-900 mb-8">Working at NestAid</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-8">Working at Maya Care</h2>
               <ul className="space-y-5">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center">
@@ -184,7 +184,7 @@ export default function CareersPage() {
         <div className="container mx-auto px-8">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">Open Positions</h2>
-            <p className="text-gray-600 mb-12 text-lg">Explore rewarding career opportunities at NestAid</p>
+            <p className="text-gray-600 mb-12 text-lg">Explore rewarding career opportunities at Maya Care</p>
 
             {/* Filter Dropdowns */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -258,13 +258,13 @@ export default function CareersPage() {
               <h2 className="text-4xl font-bold text-gray-900 mb-6">What We Stand For</h2>
               <p className="text-gray-600 leading-relaxed text-lg">
                 Regardless of difficulties that arise, we reinforce each other's optimism and work together as a team to
-                find and implement solutions. At NestAid every contribution is appreciated. And though we work at high
+                find and implement solutions. At Maya Care every contribution is appreciated. And though we work at high
                 speed, we always manage to meet our quality standards. We live innovation in a dynamic working
                 environment.
               </p>
             </div>
             <Image
-              src="/images/senior-care.jpg"
+              src="/placeholder.svg?height=500&width=500&text=Company+Values"
               alt="A person in deep thought, representing company values"
               width={500}
               height={500}

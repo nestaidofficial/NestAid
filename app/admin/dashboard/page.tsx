@@ -571,36 +571,36 @@ export default function AdminDashboard() {
       <div className="container mx-auto px-4 md:px-6 lg:px-12 py-10">
         {/* Post Job Tab */}
         {activeTab === 'post-job' && (
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
+        <div className="grid lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
               <Card className="shadow-xl border-0 rounded-3xl overflow-hidden" style={{ backgroundColor: 'white' }}>
                 <CardHeader className="px-8 py-6" style={{ background: 'linear-gradient(135deg, #275F48 0%, #1A5463 100%)' }}>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
                       <Plus className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                       <CardTitle className={`${playfair.className} text-2xl font-semibold text-white`}>
                         Post New Job
                       </CardTitle>
                       <p className={`${inter.className} text-white text-sm mt-1`} style={{ opacity: 0.9 }}>
                         Create a new caregiver position
                       </p>
-                    </div>
                   </div>
-                </CardHeader>
+                </div>
+              </CardHeader>
                 <CardContent className="p-8">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
                       <label htmlFor="title" className={`${playfair.className} block text-base font-medium mb-3`} style={{ color: '#1A5463' }}>
-                        Job Title *
-                      </label>
-                      <Input
-                        id="title"
-                        type="text"
-                        value={formData.title}
-                        onChange={handleInputChange('title')}
-                        placeholder="e.g., Senior Caregiver, Companion Care Specialist"
+                      Job Title *
+                    </label>
+                    <Input
+                      id="title"
+                      type="text"
+                      value={formData.title}
+                      onChange={handleInputChange('title')}
+                      placeholder="e.g., Senior Caregiver, Companion Care Specialist"
                         className={`${inter.className} h-14 px-5 rounded-2xl border-2 text-base`}
                         style={{ 
                           borderColor: '#E8E3D3',
@@ -614,19 +614,19 @@ export default function AdminDashboard() {
                           e.currentTarget.style.borderColor = '#E8E3D3';
                           e.currentTarget.style.backgroundColor = '#FCF5EB';
                         }}
-                        required
-                      />
-                    </div>
+                      required
+                    />
+                  </div>
 
-                    <div>
+                  <div>
                       <label htmlFor="description" className={`${playfair.className} block text-base font-medium mb-3`} style={{ color: '#1A5463' }}>
-                        Job Description *
-                      </label>
-                      <Textarea
-                        id="description"
-                        value={formData.description}
-                        onChange={handleInputChange('description')}
-                        placeholder="Describe the job responsibilities, requirements, and benefits..."
+                      Job Description *
+                    </label>
+                    <Textarea
+                      id="description"
+                      value={formData.description}
+                      onChange={handleInputChange('description')}
+                      placeholder="Describe the job responsibilities, requirements, and benefits..."
                         className={`${inter.className} px-5 py-4 rounded-2xl border-2 text-base min-h-[140px] resize-none`}
                         style={{ 
                           borderColor: '#E8E3D3',
@@ -640,29 +640,29 @@ export default function AdminDashboard() {
                           e.currentTarget.style.borderColor = '#E8E3D3';
                           e.currentTarget.style.backgroundColor = '#FCF5EB';
                         }}
-                        required
-                      />
-                    </div>
+                      required
+                    />
+                  </div>
 
-                    <div>
+                  <div>
                       <label className={`${playfair.className} block text-base font-medium mb-3`} style={{ color: '#1A5463' }}>
-                        Job Location *
-                      </label>
-                      <GooglePlacesAutocomplete
-                        onLocationSelect={handleLocationSelect}
-                        placeholder="Enter city, state, or ZIP code"
-                      />
-                      {selectedLocation && (
+                      Job Location *
+                    </label>
+                    <GooglePlacesAutocomplete
+                      onLocationSelect={handleLocationSelect}
+                      placeholder="Enter city, state, or ZIP code"
+                    />
+                    {selectedLocation && (
                         <div className="mt-3 p-4 rounded-2xl" style={{ backgroundColor: '#E8F5F1', border: '1px solid #B8D4CB' }}>
                           <p className={`${inter.className} text-sm font-medium`} style={{ color: '#275F48' }}>
-                            <strong>Selected:</strong> {selectedLocation.formatted_address}
-                          </p>
+                          <strong>Selected:</strong> {selectedLocation.formatted_address}
+                        </p>
                           <p className={`${inter.className} text-xs mt-1`} style={{ color: '#275F48', opacity: 0.8 }}>
-                            {selectedLocation.city}, {selectedLocation.state} {selectedLocation.zipcode}
-                          </p>
-                        </div>
-                      )}
-                    </div>
+                          {selectedLocation.city}, {selectedLocation.state} {selectedLocation.zipcode}
+                        </p>
+                      </div>
+                    )}
+                  </div>
 
                     <div>
                       <label className={`${playfair.className} block text-base font-medium mb-3`} style={{ color: '#1A5463' }}>
@@ -690,24 +690,24 @@ export default function AdminDashboard() {
                       </p>
                     </div>
 
-                    {submitResult && (
+                  {submitResult && (
                       <div className={`${inter.className} flex items-center gap-3 p-4 rounded-2xl border-2 ${
-                        submitResult.success 
+                      submitResult.success 
                           ? 'bg-[#E8F5F1] text-[#275F48] border-[#B8D4CB]' 
                           : 'bg-[#FEE2E2] text-[#B91C1C] border-[#FECACA]'
-                      }`}>
-                        {submitResult.success ? (
+                    }`}>
+                      {submitResult.success ? (
                           <CheckCircle className="w-5 h-5 flex-shrink-0" />
-                        ) : (
+                      ) : (
                           <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                        )}
+                      )}
                         <span className="text-sm font-medium">{submitResult.message}</span>
-                      </div>
-                    )}
+                    </div>
+                  )}
 
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
                       className={`${playfair.className} w-full h-14 text-base font-semibold rounded-2xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl`}
                       style={{ 
                         backgroundColor: '#275F48',
@@ -721,35 +721,35 @@ export default function AdminDashboard() {
                       onMouseLeave={(e) => {
                         e.currentTarget.style.backgroundColor = '#275F48';
                       }}
-                    >
-                      {isSubmitting ? 'Posting Job...' : 'Post Job'}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
+                  >
+                    {isSubmitting ? 'Posting Job...' : 'Post Job'}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
 
-            <div className="lg:col-span-1">
+          <div className="lg:col-span-1">
               <Card className="shadow-xl border-0 rounded-3xl overflow-hidden" style={{ backgroundColor: 'white' }}>
                 <CardHeader className="px-6 py-5" style={{ background: 'linear-gradient(135deg, #1A5463 0%, #275F48 100%)' }}>
-                  <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
                       <Calendar className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                       <CardTitle className={`${playfair.className} text-xl font-semibold text-white`}>
                         Recent Jobs
                       </CardTitle>
                       <p className={`${inter.className} text-white text-xs mt-1`} style={{ opacity: 0.9 }}>
                         Latest postings
                       </p>
-                    </div>
                   </div>
-                </CardHeader>
+                </div>
+              </CardHeader>
                 <CardContent className="p-5">
                   <div className="space-y-3">
-                    {recentJobs.length > 0 ? (
-                      recentJobs.map((job) => (
+                  {recentJobs.length > 0 ? (
+                    recentJobs.map((job) => (
                         <div 
                           key={job.id} 
                           className="p-4 rounded-2xl border-2 transition-all duration-200 hover:shadow-md"
@@ -767,33 +767,33 @@ export default function AdminDashboard() {
                           }}
                         >
                           <h4 className={`${playfair.className} font-semibold text-sm mb-2 line-clamp-1`} style={{ color: '#1A5463' }}>
-                            {job.title}
-                          </h4>
+                          {job.title}
+                        </h4>
                           <div className={`${inter.className} flex items-center gap-2 text-xs mb-2`} style={{ color: '#6B6B6B' }}>
                             <MapPin className="w-3 h-3" style={{ color: '#275F48' }} />
-                            <span>{job.city}, {job.state}</span>
+                          <span>{job.city}, {job.state}</span>
                             {job.radius_miles && (
                               <span style={{ color: '#275F48' }}>• {job.radius_miles}mi radius</span>
                             )}
-                          </div>
-                          <p className={`${inter.className} text-xs line-clamp-2`} style={{ color: '#6B6B6B', opacity: 0.8 }}>
-                            {job.description}
-                          </p>
                         </div>
-                      ))
-                    ) : (
+                          <p className={`${inter.className} text-xs line-clamp-2`} style={{ color: '#6B6B6B', opacity: 0.8 }}>
+                          {job.description}
+                        </p>
+                      </div>
+                    ))
+                  ) : (
                       <div className="text-center py-12">
                         <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#F5F1E8' }}>
                           <Users className="w-8 h-8" style={{ color: '#6B6B6B', opacity: 0.5 }} />
                         </div>
                         <p className={`${inter.className} text-sm`} style={{ color: '#6B6B6B' }}>No jobs posted yet</p>
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
           </div>
+        </div>
         )}
 
         {/* Job Applications Tab - Table View */}

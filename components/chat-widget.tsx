@@ -2,17 +2,74 @@
 
 import { useState } from "react"
 import { usePathname } from "next/navigation"
-import { X, MessageCircle, Home, Send, Search, ChevronDown, Smile } from "lucide-react"
+import { X, MessageCircle, Home, Send, ChevronDown, Smile } from "lucide-react"
 import Image from "next/image"
+import { Playfair_Display } from "next/font/google"
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"]
+})
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const [showMessageForm, setShowMessageForm] = useState(false)
   const [showConversation, setShowConversation] = useState(false)
+  const [showBooking, setShowBooking] = useState(false)
+  const [bookingStep, setBookingStep] = useState<'date' | 'time' | 'details'>('date')
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
   const [conversationMessage, setConversationMessage] = useState("")
+  const [bookingName, setBookingName] = useState("")
+  const [bookingEmail, setBookingEmail] = useState("")
+  const [bookingPhone, setBookingPhone] = useState("")
+  const [bookingNotes, setBookingNotes] = useState("")
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  const [selectedTime, setSelectedTime] = useState("")
+  const [currentMonth, setCurrentMonth] = useState(new Date())
   const pathname = usePathname()
+
+  // Helper functions for calendar
+  const getDaysInMonth = (date: Date) => {
+    const year = date.getFullYear()
+    const month = date.getMonth()
+    const firstDay = new Date(year, month, 1)
+    const lastDay = new Date(year, month + 1, 0)
+    const daysInMonth = lastDay.getDate()
+    const startingDayOfWeek = firstDay.getDay()
+    
+    return { daysInMonth, startingDayOfWeek }
+  }
+
+  const isDateAvailable = (date: Date) => {
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const checkDate = new Date(date)
+    checkDate.setHours(0, 0, 0, 0)
+    
+    // Only weekdays are available (Mon-Fri)
+    const dayOfWeek = checkDate.getDay()
+    return checkDate >= today && dayOfWeek >= 1 && dayOfWeek <= 5
+  }
+
+  const isSameDay = (date1: Date | null, date2: Date) => {
+    if (!date1) return false
+    return date1.getDate() === date2.getDate() &&
+           date1.getMonth() === date2.getMonth() &&
+           date1.getFullYear() === date2.getFullYear()
+  }
+
+  const formatMonthYear = (date: Date) => {
+    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+  }
+
+  const previousMonth = () => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))
+  }
+
+  const nextMonth = () => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))
+  }
   
   // Only show on homepage
   const isHomePage = pathname === "/"
@@ -30,10 +87,10 @@ export function ChatWidget() {
 
   return (
     <>
-      {/* Backdrop Overlay - Only visible on mobile when chat is open */}
+      {/* Backdrop Overlay - Only visible on desktop when chat is open */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300"
+          className="hidden md:block fixed inset-0 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -86,7 +143,7 @@ export function ChatWidget() {
       {/* Chat Widget */}
       {isOpen && (
         <div
-          className="fixed bottom-24 right-6 z-50 w-[90vw] max-w-[380px] md:w-[380px] h-[580px] max-h-[calc(100vh-140px)] rounded-[28px] overflow-hidden transition-all duration-300 transform animate-slideUp flex flex-col"
+          className="fixed inset-0 md:bottom-24 md:right-6 md:inset-auto z-50 w-full md:w-[380px] h-full md:h-[580px] md:max-h-[calc(100vh-140px)] md:rounded-[28px] overflow-hidden transition-all duration-300 transform animate-slideUp flex flex-col"
           style={{
             background: "linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%)",
             boxShadow: "0 20px 60px rgba(139, 92, 246, 0.35), 0 8px 24px rgba(0, 0, 0, 0.12)",
@@ -94,7 +151,311 @@ export function ChatWidget() {
           }}
         >
           {/* Main Content */}
-          {showConversation ? (
+          {showBooking ? (
+            // Booking Flow View
+            <div className="bg-white h-full flex flex-col">
+              {/* Header */}
+              <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between flex-shrink-0">
+                <button
+                  onClick={() => {
+                    if (bookingStep === 'date') {
+                      setShowBooking(false)
+                    } else if (bookingStep === 'time') {
+                      setBookingStep('date')
+                    } else {
+                      setBookingStep('time')
+                    }
+                  }}
+                  className="text-gray-600 hover:text-gray-900 transition-colors -ml-1"
+                  aria-label="Go back"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                
+                <div className="text-center flex-1">
+                  <p className={`${playfair.className} text-[14px] font-semibold text-gray-900`}>Schedule Consultation</p>
+                </div>
+                
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Booking Content */}
+              <div className="flex-1 overflow-y-auto custom-scrollbar">
+                {bookingStep === 'date' ? (
+                  // Date Selection
+                  <div className="p-6 space-y-4">
+                    {/* Meeting Info */}
+                    <div className="mb-2">
+                      <h3 className={`${playfair.className} text-lg font-semibold text-gray-900 mb-3`}>15 Minute Meeting</h3>
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="space-y-1">
+                          <p className="text-sm text-gray-600 flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            15 min
+                          </p>
+                          <p className="text-sm text-gray-600 flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            Phone call
+                          </p>
+                        </div>
+                        <div className="text-left text-sm space-y-1">
+                          <p className="font-medium text-gray-900">Time zone</p>
+                          <p className="text-gray-600">Eastern Time - US & Canada</p>
+                          <p className="text-gray-500">({new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })})</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Calendar Header */}
+                    <div>
+                      <h4 className={`${playfair.className} text-base font-semibold text-gray-900 mb-4`}>Select a Date</h4>
+                      
+                      {/* Month Navigation */}
+                      <div className="flex items-center justify-between mb-4">
+                        <button
+                          onClick={previousMonth}
+                          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                          aria-label="Previous month"
+                        >
+                          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                          </svg>
+                        </button>
+                        <span className="text-base font-medium text-gray-900">
+                          {formatMonthYear(currentMonth)}
+                        </span>
+                        <button
+                          onClick={nextMonth}
+                          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                          aria-label="Next month"
+                        >
+                          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                      </div>
+
+                      {/* Calendar Grid */}
+                      <div className="mb-4">
+                        {/* Day Headers */}
+                        <div className="grid grid-cols-7 gap-1 mb-2">
+                          {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map((day) => (
+                            <div key={day} className="text-center text-xs font-semibold text-gray-600 py-2">
+                              {day}
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Calendar Days */}
+                        <div className="grid grid-cols-7 gap-1">
+                          {(() => {
+                            const { daysInMonth, startingDayOfWeek } = getDaysInMonth(currentMonth)
+                            const days = []
+                            
+                            // Empty cells before first day
+                            for (let i = 0; i < startingDayOfWeek; i++) {
+                              days.push(<div key={`empty-${i}`} className="aspect-square" />)
+                            }
+                            
+                            // Days of month
+                            for (let day = 1; day <= daysInMonth; day++) {
+                              const date = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day)
+                              const available = isDateAvailable(date)
+                              const selected = isSameDay(selectedDate, date)
+                              
+                              days.push(
+                                <button
+                                  key={day}
+                                  onClick={() => {
+                                    if (available) {
+                                      setSelectedDate(date)
+                                      setBookingStep('time')
+                                    }
+                                  }}
+                                  disabled={!available}
+                                  className={`aspect-square rounded-full flex items-center justify-center text-sm font-medium transition-all ${
+                                    selected
+                                      ? 'bg-blue-600 text-white'
+                                      : available
+                                      ? 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+                                      : 'text-gray-400 cursor-not-allowed'
+                                  }`}
+                                >
+                                  {day}
+                                </button>
+                              )
+                            }
+                            
+                            return days
+                          })()}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : bookingStep === 'time' ? (
+                  // Time Selection
+                  <div className="p-6 space-y-4">
+                    {/* Selected Date Display */}
+                    <div className="bg-gray-50 rounded-xl p-4 mb-4">
+                      <p className="text-sm text-gray-600 mb-1">Selected Date</p>
+                      <p className="text-base font-semibold text-gray-900">
+                        {selectedDate?.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                      </p>
+                    </div>
+
+                    <h4 className={`${playfair.className} text-base font-semibold text-gray-900 mb-4`}>Select a Time</h4>
+
+                    {/* Time Slots - 9am to 6pm */}
+                    <div className="grid grid-cols-2 gap-2">
+                      {['9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm'].map((time) => (
+                        <button
+                          key={time}
+                          onClick={() => {
+                            setSelectedTime(time)
+                            setBookingStep('details')
+                          }}
+                          className="px-4 py-3 rounded-lg border-2 border-gray-200 bg-white text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 text-sm font-medium transition-all"
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  // Details Form
+                  <div className="p-6 space-y-4">
+                    {/* Summary */}
+                    <div className="bg-gray-50 rounded-xl p-4 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-full border border-gray-200 overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
+                          <Image
+                            src="/logosvg.svg"
+                            alt="NestAid Logo"
+                            width={24}
+                            height={24}
+                            className="object-contain p-0.5"
+                          />
+                        </div>
+                        <h3 className="font-semibold text-gray-900">NestAid</h3>
+                      </div>
+                      <h4 className={`${playfair.className} font-semibold text-gray-900 mt-1`}>15 Minute Meeting</h4>
+                      <p className="text-sm text-gray-600">15 min</p>
+                      <p className="text-sm text-gray-600">Phone call</p>
+                      <p className="text-sm text-gray-900 font-medium mt-2">
+                        {selectedTime} - {(() => {
+                          if (selectedTime) {
+                            const [time, period] = selectedTime.split(/(am|pm)/)
+                            const [hours, minutes] = time.split(':').map(Number)
+                            const totalMinutes = (hours % 12) * 60 + (period === 'pm' && hours !== 12 ? 12 * 60 : 0) + minutes + 15
+                            const endHours = Math.floor(totalMinutes / 60) % 12 || 12
+                            const endMinutes = totalMinutes % 60
+                            const endPeriod = totalMinutes >= 720 ? 'pm' : 'am'
+                            return `${endHours}:${endMinutes.toString().padStart(2, '0')}${endPeriod}`
+                          }
+                          return ''
+                        })()}, {selectedDate?.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                      </p>
+                      <p className="text-xs text-gray-500">Eastern Time - US & Canada</p>
+                    </div>
+
+                    <h3 className={`${playfair.className} text-sm font-semibold text-gray-900`}>Enter Details</h3>
+
+                    {/* Name */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={bookingName}
+                        onChange={(e) => setBookingName(e.target.value)}
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-[14px] focus:outline-none focus:border-blue-400 transition-all"
+                        placeholder="Your name"
+                      />
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Email <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        value={bookingEmail}
+                        onChange={(e) => setBookingEmail(e.target.value)}
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-[14px] focus:outline-none focus:border-blue-400 transition-all"
+                        placeholder="email@example.com"
+                      />
+                    </div>
+
+                    {/* Phone */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Phone Number <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        value={bookingPhone}
+                        onChange={(e) => setBookingPhone(e.target.value)}
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-[14px] focus:outline-none focus:border-blue-400 transition-all"
+                        placeholder="(555) 555-5555"
+                      />
+                    </div>
+
+                    {/* Notes */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Please share anything that will help prepare for our meeting.
+                      </label>
+                      <textarea
+                        value={bookingNotes}
+                        onChange={(e) => setBookingNotes(e.target.value)}
+                        rows={3}
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-[14px] focus:outline-none focus:border-blue-400 transition-all resize-none"
+                        placeholder="Additional notes..."
+                      />
+                    </div>
+
+                    {/* Terms */}
+                    <p className="text-xs text-gray-500">
+                      By proceeding, you confirm that you have read and agree to Calendly's Terms of Use and Privacy Notice.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* Footer Button - Only show on details step */}
+              {bookingStep === 'details' && (
+                <div className="p-5 border-t border-gray-200 bg-white flex-shrink-0">
+                  <button
+                    onClick={() => {
+                      // Handle booking submission
+                      console.log({ bookingName, bookingEmail, bookingPhone, bookingNotes, selectedDate, selectedTime })
+                      alert('Consultation scheduled!')
+                      setShowBooking(false)
+                      setIsOpen(false)
+                    }}
+                    disabled={!bookingName || !bookingEmail || !bookingPhone}
+                    className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-xl transition-all"
+                  >
+                    Schedule Event
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : showConversation ? (
             // Conversation View
             <div className="bg-white h-full flex flex-col">
           {/* Header */}
@@ -110,11 +471,17 @@ export function ChatWidget() {
                 </button>
                 
                 <div className="flex items-center gap-3 flex-1">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white font-bold text-[15px]">
-                    N
+                  <div className="w-10 h-10 rounded-full border-2 border-gray-200 overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
+                    <Image
+                      src="/logosvg.svg"
+                      alt="NestAid Logo"
+                      width={40}
+                      height={40}
+                      className="object-contain p-1"
+                    />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 text-[15px]">NestAid Team</h3>
+                    <h3 className="font-semibold text-gray-900 text-[15px]">Nessa Agent</h3>
                     <p className="text-[13px] text-gray-500 font-normal">The team can also help</p>
                   </div>
                 </div>
@@ -129,7 +496,7 @@ export function ChatWidget() {
               </div>
 
               {/* Messages Area */}
-              <div className="flex-1 p-6 overflow-y-auto bg-gray-50">
+              <div className="flex-1 p-6 overflow-y-auto bg-gray-50 custom-scrollbar">
                 <div className="space-y-4">
                   {/* Message from team */}
                   <div className="text-center text-[14px] text-gray-500 mb-6 leading-relaxed">
@@ -205,10 +572,10 @@ export function ChatWidget() {
             <div className="bg-white relative flex flex-col h-full">
               {/* Greeting Section - On Purple Background - Fixed at top */}
               <div className="relative px-6 pt-6 pb-8 text-left flex-shrink-0" style={{ background: "linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%)" }}>
-                {/* Header with Logo and Avatars */}
+                {/* Header with Logo and Close Button */}
                 <div className="flex items-center justify-between mb-8">
                   {/* Logo */}
-                  <div className="flex items-center bg-white px-4 py-1.5 rounded-full shadow-md">
+                  <div className="flex items-center px-4 py-1.5 rounded-full shadow-md" style={{ backgroundColor: '#FDE664' }}>
                     <Image
                       src="/logo.png"
                       alt="NestAid Logo"
@@ -218,119 +585,34 @@ export function ChatWidget() {
                     />
                   </div>
                   
-                  {/* Team Avatars and Close Button */}
-                  <div className="flex items-center gap-2">
-                    <div className="flex -space-x-2.5">
-                      <div className="w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-md">
-                  <Image
-                    src="/placeholder-user.jpg"
-                    alt="Team member"
-                    width={36}
-                    height={36}
-                    className="object-cover"
-                  />
-                </div>
-                      <div className="w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-md">
-                  <Image
-                    src="/placeholder-user.jpg"
-                    alt="Team member"
-                    width={36}
-                    height={36}
-                    className="object-cover"
-                  />
-                </div>
-                      <div className="w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-md">
-                  <Image
-                    src="/placeholder-user.jpg"
-                    alt="Team member"
-                    width={36}
-                    height={36}
-                    className="object-cover"
-                  />
-              </div>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-                      className="text-white/70 hover:text-white transition-colors ml-1"
-              aria-label="Close chat"
-            >
-              <X className="w-5 h-5" />
-            </button>
-                  </div>
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="text-white/70 hover:text-white transition-colors"
+                    aria-label="Close chat"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
           </div>
 
                 {/* Greeting Text */}
-                <h2 className="text-[32px] font-bold text-white mb-0 leading-[1.1] tracking-tight">
-                  Hi there <span className="inline-block animate-wave">👋</span>
+                <h2 className={`${playfair.className} text-[32px] font-bold text-white mb-0 leading-[1.1] tracking-tight`}>
+                  Hi i am Nessa<span className="inline-block animate-wave">👋</span>
                 </h2>
-                <p className="text-[32px] font-bold text-white leading-[1.1] tracking-tight">
+                <p className={`${playfair.className} text-[32px] font-bold text-white leading-[1.1] tracking-tight`}>
                   How can we help?
                 </p>
               </div>
 
               {/* Scrollable Content Area */}
-              <div className="flex-1 overflow-y-auto bg-white">
-              {/* Recent Message */}
-                <div className="px-6 pt-5 pb-3">
-                <div 
-                  onClick={() => setShowConversation(true)}
-                  className="bg-white rounded-[20px] border border-gray-200 p-4 hover:shadow-md hover:border-gray-300 transition-all cursor-pointer group"
-                >
-                  <p className="text-[11px] font-semibold text-gray-500 tracking-wide mb-3.5">
-                    Recent message
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="flex -space-x-2">
-                        <div className="w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                          <Image
-                            src="/placeholder-user.jpg"
-                            alt="Team"
-                            width={36}
-                            height={36}
-                            className="object-cover"
-                          />
-                        </div>
-                        <div className="w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                          <Image
-                            src="/placeholder-user.jpg"
-                            alt="Team"
-                            width={36}
-                            height={36}
-                            className="object-cover"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900 text-[15px] mb-1">
-                          Asked for Name
-                        </p>
-                        <p className="text-[13px] text-gray-500 font-normal">nestaid • 9h</p>
-                      </div>
-                    </div>
-                    <svg
-                      className="w-5 h-5 text-gray-400 group-hover:text-purple-600 transition-colors flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
+              <div className="flex-1 overflow-y-auto bg-white custom-scrollbar">
               {/* Send Message Button */}
-              <div className="px-6 pb-3">
+              <div className="px-6 pt-5 pb-3">
                 <button
                   onClick={() => {
                     setShowMessageForm(true)
                     setShowConversation(false)
+                    setShowBooking(false)
                   }}
                   className="w-full bg-white rounded-[20px] border border-gray-200 p-4 shadow-sm hover:shadow-md transition-all hover:border-gray-300 text-left group"
                 >
@@ -360,37 +642,40 @@ export function ChatWidget() {
                 </button>
               </div>
 
-              {/* Search for Help */}
-              <div className="px-6 pb-3">
-                <button className="w-full bg-white rounded-[20px] border border-gray-200 p-4 hover:bg-gray-50 hover:border-gray-300 transition-all text-left group">
+              {/* Schedule Consultation Button */}
+              <div className="px-6 pb-5">
+                <button
+                  onClick={() => {
+                    setShowBooking(true)
+                    setShowMessageForm(false)
+                    setShowConversation(false)
+                    setBookingStep('date')
+                  }}
+                  className="w-full bg-white rounded-[20px] border border-gray-200 p-4 shadow-sm hover:shadow-md transition-all hover:border-gray-300 text-left group"
+                >
                   <div className="flex items-center justify-between">
-                    <p className="font-semibold text-gray-700 text-[15px]">
-                      Search for help
-                    </p>
-                    <Search className="w-5 h-5 text-gray-400 group-hover:text-purple-600 transition-colors" />
+                    <div className="flex-1">
+                      <p className="font-semibold text-gray-900 text-[15px] mb-1">
+                        Schedule a free consultation
+                      </p>
+                      <p className="text-[13px] text-gray-500 font-normal">
+                        Book a 15-minute call with us
+                      </p>
+                    </div>
+                      <svg
+                      className="w-5 h-5 text-gray-400 group-hover:text-purple-600 transition-colors flex-shrink-0 ml-3"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        strokeWidth={2}
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
                   </div>
-                </button>
-              </div>
-
-              {/* Additional Menu Items */}
-              <div className="px-6 pb-5 space-y-1">
-                <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors group">
-                  <span className="text-[14px] text-gray-700 font-normal">Set up services</span>
-                  <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-                <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors group">
-                  <span className="text-[14px] text-gray-700 font-normal">Make changes to an invoice</span>
-                  <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-                <button className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors group">
-                  <span className="text-[14px] text-gray-700 font-normal">Set up an email signature</span>
-                  <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
                 </button>
               </div>
               </div>
@@ -398,7 +683,14 @@ export function ChatWidget() {
               {/* Bottom Navigation - Fixed at bottom */}
               <div className="border-t border-gray-200 bg-white flex-shrink-0">
                 <div className="flex items-center justify-around py-4 px-4">
-                  <button className="flex flex-col items-center gap-1 group transition-all min-w-[60px]">
+                  <button 
+                    onClick={() => {
+                      setShowMessageForm(false)
+                      setShowConversation(false)
+                      setShowBooking(false)
+                    }}
+                    className="flex flex-col items-center gap-1 group transition-all min-w-[60px]"
+                  >
                     <svg className="w-6 h-6 text-purple-600" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                     </svg>
@@ -406,20 +698,19 @@ export function ChatWidget() {
                       Home
                     </span>
                   </button>
-                  <button className="flex flex-col items-center gap-1 group transition-all min-w-[60px]">
+                  <button 
+                    onClick={() => {
+                      setShowMessageForm(true)
+                      setShowConversation(false)
+                      setShowBooking(false)
+                    }}
+                    className="flex flex-col items-center gap-1 group transition-all min-w-[60px]"
+                  >
                     <svg className="w-6 h-6 text-gray-400 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                     </svg>
                     <span className="text-[11px] font-semibold text-gray-400 group-hover:text-purple-600 transition-colors">
                       Messages
-                    </span>
-                  </button>
-                  <button className="flex flex-col items-center gap-1 group transition-all min-w-[60px]">
-                    <svg className="w-6 h-6 text-gray-400 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-[11px] font-semibold text-gray-400 group-hover:text-purple-600 transition-colors">
-                      Help
                     </span>
                   </button>
                 </div>
@@ -440,21 +731,19 @@ export function ChatWidget() {
                   </svg>
                 </button>
                 
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                      <Image src="/placeholder-user.jpg" alt="Team" width={32} height={32} className="object-cover" />
-                    </div>
-                    <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                      <Image src="/placeholder-user.jpg" alt="Team" width={32} height={32} className="object-cover" />
-                    </div>
-                    <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                      <Image src="/placeholder-user.jpg" alt="Team" width={32} height={32} className="object-cover" />
-                    </div>
+                <div className="flex-1 flex items-center justify-center gap-2">
+                  <div className="w-8 h-8 rounded-full border-2 border-gray-200 overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
+                    <Image
+                      src="/logosvg.svg"
+                      alt="NestAid Logo"
+                      width={32}
+                      height={32}
+                      className="object-contain p-1"
+                    />
                   </div>
-                  <div className="text-right">
-                    <p className="text-[14px] font-semibold text-gray-900">nestaid</p>
-                    <p className="text-[11px] text-gray-500 flex items-center gap-1">
+                  <div className="text-center">
+                    <p className="text-[14px] font-semibold text-gray-900">Nessa Agent</p>
+                    <p className="text-[11px] text-gray-500 flex items-center justify-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
                       Within 2 hours
                     </p>
@@ -471,7 +760,7 @@ export function ChatWidget() {
               </div>
 
               {/* Content Area */}
-              <div className="flex-1 overflow-y-auto flex flex-col">
+              <div className="flex-1 overflow-y-auto flex flex-col custom-scrollbar">
                 {/* Helper Text */}
                 <div className="px-6 pt-8 pb-6 text-center">
                   <p className="text-[14px] text-gray-500 leading-relaxed">
@@ -483,13 +772,6 @@ export function ChatWidget() {
               {/* Input Fields */}
                 <div className="px-6 pb-6 flex-1 flex flex-col justify-end">
                 <div className="space-y-3">
-                  <input
-                    type="email"
-                    placeholder="email@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 bg-white border-2 border-purple-200 rounded-xl text-gray-900 placeholder-gray-400 text-[14px] focus:outline-none focus:border-purple-400 transition-all"
-                  />
                   <div className="relative">
                     <textarea
                       placeholder="Message..."
@@ -582,6 +864,26 @@ export function ChatWidget() {
             opacity: 0.15;
             transform: scale(1.05);
           }
+        }
+        
+        /* Custom Scrollbar Styling */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+        }
+        /* Firefox */
+        .custom-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: #cbd5e1 transparent;
         }
       `}</style>
     </>

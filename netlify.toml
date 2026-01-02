@@ -6,5 +6,17 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs" 
+[[redirects]]
+  from = "/_next/image*"
+  to = "/.netlify/functions/__nextjs_image_handler"
+  status = 200
+
+[[redirects]]
+  from = "/_next/*"
+  to = "/.netlify/functions/__nextjs"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/__nextjs"
+  status = 200 
