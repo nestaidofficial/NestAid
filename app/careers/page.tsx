@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 import { CheckCircle, MapPin, Briefcase, Users, MessageSquare, Award } from "lucide-react"
 
 export default function CareersPage() {
@@ -134,8 +133,8 @@ export default function CareersPage() {
           </div>
           <div className="relative">
             <div className="absolute top-0 -right-10 w-40 h-40 bg-pink-100/50 rounded-full blur-3xl"></div>
-            <Image
-              src="/placeholder.svg?height=400&width=570&text=Maya+Care+Team"
+            <img
+              src="/placeholder.svg"
               alt="Maya Care team photo"
               width={570}
               height={400}
@@ -150,8 +149,8 @@ export default function CareersPage() {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <Image
-                src="/placeholder.svg?height=500&width=500&text=Happy+Employee"
+              <img
+                src="/placeholder.svg"
                 alt="A smiling employee"
                 width={500}
                 height={500}
@@ -263,8 +262,8 @@ export default function CareersPage() {
                 environment.
               </p>
             </div>
-            <Image
-              src="/placeholder.svg?height=500&width=500&text=Company+Values"
+            <img
+              src="/placeholder.svg"
               alt="A person in deep thought, representing company values"
               width={500}
               height={500}
