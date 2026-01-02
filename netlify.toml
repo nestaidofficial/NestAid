@@ -1,23 +1,10 @@
 [build]
-  publish = ".next"
   command = "npm run build"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
-[build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200 
+[[plugins]]
+  package = "@netlify/plugin-nextjs" 
