@@ -194,7 +194,7 @@ export default function FindCarePage() {
 
               {/* Body Text */}
               <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-xl`}>
-                NestAid supports adults and seniors with compassionate, non-medical care delivered in the comfort of your home. Every care plan is personalized, professionally managed, and built to support safety, independence, and peace of mind.
+                <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>NestAid</span> provides compassionate, personalized non-medical care for adults and seniors—delivered at home to support safety, independence, and peace of mind.
               </p>
 
               {/* CTA Button */}
@@ -214,7 +214,7 @@ export default function FindCarePage() {
             </div>
 
             {/* Right Section - Image */}
-            <div className="relative flex items-center justify-center md:justify-end" data-aos="fade-left">
+            <div className="relative flex items-center justify-center md:justify-end">
               <div className="relative w-full max-w-md md:max-w-lg">
                 {/* Main Image */}
                 <div className="relative w-full aspect-square">
@@ -231,7 +231,7 @@ export default function FindCarePage() {
                   
                   {/* Floating Service Cards - All on Right Side with Uniform Spacing */}
                   {/* QuickCare */}
-                  <div className="absolute top-[5%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.1s' }} data-aos="fade-up" data-aos-delay="50">
+                  <div className="absolute top-[5%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.1s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#E8D4F0' }}>
                       <Clock className="w-4 h-4 md:w-5 md:h-5 text-[#8B5CF6]" />
                     </div>
@@ -242,7 +242,7 @@ export default function FindCarePage() {
                   </div>
                   
                   {/* Steady Days */}
-                  <div className="absolute top-[25%] -right-8 md:-right-12 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.2s' }} data-aos="fade-up" data-aos-delay="100">
+                  <div className="absolute top-[25%] -right-8 md:-right-12 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.2s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#F2D4F7' }}>
                       <Calendar className="w-4 h-4 md:w-5 md:h-5 text-[#D896E5]" />
                     </div>
@@ -253,7 +253,7 @@ export default function FindCarePage() {
                   </div>
                   
                   {/* Overnight */}
-                  <div className="absolute top-[45%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.3s' }} data-aos="fade-up" data-aos-delay="150">
+                  <div className="absolute top-[45%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.3s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#A8D5E2' }}>
                       <Users className="w-4 h-4 md:w-5 md:h-5 text-[#3BA9B8]" />
                     </div>
@@ -264,7 +264,7 @@ export default function FindCarePage() {
                   </div>
                   
                   {/* Shopping Companion */}
-                  <div className="absolute top-[65%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.4s' }} data-aos="fade-up" data-aos-delay="200">
+                  <div className="absolute top-[65%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.4s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE68A' }}>
                       <Car className="w-4 h-4 md:w-5 md:h-5 text-[#F59E0B]" />
                     </div>
@@ -275,7 +275,7 @@ export default function FindCarePage() {
                   </div>
                   
                   {/* Hospital Companion */}
-                  <div className="absolute top-[85%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.5s' }} data-aos="fade-up" data-aos-delay="250">
+                  <div className="absolute top-[85%] -right-4 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.5s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#DBEAFE' }}>
                       <Heart className="w-4 h-4 md:w-5 md:h-5 text-[#3B82F6]" />
                     </div>

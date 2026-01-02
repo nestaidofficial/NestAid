@@ -236,7 +236,7 @@ export default function Component() {
 
                 {/* Body Text */}
                 <p className={`${inter.className} text-base md:text-lg text-[#1A5463] leading-relaxed max-w-xl`}>
-                  At NestAid, we provide warm, dependable, non-medical home care for seniors and adults across Massachusetts—care that feels less like a service and more like a trusted helping hand.
+                  At <span style={{ fontWeight: 'bold', fontStyle: 'italic' }}>NestAid</span>, we provide warm, dependable, non-medical home care for seniors and adults across Massachusetts—care that feels less like a service and more like a trusted helping hand.
                 </p>
 
                 {/* CTA Button */}
