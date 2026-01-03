@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { X, MessageCircle, Home, Send, ChevronDown, Smile } from "lucide-react"
 import Image from "next/image"
@@ -12,6 +12,7 @@ const playfair = Playfair_Display({
 })
 
 export function ChatWidget() {
+  const [hydrated, setHydrated] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [showMessageForm, setShowMessageForm] = useState(false)
   const [showConversation, setShowConversation] = useState(false)
@@ -28,6 +29,13 @@ export function ChatWidget() {
   const [selectedTime, setSelectedTime] = useState("")
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const pathname = usePathname()
+
+  // Avoid hydration mismatch by waiting for client render
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
+
+  if (!hydrated) return null
 
   // Helper functions for calendar
   const getDaysInMonth = (date: Date) => {

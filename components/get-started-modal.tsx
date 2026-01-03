@@ -551,8 +551,13 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={handleClose} className="z-[99999]">
-        <DialogContent className="w-full h-full max-w-none max-h-none m-0 p-0 bg-[#FCF5EB] md:max-w-4xl md:max-h-[90vh] md:m-auto md:rounded-lg overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:top-6 [&>button]:rounded-full [&>button]:bg-white [&>button]:w-12 [&>button]:h-12 [&>button]:shadow-lg [&>button]:border [&>button]:border-gray-200 [&>button]:hover:bg-gray-50 [&>button]:z-20 [&>button]:flex [&>button]:items-center [&>button]:justify-center">
+      <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()} className="z-[99999]">
+        <DialogContent
+          onInteractOutside={(e) => e.preventDefault()}
+          onFocusOutside={(e) => e.preventDefault()}
+          onEscapeKeyDown={(e) => e.preventDefault()}
+          className="w-full h-full max-w-none max-h-none m-0 p-0 bg-[#FCF5EB] md:max-w-4xl md:max-h-[90vh] md:m-auto md:rounded-lg overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:top-6 [&>button]:rounded-full [&>button]:bg-white [&>button]:w-12 [&>button]:h-12 [&>button]:shadow-lg [&>button]:border [&>button]:border-gray-200 [&>button]:hover:bg-gray-50 [&>button]:z-20 [&>button]:flex [&>button]:items-center [&>button]:justify-center"
+        >
           <DialogTitle className="sr-only">
             Get Started - Find Care or Jobs
           </DialogTitle>
