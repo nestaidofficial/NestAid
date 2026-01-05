@@ -190,26 +190,38 @@
     }
   }
   
-  /* Prevent zoom on input focus for iOS Safari */
+  /* Prevent zoom on input focus for iOS Safari - CRITICAL FOR MOBILE */
+  input,
+  textarea,
+  select,
+  button[type="submit"],
+  [contenteditable],
   input[type="text"],
   input[type="email"],
   input[type="tel"],
   input[type="number"],
   input[type="password"],
-  textarea,
-  select {
+  input[type="search"],
+  input[type="url"],
+  input[type="date"] {
     font-size: 16px !important; /* Must be at least 16px to prevent zoom on iOS */
   }
   
   @media (min-width: 768px) {
+    input,
+    textarea,
+    select,
+    button[type="submit"],
+    [contenteditable],
     input[type="text"],
     input[type="email"],
     input[type="tel"],
     input[type="number"],
     input[type="password"],
-    textarea,
-    select {
-      font-size: 14px !important; /* Can be smaller on desktop */
+    input[type="search"],
+    input[type="url"],
+    input[type="date"] {
+      font-size: inherit !important; /* Can use smaller sizes on desktop */
     }
   }
 }
