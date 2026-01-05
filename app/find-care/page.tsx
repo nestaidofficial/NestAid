@@ -50,8 +50,19 @@ export default function FindCarePage() {
     });
   }, []);
 
-  // Animate QuickCare hours (1-8 and back)
+  // Extra safeguard: Disable AOS animations when modal is open (prevents re-renders that can blur iOS keyboard)
   useEffect(() => {
+    if (getStartedModalOpen) {
+      AOS.refreshHard(); // Disable animations
+    } else {
+      AOS.refresh(); // Re-enable animations
+    }
+  }, [getStartedModalOpen]);
+
+  // Animate QuickCare hours (1-8 and back) - PAUSE when modal is open to prevent iOS keyboard blur
+  useEffect(() => {
+    if (getStartedModalOpen) return; // Don't run animation when modal is open
+    
     const interval = setInterval(() => {
       setQuickCareHours(prev => {
         if (prev === 8) return 1;
@@ -59,10 +70,12 @@ export default function FindCarePage() {
       });
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [getStartedModalOpen]);
 
-  // Animate Steady Days (1-7 and back)
+  // Animate Steady Days (1-7 and back) - PAUSE when modal is open to prevent iOS keyboard blur
   useEffect(() => {
+    if (getStartedModalOpen) return; // Don't run animation when modal is open
+    
     const interval = setInterval(() => {
       setSteadyDays(prev => {
         if (prev === 7) return 1;
@@ -70,7 +83,7 @@ export default function FindCarePage() {
       });
     }, 2500);
     return () => clearInterval(interval);
-  }, []);
+  }, [getStartedModalOpen]);
 
   // Listen for custom event from mobile FAB to open modal
   useEffect(() => {
@@ -173,9 +186,9 @@ export default function FindCarePage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="relative w-full min-h-screen overflow-visible md:overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
         <div className="container mx-auto px-4 md:px-6 lg:px-12 h-full">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-12 md:py-16">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-12 md:py-16 overflow-visible">
             {/* Left Section - Text Content */}
             <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left space-y-5 mt-8 md:mt-0" data-aos="fade-right">
               {/* Tagline */}
@@ -214,10 +227,10 @@ export default function FindCarePage() {
             </div>
 
             {/* Right Section - Image */}
-            <div className="relative flex items-center justify-center md:justify-end">
-              <div className="relative w-full max-w-md md:max-w-lg" style={{ overflow: 'visible' }}>
+            <div className="relative flex items-center justify-center md:justify-end overflow-visible md:overflow-visible">
+              <div className="relative w-full max-w-md md:max-w-lg overflow-visible md:overflow-visible">
                 {/* Main Image */}
-                <div className="relative w-full aspect-square" style={{ overflow: 'visible' }}>
+                <div className="relative w-full aspect-square overflow-visible md:overflow-visible">
                   <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl">
             <Image 
               src="/images/bg-image/find-care-bg.jpg" 
@@ -231,7 +244,7 @@ export default function FindCarePage() {
                   
                   {/* Floating Service Cards - All on Right Side with Uniform Spacing */}
                   {/* QuickCare */}
-                  <div className="absolute top-[5%] right-2 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: getStartedModalOpen ? 'none' : 'translateZ(0)', animationDelay: '0.1s', willChange: getStartedModalOpen ? 'auto' : 'transform' }}>
+                  <div className="absolute top-[5%] right-2 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.1s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#E8D4F0' }}>
                       <Clock className="w-4 h-4 md:w-5 md:h-5 text-[#8B5CF6]" />
                     </div>
@@ -242,7 +255,7 @@ export default function FindCarePage() {
                   </div>
                   
                   {/* Steady Days */}
-                  <div className="absolute top-[25%] right-0 md:-right-12 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: getStartedModalOpen ? 'none' : 'translateZ(0)', animationDelay: '0.2s', willChange: getStartedModalOpen ? 'auto' : 'transform' }}>
+                  <div className="absolute top-[25%] right-0 md:-right-12 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.2s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#F2D4F7' }}>
                       <Calendar className="w-4 h-4 md:w-5 md:h-5 text-[#D896E5]" />
                     </div>
@@ -253,7 +266,7 @@ export default function FindCarePage() {
                   </div>
                   
                   {/* Overnight */}
-                  <div className="absolute top-[45%] right-2 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: getStartedModalOpen ? 'none' : 'translateZ(0)', animationDelay: '0.3s', willChange: getStartedModalOpen ? 'auto' : 'transform' }}>
+                  <div className="absolute top-[45%] right-2 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.3s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#A8D5E2' }}>
                       <Users className="w-4 h-4 md:w-5 md:h-5 text-[#3BA9B8]" />
                     </div>
@@ -264,7 +277,7 @@ export default function FindCarePage() {
                   </div>
                   
                   {/* Shopping Companion */}
-                  <div className="absolute top-[65%] right-2 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: getStartedModalOpen ? 'none' : 'translateZ(0)', animationDelay: '0.4s', willChange: getStartedModalOpen ? 'auto' : 'transform' }}>
+                  <div className="absolute top-[65%] right-2 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.4s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE68A' }}>
                       <Car className="w-4 h-4 md:w-5 md:h-5 text-[#F59E0B]" />
                     </div>
@@ -275,7 +288,7 @@ export default function FindCarePage() {
                   </div>
                   
                   {/* Hospital Companion */}
-                  <div className="absolute top-[85%] right-2 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: getStartedModalOpen ? 'none' : 'translateZ(0)', animationDelay: '0.5s', willChange: getStartedModalOpen ? 'auto' : 'transform' }}>
+                  <div className="absolute top-[85%] right-2 md:-right-8 z-10 bg-white rounded-full shadow-lg px-3 py-2 md:px-4 md:py-3 flex items-center gap-2 animate-float" style={{ transform: 'translateZ(0)', animationDelay: '0.5s' }}>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#DBEAFE' }}>
                       <Heart className="w-4 h-4 md:w-5 md:h-5 text-[#3B82F6]" />
                     </div>

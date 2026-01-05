@@ -35,40 +35,6 @@ export function ChatWidget() {
     setHydrated(true)
   }, [])
 
-  // Handle mobile keyboard behavior - CRITICAL FOR iOS
-  useEffect(() => {
-    if (!isOpen) return
-
-    const handleFocusIn = (e: FocusEvent) => {
-      const target = e.target as HTMLElement
-      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT') {
-        // Add keyboard open class
-        document.body.classList.add('keyboard-open')
-        
-        // Scroll input into view with a small delay to ensure keyboard is shown
-        setTimeout(() => {
-          target.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }, 300)
-      }
-    }
-
-    const handleFocusOut = () => {
-      // Remove keyboard open class with slight delay
-      setTimeout(() => {
-        document.body.classList.remove('keyboard-open')
-      }, 100)
-    }
-
-    window.addEventListener('focusin', handleFocusIn)
-    window.addEventListener('focusout', handleFocusOut)
-
-    return () => {
-      window.removeEventListener('focusin', handleFocusIn)
-      window.removeEventListener('focusout', handleFocusOut)
-      document.body.classList.remove('keyboard-open')
-    }
-  }, [isOpen])
-
   if (!hydrated) return null
 
   // Helper functions for calendar
