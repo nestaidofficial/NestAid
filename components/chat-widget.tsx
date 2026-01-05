@@ -540,7 +540,7 @@ export function ChatWidget() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 text-[15px]">Nessa Agent</h3>
-                    <p className="text-[13px] text-gray-500 font-normal">The team can also help</p>
+                    <p className="text-[13px] text-gray-500 font-normal">Our team is here to support you.</p>
                   </div>
                 </div>
                 
