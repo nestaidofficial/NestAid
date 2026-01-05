@@ -752,7 +752,7 @@ export function ChatWidget() {
                     <button
                       key={index}
                       onClick={() => handleQuickQuestion(question)}
-                      className="px-4 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 text-sm font-medium rounded-full border border-purple-200 hover:border-purple-300 transition-all"
+                      className="px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-full border-2 border-purple-500 hover:border-purple-600 transition-all"
                     >
                       {question}
                     </button>
