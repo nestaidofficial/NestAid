@@ -100,6 +100,23 @@ export function ChatWidget() {
     setShowBooking(false)
   }
 
+  const handleOpenConversation = () => {
+    // Open conversation view without any pre-filled message
+    setMessages([])
+    setShowConversation(true)
+    setShowMessageForm(false)
+    setShowBooking(false)
+  }
+
+  const handleSendConversationMessage = () => {
+    if (!conversationMessage.trim()) return
+    
+    // Add user message to conversation
+    setMessages([...messages, { type: 'user', text: conversationMessage }])
+    // Clear input
+    setConversationMessage("")
+  }
+
   // Don't render if not on homepage
   if (!isHomePage) return null
 
@@ -618,9 +635,15 @@ export function ChatWidget() {
                     placeholder="Type a message..."
                     value={conversationMessage}
                     onChange={(e) => setConversationMessage(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        handleSendConversationMessage()
+                      }
+                    }}
                     className="w-full px-4 py-3 pr-12 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 text-base focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                   />
                   <button
+                    onClick={handleSendConversationMessage}
                     className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 transition-all flex items-center justify-center"
                     aria-label="Send message"
                   >
@@ -670,11 +693,7 @@ export function ChatWidget() {
               {/* Send Message Button */}
               <div className="px-6 pt-5 pb-3">
                 <button
-                  onClick={() => {
-                    setShowMessageForm(true)
-                    setShowConversation(false)
-                    setShowBooking(false)
-                  }}
+                  onClick={handleOpenConversation}
                   className="w-full bg-white rounded-[20px] border border-gray-200 p-4 shadow-sm hover:shadow-md transition-all hover:border-gray-300 text-left group"
                 >
                   <div className="flex items-center justify-between">
@@ -752,7 +771,7 @@ export function ChatWidget() {
                     <button
                       key={index}
                       onClick={() => handleQuickQuestion(question)}
-                      className="px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-full border-2 border-purple-500 hover:border-purple-600 transition-all"
+                      className="px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-full border-2 border-purple-300 hover:border-purple-400 transition-all"
                     >
                       {question}
                     </button>
@@ -780,11 +799,7 @@ export function ChatWidget() {
                     </span>
                   </button>
                   <button 
-                    onClick={() => {
-                      setShowMessageForm(true)
-                      setShowConversation(false)
-                      setShowBooking(false)
-                    }}
+                    onClick={handleOpenConversation}
                     className="flex flex-col items-center gap-1 group transition-all min-w-[60px]"
                   >
                     <svg className="w-6 h-6 text-gray-400 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
