@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle, AlertCircle, ArrowLeft } from "lucide-react"
 import { submitCareApplication } from "@/app/actions/database-forms"
 import { Playfair_Display, Inter } from "next/font/google"
+import { useMobileFormHandler } from "@/hooks/use-mobile-form-handler"
 
 const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
@@ -35,6 +36,7 @@ interface InHomeCareFormProps {
 export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: InHomeCareFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string } | null>(null)
+  const formRef = useMobileFormHandler()
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -108,7 +110,7 @@ export function InHomeCareForm({ onClose, inModal = false, onBack, flowData }: I
   }
 
   return (
-    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+    <div ref={formRef} className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">

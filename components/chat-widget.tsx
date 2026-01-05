@@ -172,8 +172,10 @@ export function ChatWidget() {
                     } else if (bookingStep === 'time') {
                       setBookingStep('date')
                       setSelectedDate(null)
+                      setSelectedTime('')
                     } else {
                       setBookingStep('time')
+                      setSelectedTime('')
                     }
                   }}
                   className="text-gray-600 hover:text-gray-900 transition-colors -ml-1"
@@ -328,20 +330,31 @@ export function ChatWidget() {
                     <h4 className={`${playfair.className} text-base font-semibold text-gray-900 mb-4`}>Select a Time</h4>
 
                     {/* Time Slots - 9am to 6pm */}
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-2 gap-2 mb-4">
                       {['9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm'].map((time) => (
                         <button
                           key={time}
-                          onClick={() => {
-                            setSelectedTime(time)
-                            setBookingStep('details')
-                          }}
-                          className="px-4 py-3 rounded-lg border-2 border-gray-200 bg-white text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 text-sm font-medium transition-all"
+                          onClick={() => setSelectedTime(time)}
+                          className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
+                            selectedTime === time
+                              ? 'border-blue-600 bg-blue-600 text-white'
+                              : 'border-gray-200 bg-white text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600'
+                          }`}
                         >
                           {time}
                         </button>
                       ))}
                     </div>
+
+                    {/* Continue Button */}
+                    {selectedTime && (
+                      <button
+                        onClick={() => setBookingStep('details')}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-all"
+                      >
+                        Continue
+                      </button>
+                    )}
                   </div>
                 ) : (
                   // Details Form
@@ -391,7 +404,7 @@ export function ChatWidget() {
                         type="text"
                         value={bookingName}
                         onChange={(e) => setBookingName(e.target.value)}
-                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-[14px] focus:outline-none focus:border-blue-400 transition-all"
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-base focus:outline-none focus:border-blue-400 transition-all"
                         placeholder="Your name"
                       />
                     </div>
@@ -405,7 +418,7 @@ export function ChatWidget() {
                         type="email"
                         value={bookingEmail}
                         onChange={(e) => setBookingEmail(e.target.value)}
-                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-[14px] focus:outline-none focus:border-blue-400 transition-all"
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-base focus:outline-none focus:border-blue-400 transition-all"
                         placeholder="email@example.com"
                       />
                     </div>
@@ -419,7 +432,7 @@ export function ChatWidget() {
                         type="tel"
                         value={bookingPhone}
                         onChange={(e) => setBookingPhone(e.target.value)}
-                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-[14px] focus:outline-none focus:border-blue-400 transition-all"
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-base focus:outline-none focus:border-blue-400 transition-all"
                         placeholder="(555) 555-5555"
                       />
                     </div>
@@ -433,7 +446,7 @@ export function ChatWidget() {
                         value={bookingNotes}
                         onChange={(e) => setBookingNotes(e.target.value)}
                         rows={3}
-                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-[14px] focus:outline-none focus:border-blue-400 transition-all resize-none"
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl text-gray-900 text-base focus:outline-none focus:border-blue-400 transition-all resize-none"
                         placeholder="Additional notes..."
                       />
                     </div>
@@ -545,7 +558,7 @@ export function ChatWidget() {
                           <input
                             type="text"
                             placeholder="Enter your name"
-                            className="flex-1 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            className="flex-1 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-500"
                           />
                           <button className="w-9 h-9 rounded-lg bg-purple-600 hover:bg-purple-700 transition-all flex items-center justify-center flex-shrink-0">
                             <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -575,7 +588,7 @@ export function ChatWidget() {
                     placeholder="Type a message..."
                     value={conversationMessage}
                     onChange={(e) => setConversationMessage(e.target.value)}
-                    className="w-full px-4 py-3 pr-12 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 text-[14px] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 pr-12 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 text-base focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                   />
                   <button
                     className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 transition-all flex items-center justify-center"
@@ -795,7 +808,7 @@ export function ChatWidget() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                         rows={4}
-                        className="w-full px-4 py-3 bg-white border-2 border-purple-200 rounded-xl text-gray-900 placeholder-gray-400 text-[14px] focus:outline-none focus:border-purple-400 resize-none pb-14"
+                        className="w-full px-4 py-3 bg-white border-2 border-purple-200 rounded-xl text-gray-900 placeholder-gray-400 text-base focus:outline-none focus:border-purple-400 resize-none pb-14"
                     />
                       <div className="absolute bottom-3 right-3 flex items-center gap-2">
                       <button 
