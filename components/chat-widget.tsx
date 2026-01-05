@@ -589,46 +589,11 @@ export function ChatWidget() {
                       </div>
                     </div>
                   ))}
-
-                  {/* Bot follow-up - only show if no messages yet */}
-                  {messages.length === 0 && (
-                    <div className="flex items-start gap-2">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                        N
-                      </div>
-                      <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
-                        <p className="text-[14px] text-gray-800">Great! Can we please grab a few details from you quickly? We'll respond here and by email.</p>
-                        <div className="mt-3 bg-white rounded-xl p-4 border border-gray-200">
-                          <p className="text-[13px] font-medium text-gray-700 mb-2">Name</p>
-                          <div className="flex items-center gap-2">
-                            <input
-                              type="text"
-                              placeholder="Enter your name"
-                              className="flex-1 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            />
-                            <button className="w-9 h-9 rounded-lg bg-purple-600 hover:bg-purple-700 transition-all flex items-center justify-center flex-shrink-0">
-                              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
 
               {/* Input Area */}
-              <div className="p-5 border-t border-gray-200 bg-white flex-shrink-0 space-y-3">
-                <button
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2"
-                >
-                  Chat with our team
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
+              <div className="p-5 border-t border-gray-200 bg-white flex-shrink-0">
                 <div className="relative">
                   <input
                     type="text"
