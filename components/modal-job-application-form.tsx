@@ -8,7 +8,6 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Playfair_Display, Inter } from "next/font/google"
 import { AlertCircle, CheckCircle, ArrowLeft } from "lucide-react"
 import { submitJobApplication } from "@/app/actions/database-forms"
-import { useMobileFormHandler } from "@/hooks/use-mobile-form-handler"
 
 const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
@@ -47,7 +46,6 @@ export function ModalJobApplicationForm({
 }: ModalJobApplicationFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string } | null>(null)
-  const formRef = useMobileFormHandler()
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -119,7 +117,7 @@ export function ModalJobApplicationForm({
   }
 
   return (
-    <div ref={formRef} className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">

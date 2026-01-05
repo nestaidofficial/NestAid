@@ -163,6 +163,55 @@
   html:has([data-radix-alert-dialog-overlay]) {
     overflow: hidden !important;
   }
+  
+  /* Mobile keyboard handling - prevent iOS keyboard issues */
+  @media (max-width: 768px) {
+    /* When keyboard is open on mobile */
+    body.keyboard-open {
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    /* Ensure inputs are properly visible when keyboard shows */
+    body.keyboard-open input:focus,
+    body.keyboard-open textarea:focus,
+    body.keyboard-open select:focus {
+      transform: none !important;
+    }
+    
+    /* Prevent transform on modal content when keyboard is open */
+    body.keyboard-open [data-radix-dialog-content] {
+      transform: none !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+    }
+  }
+  
+  /* Prevent zoom on input focus for iOS Safari */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important; /* Must be at least 16px to prevent zoom on iOS */
+  }
+  
+  @media (min-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="password"],
+    textarea,
+    select {
+      font-size: 14px !important; /* Can be smaller on desktop */
+    }
+  }
 }
 
 /* Floating animation for service cards */

@@ -54,6 +54,40 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
     }
   }, [isOpen])
 
+  // Handle mobile keyboard behavior - CRITICAL FOR iOS
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleFocusIn = (e: FocusEvent) => {
+      const target = e.target as HTMLElement
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT') {
+        // Add keyboard open class
+        document.body.classList.add('keyboard-open')
+        
+        // Scroll input into view with a small delay to ensure keyboard is shown
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }, 300)
+      }
+    }
+
+    const handleFocusOut = () => {
+      // Remove keyboard open class with slight delay
+      setTimeout(() => {
+        document.body.classList.remove('keyboard-open')
+      }, 100)
+    }
+
+    window.addEventListener('focusin', handleFocusIn)
+    window.addEventListener('focusout', handleFocusOut)
+
+    return () => {
+      window.removeEventListener('focusin', handleFocusIn)
+      window.removeEventListener('focusout', handleFocusOut)
+      document.body.classList.remove('keyboard-open')
+    }
+  }, [isOpen])
+
   const handleClose = () => {
     setCurrentStep("initial")
     setServiceType(null)
@@ -551,15 +585,18 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()} className="z-[99999]">
+      <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()} modal={true}>
         <DialogContent
           forceMount
-          onInteractOutside={(e) => e.preventDefault()}
-          onFocusOutside={(e) => e.preventDefault()}
-          onPointerDownOutside={(e) => e.preventDefault()}
-          onOpenAutoFocus={(e) => e.preventDefault()}
-          onEscapeKeyDown={(e) => e.preventDefault()}
-          className="w-full mobile-modal-height max-w-none m-0 p-0 bg-[#FCF5EB] md:max-w-4xl md:max-h-[90vh] md:m-auto md:rounded-lg overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:top-6 [&>button]:rounded-full [&>button]:bg-white [&>button]:w-12 [&>button]:h-12 [&>button]:shadow-lg [&>button]:border [&>button]:border-gray-200 [&>button]:hover:bg-gray-50 [&>button]:z-20 [&>button]:flex [&>button]:items-center [&>button]:justify-center"
+          className="w-full h-full max-w-none max-h-none m-0 p-0 bg-[#FCF5EB] md:max-w-4xl md:max-h-[90vh] md:m-auto md:rounded-lg overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:top-6 [&>button]:rounded-full [&>button]:bg-white [&>button]:w-12 [&>button]:h-12 [&>button]:shadow-lg [&>button]:border [&>button]:border-gray-200 [&>button]:hover:bg-gray-50 [&>button]:z-20 [&>button]:flex [&>button]:items-center [&>button]:justify-center"
+          style={{
+            transform: 'none',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+          }}
         >
           <DialogTitle className="sr-only">
             Get Started - Find Care or Jobs
@@ -572,60 +609,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
         </DialogContent>
       </Dialog>
       
-      {/* Mobile Form Styles */}
-      <style jsx global>{`
-        /* Fix 100vh issue on mobile - use actual viewport height */
-        .mobile-modal-height {
-          height: 100vh;
-          height: 100dvh; /* Dynamic viewport height for modern browsers */
-        }
-        
-        @supports (height: 100dvh) {
-          .mobile-modal-height {
-            height: 100dvh;
-          }
-        }
-        
-        /* When keyboard is open, adjust fixed elements */
-        body.keyboard-open .mobile-modal-height {
-          height: auto;
-          min-height: 100vh;
-          min-height: 100dvh;
-        }
-        
-        /* Prevent zoom on iOS when focusing inputs */
-        @media screen and (max-width: 768px) {
-          input[type="text"],
-          input[type="email"],
-          input[type="tel"],
-          input[type="number"],
-          textarea,
-          select {
-            font-size: 16px !important;
-          }
-        }
-        
-        /* Smooth scroll behavior for form inputs */
-        html {
-          scroll-behavior: smooth;
-        }
-        
-        /* Prevent body scroll when modal is open */
-        body.modal-open {
-          overflow: hidden;
-          position: fixed;
-          width: 100%;
-          height: 100%;
-        }
-        
-        @media screen and (min-width: 768px) {
-          body.modal-open {
-            overflow: auto;
-            position: relative;
-          }
-        }
-      `}</style>
 
     </>
   )
-} 
+}
