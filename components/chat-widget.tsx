@@ -558,17 +558,25 @@ export function ChatWidget() {
                 <div className="space-y-4">
                   {/* Message from team */}
                   <div className="text-center text-[14px] text-gray-500 mb-6 leading-relaxed">
-                    Our team are here to lend a hand,<br />
-                    just let us know how we can help.
+                    Our team is here to support you—just let us know how we can help.
                   </div>
                   
-                  {/* Bot welcome message */}
+                  {/* Bot welcome messages */}
                   <div className="flex items-start gap-2">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
                       N
                     </div>
                     <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
-                      <p className="text-[14px] text-gray-800">Welcome! 👋 How can I lend a hand?</p>
+                      <p className="text-[14px] text-gray-800">Hi, I'm Nessa 👋</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                      N
+                    </div>
+                    <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
+                      <p className="text-[14px] text-gray-800">How can I help you today?</p>
                     </div>
                   </div>
 
