@@ -396,6 +396,7 @@ export function ChatWidget() {
                             width={24}
                             height={24}
                             className="object-contain p-0.5"
+                            priority
                           />
                         </div>
                         <h3 className="font-semibold text-gray-900">NestAid</h3>
@@ -536,6 +537,7 @@ export function ChatWidget() {
                       width={40}
                       height={40}
                       className="object-contain p-1"
+                      priority
                     />
                   </div>
                   <div>
@@ -639,6 +641,7 @@ export function ChatWidget() {
                       width={80}
                       height={30}
                       className="h-6 w-auto"
+                      priority
                     />
                   </div>
                   
@@ -808,6 +811,7 @@ export function ChatWidget() {
                       width={32}
                       height={32}
                       className="object-contain p-1"
+                      priority
                     />
                   </div>
                   <div className="text-center">

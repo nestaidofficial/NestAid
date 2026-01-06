@@ -464,7 +464,9 @@ export default function Component() {
                     src="/images/landing_page/image1.jpg" 
                     alt="Professional Team" 
                     fill
-                    className="object-cover" 
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>
@@ -496,7 +498,9 @@ export default function Component() {
                     src="/images/landing_page/image2.jpg" 
                     alt="Quality Service" 
                     fill
-                    className="object-cover" 
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>

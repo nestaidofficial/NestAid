@@ -224,6 +224,8 @@ export default function FindJobsPage() {
                 alt="Senior with flowers"
                 fill
                 className="object-cover"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
           </div>
@@ -234,6 +236,8 @@ export default function FindJobsPage() {
                 alt="Elderly couple"
                 fill
                 className="object-cover"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
           </div>
@@ -273,7 +277,9 @@ export default function FindJobsPage() {
                   alt="Caregiver with Senior" 
                   width={600} 
                   height={500}
-                  className="w-full h-auto" 
+                  className="w-full h-auto"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 600px"
                 />
               </div>
               {/* Decorative element */}
@@ -334,7 +340,9 @@ export default function FindJobsPage() {
                   alt="Compassionate Caregiver" 
                   width={600} 
                   height={500}
-                  className="w-full h-auto" 
+                  className="w-full h-auto"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 600px"
                 />
               </div>
               {/* Decorative element */}
@@ -531,7 +539,9 @@ export default function FindJobsPage() {
                   alt="Career with Purpose" 
                   width={600} 
                   height={500}
-                  className="w-full h-auto" 
+                  className="w-full h-auto"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 600px"
                 />
               </div>
               {/* Decorative element */}
