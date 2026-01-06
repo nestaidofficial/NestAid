@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
 import { X, MessageCircle, Home, Send, ChevronDown, Smile } from "lucide-react"
 import Image from "next/image"
@@ -29,12 +29,20 @@ export function ChatWidget() {
   const [selectedTime, setSelectedTime] = useState("")
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [messages, setMessages] = useState<Array<{ type: 'user' | 'bot', text: string }>>([])
+  const [threadId, setThreadId] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
 
   // Avoid hydration mismatch by waiting for client render
   useEffect(() => {
     setHydrated(true)
   }, [])
+
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   if (!hydrated) return null
 
@@ -91,13 +99,15 @@ export function ChatWidget() {
     setMessage("")
   }
 
-  const handleQuickQuestion = (question: string) => {
+  const handleQuickQuestion = async (question: string) => {
     // Add user question to messages
-    setMessages([{ type: 'user', text: question }])
+    setMessages(prev => [...prev, { type: 'user', text: question }])
     // Open conversation view
     setShowConversation(true)
     setShowMessageForm(false)
     setShowBooking(false)
+    // Send to AI
+    await sendMessageToAI(question)
   }
 
   const handleOpenConversation = () => {
@@ -108,13 +118,104 @@ export function ChatWidget() {
     setShowBooking(false)
   }
 
-  const handleSendConversationMessage = () => {
-    if (!conversationMessage.trim()) return
+  const sendMessageToAI = async (userMessage: string) => {
+    setIsLoading(true)
     
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userMessage,
+          threadId,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      // Handle streaming response
+      const reader = response.body?.getReader()
+      const decoder = new TextDecoder()
+      let botMessage = ''
+      let botMessageIndex = -1
+
+      // Add initial bot message placeholder
+      setMessages(prev => {
+        botMessageIndex = prev.length
+        return [...prev, { type: 'bot', text: '' }]
+      })
+
+      while (reader) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        const chunk = decoder.decode(value)
+        const lines = chunk.split('\n')
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            try {
+              const data = JSON.parse(line.slice(6))
+              
+              if (data.type === 'text') {
+                botMessage += data.content
+                // Update the bot message in real-time
+                setMessages(prev => {
+                  const updated = [...prev]
+                  if (botMessageIndex >= 0 && updated[botMessageIndex]) {
+                    updated[botMessageIndex] = { type: 'bot', text: botMessage }
+                  }
+                  return updated
+                })
+              } else if (data.type === 'done') {
+                // Save thread ID for conversation continuity
+                if (data.threadId) {
+                  setThreadId(data.threadId)
+                }
+              } else if (data.type === 'error') {
+                console.error('AI Error:', data.error)
+                setMessages(prev => {
+                  const updated = [...prev]
+                  if (botMessageIndex >= 0) {
+                    updated[botMessageIndex] = { 
+                      type: 'bot', 
+                      text: 'Sorry, I encountered an error. Please try again.' 
+                    }
+                  }
+                  return updated
+                })
+              }
+            } catch (e) {
+              // Skip invalid JSON
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error sending message:', error)
+      setMessages(prev => [...prev, { 
+        type: 'bot', 
+        text: 'Sorry, I\'m having trouble connecting right now. Please try again.' 
+      }])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleSendConversationMessage = async () => {
+    if (!conversationMessage.trim() || isLoading) return
+    
+    const userMessage = conversationMessage
     // Add user message to conversation
-    setMessages([...messages, { type: 'user', text: conversationMessage }])
-    // Clear input
+    setMessages(prev => [...prev, { type: 'user', text: userMessage }])
+    // Clear input immediately for better UX
     setConversationMessage("")
+    // Send to AI
+    await sendMessageToAI(userMessage)
   }
 
   // Don't render if not on homepage
@@ -558,8 +659,15 @@ export function ChatWidget() {
                   
                   {/* Bot welcome messages */}
                   <div className="flex items-start gap-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                      N
+                    <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
+                      <Image
+                        src="/logosvg.png"
+                        alt="Nessa"
+                        width={32}
+                        height={32}
+                        className="object-contain p-0.5"
+                        priority
+                      />
                     </div>
                     <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
                       <p className="text-[14px] text-gray-800">Hi, I'm Nessa 👋</p>
@@ -567,8 +675,15 @@ export function ChatWidget() {
                   </div>
 
                   <div className="flex items-start gap-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                      N
+                    <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
+                      <Image
+                        src="/logosvg.png"
+                        alt="Nessa"
+                        width={32}
+                        height={32}
+                        className="object-contain p-0.5"
+                        priority
+                      />
                     </div>
                     <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
                       <p className="text-[14px] text-gray-800">How can I help you today?</p>
@@ -579,8 +694,14 @@ export function ChatWidget() {
                   {messages.map((msg, index) => (
                     <div key={index} className={`flex items-start gap-2 ${msg.type === 'user' ? 'justify-end' : ''}`}>
                       {msg.type === 'bot' && (
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                          N
+                        <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
+                          <Image
+                            src="/logosvg.png"
+                            alt="Nessa"
+                            width={32}
+                            height={32}
+                            className="object-contain p-0.5"
+                          />
                         </div>
                       )}
                       <div className={`rounded-2xl px-4 py-3 max-w-[80%] ${
@@ -588,10 +709,35 @@ export function ChatWidget() {
                           ? 'bg-purple-600 text-white rounded-tr-sm' 
                           : 'bg-gray-100 text-gray-800 rounded-tl-sm'
                       }`}>
-                        <p className="text-[14px]">{msg.text}</p>
+                        <p className="text-[14px] whitespace-pre-wrap">{msg.text || '...'}</p>
                       </div>
                     </div>
                   ))}
+
+                  {/* Loading indicator */}
+                  {isLoading && (
+                    <div className="flex items-start gap-2">
+                      <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#FDE664' }}>
+                        <Image
+                          src="/logosvg.png"
+                          alt="Nessa"
+                          width={32}
+                          height={32}
+                          className="object-contain p-0.5"
+                        />
+                      </div>
+                      <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3">
+                        <div className="flex gap-1">
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Auto-scroll anchor */}
+                  <div ref={messagesEndRef} />
                 </div>
               </div>
 
@@ -600,19 +746,21 @@ export function ChatWidget() {
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="Type a message..."
+                    placeholder={isLoading ? "Nessa is typing..." : "Type a message..."}
                     value={conversationMessage}
                     onChange={(e) => setConversationMessage(e.target.value)}
                     onKeyPress={(e) => {
-                      if (e.key === 'Enter') {
+                      if (e.key === 'Enter' && !isLoading) {
                         handleSendConversationMessage()
                       }
                     }}
-                    className="w-full px-4 py-3 pr-12 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 text-base focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                    disabled={isLoading}
+                    className="w-full px-4 py-3 pr-12 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 text-base focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                   <button
                     onClick={handleSendConversationMessage}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 transition-all flex items-center justify-center"
+                    disabled={isLoading || !conversationMessage.trim()}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-purple-600"
                     aria-label="Send message"
                   >
                     <Send className="w-4 h-4 text-white" />
