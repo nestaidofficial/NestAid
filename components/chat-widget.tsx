@@ -357,11 +357,14 @@ export function ChatWidget() {
                     <h4 className={`${playfair.className} text-base font-semibold text-gray-900 mb-4`}>Select a Time</h4>
 
                     {/* Time Slots - 9am to 6pm */}
-                    <div className="grid grid-cols-2 gap-2 mb-4">
+                    <div className="grid grid-cols-2 gap-2">
                       {['9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm'].map((time) => (
                         <button
                           key={time}
-                          onClick={() => setSelectedTime(time)}
+                          onClick={() => {
+                            setSelectedTime(time)
+                            setBookingStep('details')
+                          }}
                           className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
                             selectedTime === time
                               ? 'border-blue-600 bg-blue-600 text-white'
@@ -372,16 +375,6 @@ export function ChatWidget() {
                         </button>
                       ))}
                     </div>
-
-                    {/* Continue Button */}
-                    {selectedTime && (
-                      <button
-                        onClick={() => setBookingStep('details')}
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-all"
-                      >
-                        Continue
-                      </button>
-                    )}
                   </div>
                 ) : (
                   // Details Form

@@ -140,6 +140,7 @@ export default function FindJobsPage() {
                     fill
                     className="object-cover"
                     priority
+                    sizes="(max-width: 1024px) 0vw, 280px"
                   />
                 </div>
                 {/* Decorative shadow/background */}
@@ -205,6 +206,7 @@ export default function FindJobsPage() {
                     fill
                     className="object-cover"
                     priority
+                    sizes="(max-width: 1024px) 0vw, 280px"
                   />
                 </div>
                 {/* Decorative shadow/background */}
@@ -224,8 +226,8 @@ export default function FindJobsPage() {
                 alt="Senior with flowers"
                 fill
                 className="object-cover"
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                priority
+                sizes="(max-width: 768px) 140px, 0vw"
               />
             </div>
           </div>
@@ -236,8 +238,8 @@ export default function FindJobsPage() {
                 alt="Elderly couple"
                 fill
                 className="object-cover"
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                priority
+                sizes="(max-width: 768px) 140px, 0vw"
               />
             </div>
           </div>
