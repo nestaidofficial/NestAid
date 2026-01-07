@@ -77,7 +77,7 @@ Key service areas to know:
 - Respite care for family caregivers
 - Services available across Massachusetts
 - Care can start within 24 hours`,
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       tools: [{ type: "file_search" }],
       tool_resources: {
         file_search: {

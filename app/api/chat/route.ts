@@ -51,66 +51,34 @@ export async function POST(req: NextRequest) {
       content: message,
     });
 
-    // Create a run with streaming
-    const encoder = new TextEncoder();
-    const stream = new ReadableStream({
-      async start(controller) {
-        try {
-          const run = openai.beta.threads.runs.stream(currentThreadId, {
-            assistant_id: assistantId,
-          });
-
-          let responseText = '';
-
-          run.on('textDelta', (textDelta) => {
-            let chunk = textDelta.value || '';
-            // Remove citation annotations like 【8:0†services.pdf】
-            chunk = chunk.replace(/【\d+:\d+†[^】]+】/g, '');
-            responseText += chunk;
-            if (chunk) {
-              controller.enqueue(
-                encoder.encode(`data: ${JSON.stringify({ type: 'text', content: chunk })}\n\n`)
-              );
-            }
-          });
-
-          run.on('messageDone', async () => {
-            // Send completion message
-            controller.enqueue(
-              encoder.encode(`data: ${JSON.stringify({ 
-                type: 'done', 
-                threadId: currentThreadId,
-                fullResponse: responseText 
-              })}\n\n`)
-            );
-            controller.close();
-          });
-
-          run.on('error', (error) => {
-            console.error('Stream error:', error);
-            controller.enqueue(
-              encoder.encode(`data: ${JSON.stringify({ type: 'error', error: error.message })}\n\n`)
-            );
-            controller.close();
-          });
-
-        } catch (error: any) {
-          console.error('Error in stream:', error);
-          controller.enqueue(
-            encoder.encode(`data: ${JSON.stringify({ type: 'error', error: error.message })}\n\n`)
-          );
-          controller.close();
-        }
-      },
+    // Run the assistant (non-streaming for Netlify compatibility)
+    const run = await openai.beta.threads.runs.createAndPoll(currentThreadId, {
+      assistant_id: assistantId,
     });
 
-    return new NextResponse(stream, {
-      headers: {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive',
-      },
-    });
+    // Get the assistant's response
+    if (run.status === 'completed') {
+      const messages = await openai.beta.threads.messages.list(currentThreadId);
+      const lastMessage = messages.data[0];
+      
+      if (lastMessage.role === 'assistant' && lastMessage.content[0]?.type === 'text') {
+        let responseText = lastMessage.content[0].text.value;
+        
+        // Remove citation annotations like 【8:0†services.pdf】
+        responseText = responseText.replace(/【\d+:\d+†[^】]+】/g, '');
+        
+        return NextResponse.json({
+          response: responseText,
+          threadId: currentThreadId,
+        });
+      }
+    }
+
+    // If run failed or no response
+    return NextResponse.json(
+      { error: 'Failed to get response from assistant', threadId: currentThreadId },
+      { status: 500 }
+    );
 
   } catch (error: any) {
     console.error('Chat API error:', error);
@@ -120,4 +88,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-

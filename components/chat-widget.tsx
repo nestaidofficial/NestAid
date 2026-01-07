@@ -133,69 +133,25 @@ export function ChatWidget() {
         }),
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error('Failed to send message')
+        throw new Error(data.error || 'Failed to send message')
       }
 
-      // Handle streaming response
-      const reader = response.body?.getReader()
-      const decoder = new TextDecoder()
-      let botMessage = ''
-      let botMessageIndex = -1
-
-      // Add initial bot message placeholder
-      setMessages(prev => {
-        botMessageIndex = prev.length
-        return [...prev, { type: 'bot', text: '' }]
-      })
-
-      while (reader) {
-        const { done, value } = await reader.read()
-        if (done) break
-
-        const chunk = decoder.decode(value)
-        const lines = chunk.split('\n')
-
-        for (const line of lines) {
-          if (line.startsWith('data: ')) {
-            try {
-              const data = JSON.parse(line.slice(6))
-              
-              if (data.type === 'text') {
-                botMessage += data.content
-                // Update the bot message in real-time
-                setMessages(prev => {
-                  const updated = [...prev]
-                  if (botMessageIndex >= 0 && updated[botMessageIndex]) {
-                    updated[botMessageIndex] = { type: 'bot', text: botMessage }
-                  }
-                  return updated
-                })
-              } else if (data.type === 'done') {
-                // Save thread ID for conversation continuity
-                if (data.threadId) {
-                  setThreadId(data.threadId)
-                }
-              } else if (data.type === 'error') {
-                console.error('AI Error:', data.error)
-                setMessages(prev => {
-                  const updated = [...prev]
-                  if (botMessageIndex >= 0) {
-                    updated[botMessageIndex] = { 
-                      type: 'bot', 
-                      text: 'Sorry, I encountered an error. Please try again.' 
-                    }
-                  }
-                  return updated
-                })
-              }
-            } catch (e) {
-              // Skip invalid JSON
-            }
-          }
+      // Add bot response to messages
+      if (data.response) {
+        setMessages(prev => [...prev, { 
+          type: 'bot', 
+          text: data.response 
+        }])
+        
+        // Save thread ID for conversation continuity
+        if (data.threadId) {
+          setThreadId(data.threadId)
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error sending message:', error)
       setMessages(prev => [...prev, { 
         type: 'bot', 
