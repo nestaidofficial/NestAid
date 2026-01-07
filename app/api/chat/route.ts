@@ -1,15 +1,26 @@
 import OpenAI from 'openai';
 import { NextRequest, NextResponse } from 'next/server';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize OpenAI client only if API key is available
+const openai = process.env.OPENAI_API_KEY 
+  ? new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    })
+  : null;
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {
+    // Check if OpenAI is configured
+    if (!openai) {
+      return NextResponse.json(
+        { error: 'OpenAI is not configured. Please set OPENAI_API_KEY environment variable.' },
+        { status: 500 }
+      );
+    }
+
     const { message, threadId } = await req.json();
 
     if (!message) {
@@ -22,7 +33,7 @@ export async function POST(req: NextRequest) {
     const assistantId = process.env.OPENAI_ASSISTANT_ID;
     if (!assistantId) {
       return NextResponse.json(
-        { error: 'Assistant not configured. Please run setup script.' },
+        { error: 'Assistant not configured. Please set OPENAI_ASSISTANT_ID environment variable.' },
         { status: 500 }
       );
     }
