@@ -18,7 +18,7 @@ const blogArticles = [
     category: "Wellness",
     title: "Physical Activities For Older Adults",
     description: "Light exercises like walking or stretching help seniors stay strong, balanced, and independent.",
-    image: "/images/adult-care.jpg"
+    image: "/images/findjobs/physical_activities.png"
   },
   {
     id: "social-engagement",

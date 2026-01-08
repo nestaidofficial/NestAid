@@ -138,37 +138,41 @@ export default function Component() {
   // Testimonials data
   const testimonials = [
     {
-      quote: "As my father's medical needs increased, we knew we couldn't keep up on our own. NestAid provided structure, reliability, and a calm presence that immediately put us at ease. They manage everything from daily care to small details we often overlooked, and their communication with us is always clear. I finally feel confident knowing my father is in good hands every single day.",
+      quote: "When my father needed short-term care, NestAid stepped in at the right time. I had errands and responsibilities I couldn't put off, and knowing they were with him for four hours a day that week gave me real peace of mind. It was a huge relief knowing he was safe and cared for.",
       name: "Mark Johnson",
-      title: "Financial Advisor",
-      image: "/images/group.jpg",
+      title: "Norwood, MA",
+      image: "/images/review/review1.png",
+      profileImage: "/images/review/reviewer1.png",
       quoteBg: "#FDF2DC",
       iconColor: "#F2D18B",
       decorativeShapes: ["#D7E4E1", "#B5D8CB", "#8B5CF6"]
     },
     {
-      quote: "My father has always been the rock of our family, and watching him struggle with his health was incredibly difficult. NestAid changed everything. The caregivers don't just meet his needs—they connect with him, listen to his stories, and treat him with the respect he deserves. It feels like they've become an extension of our family, and that peace of mind is something I can't put a price on.",
-      name: "David Miller",
-      title: "Civil Engineer",
-      image: "/images/group.jpg",
+      quote: "I never thought we’d need outside help, but when my father needed more day-to-day support, NestAid made the transition easy. Their caregiver was reliable, handled the small details, and brought a calm presence into our home. Seeing my father comfortable again reassured us that we made the right choice.",
+      name: "Alice Middleton",
+      title: "Natick, MA",
+      image: "/images/review/review2.png",
+      profileImage: "/images/review/reviewer2.png",
       quoteBg: "#E8E3FF",
       iconColor: "#6D28D9",
       decorativeShapes: ["#E8E3FF", "#1A5463", "#B5D8CB"]
     },
     {
-      quote: "I never thought I would see my father smile the way he does now. Before NestAid, he was withdrawn and tired. Their team treats him like a person with a full history—not just a patient—and that has made all the difference. He laughs again, tells stories, and feels valued. As a son, there's no greater comfort than knowing my dad is being cared for with genuine compassion.",
-      name: "Christopher Adams",
-      title: "Software Developer",
-      image: "/images/senior-care.jpg",
+      quote: "I never thought we'd need outside help, but when my father started needing more support day to day, NestAid made the transition easier than I imagined. Their caregiver showed up consistently, handled the little things we didn't think about, and brought a calm presence into our home.",
+      name: "Alex Good",
+      title: "Boston, MA",
+      image: "/images/review/review3.png",
+      profileImage: "/images/review/reviewer3.png",
       quoteBg: "#E0F2FE",
       iconColor: "#1A5463",
       decorativeShapes: ["#87CEEB", "#1A5463", "#D7E4E1"]
     },
     {
-      quote: "My mother has always valued her independence, and I worried that outside care would take that away. NestAid has done the opposite. They give her the gentle support she needs while still letting her make her own choices. She feels safe, respected, and happy—and for our family, that sense of security means everything.",
-      name: "Jonathan Reyes",
-      title: "Small Business Owner",
-      image: "/images/adult-care.jpg",
+      quote: "My dad has always been independent, and NestAid has helped him stay that way. Even though he can't drive anymore, his caregiver helps him run errands and stay active. He feels safe, respected, and happy—and that means a lot to our family.",
+      name: "Alex Good",
+      title: "Boston, MA",
+      image: "/images/review/review4.png",
+      profileImage: "/images/review/reviewer4.png",
       quoteBg: "#F3E8FF",
       iconColor: "#8B5CF6",
       decorativeShapes: ["#F3E8FF", "#C4B5FD", "#F2D18B"]
@@ -181,7 +185,7 @@ export default function Component() {
       category: "Wellness",
       title: "Physical Activities For Older Adults",
       description: "Light exercises like walking or stretching help seniors stay strong, balanced, and independent.",
-      image: "/images/adult-care.jpg"
+      image: "/images/findjobs/physical_activities.png"
     },
     {
       id: "social-engagement",
@@ -578,7 +582,7 @@ export default function Component() {
               </div>
               <div className="flex items-center gap-4 mt-8">
                 <Image
-                  src="/images/group-Photoroom.png"
+                  src={testimonials[currentTestimonial].profileImage}
                   alt={`${testimonials[currentTestimonial].name}`}
                   width={56}
                   height={56}
