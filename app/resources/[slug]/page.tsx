@@ -136,7 +136,7 @@ const blogPosts: Record<string, {
     category: "Memory",
     title: "Choosing The Right Caregiver For Seniors",
     description: "A guide for families on choosing the right caregiver for seniors, focusing on assessing needs, qualifications, and compatibility.",
-    image: "/images/senior-care.jpg",
+    image: "/images/findjobs/socialwithcaregiver.png",
     author: "Emily Williams",
     publishedDate: "August 7, 2025",
     content: [

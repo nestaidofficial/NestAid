@@ -32,7 +32,7 @@ const blogArticles = [
     category: "Memory",
     title: "Choosing The Right Caregiver For Seniors",
     description: "Guidance for families on selecting caregivers who align with needs, qualifications, and personalities.",
-    image: "/images/senior-care.jpg"
+    image: "/images/findjobs/socialwithcaregiver.png"
   }
 ]
 
