@@ -20,8 +20,6 @@ const blogPosts: Record<string, {
   title: string
   description: string
   image: string
-  author: string
-  publishedDate: string
   content: Array<{ type: 'paragraph' | 'heading' | 'list', content: string | string[] }>
 }> = {
   "physical-activities": {
@@ -30,8 +28,6 @@ const blogPosts: Record<string, {
     title: "Physical Activities For Older Adults",
     description: "Light exercises like walking or stretching help seniors stay strong, balanced, and independent.",
     image: "/images/findjobs/physical_activities.png",
-    author: "Emily Williams",
-    publishedDate: "August 7, 2025",
     content: [
       {
         type: "paragraph",
@@ -79,8 +75,6 @@ const blogPosts: Record<string, {
     title: "The Importance Of Social Engagement For Seniors",
     description: "An informative piece on the importance of social engagement for seniors, highlighting benefits for mental health and community building.",
     image: "/images/group.jpg",
-    author: "Emily Williams",
-    publishedDate: "August 7, 2025",
     content: [
       {
         type: "paragraph",
@@ -137,8 +131,6 @@ const blogPosts: Record<string, {
     title: "Choosing The Right Caregiver For Seniors",
     description: "A guide for families on choosing the right caregiver for seniors, focusing on assessing needs, qualifications, and compatibility.",
     image: "/images/findjobs/socialwithcaregiver.png",
-    author: "Emily Williams",
-    publishedDate: "August 7, 2025",
     content: [
       {
         type: "paragraph",
@@ -222,22 +214,6 @@ export default async function ResourcePostPage({ params }: { params: Promise<{ s
           <h1 className={`${playfair.className} text-[36px] md:text-[48px] lg:text-[56px] text-[#1A5463] leading-[1.1] mb-6`}>
             {post.title}
           </h1>
-          
-          {/* Author Info */}
-          <div className="flex items-center justify-center gap-3">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden">
-              <Image
-                src="/images/group-Photoroom.png"
-                alt={post.author}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className={`${inter.className} text-left`}>
-              <p className="font-semibold text-[#1A5463]">{post.author}</p>
-              <p className="text-sm text-[#446056]">Published Date : {post.publishedDate}</p>
-            </div>
-          </div>
         </div>
 
         {/* Featured Image */}
