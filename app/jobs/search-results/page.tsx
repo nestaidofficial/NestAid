@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge"
 import { Search } from "lucide-react"
 import Link from "next/link"
 import AOS from 'aos'
-import 'aos/dist/aos.css'
 import { Playfair_Display, Inter } from "next/font/google"
 import { GooglePlacesAutocomplete } from "@/components/google-places-autocomplete"
 import { JobDetailsModal } from "@/components/job-details-modal"

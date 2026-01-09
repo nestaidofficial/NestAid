@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import AOS from 'aos'
-import 'aos/dist/aos.css'
 import { Playfair_Display, Inter } from "next/font/google"
 import { ChevronDown } from "lucide-react"
 import { GetStartedModal } from "@/components/get-started-modal"

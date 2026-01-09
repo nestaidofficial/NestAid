@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import AOS from 'aos'
-import 'aos/dist/aos.css'
 import { Playfair_Display, Inter } from "next/font/google"
 import { Search, ChevronDown, Play, DollarSign, Shield, MessageCircle } from "lucide-react"
 

@@ -19,6 +19,17 @@ const nextConfig = {
   compress: true,
   // Enable SWC minification
   swcMinify: true,
+  // Target modern browsers to reduce legacy JavaScript polyfills
+  compiler: {
+    // Remove console.log in production (optional, improves bundle size)
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
+  },
+  // Experimental features for better optimization
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+  },
 }
 
 export default nextConfig

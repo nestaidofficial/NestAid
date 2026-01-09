@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import AOS from 'aos'
-import 'aos/dist/aos.css'
 import { Playfair_Display, Inter } from "next/font/google"
 import { GooglePlacesAutocomplete } from "@/components/google-places-autocomplete"
 import { SimpleLocationInput } from "@/components/simple-location-input"

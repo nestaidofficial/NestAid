@@ -5,7 +5,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import AOS from 'aos'
-import 'aos/dist/aos.css'
 import { GetStartedModal } from "@/components/get-started-modal"
 import { Playfair_Display, Inter } from "next/font/google"
 
@@ -271,7 +270,8 @@ export default function Component() {
                         fill
                         className="object-cover"
                         priority
-                        sizes="100vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 448px, 512px"
+                        quality={90}
                       />
                     </div>
                     
@@ -432,7 +432,9 @@ export default function Component() {
                     src="/images/landing_page/compassionate_care.jpg" 
                     alt="Compassionate Care" 
                     fill
-                    className="object-cover" 
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 512px"
                   />
                 </div>
               </div>
@@ -504,7 +506,7 @@ export default function Component() {
                     fill
                     className="object-cover"
                     loading="lazy"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 512px"
                   />
                 </div>
               </div>

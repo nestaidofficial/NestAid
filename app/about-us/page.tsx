@@ -3,7 +3,6 @@
 import { useEffect } from "react"
 import Image from "next/image"
 import AOS from 'aos'
-import 'aos/dist/aos.css'
 import { Playfair_Display, Inter } from "next/font/google"
 
 const playfair = Playfair_Display({
