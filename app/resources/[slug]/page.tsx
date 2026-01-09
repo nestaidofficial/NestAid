@@ -2,6 +2,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { Playfair_Display, Inter } from "next/font/google"
 import { notFound } from "next/navigation"
+import type { Metadata } from 'next'
+import { generateMetadata as generatePageMetadata } from "@/app/metadata"
+import { generateArticleSchema } from "@/lib/seo/structured-data"
+import { generateBreadcrumbSchema } from "@/lib/seo/structured-data"
 
 const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
@@ -198,6 +202,34 @@ const blogPosts: Record<string, {
   }
 }
 
+const baseUrl = 'https://nestaid.us'
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = blogPosts[slug]
+
+  if (!post) {
+    return {}
+  }
+
+  const keywords = [
+    post.category.toLowerCase(),
+    'senior care resources',
+    'elderly care information',
+    'caregiving tips',
+    'Massachusetts',
+    post.title.toLowerCase(),
+  ]
+
+  return generatePageMetadata({
+    title: `${post.title} | NestAid Resources`,
+    description: post.description,
+    keywords,
+    canonical: `${baseUrl}/resources/${slug}`,
+    image: post.image,
+  })
+}
+
 export default async function ResourcePostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = blogPosts[slug]
@@ -206,8 +238,42 @@ export default async function ResourcePostPage({ params }: { params: Promise<{ s
     notFound()
   }
 
+  // Published date (using current date as fallback since it's not in data)
+  const publishedDate = new Date().toISOString()
+  
+  // Generate Article schema
+  const articleSchema = generateArticleSchema({
+    headline: post.title,
+    description: post.description,
+    image: post.image.startsWith('http') ? post.image : `${baseUrl}${post.image}`,
+    datePublished: publishedDate,
+    dateModified: publishedDate,
+    author: {
+      name: 'NestAid',
+    },
+    publisher: {
+      name: 'NestAid',
+      logo: `${baseUrl}/logo.png`,
+    },
+  })
+
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: baseUrl },
+    { name: 'Resources', url: `${baseUrl}/resources` },
+    { name: post.title, url: `${baseUrl}/resources/${slug}` },
+  ])
+
   return (
     <div className="bg-[#FCF5EB] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <main className="container mx-auto px-6 md:px-12 lg:px-16 pt-24 md:pt-32 pb-12 md:pb-16">
         {/* Article Header */}
         <div className="max-w-4xl mx-auto text-center mb-10">

@@ -7,6 +7,8 @@ import { Footer } from "@/components/footer"
 import { ExtensionErrorSuppressor } from "@/components/extension-error-suppressor"
 import { ChatWidget } from "@/components/chat-widget"
 import { ConditionalLayout } from "@/components/conditional-layout"
+import { defaultMetadata } from "./metadata"
+import { getNestAidLocalBusinessSchema } from "@/lib/seo/local-business-schema"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -14,11 +16,7 @@ const inter = Inter({
   variable: "--font-inter"
 })
 
-export const metadata: Metadata = {
-  title: "NestAid",
-  description: "Find trusted care, for peace of mind.",
-  generator: "v0.dev",
-}
+export const metadata: Metadata = defaultMetadata
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -27,8 +25,16 @@ export const viewport: Viewport = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const localBusinessSchema = getNestAidLocalBusinessSchema()
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
       <body className={inter.className} suppressHydrationWarning={true}>
         <ExtensionErrorSuppressor />
         <ConditionalLayout>

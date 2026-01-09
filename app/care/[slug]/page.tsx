@@ -2,7 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Playfair_Display, Inter } from "next/font/google"
 import { notFound } from "next/navigation"
+import type { Metadata } from 'next'
 import { Bath, Heart, Users, MessageCircle, Car, Utensils, Clock, Accessibility, Phone, UserCheck, AlertCircle, Stethoscope, FileText, Calendar, UserPlus, Target, Activity, Flower, Brain, Dumbbell, Apple, Smile } from "lucide-react"
+import { generateMetadata as generatePageMetadata } from "@/app/metadata"
+import { generateServiceSchema } from "@/lib/seo/structured-data"
+import { generateBreadcrumbSchema } from "@/lib/seo/structured-data"
 
 const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
@@ -464,6 +468,36 @@ const careServices: Record<string, {
   }
 }
 
+const baseUrl = 'https://nestaid.us'
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const service = careServices[slug]
+
+  if (!service) {
+    return {}
+  }
+
+  const serviceName = service.title
+  const keywords = [
+    `${serviceName.toLowerCase()} Massachusetts`,
+    `${serviceName.toLowerCase()} services`,
+    'in-home care Massachusetts',
+    'home care services',
+    'elderly care',
+    'senior care Massachusetts',
+    'non-medical home care',
+  ]
+
+  return generatePageMetadata({
+    title: `${serviceName} Services in Massachusetts | NestAid`,
+    description: `${service.description} Available throughout Massachusetts. Contact NestAid for trusted, compassionate ${serviceName.toLowerCase()} services.`,
+    keywords,
+    canonical: `${baseUrl}/care/${slug}`,
+    image: service.image,
+  })
+}
+
 export default async function CareServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const service = careServices[slug]
@@ -472,8 +506,39 @@ export default async function CareServicePage({ params }: { params: Promise<{ sl
     notFound()
   }
 
+  // Generate Service schema
+  const serviceSchema = generateServiceSchema({
+    name: service.title,
+    description: service.description,
+    provider: {
+      name: 'NestAid',
+      url: baseUrl,
+    },
+    areaServed: {
+      name: 'Massachusetts',
+      addressRegion: 'MA',
+    },
+    serviceType: service.title,
+    url: `${baseUrl}/care/${slug}`,
+  })
+
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: baseUrl },
+    { name: 'Care Services', url: `${baseUrl}/find-care` },
+    { name: service.title, url: `${baseUrl}/care/${slug}` },
+  ])
+
   return (
     <div className="bg-[#F5F5EC] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <main className="container mx-auto px-6 md:px-12 lg:px-16 pt-24 md:pt-32 pb-12 md:pb-16">
         {/* Service Header */}
         <div className="max-w-4xl mx-auto text-center mb-10">
