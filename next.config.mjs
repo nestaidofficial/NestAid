@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -17,8 +14,6 @@ const nextConfig = {
   },
   // Enable compression
   compress: true,
-  // Enable SWC minification
-  swcMinify: true,
   // Target modern browsers to reduce legacy JavaScript polyfills
   compiler: {
     // Remove console.log in production (optional, improves bundle size)
