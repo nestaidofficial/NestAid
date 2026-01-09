@@ -541,20 +541,45 @@ export function ChatWidget() {
               {bookingStep === 'details' && (
                 <div className="p-5 border-t border-gray-200 bg-white flex-shrink-0">
                   <button
-                    onClick={() => {
-                      // Handle booking submission
-                      console.log({ bookingName, bookingEmail, bookingPhone, bookingNotes, selectedDate, selectedTime })
-                      alert('Consultation scheduled!')
-                      setShowBooking(false)
-                      setIsOpen(false)
-                      // Reset booking form
-                      setSelectedDate(null)
-                      setSelectedTime('')
-                      setBookingName('')
-                      setBookingEmail('')
-                      setBookingPhone('')
-                      setBookingNotes('')
-                      setBookingStep('date')
+                    onClick={async () => {
+                      try {
+                        // Show loading state (you could add a loading spinner here)
+                        const response = await fetch('/api/schedule-consultation', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify({
+                            name: bookingName,
+                            email: bookingEmail,
+                            phone: bookingPhone,
+                            notes: bookingNotes,
+                            date: selectedDate,
+                            time: selectedTime,
+                          }),
+                        })
+
+                        const data = await response.json()
+
+                        if (response.ok) {
+                          alert(`✅ Consultation scheduled successfully!\n\nYou'll receive a calendar invite at ${bookingEmail}`)
+                          setShowBooking(false)
+                          setIsOpen(false)
+                          // Reset booking form
+                          setSelectedDate(null)
+                          setSelectedTime('')
+                          setBookingName('')
+                          setBookingEmail('')
+                          setBookingPhone('')
+                          setBookingNotes('')
+                          setBookingStep('date')
+                        } else {
+                          alert(`❌ Error: ${data.error || 'Failed to schedule consultation'}`)
+                        }
+                      } catch (error) {
+                        console.error('Error:', error)
+                        alert('❌ Failed to schedule consultation. Please try again or contact us directly.')
+                      }
                     }}
                     disabled={!bookingName || !bookingEmail || !bookingPhone}
                     className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-xl transition-all"
