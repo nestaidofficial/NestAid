@@ -31,6 +31,8 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<Array<{ type: 'user' | 'bot', text: string }>>([])
   const [threadId, setThreadId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [availableSlots, setAvailableSlots] = useState<string[]>([])
+  const [loadingSlots, setLoadingSlots] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
 
@@ -43,6 +45,46 @@ export function ChatWidget() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  // Fetch available time slots when date is selected
+  useEffect(() => {
+    if (selectedDate && bookingStep === 'time') {
+      fetchAvailableSlots()
+    }
+  }, [selectedDate, bookingStep])
+
+  const fetchAvailableSlots = async () => {
+    if (!selectedDate) return
+    
+    setLoadingSlots(true)
+    try {
+      const response = await fetch('/api/available-slots', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          date: selectedDate.toISOString(),
+        }),
+      })
+
+      const data = await response.json()
+      
+      if (response.ok && data.availableSlots) {
+        setAvailableSlots(data.availableSlots)
+      } else {
+        console.error('Error fetching slots:', data.error)
+        // Fallback to all slots if API fails
+        setAvailableSlots(['9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm'])
+      }
+    } catch (error) {
+      console.error('Error fetching available slots:', error)
+      // Fallback to all slots if API fails
+      setAvailableSlots(['9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm'])
+    } finally {
+      setLoadingSlots(false)
+    }
+  }
 
   if (!hydrated) return null
 
@@ -257,6 +299,7 @@ export function ChatWidget() {
                       setBookingStep('date')
                       setSelectedDate(null)
                       setSelectedTime('')
+                      setAvailableSlots([])
                     } else {
                       setBookingStep('time')
                       setSelectedTime('')
@@ -377,6 +420,8 @@ export function ChatWidget() {
                                   onClick={() => {
                                     if (available) {
                                       setSelectedDate(date)
+                                      setSelectedTime('')
+                                      setAvailableSlots([])
                                       setBookingStep('time')
                                     }
                                   }}
@@ -413,25 +458,49 @@ export function ChatWidget() {
 
                     <h4 className={`${playfair.className} text-base font-semibold text-gray-900 mb-4`}>Select a Time</h4>
 
-                    {/* Time Slots - 9am to 6pm */}
-                    <div className="grid grid-cols-2 gap-2">
-                      {['9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm'].map((time) => (
+                    {/* Loading State */}
+                    {loadingSlots ? (
+                      <div className="flex items-center justify-center py-8">
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                          <p className="text-sm text-gray-600">Checking available times...</p>
+                        </div>
+                      </div>
+                    ) : availableSlots.length === 0 ? (
+                      <div className="text-center py-8">
+                        <p className="text-gray-600 mb-2">No available time slots for this date.</p>
+                        <p className="text-sm text-gray-500">Please select a different date.</p>
                         <button
-                          key={time}
                           onClick={() => {
-                            setSelectedTime(time)
-                            setBookingStep('details')
+                            setBookingStep('date')
+                            setSelectedDate(null)
                           }}
-                          className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
-                            selectedTime === time
-                              ? 'border-blue-600 bg-blue-600 text-white'
-                              : 'border-gray-200 bg-white text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600'
-                          }`}
+                          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                         >
-                          {time}
+                          Choose Different Date
                         </button>
-                      ))}
-                    </div>
+                      </div>
+                    ) : (
+                      /* Available Time Slots */
+                      <div className="grid grid-cols-2 gap-2">
+                        {availableSlots.map((time) => (
+                          <button
+                            key={time}
+                            onClick={() => {
+                              setSelectedTime(time)
+                              setBookingStep('details')
+                            }}
+                            className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
+                              selectedTime === time
+                                ? 'border-blue-600 bg-blue-600 text-white'
+                                : 'border-gray-200 bg-white text-gray-700 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600'
+                            }`}
+                          >
+                            {time}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ) : (
                   // Details Form
@@ -544,6 +613,11 @@ export function ChatWidget() {
                     onClick={async () => {
                       try {
                         // Show loading state (you could add a loading spinner here)
+                        if (!selectedDate) {
+                          alert('Please select a date')
+                          return
+                        }
+
                         const response = await fetch('/api/schedule-consultation', {
                           method: 'POST',
                           headers: {
@@ -554,7 +628,7 @@ export function ChatWidget() {
                             email: bookingEmail,
                             phone: bookingPhone,
                             notes: bookingNotes,
-                            date: selectedDate,
+                            date: selectedDate.toISOString(),
                             time: selectedTime,
                           }),
                         })
@@ -562,23 +636,28 @@ export function ChatWidget() {
                         const data = await response.json()
 
                         if (response.ok) {
-                          alert(`✅ Consultation scheduled successfully!\n\nYou'll receive a calendar invite at ${bookingEmail}`)
+                          alert(`✅ Consultation scheduled successfully!\n\nYour consultation has been booked. Our team will contact you at ${bookingEmail} to confirm details.`)
                           setShowBooking(false)
                           setIsOpen(false)
                           // Reset booking form
                           setSelectedDate(null)
                           setSelectedTime('')
+                          setAvailableSlots([])
                           setBookingName('')
                           setBookingEmail('')
                           setBookingPhone('')
                           setBookingNotes('')
                           setBookingStep('date')
                         } else {
-                          alert(`❌ Error: ${data.error || 'Failed to schedule consultation'}`)
+                          console.error('API Error:', data)
+                          const errorMsg = data.details 
+                            ? `${data.error}\n\nDetails: ${data.details}` 
+                            : data.error || 'Failed to schedule consultation'
+                          alert(`❌ Error: ${errorMsg}`)
                         }
-                      } catch (error) {
+                      } catch (error: any) {
                         console.error('Error:', error)
-                        alert('❌ Failed to schedule consultation. Please try again or contact us directly.')
+                        alert(`❌ Failed to schedule consultation. Please try again or contact us directly.\n\nError: ${error.message || 'Network error'}`)
                       }
                     }}
                     disabled={!bookingName || !bookingEmail || !bookingPhone}
@@ -827,6 +906,7 @@ export function ChatWidget() {
                     setBookingStep('date')
                     setSelectedDate(null)
                     setSelectedTime('')
+                    setAvailableSlots([])
                   }}
                   className="w-full bg-white rounded-[20px] border border-gray-200 p-4 shadow-sm hover:shadow-md transition-all hover:border-gray-300 text-left group"
                 >
