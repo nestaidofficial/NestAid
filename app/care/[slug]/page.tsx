@@ -468,7 +468,7 @@ const careServices: Record<string, {
   }
 }
 
-const baseUrl = 'https://nestaid.us'
+const baseUrl = 'https://www.nestaid.us'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params

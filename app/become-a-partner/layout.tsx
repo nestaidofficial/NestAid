@@ -10,7 +10,7 @@ export const metadata: Metadata = generatePageMetadata({
     'senior care partnerships',
     'healthcare collaboration',
   ],
-  canonical: 'https://nestaid.us/become-a-partner',
+  canonical: 'https://www.nestaid.us/become-a-partner',
 })
 
 export default function BecomePartnerLayout({

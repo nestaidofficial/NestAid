@@ -10,7 +10,7 @@ export const metadata: Metadata = generatePageMetadata({
     'living options for seniors',
     'elderly care options Massachusetts',
   ],
-  canonical: 'https://nestaid.us/living-options',
+  canonical: 'https://www.nestaid.us/living-options',
 })
 
 export default function LivingOptionsLayout({

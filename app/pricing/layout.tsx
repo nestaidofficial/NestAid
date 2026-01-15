@@ -12,7 +12,7 @@ export const metadata: Metadata = generatePageMetadata({
     'caregiver rates Massachusetts',
     'hourly care services pricing',
   ],
-  canonical: 'https://nestaid.us/pricing',
+  canonical: 'https://www.nestaid.us/pricing',
 })
 
 export default function PricingLayout({

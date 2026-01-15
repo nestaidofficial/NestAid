@@ -11,7 +11,7 @@ export const metadata: Metadata = generatePageMetadata({
     'elderly care safety',
     'trusted caregivers Massachusetts',
   ],
-  canonical: 'https://nestaid.us/safety-center',
+  canonical: 'https://www.nestaid.us/safety-center',
 })
 
 export default function SafetyCenterLayout({

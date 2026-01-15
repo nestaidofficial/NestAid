@@ -11,7 +11,7 @@ export const metadata: Metadata = generatePageMetadata({
     'elderly care positions',
     'healthcare jobs Massachusetts',
   ],
-  canonical: 'https://nestaid.us/jobs/senior-care',
+  canonical: 'https://www.nestaid.us/jobs/senior-care',
 })
 
 export default function SeniorCareJobsLayout({

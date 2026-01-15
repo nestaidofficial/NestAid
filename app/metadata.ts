@@ -4,7 +4,7 @@
 
 import type { Metadata } from 'next'
 
-const baseUrl = 'https://nestaid.us'
+const baseUrl = 'https://www.nestaid.us'
 const siteName = 'NestAid'
 const defaultDescription = 'Find trusted, non-medical in-home care services in Massachusetts. Compassionate caregivers offering companionship, daily living assistance, and personalized care for seniors.'
 
@@ -80,6 +80,7 @@ export function generateMetadata({
 export const defaultMetadata: Metadata = generateMetadata({
   title: 'NestAid - Trusted In-Home Care Services in Massachusetts',
   description: defaultDescription,
+  canonical: 'https://www.nestaid.us',
   keywords: [
     'in-home care Massachusetts',
     'elderly care services Massachusetts',

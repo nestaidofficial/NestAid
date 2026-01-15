@@ -11,7 +11,7 @@ export const metadata: Metadata = generatePageMetadata({
     'senior wellness',
     'aging in place resources',
   ],
-  canonical: 'https://nestaid.us/resources',
+  canonical: 'https://www.nestaid.us/resources',
 })
 
 export default function ResourcesLayout({

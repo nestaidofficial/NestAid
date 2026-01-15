@@ -4,7 +4,7 @@
 
 import { generateLocalBusinessSchema, type LocalBusinessData } from './structured-data'
 
-const baseUrl = 'https://nestaid.us'
+const baseUrl = 'https://www.nestaid.us'
 
 export const nestAidBusinessData: LocalBusinessData = {
   name: "NestAid",

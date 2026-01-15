@@ -10,7 +10,7 @@ export const metadata: Metadata = generatePageMetadata({
     'caregiver services help',
     'senior care support',
   ],
-  canonical: 'https://nestaid.us/help-center',
+  canonical: 'https://www.nestaid.us/help-center',
 })
 
 export default function HelpCenterLayout({

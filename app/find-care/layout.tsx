@@ -12,7 +12,7 @@ export const metadata: Metadata = generatePageMetadata({
     'caregiver services',
     'home health care Massachusetts',
   ],
-  canonical: 'https://nestaid.us/find-care',
+  canonical: 'https://www.nestaid.us/find-care',
 })
 
 export default function FindCareLayout({

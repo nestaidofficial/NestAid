@@ -10,7 +10,7 @@ export const metadata: Metadata = generatePageMetadata({
     'eldercare benefits',
     'workplace caregiving support',
   ],
-  canonical: 'https://nestaid.us/corporate-benefits',
+  canonical: 'https://www.nestaid.us/corporate-benefits',
 })
 
 export default function CorporateBenefitsLayout({

@@ -11,7 +11,7 @@ export const metadata: Metadata = generatePageMetadata({
     'elderly care provider',
     'senior care company',
   ],
-  canonical: 'https://nestaid.us/about-us',
+  canonical: 'https://www.nestaid.us/about-us',
 })
 
 export default function AboutUsLayout({

@@ -3,4 +3,23 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NPM_FLAGS = "--legacy-peer-deps" 
+  NPM_FLAGS = "--legacy-peer-deps"
+
+# Redirect non-www to www for SEO consistency
+[[redirects]]
+  from = "https://nestaid.us/*"
+  to = "https://www.nestaid.us/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://nestaid.us/*"
+  to = "https://www.nestaid.us/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.nestaid.us/*"
+  to = "https://www.nestaid.us/:splat"
+  status = 301
+  force = true
