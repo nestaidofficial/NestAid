@@ -5,6 +5,19 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
+# Redirect Netlify subdomain to custom domain for SEO
+[[redirects]]
+  from = "https://nestaid1234.netlify.app/*"
+  to = "https://www.nestaid.us/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://nestaid1234.netlify.app/*"
+  to = "https://www.nestaid.us/:splat"
+  status = 301
+  force = true
+
 # Redirect non-www to www for SEO consistency
 [[redirects]]
   from = "https://nestaid.us/*"
