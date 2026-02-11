@@ -76,6 +76,11 @@ dist
 .cache/
 # public - commented out to include images and assets
 
+# Auto-generated sitemap
+public/sitemap.xml
+public/sitemap-*.xml
+public/robots.txt
+
 # Storybook build outputs
 .out
 .storybook-out

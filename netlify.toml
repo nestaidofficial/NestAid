@@ -36,3 +36,10 @@
   to = "https://www.nestaid.us/:splat"
   status = 301
   force = true
+
+# Ensure sitemap is served with correct content type (static file from public/ is used)
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml"
+    Cache-Control = "public, max-age=3600"

@@ -8,6 +8,7 @@ Google is showing `nestaid1234.netlify.app` in search results instead of your pr
 ### 1. Updated `netlify.toml`
 - Added 301 redirects from Netlify subdomain to custom domain
 - This ensures anyone visiting the old subdomain is automatically redirected
+- Added proper headers for sitemap.xml (Content-Type and Cache-Control)
 
 ### 2. Updated `app/robots.ts`
 - Added logic to block Netlify subdomain from being indexed
@@ -15,6 +16,13 @@ Google is showing `nestaid1234.netlify.app` in search results instead of your pr
 
 ### 3. Updated `app/layout.tsx`
 - Added explicit canonical link tag pointing to `https://www.nestaid.us`
+
+### 4. Implemented `next-sitemap` for Build-Time Sitemap Generation
+- Installed `next-sitemap` package
+- Created `next-sitemap.config.js` with all URLs and priorities
+- Sitemap is now automatically generated during build (`npm run build`)
+- Generated as static `public/sitemap.xml` for reliable serving on Netlify
+- Includes 26+ URLs with proper priorities and change frequencies
 
 ## Next Steps (IMPORTANT - You Must Do These)
 
@@ -81,6 +89,17 @@ After deployment, test these URLs:
 - Visit `https://nestaid1234.netlify.app` → Should redirect to `https://www.nestaid.us`
 - Visit `https://nestaid1234.netlify.app/robots.txt` → Should show `Disallow: /`
 - Visit `https://www.nestaid.us/robots.txt` → Should show normal rules with `Allow: /`
+- Visit `https://www.nestaid.us/sitemap.xml` → Should show XML sitemap with 26+ URLs
+
+## Maintaining the Sitemap
+
+The sitemap is automatically generated during each build. To add or remove pages:
+
+1. **For static pages**: They're automatically discovered by `next-sitemap` from your Next.js build
+2. **For dynamic routes** (like `/care/[slug]`): Update the `additionalPaths` section in `next-sitemap.config.js`
+3. **To change priorities**: Update the `transform` function in `next-sitemap.config.js`
+
+The sitemap will be regenerated every time you run `npm run build` or deploy to Netlify.
 
 ## Additional SEO Best Practices
 
