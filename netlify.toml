@@ -5,6 +5,19 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
+# Allow Google verification file on Netlify subdomain (must come BEFORE redirect rules)
+[[redirects]]
+  from = "https://nestaid1234.netlify.app/google5ce7bdbbff6d3510.html"
+  to = "/google5ce7bdbbff6d3510.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "http://nestaid1234.netlify.app/google5ce7bdbbff6d3510.html"
+  to = "/google5ce7bdbbff6d3510.html"
+  status = 200
+  force = true
+
 # Redirect Netlify subdomain to custom domain for SEO
 [[redirects]]
   from = "https://nestaid1234.netlify.app/*"
