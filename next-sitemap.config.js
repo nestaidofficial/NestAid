@@ -4,13 +4,24 @@ module.exports = {
   generateRobotsTxt: false, // We already have app/robots.ts
   generateIndexSitemap: false, // Single sitemap (not split)
   outDir: './public', // Generate sitemap.xml in public folder
-  exclude: ['/admin/*', '/api/*'], // Exclude admin and API routes
+  exclude: [
+    '/admin/*', 
+    '/api/*',
+    '/admin',
+    '/*.png',
+    '/*.jpg',
+    '/*.jpeg',
+    '/*.svg',
+    '/*.ico',
+    '/*.xml',
+    '/*.txt',
+  ], // Exclude admin, API routes, and static assets
   
   // Additional paths to include in sitemap
   additionalPaths: async (config) => {
     const currentDate = new Date().toISOString()
     
-    // Care service pages
+    // Care service pages - high value content
     const careServices = [
       'companionship',
       'assistance',
@@ -23,11 +34,11 @@ module.exports = {
     const careServicePages = careServices.map((slug) => ({
       loc: `/care/${slug}`,
       lastmod: currentDate,
-      changefreq: 'monthly',
-      priority: 0.8,
+      changefreq: 'weekly', // Changed from monthly to weekly for better crawl frequency
+      priority: 0.85, // Increased priority for service pages
     }))
     
-    // Resource/blog pages
+    // Resource/blog pages - content marketing
     const resources = [
       'physical-activities',
       'social-engagement',
@@ -37,8 +48,8 @@ module.exports = {
     const resourcePages = resources.map((slug) => ({
       loc: `/resources/${slug}`,
       lastmod: currentDate,
-      changefreq: 'monthly',
-      priority: 0.6,
+      changefreq: 'weekly', // Changed from monthly to weekly for fresh content
+      priority: 0.7, // Increased priority for blog content
     }))
     
     return [...careServicePages, ...resourcePages]
@@ -48,7 +59,12 @@ module.exports = {
   transform: async (config, path) => {
     const currentDate = new Date().toISOString()
     
-    // Homepage
+    // Exclude icon.png and other static files
+    if (path.includes('.png') || path.includes('.jpg') || path.includes('.svg') || path.includes('.ico')) {
+      return null
+    }
+    
+    // Homepage - highest priority
     if (path === '/') {
       return {
         loc: path,
@@ -58,63 +74,73 @@ module.exports = {
       }
     }
     
-    // High priority pages
+    // Primary conversion pages - very high priority
     if (path === '/find-care') {
       return {
         loc: path,
         lastmod: currentDate,
-        changefreq: 'weekly',
-        priority: 0.9,
+        changefreq: 'daily', // Changed to daily for main conversion page
+        priority: 0.95, // Increased priority
       }
     }
     
-    // Important pages
+    // Important service/info pages
     if (['/about-us', '/pricing'].includes(path)) {
       return {
         loc: path,
         lastmod: currentDate,
         changefreq: 'weekly',
+        priority: 0.85, // Increased priority
+      }
+    }
+    
+    // Job and career pages - important for recruitment
+    if (['/careers', '/jobs/senior-care'].includes(path)) {
+      return {
+        loc: path,
+        lastmod: currentDate,
+        changefreq: 'daily', // Jobs change frequently
         priority: 0.8,
       }
     }
     
-    // Regular pages
-    if (['/careers', '/resources'].includes(path)) {
+    // Resources hub - content marketing
+    if (path === '/resources') {
       return {
         loc: path,
         lastmod: currentDate,
         changefreq: 'weekly',
-        priority: 0.7,
+        priority: 0.75,
       }
     }
     
-    // Job pages
-    if (path.startsWith('/jobs/')) {
+    // Job search results - dynamic content
+    if (path === '/jobs/search-results') {
       return {
         loc: path,
         lastmod: currentDate,
-        changefreq: 'weekly',
+        changefreq: 'daily',
         priority: 0.7,
       }
     }
     
-    // Lower priority pages
+    // Support and information pages
     if (['/help-center', '/safety-center', '/living-options'].includes(path)) {
       return {
         loc: path,
         lastmod: currentDate,
         changefreq: 'monthly',
-        priority: 0.6,
+        priority: 0.65,
       }
     }
     
-    // Lowest priority pages
+    // Partnership and corporate pages
     if (['/corporate-benefits', '/become-a-partner'].includes(path)) {
       return {
         loc: path,
         lastmod: currentDate,
         changefreq: 'monthly',
-        priority: 0.5,
+        priority: 0.6,
       }
     }
     
