@@ -185,7 +185,7 @@ export default function FindCarePage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen overflow-visible md:overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="relative w-full min-h-screen overflow-visible md:overflow-hidden bg-background">
         <div className="container mx-auto px-4 md:px-6 lg:px-12 h-full">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-12 md:py-16 overflow-visible">
             {/* Left Section - Text Content */}
@@ -304,7 +304,7 @@ export default function FindCarePage() {
       </section>
 
       {/* Care We Provide Section */}
-      <section id="services" className="py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#F5F5EC' }} >
+      <section id="services" className="py-20 md:py-28 overflow-hidden bg-background">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Header */}
           <div className="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
@@ -509,7 +509,7 @@ export default function FindCarePage() {
       </section>
 
       {/* First Time Considering Professional Home Care Section */}
-      <section className="py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#FCF5EB' }} data-aos="fade-up">
+      <section className="py-20 md:py-28 overflow-hidden bg-background" data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Header Section */}
           <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20" data-aos="fade-up">
@@ -619,7 +619,7 @@ export default function FindCarePage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 md:py-24 bg-[#FCF5EB] overflow-hidden" data-aos="fade-up">
+      <section className="py-16 md:py-24 bg-background overflow-hidden" data-aos="fade-up">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#1A5463] leading-[1.08] mb-6`} data-aos="fade-up">

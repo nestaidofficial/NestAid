@@ -125,7 +125,7 @@ export default function FindJobsPage() {
   return (
     <div className="bg-background text-foreground overflow-x-hidden">
       {/* Hero Section */}
-      <section id="hero-section" className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
+      <section id="hero-section" className="relative w-full min-h-screen overflow-hidden bg-background">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-screen py-12 md:py-16">
             
@@ -248,7 +248,7 @@ export default function FindJobsPage() {
 
 
       {/* Why Join Our Care Team Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Section - Content */}
@@ -290,7 +290,7 @@ export default function FindJobsPage() {
         </div>
       </section>
  {/* Who We're Looking For Section */}
- <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
+ <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Section - Content */}
@@ -529,7 +529,7 @@ export default function FindJobsPage() {
      
 
       {/* A Career With Purpose Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Section - Image */}
@@ -589,7 +589,7 @@ export default function FindJobsPage() {
       </section>
 
       {/* Training & Support Section */}
-      <section className="py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="py-20 md:py-28 overflow-hidden bg-background">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Header */}
           <div className="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
@@ -654,7 +654,7 @@ export default function FindJobsPage() {
 
 
       {/* CTA Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-3xl mx-auto text-center" data-aos="fade-up">
             <div className="flex items-center justify-center gap-2 mb-4">

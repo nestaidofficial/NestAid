@@ -530,7 +530,7 @@ export default async function CareServicePage({ params }: { params: Promise<{ sl
   ])
 
   return (
-    <div className="bg-[#F5F5EC] min-h-screen">
+    <div className="bg-background min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}

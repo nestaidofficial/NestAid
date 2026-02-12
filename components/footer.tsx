@@ -188,16 +188,13 @@ export function Footer() {
             <Link href="/terms-of-service" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
               Terms of Service
             </Link>
-            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
+            <Link href="/accessibility" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
               Accessibility
             </Link>
-            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
+            <Link href="/cookie-settings" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
               Cookie Settings
             </Link>
-            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
-              Privacy Choices
-            </Link>
-            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
+            <Link href="/sensitive-data-settings" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
               Sensitive Data Settings
             </Link>
           </div>

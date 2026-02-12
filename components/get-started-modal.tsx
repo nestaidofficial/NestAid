@@ -193,7 +193,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
     // Initial Step - What are you looking for?
   const InitialStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+    <div className="min-h-screen md:min-h-[500px] bg-background">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -230,7 +230,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Jobs Step - Job Categories
   const JobsStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+    <div className="min-h-screen md:min-h-[500px] bg-background">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -265,7 +265,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Care Step - Care Categories
   const CareStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+    <div className="min-h-screen md:min-h-[500px] bg-background">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -306,7 +306,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
     const categoryTitle = careCategories.find(c => c.id === selectedCategory)?.title || ""
 
     return (
-      <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+      <div className="min-h-screen md:min-h-[500px] bg-background">
         {/* Header */}
         <div className="px-6 py-8">
           <div className="flex items-center justify-between mb-6">
@@ -364,7 +364,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Job Gender Step
   const JobGenderStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+    <div className="min-h-screen md:min-h-[500px] bg-background">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -410,7 +410,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Job Experience Step
   const JobExperienceStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+    <div className="min-h-screen md:min-h-[500px] bg-background">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -449,7 +449,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
 
   // Who Needs Care Step
   const WhoNeedsCareStep = () => (
-    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+    <div className="min-h-screen md:min-h-[500px] bg-background">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
@@ -588,7 +588,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
       <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()} modal={true}>
         <DialogContent
           forceMount
-          className="w-full h-full max-w-none max-h-none m-0 p-0 bg-[#FCF5EB] md:max-w-4xl md:max-h-[90vh] md:m-auto md:rounded-lg overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:top-6 [&>button]:rounded-full [&>button]:bg-white [&>button]:w-12 [&>button]:h-12 [&>button]:shadow-lg [&>button]:border [&>button]:border-gray-200 [&>button]:hover:bg-gray-50 [&>button]:z-20 [&>button]:flex [&>button]:items-center [&>button]:justify-center"
+          className="w-full h-full max-w-none max-h-none m-0 p-0 bg-background md:max-w-4xl md:max-h-[90vh] md:m-auto md:rounded-lg overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:top-6 [&>button]:rounded-full [&>button]:bg-white [&>button]:w-12 [&>button]:h-12 [&>button]:shadow-lg [&>button]:border [&>button]:border-gray-200 [&>button]:hover:bg-gray-50 [&>button]:z-20 [&>button]:flex [&>button]:items-center [&>button]:justify-center"
           style={{
             transform: 'none',
             position: 'fixed',

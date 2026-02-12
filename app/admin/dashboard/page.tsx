@@ -475,7 +475,7 @@ export default function AdminDashboard() {
     .filter(app => app.status === 'pending').length;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FCF5EB' }}>
+    <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="bg-white shadow-sm border-b border-[#E8E3D3]">
         <div className="container mx-auto px-4 md:px-6 lg:px-12 py-6">
@@ -604,7 +604,7 @@ export default function AdminDashboard() {
                         className={`${inter.className} h-14 px-5 rounded-2xl border-2 text-base`}
                         style={{ 
                           borderColor: '#E8E3D3',
-                          backgroundColor: '#FCF5EB'
+                          backgroundColor: 'hsl(var(--background))'
                         }}
                         onFocus={(e) => {
                           e.currentTarget.style.borderColor = '#275F48';
@@ -612,7 +612,7 @@ export default function AdminDashboard() {
                         }}
                         onBlur={(e) => {
                           e.currentTarget.style.borderColor = '#E8E3D3';
-                          e.currentTarget.style.backgroundColor = '#FCF5EB';
+                          e.currentTarget.style.backgroundColor = 'hsl(var(--background))';
                         }}
                       required
                     />
@@ -630,7 +630,7 @@ export default function AdminDashboard() {
                         className={`${inter.className} px-5 py-4 rounded-2xl border-2 text-base min-h-[140px] resize-none`}
                         style={{ 
                           borderColor: '#E8E3D3',
-                          backgroundColor: '#FCF5EB'
+                          backgroundColor: 'hsl(var(--background))'
                         }}
                         onFocus={(e) => {
                           e.currentTarget.style.borderColor = '#275F48';
@@ -638,7 +638,7 @@ export default function AdminDashboard() {
                         }}
                         onBlur={(e) => {
                           e.currentTarget.style.borderColor = '#E8E3D3';
-                          e.currentTarget.style.backgroundColor = '#FCF5EB';
+                          e.currentTarget.style.backgroundColor = 'hsl(var(--background))';
                         }}
                       required
                     />
@@ -754,7 +754,7 @@ export default function AdminDashboard() {
                           key={job.id} 
                           className="p-4 rounded-2xl border-2 transition-all duration-200 hover:shadow-md"
                           style={{ 
-                            backgroundColor: '#FCF5EB',
+                            backgroundColor: 'hsl(var(--background))',
                             borderColor: '#E8E3D3'
                           }}
                           onMouseEnter={(e) => {
@@ -762,7 +762,7 @@ export default function AdminDashboard() {
                             e.currentTarget.style.borderColor = '#275F48';
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = '#FCF5EB';
+                            e.currentTarget.style.backgroundColor = 'hsl(var(--background))';
                             e.currentTarget.style.borderColor = '#E8E3D3';
                           }}
                         >
@@ -837,7 +837,7 @@ export default function AdminDashboard() {
                       className={`${inter.className} pl-12 h-12 rounded-2xl border-2`}
                       style={{ 
                         borderColor: '#E8E3D3',
-                        backgroundColor: '#FCF5EB'
+                        backgroundColor: 'hsl(var(--background))'
                       }}
                       onFocus={(e) => {
                         e.currentTarget.style.borderColor = '#275F48';
@@ -845,12 +845,12 @@ export default function AdminDashboard() {
                       }}
                       onBlur={(e) => {
                         e.currentTarget.style.borderColor = '#E8E3D3';
-                        e.currentTarget.style.backgroundColor = '#FCF5EB';
+                        e.currentTarget.style.backgroundColor = 'hsl(var(--background))';
                       }}
                     />
                   </div>
                   <Select value={statusFilter} onValueChange={setStatusFilter}>
-                    <SelectTrigger className={`${inter.className} w-full md:w-[180px] h-12 rounded-2xl border-2`} style={{ borderColor: '#E8E3D3', backgroundColor: '#FCF5EB' }}>
+                    <SelectTrigger className={`${inter.className} w-full md:w-[180px] h-12 rounded-2xl border-2`} style={{ borderColor: '#E8E3D3', backgroundColor: 'hsl(var(--background))' }}>
                       <Filter className="w-4 h-4 mr-2" style={{ color: '#6B6B6B' }} />
                       <SelectValue placeholder="Filter Status" />
                     </SelectTrigger>
@@ -864,7 +864,7 @@ export default function AdminDashboard() {
                     </SelectContent>
                   </Select>
                   <Select value={dateFilter} onValueChange={setDateFilter}>
-                    <SelectTrigger className={`${inter.className} w-full md:w-[180px] h-12 rounded-2xl border-2`} style={{ borderColor: '#E8E3D3', backgroundColor: '#FCF5EB' }}>
+                    <SelectTrigger className={`${inter.className} w-full md:w-[180px] h-12 rounded-2xl border-2`} style={{ borderColor: '#E8E3D3', backgroundColor: 'hsl(var(--background))' }}>
                       <Calendar className="w-4 h-4 mr-2" style={{ color: '#6B6B6B' }} />
                       <SelectValue placeholder="Filter Date" />
                     </SelectTrigger>
@@ -897,7 +897,7 @@ export default function AdminDashboard() {
                   <div className="rounded-2xl border-2 overflow-hidden" style={{ borderColor: '#E8E3D3' }}>
                     <Table>
                       <TableHeader>
-                        <TableRow style={{ backgroundColor: '#FCF5EB' }}>
+                        <TableRow style={{ backgroundColor: 'hsl(var(--background))' }}>
                           <TableHead className={`${inter.className} font-semibold`} style={{ color: '#1A5463' }}>
                             <button
                               onClick={() => handleSort('name')}
@@ -946,7 +946,7 @@ export default function AdminDashboard() {
                         {currentApps.map((app) => (
                           <TableRow 
                             key={app.id}
-                            className="hover:bg-[#FCF5EB] transition-colors"
+                            className="hover:bg-background transition-colors"
                             style={{ borderColor: '#E8E3D3' }}
                           >
                             <TableCell className={`${inter.className} font-medium`} style={{ color: '#1A5463' }}>
@@ -1114,7 +1114,7 @@ export default function AdminDashboard() {
                       className={`${inter.className} pl-12 h-12 rounded-2xl border-2`}
                       style={{ 
                         borderColor: '#E8E3D3',
-                        backgroundColor: '#FCF5EB'
+                        backgroundColor: 'hsl(var(--background))'
                       }}
                       onFocus={(e) => {
                         e.currentTarget.style.borderColor = '#8B5CF6';
@@ -1122,12 +1122,12 @@ export default function AdminDashboard() {
                       }}
                       onBlur={(e) => {
                         e.currentTarget.style.borderColor = '#E8E3D3';
-                        e.currentTarget.style.backgroundColor = '#FCF5EB';
+                        e.currentTarget.style.backgroundColor = 'hsl(var(--background))';
                       }}
                     />
                   </div>
                   <Select value={statusFilter} onValueChange={setStatusFilter}>
-                    <SelectTrigger className={`${inter.className} w-full md:w-[180px] h-12 rounded-2xl border-2`} style={{ borderColor: '#E8E3D3', backgroundColor: '#FCF5EB' }}>
+                    <SelectTrigger className={`${inter.className} w-full md:w-[180px] h-12 rounded-2xl border-2`} style={{ borderColor: '#E8E3D3', backgroundColor: 'hsl(var(--background))' }}>
                       <Filter className="w-4 h-4 mr-2" style={{ color: '#6B6B6B' }} />
                       <SelectValue placeholder="Filter Status" />
                     </SelectTrigger>
@@ -1141,7 +1141,7 @@ export default function AdminDashboard() {
                     </SelectContent>
                   </Select>
                   <Select value={dateFilter} onValueChange={setDateFilter}>
-                    <SelectTrigger className={`${inter.className} w-full md:w-[180px] h-12 rounded-2xl border-2`} style={{ borderColor: '#E8E3D3', backgroundColor: '#FCF5EB' }}>
+                    <SelectTrigger className={`${inter.className} w-full md:w-[180px] h-12 rounded-2xl border-2`} style={{ borderColor: '#E8E3D3', backgroundColor: 'hsl(var(--background))' }}>
                       <Calendar className="w-4 h-4 mr-2" style={{ color: '#6B6B6B' }} />
                       <SelectValue placeholder="Filter Date" />
                     </SelectTrigger>
@@ -1174,7 +1174,7 @@ export default function AdminDashboard() {
                   <div className="rounded-2xl border-2 overflow-hidden" style={{ borderColor: '#E8E3D3' }}>
                     <Table>
                       <TableHeader>
-                        <TableRow style={{ backgroundColor: '#FCF5EB' }}>
+                        <TableRow style={{ backgroundColor: 'hsl(var(--background))' }}>
                           <TableHead className={`${inter.className} font-semibold`} style={{ color: '#1A5463' }}>
                             <button
                               onClick={() => handleSort('name')}
@@ -1224,7 +1224,7 @@ export default function AdminDashboard() {
                         {currentApps.map((app) => (
                           <TableRow 
                             key={app.id}
-                            className="hover:bg-[#FCF5EB] transition-colors"
+                            className="hover:bg-background transition-colors"
                             style={{ borderColor: '#E8E3D3' }}
                           >
                             <TableCell className={`${inter.className} font-medium`} style={{ color: '#1A5463' }}>

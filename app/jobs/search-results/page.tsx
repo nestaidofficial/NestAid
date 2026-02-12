@@ -199,7 +199,7 @@ function SearchResultsContent() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#FCF5EB] flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[#8BB9A8] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className={`${inter.className} text-[#5A6B6A] text-lg`}>Searching for jobs...</p>
@@ -210,7 +210,7 @@ function SearchResultsContent() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#FCF5EB] flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4">
           <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-red-400" />
@@ -230,7 +230,7 @@ function SearchResultsContent() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section with Location Header */}
-      <section className="relative w-full py-16 md:py-24" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="relative w-full py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-5xl mx-auto text-center" data-aos="fade-up">
             {/* Tagline */}
@@ -278,7 +278,7 @@ function SearchResultsContent() {
       </section>
 
       {/* Jobs Results Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           {locationGroups.length > 0 ? (
             <div className="space-y-8">
@@ -374,7 +374,7 @@ function SearchResultsContent() {
       </section>
 
       {/* Adjust Search Section */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#FCF5EB' }}>
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
             {/* Tagline */}
@@ -494,7 +494,7 @@ function SearchResultsContent() {
 export default function SearchResultsPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-[#FCF5EB] flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[#8BB9A8] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className={`${inter.className} text-[#5A6B6A] text-lg`}>Loading...</p>

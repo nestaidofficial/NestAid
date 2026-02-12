@@ -253,7 +253,7 @@ export default function HelpCenterPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }} data-aos="fade-up">
+      <section className="py-20 md:py-28 bg-background" data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -288,7 +288,7 @@ export default function HelpCenterPage() {
 
       {/* Categories Grid (show only when no search or no category selected) */}
       {!searchQuery && !selectedCategory && (
-        <section className="py-20 md:py-28" style={{ backgroundColor: '#F5F5EC' }} data-aos="fade-up">
+        <section className="py-20 md:py-28 bg-background" data-aos="fade-up">
           <div className="container mx-auto px-8 md:px-12 lg:px-16">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {categories.map((category, index) => {
@@ -329,7 +329,7 @@ export default function HelpCenterPage() {
 
       {/* FAQs Section */}
       {(searchQuery || selectedCategory) && (
-        <section className="py-20 md:py-28" style={{ backgroundColor: '#F5F5EC' }} data-aos="fade-up">
+        <section className="py-20 md:py-28 bg-background" data-aos="fade-up">
           <div className="container mx-auto px-8 md:px-12 lg:px-16">
             {selectedCategory && !searchQuery && (
               <button
@@ -420,7 +420,7 @@ export default function HelpCenterPage() {
       )}
 
       {/* Contact CTA */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#FCF5EB' }} data-aos="fade-up">
+      <section className="py-20 md:py-28 bg-background" data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className={`${playfair.className} text-[32px] md:text-[42px] lg:text-[48px] text-[#1A5463] leading-[1.1] mb-6`}>

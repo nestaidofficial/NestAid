@@ -115,7 +115,7 @@ export function JobApplicationForm({ isOpen, onClose, onGoBack, job, searchLocat
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose} className="z-[99999]">
-      <DialogContent className="w-full h-full max-w-none max-h-none m-0 p-0 bg-[#FCF5EB] md:max-w-2xl md:max-h-[90vh] md:m-auto md:rounded-3xl overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:text-[#1E4D47]">
+      <DialogContent className="w-full h-full max-w-none max-h-none m-0 p-0 bg-background md:max-w-2xl md:max-h-[90vh] md:m-auto md:rounded-3xl overflow-y-auto z-[99999] [&>button]:absolute [&>button]:right-6 [&>button]:text-[#1E4D47]">
         <div className="p-6 md:p-8 lg:p-10">
           <DialogHeader className="mb-8">
             <DialogTitle className={`${playfair.className} text-3xl md:text-4xl font-bold text-[#1E4D47] flex items-center gap-4`}>

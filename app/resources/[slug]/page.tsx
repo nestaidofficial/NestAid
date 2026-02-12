@@ -265,7 +265,7 @@ export default async function ResourcePostPage({ params }: { params: Promise<{ s
   ])
 
   return (
-    <div className="bg-[#FCF5EB] min-h-screen">
+    <div className="bg-background min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}

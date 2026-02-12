@@ -96,7 +96,7 @@ export function ModalJobApplicationForm({
 
   if (submitResult) {
     return (
-      <div className="min-h-screen md:min-h-[500px] flex items-center justify-center bg-[#FCF5EB]">
+      <div className="min-h-screen md:min-h-[500px] flex items-center justify-center bg-background">
         <div className="text-center p-8">
           {submitResult.success ? (
             <>
@@ -117,7 +117,7 @@ export function ModalJobApplicationForm({
   }
 
   return (
-    <div className="min-h-screen md:min-h-[500px] bg-[#FCF5EB]">
+    <div className="min-h-screen md:min-h-[500px] bg-background">
       {/* Header */}
       <div className="px-6 py-8">
         <div className="flex items-center justify-between mb-6">
