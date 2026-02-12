@@ -13,7 +13,7 @@ const inter = Inter({
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-[#FEFEDF]">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 py-16 md:py-24">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 py-32 md:py-40">
         {/* Page Title */}
         <h1 className={`${playfair.className} text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-12`}>
           Privacy Policy
@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
           {/* Introduction */}
           <section>
             <p className={`${inter.className} text-base md:text-lg text-[#1a1a1a] leading-relaxed`}>
-              At NestAid, Inc. ("NestAid," "we," "us," or "our"), protecting your privacy is our priority. This Privacy Policy outlines how we collect, use, share, and protect your personal information when you visit our website or use our services throughout Massachusetts.
+              At NestAid, Inc., protecting your privacy is our priority. This Privacy Policy outlines how we collect, use, share, and protect your personal information when you visit our website or use our services throughout Massachusetts.
             </p>
             <p className={`${inter.className} text-base md:text-lg text-[#1a1a1a] leading-relaxed mt-4`}>
               By accessing or using our website, you acknowledge and agree to the terms outlined in this Privacy Policy.

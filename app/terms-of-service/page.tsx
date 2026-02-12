@@ -13,7 +13,7 @@ const inter = Inter({
 export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-[#FEFEDF]">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 py-16 md:py-24">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 py-32 md:py-40">
         {/* Page Title */}
         <h1 className={`${playfair.className} text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-12`}>
           Terms of Service
@@ -29,7 +29,7 @@ export default function TermsOfServicePage() {
           {/* Introduction */}
           <section>
             <p className={`${inter.className} text-base md:text-lg text-[#1a1a1a] leading-relaxed`}>
-              These Terms of Use ("Terms") govern your access to and use of the NestAid website (the "Site"), operated by NestAid, Inc. ("NestAid," "we," "us," or "our"). By accessing or using this Site, you agree to be bound by these Terms. If you do not agree, please do not use the Site.
+              These Terms of Use govern your access to and use of the NestAid website, operated by NestAid, Inc. By accessing or using this Site, you agree to be bound by these Terms. If you do not agree, please do not use the Site.
             </p>
           </section>
 

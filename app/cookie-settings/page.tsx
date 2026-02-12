@@ -14,7 +14,7 @@ const inter = Inter({
 export default function CookieSettingsPage() {
   return (
     <div className="min-h-screen bg-[#FEFEDF]">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 py-16 md:py-24">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 py-32 md:py-40">
         {/* Page Title */}
         <h1 className={`${playfair.className} text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-12`}>
           Cookie Preferences
@@ -30,7 +30,7 @@ export default function CookieSettingsPage() {
           {/* Introduction */}
           <section>
             <p className={`${inter.className} text-base md:text-lg text-[#1a1a1a] leading-relaxed mb-4`}>
-              NestAid, Inc. ("NestAid," "we," "us," or "our") uses cookies and similar technologies on our website to improve functionality, understand how visitors use our site, and enhance overall user experience.
+              NestAid, Inc. uses cookies and similar technologies on our website to improve functionality, understand how visitors use our site, and enhance overall user experience.
             </p>
             <p className={`${inter.className} text-base md:text-lg text-[#1a1a1a] leading-relaxed`}>
               This Cookie Preferences page explains what cookies are, how we use them, and the choices available to you.

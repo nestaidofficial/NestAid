@@ -41,6 +41,29 @@ export function ChatWidget() {
     setHydrated(true)
   }, [])
 
+  // Prevent body scroll when chat is open on mobile
+  useEffect(() => {
+    if (isOpen && typeof window !== 'undefined') {
+      // Check if mobile
+      const isMobile = window.innerWidth < 768
+      if (isMobile) {
+        document.body.style.overflow = 'hidden'
+        document.body.style.position = 'fixed'
+        document.body.style.width = '100%'
+      }
+    } else {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
+  }, [isOpen])
+
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -129,9 +152,6 @@ export function ChatWidget() {
   const nextMonth = () => {
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))
   }
-  
-  // Only show on homepage
-  const isHomePage = pathname === "/"
 
   const handleSendMessage = () => {
     // Handle message sending logic here
@@ -216,9 +236,6 @@ export function ChatWidget() {
     await sendMessageToAI(userMessage)
   }
 
-  // Don't render if not on homepage
-  if (!isHomePage) return null
-
   return (
     <>
       {/* Backdrop Overlay - Only visible on desktop when chat is open */}
@@ -277,7 +294,7 @@ export function ChatWidget() {
       {/* Chat Widget */}
       {isOpen && (
         <div
-          className="fixed inset-0 md:bottom-24 md:right-6 md:inset-auto z-50 w-full md:w-[380px] h-full md:h-[580px] md:max-h-[calc(100vh-140px)] md:rounded-[28px] overflow-hidden transition-all duration-300 transform animate-slideUp flex flex-col"
+          className="fixed inset-0 md:bottom-24 md:right-6 md:inset-auto z-50 w-full md:w-[380px] h-screen md:h-[580px] md:max-h-[calc(100vh-140px)] md:rounded-[28px] overflow-hidden transition-all duration-300 transform animate-slideUp flex flex-col"
           style={{
             background: "linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%)",
             boxShadow: "0 20px 60px rgba(139, 92, 246, 0.35), 0 8px 24px rgba(0, 0, 0, 0.12)",

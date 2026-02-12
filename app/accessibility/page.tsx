@@ -13,7 +13,7 @@ const inter = Inter({
 export default function AccessibilityPage() {
   return (
     <div className="min-h-screen bg-[#FEFEDF]">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 py-16 md:py-24">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 py-32 md:py-40">
         {/* Page Title */}
         <h1 className={`${playfair.className} text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-12`}>
           Accessibility Statement
@@ -29,7 +29,7 @@ export default function AccessibilityPage() {
           {/* Introduction */}
           <section>
             <p className={`${inter.className} text-base md:text-lg text-[#1a1a1a] leading-relaxed`}>
-              NestAid, Inc. ("NestAid," "we," "us," or "our") is committed to ensuring digital accessibility for all individuals, including people with disabilities. We strive to make our website accessible, user-friendly, and inclusive for everyone who visits or uses our online services.
+              NestAid, Inc. is committed to ensuring digital accessibility for all individuals, including people with disabilities. We strive to make our website accessible, user-friendly, and inclusive for everyone who visits or uses our online services.
             </p>
           </section>
 
