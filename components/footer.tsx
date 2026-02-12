@@ -14,7 +14,7 @@ const inter = Inter({
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#FCF5EB] w-full py-8 md:py-12">
+    <footer className="relative bg-[#FEFEDF] w-full py-8 md:py-12">
       <div className="max-w-[1400px] mx-auto px-5 md:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
           {/* Left Side - Dark Green Section */}
@@ -181,12 +181,24 @@ export function Footer() {
           <p className={`${inter.className} text-xs md:text-sm text-[#3D5A52]/60 text-center md:text-left`}>
             © {new Date().getFullYear()} NestAid. All Rights Reserved.
           </p>
-          <div className="flex gap-5 md:gap-6 text-xs md:text-sm">
-            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
+          <div className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6 text-xs md:text-sm">
+            <Link href="/privacy-policy" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
               Privacy Policy
             </Link>
-            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
+            <Link href="/terms-of-service" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
               Terms of Service
+            </Link>
+            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
+              Accessibility
+            </Link>
+            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
+              Cookie Settings
+            </Link>
+            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
+              Privacy Choices
+            </Link>
+            <Link href="#" className={`${inter.className} text-[#3D5A52]/60 hover:text-[#3D5A52] transition-colors`}>
+              Sensitive Data Settings
             </Link>
           </div>
         </div>

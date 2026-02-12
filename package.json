@@ -44,6 +44,7 @@
     "@supabase/supabase-js": "latest",
     "aos": "^2.3.4",
     "autoprefixer": "^10.4.20",
+    "caniuse-lite": "^1.0.30001769",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",

@@ -218,7 +218,7 @@ export default function Component() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: '#FCF5EB' }}>
+        <section className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: '#FEFEDF' }}>
           <div className="container mx-auto px-4 md:px-6 lg:px-12 h-full">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-12 md:py-16">
               {/* Left Section - Text Content */}
@@ -327,7 +327,7 @@ export default function Component() {
         </section>
 
         {/* Quality In-Home Care Section */}
-        <section className="py-16 md:py-24" style={{ backgroundColor: '#FCF5EB' }}>
+        <section className="py-16 md:py-24" style={{ backgroundColor: '#FEFEDF' }}>
           <div className="container mx-auto px-8 md:px-12 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left Section - Text and Images */}
@@ -405,17 +405,17 @@ export default function Component() {
       </main>
 
       {/* Care We Provide Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#27645E' }} >
+      <section className="py-20 md:py-28" style={{ backgroundColor: '#FEFEDF' }} >
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           {/* Header Section */}
           <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20" data-aos="fade-up">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="text-[#D9FB74] text-lg font-semibold">✺</span>
-              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-white/80`}>
+              <span className="text-[#27645E] text-lg font-semibold">✺</span>
+              <p className={`${inter.className} text-xs md:text-sm uppercase tracking-[0.35em] text-[#27645E]/80`}>
                 Trusted by Families
               </p>
             </div>
-            <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-white leading-[1.08]`}>
+            <h2 className={`${playfair.className} text-[38px] md:text-[56px] lg:text-[64px] text-[#27645E] leading-[1.08]`}>
               Our Approach to Care
             </h2>
           </div>
@@ -426,7 +426,7 @@ export default function Component() {
             {/* Service 1: Compassionate Care - Image left, Text right */}
             <div className="flex flex-col lg:flex-row items-stretch min-h-[500px] lg:min-h-[600px]">
               {/* Image Column */}
-              <div className="w-full lg:w-1/2 relative bg-[#FCF5EB] flex items-center justify-center p-8 lg:p-12" data-aos="fade-right">
+              <div className="w-full lg:w-1/2 relative bg-[#FEFEDF] flex items-center justify-center p-8 lg:p-12" data-aos="fade-right">
                 <div className="relative rounded-2xl md:rounded-3xl lg:rounded-[2rem] shadow-2xl overflow-hidden w-full max-w-lg h-[300px] md:h-[400px] lg:h-full lg:max-h-[600px]">
                   <Image 
                     src="/images/landing_page/compassionate_care.jpg" 
@@ -464,7 +464,7 @@ export default function Component() {
             {/* Service 2: Professional Team - Text left, Image right */}
             <div className="flex flex-col lg:flex-row-reverse items-stretch min-h-[500px] lg:min-h-[600px]">
               {/* Image Column */}
-              <div className="w-full lg:w-1/2 relative bg-[#FCF5EB] flex items-center justify-center p-8 lg:p-12" data-aos="fade-left">
+              <div className="w-full lg:w-1/2 relative bg-[#FEFEDF] flex items-center justify-center p-8 lg:p-12" data-aos="fade-left">
                 <div className="relative rounded-2xl md:rounded-3xl lg:rounded-[2rem] shadow-2xl overflow-hidden w-full max-w-lg h-[300px] md:h-[400px] lg:h-full lg:max-h-[600px]">
                   <Image 
                     src="/images/landing_page/image1.jpg" 
@@ -498,7 +498,7 @@ export default function Component() {
             {/* Service 3: Quality Service - Image left, Text right */}
             <div className="flex flex-col lg:flex-row items-stretch min-h-[500px] lg:min-h-[600px]">
               {/* Image Column */}
-              <div className="w-full lg:w-1/2 relative bg-[#FCF5EB] flex items-center justify-center p-8 lg:p-12" data-aos="fade-right">
+              <div className="w-full lg:w-1/2 relative bg-[#FEFEDF] flex items-center justify-center p-8 lg:p-12" data-aos="fade-right">
                 <div className="relative rounded-2xl md:rounded-3xl lg:rounded-[2rem] shadow-2xl overflow-hidden w-full max-w-lg h-[300px] md:h-[400px] lg:h-full lg:max-h-[600px]">
                   <Image 
                     src="/images/landing_page/image2.jpg" 
@@ -533,7 +533,7 @@ export default function Component() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#F6F4EC' }} data-aos="fade-up">
+      <section className="py-20 md:py-28" style={{ backgroundColor: '#FEFEDF' }} data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -626,7 +626,7 @@ export default function Component() {
 
 
       {/* Helpful Articles Section */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#F5F5EC' }} data-aos="fade-up">
+      <section className="py-20 md:py-28" style={{ backgroundColor: '#FEFEDF' }} data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div>
@@ -682,7 +682,7 @@ export default function Component() {
       </section>
 
       {/* Join Us CTA Section */}
-      <section className="relative py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#FCF5EB' }} data-aos="fade-up">
+      <section className="relative py-20 md:py-28 overflow-hidden" style={{ backgroundColor: '#FEFEDF' }} data-aos="fade-up">
         <div className="container mx-auto px-8 md:px-12 lg:px-16 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             {/* Tagline */}
