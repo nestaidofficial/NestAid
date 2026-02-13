@@ -8,6 +8,7 @@
     "lint": "next lint",
     "start": "next start",
     "setup-assistant": "tsx scripts/setup-assistant.ts",
+    "create-admin": "tsx scripts/create-admin.ts",
     "postbuild": "next-sitemap"
   },
   "dependencies": {

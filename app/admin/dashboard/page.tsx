@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Playfair_Display, Inter } from "next/font/google";
+import { signOutAdmin, getAdminSession } from '@/app/actions/admin-auth';
 
 const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
@@ -119,16 +120,18 @@ export default function AdminDashboard() {
   const router = useRouter();
 
   useEffect(() => {
-    const cookies = document.cookie.split(';');
-    const adminCookie = cookies.find(cookie => cookie.trim().startsWith('adminAuthenticated='));
-    const authStatus = adminCookie?.split('=')[1];
+    const checkAuth = async () => {
+      const { isAdmin } = await getAdminSession();
+      
+      if (!isAdmin) {
+        router.push('/admin/login');
+        return;
+      }
+      setIsAuthenticated(true);
+      fetchRecentJobs();
+    };
     
-    if (authStatus !== 'true') {
-      router.push('/admin/login');
-      return;
-    }
-    setIsAuthenticated(true);
-    fetchRecentJobs();
+    checkAuth();
   }, [router]);
 
   useEffect(() => {
@@ -427,9 +430,8 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleLogout = () => {
-    document.cookie = 'adminAuthenticated=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    router.push('/admin/login');
+  const handleLogout = async () => {
+    await signOutAdmin();
   };
 
   const formatDate = (dateString: string) => {

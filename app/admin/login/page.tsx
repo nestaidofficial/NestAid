@@ -6,10 +6,10 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertCircle, Shield } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { authenticateAdmin } from '@/app/actions/admin-auth';
+import { signInAdmin } from '@/app/actions/admin-auth';
 
 export default function AdminLoginPage() {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
@@ -19,11 +19,12 @@ export default function AdminLoginPage() {
     setIsLoading(true);
     setError('');
 
-    const result = await authenticateAdmin(credentials.username, credentials.password);
+    const result = await signInAdmin(
+      credentials.email.trim(),
+      credentials.password.trim()
+    );
     
     if (result.success) {
-      // Set admin session cookie
-      document.cookie = 'adminAuthenticated=true; path=/; max-age=3600'; // 1 hour
       router.push('/admin/dashboard');
     } else {
       setError(result.error || 'Invalid credentials');
@@ -49,16 +50,16 @@ export default function AdminLoginPage() {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-[#1A5463] mb-2">
-                Username
+              <label htmlFor="email" className="block text-sm font-medium text-[#1A5463] mb-2">
+                Email
               </label>
               <Input
-                id="username"
-                type="text"
-                value={credentials.username}
-                onChange={(e) => setCredentials(prev => ({ ...prev, username: e.target.value }))}
+                id="email"
+                type="email"
+                value={credentials.email}
+                onChange={(e) => setCredentials(prev => ({ ...prev, email: e.target.value }))}
                 className="border-2 border-gray-200 focus:border-[#275F48] focus:ring-0"
-                placeholder="Enter username"
+                placeholder="Enter email"
                 required
               />
             </div>
