@@ -8,6 +8,11 @@ module.exports = {
     '/admin/*', 
     '/api/*',
     '/admin',
+    '/become-a-partner',
+    '/care/*',
+    '/careers',
+    '/corporate-benefits',
+    '/living-options',
     '/*.png',
     '/*.jpg',
     '/*.jpeg',
@@ -15,28 +20,11 @@ module.exports = {
     '/*.ico',
     '/*.xml',
     '/*.txt',
-  ], // Exclude admin, API routes, and static assets
+  ], // Exclude admin, API routes, deleted pages, and static assets
   
   // Additional paths to include in sitemap
   additionalPaths: async (config) => {
     const currentDate = new Date().toISOString()
-    
-    // Care service pages - high value content
-    const careServices = [
-      'companionship',
-      'assistance',
-      'special-needs',
-      'live-in',
-      'care-plans',
-      'wellness',
-    ]
-    
-    const careServicePages = careServices.map((slug) => ({
-      loc: `/care/${slug}`,
-      lastmod: currentDate,
-      changefreq: 'weekly', // Changed from monthly to weekly for better crawl frequency
-      priority: 0.85, // Increased priority for service pages
-    }))
     
     // Resource/blog pages - content marketing
     const resources = [
@@ -52,7 +40,7 @@ module.exports = {
       priority: 0.7, // Increased priority for blog content
     }))
     
-    return [...careServicePages, ...resourcePages]
+    return resourcePages
   },
   
   // Priority and change frequency for different routes
@@ -94,8 +82,8 @@ module.exports = {
       }
     }
     
-    // Job and career pages - important for recruitment
-    if (['/careers', '/jobs/senior-care'].includes(path)) {
+    // Job pages - important for recruitment
+    if (path === '/jobs/senior-care') {
       return {
         loc: path,
         lastmod: currentDate,
@@ -125,7 +113,7 @@ module.exports = {
     }
     
     // Support and information pages
-    if (['/help-center', '/safety-center', '/living-options'].includes(path)) {
+    if (['/help-center', '/safety-center'].includes(path)) {
       return {
         loc: path,
         lastmod: currentDate,
@@ -134,14 +122,9 @@ module.exports = {
       }
     }
     
-    // Partnership and corporate pages
-    if (['/corporate-benefits', '/become-a-partner'].includes(path)) {
-      return {
-        loc: path,
-        lastmod: currentDate,
-        changefreq: 'monthly',
-        priority: 0.6,
-      }
+    // Exclude deleted pages
+    if (['/become-a-partner', '/careers', '/corporate-benefits', '/living-options'].includes(path) || path.startsWith('/care/')) {
+      return null
     }
     
     // Default for other pages

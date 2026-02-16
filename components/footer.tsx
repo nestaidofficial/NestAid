@@ -126,8 +126,8 @@ export function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/living-options" className={`${inter.className} text-sm md:text-base text-[#3D5A52]/80 hover:text-[#3D5A52] transition-colors flex items-center gap-2`}>
-                      <span>→</span> Living Options
+                    <Link href="/jobs/senior-care" className={`${inter.className} text-sm md:text-base text-[#3D5A52]/80 hover:text-[#3D5A52] transition-colors flex items-center gap-2`}>
+                      <span>→</span> Find Jobs
                     </Link>
                   </li>
                   <li>
