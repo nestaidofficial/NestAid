@@ -31,6 +31,12 @@ module.exports = {
       'physical-activities',
       'social-engagement',
       'right-caregiver',
+      'companionship',
+      'assistance',
+      'support',
+      'caregiving',
+      'guidance',
+      'therapy',
     ]
     
     const resourcePages = resources.map((slug) => ({
