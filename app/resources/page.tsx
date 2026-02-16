@@ -33,6 +33,48 @@ const blogArticles = [
     title: "Choosing The Right Caregiver For Seniors",
     description: "Guidance for families on selecting caregivers who align with needs, qualifications, and personalities.",
     image: "/images/findjobs/socialwithcaregiver.png"
+  },
+  {
+    id: "companionship",
+    category: "Care Services",
+    title: "Companionship Care",
+    description: "Meaningful companionship that brightens each day with care. Our companion care services provide emotional support and social engagement.",
+    image: "/images/group.jpg"
+  },
+  {
+    id: "assistance",
+    category: "Care Services",
+    title: "Daily Living Assistance",
+    description: "Tailored assistance to make daily life easier and more fulfilling. Comprehensive support with activities of daily living.",
+    image: "/images/adult-care.jpg"
+  },
+  {
+    id: "support",
+    category: "Care Services",
+    title: "Special Needs Support",
+    description: "Reliable support designed to nurture comfort and independence. Specialized services for individuals with disabilities or special requirements.",
+    image: "/images/senior-care.jpg"
+  },
+  {
+    id: "caregiving",
+    category: "Care Services",
+    title: "24/7 Live-In Caregiving",
+    description: "Dedicated caregivers offering daily support with warmth and respect. Continuous support and supervision around the clock.",
+    image: "/images/pet-care.jpg"
+  },
+  {
+    id: "guidance",
+    category: "Care Services",
+    title: "Care Planning & Guidance",
+    description: "Compassionate guidance for seniors and families at every step. Expert help navigating the complexities of senior care.",
+    image: "/images/adult-care.jpg"
+  },
+  {
+    id: "therapy",
+    category: "Care Services",
+    title: "Wellness & Therapy",
+    description: "Personalized therapies to restore strength, balance, and peace. Holistic approaches to senior health and well-being.",
+    image: "/images/senior-care.jpg"
   }
 ]
 
