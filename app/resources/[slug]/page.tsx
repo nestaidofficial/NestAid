@@ -205,7 +205,7 @@ const blogPosts: Record<string, {
     category: "Care Services",
     title: "Companionship Care",
     description: "Meaningful companionship that brightens each day with care. Our companion care services provide emotional support, social engagement, and a friendly presence.",
-    image: "/images/group.jpg",
+    image: "/images/resources/companion1.png",
     content: [
       {
         type: "paragraph",
@@ -266,7 +266,7 @@ const blogPosts: Record<string, {
     category: "Care Services",
     title: "Daily Living Assistance",
     description: "Tailored assistance to make daily life easier and more fulfilling. Comprehensive support with activities of daily living.",
-    image: "/images/adult-care.jpg",
+    image: "/images/resources/Dailyliving.png",
     content: [
       {
         type: "paragraph",
@@ -328,7 +328,7 @@ const blogPosts: Record<string, {
     category: "Care Services",
     title: "Special Needs Support",
     description: "Reliable support designed to nurture comfort and independence. Specialized services for individuals with disabilities or special requirements.",
-    image: "/images/senior-care.jpg",
+    image: "/images/resources/specsupport.png",
     content: [
       {
         type: "paragraph",
@@ -390,7 +390,7 @@ const blogPosts: Record<string, {
     category: "Care Services",
     title: "24/7 Live-In Caregiving",
     description: "Dedicated caregivers offering daily support with warmth and respect. Continuous support and supervision around the clock.",
-    image: "/images/pet-care.jpg",
+    image: "/images/resources/livin.png",
     content: [
       {
         type: "paragraph",
@@ -453,7 +453,7 @@ const blogPosts: Record<string, {
     category: "Care Services",
     title: "Care Planning & Guidance",
     description: "Compassionate guidance for seniors and families at every step. Expert help navigating the complexities of senior care.",
-    image: "/images/adult-care.jpg",
+    image: "/images/resources/careplanning.png",
     content: [
       {
         type: "paragraph",
@@ -515,77 +515,6 @@ const blogPosts: Record<string, {
       {
         type: "paragraph",
         content: "Our care planners serve as advocates, ensuring your loved one receives appropriate care and services. We communicate with healthcare providers, navigate insurance and benefits, and help families make informed decisions about care options."
-      }
-    ]
-  },
-  "therapy": {
-    id: "therapy",
-    category: "Care Services",
-    title: "Wellness & Therapy",
-    description: "Personalized therapies to restore strength, balance, and peace. Holistic approaches to senior health and well-being.",
-    image: "/images/senior-care.jpg",
-    content: [
-      {
-        type: "paragraph",
-        content: "Wellness is about more than just physical health—it encompasses mind, body, and spirit. Our wellness and therapy services take a holistic approach to senior health, promoting vitality, independence, and joy in everyday life."
-      },
-      {
-        type: "heading",
-        content: "Holistic Wellness Approach"
-      },
-      {
-        type: "paragraph",
-        content: "We believe that true wellness comes from balancing physical fitness, mental clarity, emotional health, and social connection. Our programs are designed to address all these aspects, helping seniors thrive at any age."
-      },
-      {
-        type: "heading",
-        content: "Our Wellness Services"
-      },
-      {
-        type: "list",
-        content: [
-          "Gentle yoga adapted for seniors and limited mobility",
-          "Guided meditation and breathing exercises",
-          "Light strength and flexibility training",
-          "Balance exercises and fall prevention",
-          "Walking programs and outdoor activities",
-          "Nutritional counseling and meal planning",
-          "Stress reduction techniques",
-          "Cognitive exercises and brain health activities",
-          "Social engagement and group activities"
-        ]
-      },
-      {
-        type: "heading",
-        content: "Physical Wellness"
-      },
-      {
-        type: "paragraph",
-        content: "Regular physical activity helps maintain strength, flexibility, and balance—all crucial for independence. Our gentle exercise programs are tailored to individual abilities and health conditions, focusing on safe, enjoyable movement that builds confidence and capability."
-      },
-      {
-        type: "heading",
-        content: "Mental and Emotional Well-Being"
-      },
-      {
-        type: "paragraph",
-        content: "Mental health is as important as physical health. Our meditation, mindfulness, and relaxation techniques help reduce anxiety, improve mood, and enhance cognitive function. We also facilitate social connections that combat loneliness and depression."
-      },
-      {
-        type: "heading",
-        content: "Nutrition and Lifestyle"
-      },
-      {
-        type: "paragraph",
-        content: "Good nutrition fuels both body and mind. We provide education about healthy eating for seniors, help with meal planning, and can prepare nutritious meals that support overall wellness. We also address sleep, hydration, and other lifestyle factors that impact health."
-      },
-      {
-        type: "heading",
-        content: "Personalized Programs"
-      },
-      {
-        type: "paragraph",
-        content: "Every senior has different abilities, interests, and goals. We create customized wellness programs that match individual fitness levels, preferences, and health conditions. Whether it's chair yoga, walking clubs, or meditation sessions, we find activities that bring joy and benefit."
       }
     ]
   }
