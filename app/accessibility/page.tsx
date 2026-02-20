@@ -90,7 +90,7 @@ export default function AccessibilityPage() {
             <div className={`${inter.className} text-base md:text-lg text-[#1a1a1a] leading-relaxed`}>
               <p><strong>NestAid, Inc.</strong></p>
               <p>Email: accessibility@nestaid.com</p>
-              <p>Phone: (412) 953-0622</p>
+              <p>Phone: (412) 953-5320</p>
               <p>Address: Somerville, Massachusetts</p>
             </div>
           </section>

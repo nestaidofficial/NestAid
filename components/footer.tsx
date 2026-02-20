@@ -40,8 +40,8 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3 text-white/90">
                 <Phone className="h-5 w-5 text-[#D9FB74]" />
-                <Link href="tel:4129530622" className={`${inter.className} text-sm md:text-base hover:text-white transition-colors`}>
-                  (412) 953-0622
+                <Link href="tel:4129535320" className={`${inter.className} text-sm md:text-base hover:text-white transition-colors`}>
+                  (412) 953-5320
                 </Link>
               </div>
               <div className="flex items-center gap-3 text-white/90">
@@ -160,7 +160,7 @@ export function Footer() {
                     Contact us today to learn more about our care services and how we can assist you.
                   </p>
                   <Link
-                    href="tel:4129530622"
+                    href="tel:4129535320"
                     className={`${inter.className} w-full inline-flex items-center justify-center gap-3 text-white font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg group bg-[#27645E] hover:bg-[#1f4d47]`}
                   >
                     <span>Call Us Today</span>

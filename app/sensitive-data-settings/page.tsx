@@ -104,7 +104,7 @@ export default function SensitiveDataSettingsPage() {
             <div className={`${inter.className} text-base md:text-lg text-[#1a1a1a] leading-relaxed mb-6`}>
               <p><strong>NestAid, Inc.</strong></p>
               <p>Email: privacy@nestaid.com</p>
-              <p>Phone: (412) 953-0622</p>
+              <p>Phone: (412) 953-5320</p>
               <p>Address: Somerville, Massachusetts</p>
             </div>
             <p className={`${inter.className} text-base text-[#3D5A52]/70 leading-relaxed italic`}>

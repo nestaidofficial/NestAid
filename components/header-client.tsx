@@ -132,9 +132,9 @@ export function HeaderClient() {
                 className="rounded-full font-medium hover:bg-[#1f4a37] transition-all shadow-sm border border-gray-200/50 px-6 py-6"
                 style={{ backgroundColor: '#FDE664', fontSize: '1rem', lineHeight: '1.5' }}
               >
-                <Link href="tel:4129530622" className="flex items-center gap-2 " >
+                <Link href="tel:4129535320" className="flex items-center gap-2 " >
                   <Phone className="w-5 h-5 text-gray-700" />
-                  <span className="text-gray-900" style={{  fontSize: '1rem', lineHeight: '1.5' }} >(412) 953-0622</span>
+                  <span className="text-gray-900" style={{  fontSize: '1rem', lineHeight: '1.5' }} >(412) 953-5320</span>
                 </Link>
               </Button>
             </div>
@@ -185,7 +185,7 @@ export function HeaderClient() {
             isCallButtonVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
           }`}
         >
-          <Link href="tel:4129530622">
+          <Link href="tel:4129535320">
             <button
               className="w-16 h-16 rounded-full flex items-center justify-center active:scale-95 relative group"
               style={{

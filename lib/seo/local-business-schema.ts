@@ -10,7 +10,7 @@ export const nestAidBusinessData: LocalBusinessData = {
   name: "NestAid",
   description: "NestAid provides trusted, non-medical in-home care services in Massachusetts. Our compassionate caregivers offer companionship, daily living assistance, and personalized care to help seniors age gracefully at home.",
   url: baseUrl,
-  telephone: "+14129530622",
+  telephone: "+14129535320",
   email: "information@nestaid.com",
   address: {
     streetAddress: "Somerville",
